@@ -3,7 +3,7 @@
   <entry>
     <title>Pandas</title>
     <url>/2021/07/06/PandasNotes/</url>
-    <content><![CDATA[<h1 id="2239"><a href="#2239" class="headerlink" title="2239"></a>2239</h1><h1 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h1><h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><p>pandas有两种数据结构：Series and dataframe数据框</p>
+    <content><![CDATA[<h1 id="2245"><a href="#2245" class="headerlink" title="2245"></a>2245</h1><h1 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h1><h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><p>pandas有两种数据结构：Series and dataframe数据框</p>
 <ul>
 <li>Series<br>Series是一个一维标记数组，可以存储任何种类的数据  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">my_series = pd.Series([<span class="number">3</span>,-<span class="number">5</span>,<span class="number">7</span>,<span class="number">4</span>], index=[<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(my_series)  </span><br></pre></td></tr></table></figure>
   <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a    <span class="number">3</span></span><br><span class="line">b   -<span class="number">5</span></span><br><span class="line">c    <span class="number">7</span></span><br><span class="line">d    <span class="number">4</span></span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
