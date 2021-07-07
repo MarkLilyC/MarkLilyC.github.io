@@ -38,19 +38,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Pyhont-Class</title>
-    <url>/2021/07/07/Class/</url>
-    <content><![CDATA[<h1 id="类–CLASS"><a href="#类–CLASS" class="headerlink" title="类–CLASS"></a>类–CLASS</h1><p>类 我的泪 学<code>java</code>的时候搞得很清楚的 操 现在忘干净了</p>
-<h2 id="python中的类与对象"><a href="#python中的类与对象" class="headerlink" title="python中的类与对象"></a>python中的类与对象</h2>]]></content>
-      <categories>
-        <category>Python</category>
-        <category>basic</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Pyhont-Tuple</title>
     <url>/2021/07/07/ListAndTuple/</url>
     <content><![CDATA[<h1 id="列表与元组"><a href="#列表与元组" class="headerlink" title="列表与元组"></a>列表与元组</h1><ul>
@@ -83,6 +70,19 @@
 
 
 ]]></content>
+      <categories>
+        <category>Python</category>
+        <category>basic</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Pyhont-Class</title>
+    <url>/2021/07/07/Class/</url>
+    <content><![CDATA[<h1 id="类–CLASS"><a href="#类–CLASS" class="headerlink" title="类–CLASS"></a>类–CLASS</h1><p>类 我的泪 学<code>java</code>的时候搞得很清楚的 操 现在忘干净了</p>
+<h2 id="python中的类与对象"><a href="#python中的类与对象" class="headerlink" title="python中的类与对象"></a>python中的类与对象</h2>]]></content>
       <categories>
         <category>Python</category>
         <category>basic</category>
@@ -142,6 +142,25 @@ python内置此方法的输出为元素长度:<figure class="highlight python"><
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> builtins</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dir</span>(builtins)</span><br></pre></td></tr></table></figure>
 <h3 id="2-3-规则"><a href="#2-3-规则" class="headerlink" title="2.3 规则"></a>2.3 规则</h3><code>1.</code> 当在函数中引用一个变量的时候，以上的作用域顺序也是 Python 搜索的一个顺序 <code>L-&gt;E-G-B</code>，首先尝试局部作用域，没找到的话，继续搜索闭包函数作用域，然后再是全局作用域和内置作用域。<br><code>2.</code> Python 中只有模块（module），类（class）以及函数（def、lambda）才会引入新的作用域</li>
 <li>其它的代码块（如 if/elif/else/、try/except、for/while等）是不会引入新的作用域的，也就是说这些语句内定义的变量，外部也可以访问(如<code>1.3.1.2</code>) 如:<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">if</span> <span class="literal">True</span>:</span><br><span class="line"><span class="meta">... </span>    testStr = <span class="string">&#x27;this is a testline to test if this is a new region&#x27;</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(testStr)</span><br><span class="line">this <span class="keyword">is</span> a testline to test <span class="keyword">if</span> this <span class="keyword">is</span> a new region</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>basic</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Pyhont-Recursion</title>
+    <url>/2021/07/07/Recursion/</url>
+    <content><![CDATA[<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>计算阶乘</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">cal</span>(<span class="params">n</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line"><span class="meta">... </span>            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">else</span>:</span><br><span class="line"><span class="meta">... </span>            <span class="keyword">return</span> n * cal(n - <span class="number">1</span>)</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(cal(<span class="number">4</span>))</span><br><span class="line"><span class="number">24</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(cal(<span class="number">6</span>))</span><br><span class="line"><span class="number">720</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>递归函数内部会调用函数本身</li>
+<li>某次调用递归函数时,内部调用本身时会指定参数</li>
+<li>在递归函数中,应有一个结束参数信号,在每次递归中,参数不断靠近该信号<h2 id="递归次数限制"><a href="#递归次数限制" class="headerlink" title="递归次数限制"></a>递归次数限制</h2><code>python</code>递归次数限制为<code>3000</code>次,超出此次数则会触发<code>RecursionError</code><h2 id="移除递归次数限制"><a href="#移除递归次数限制" class="headerlink" title="移除递归次数限制"></a>移除递归次数限制</h2><code>sys.setrecursionlimit(5000)</code> 设置次数限制为我们所需要的次数</li>
 </ul>
 ]]></content>
       <categories>
@@ -376,25 +395,6 @@ python内置此方法的输出为元素长度:<figure class="highlight python"><
       </tags>
   </entry>
   <entry>
-    <title>Pyhont-Recursion</title>
-    <url>/2021/07/07/Recursion/</url>
-    <content><![CDATA[<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>计算阶乘</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">cal</span>(<span class="params">n</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line"><span class="meta">... </span>            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">else</span>:</span><br><span class="line"><span class="meta">... </span>            <span class="keyword">return</span> n * cal(n - <span class="number">1</span>)</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(cal(<span class="number">4</span>))</span><br><span class="line"><span class="number">24</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(cal(<span class="number">6</span>))</span><br><span class="line"><span class="number">720</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>递归函数内部会调用函数本身</li>
-<li>某次调用递归函数时,内部调用本身时会指定参数</li>
-<li>在递归函数中,应有一个结束参数信号,在每次递归中,参数不断靠近该信号<h2 id="递归次数限制"><a href="#递归次数限制" class="headerlink" title="递归次数限制"></a>递归次数限制</h2><code>python</code>递归次数限制为<code>3000</code>次,超出此次数则会触发<code>RecursionError</code><h2 id="移除递归次数限制"><a href="#移除递归次数限制" class="headerlink" title="移除递归次数限制"></a>移除递归次数限制</h2><code>sys.setrecursionlimit(5000)</code> 设置次数限制为我们所需要的次数</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>basic</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Pyhont-Set</title>
     <url>/2021/07/07/Set/</url>
     <content><![CDATA[<h1 id="集合-set"><a href="#集合-set" class="headerlink" title="集合-set"></a>集合-set</h1><p>集合的基本性质:<br><code>1.</code> 集合包含了不重复且无序的元素<br><code>2.</code> 集合是可变数据类型  </p>
@@ -481,6 +481,103 @@ python内置此方法的输出为元素长度:<figure class="highlight python"><
       </categories>
       <tags>
         <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Numpy100</title>
+    <url>/2021/07/07/numpy/numpy100/</url>
+    <content><![CDATA[<h1 id="github上的开源项目"><a href="#github上的开源项目" class="headerlink" title="github上的开源项目"></a>github上的开源项目</h1><h2 id="2021-7-4-17：06-cj-at-swjtu-jiuli-campus"><a href="#2021-7-4-17：06-cj-at-swjtu-jiuli-campus" class="headerlink" title="2021.7.4 17：06 cj at swjtu jiuli campus"></a>2021.7.4 17：06 cj at swjtu jiuli campus</h2><h3 id="创建一个长度为10的空向量"><a href="#创建一个长度为10的空向量" class="headerlink" title="创建一个长度为10的空向量"></a>创建一个长度为10的空向量</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">z = np.zeros(<span class="number">10</span>)</span><br><span class="line"><span class="built_in">print</span>(z)</span><br></pre></td></tr></table></figure>
+<h3 id="找到数组的内存大小"><a href="#找到数组的内存大小" class="headerlink" title="找到数组的内存大小"></a>找到数组的内存大小</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">z = np.zeros(<span class="number">10</span>)</span><br><span class="line"><span class="built_in">print</span>(z.size * z.itermsize)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>z.size获取到内部的元素个数<br>z.itemsize获取到各个元素的大小</p>
+</blockquote>
+<h3 id="从命令行对得到相关函数的说明文档"><a href="#从命令行对得到相关函数的说明文档" class="headerlink" title="从命令行对得到相关函数的说明文档"></a>从命令行对得到相关函数的说明文档</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(np.info(np.add))</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建一个长度为10-且除了第五个元素为1的空向量"><a href="#创建一个长度为10-且除了第五个元素为1的空向量" class="headerlink" title="创建一个长度为10,且除了第五个元素为1的空向量"></a>创建一个长度为10,且除了第五个元素为1的空向量</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">z = np.zeros(<span class="number">10</span>)</span><br><span class="line">z[<span class="number">4</span>] = <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(z)</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建值域10-49的向量"><a href="#创建值域10-49的向量" class="headerlink" title="创建值域10-49的向量"></a>创建值域10-49的向量</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">z = np.arange(<span class="number">10</span>, <span class="number">50</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="反转一个向量"><a href="#反转一个向量" class="headerlink" title="反转一个向量"></a>反转一个向量</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">z = np.arange(<span class="number">0</span>, <span class="number">5</span>)</span><br><span class="line"><span class="built_in">print</span>(z)</span><br><span class="line">z = z[::-<span class="number">1</span>]</span><br><span class="line"><span class="built_in">print</span>(z)</span><br></pre></td></tr></table></figure>
+<p><code>b = [0 1 2 3 4]</code><br><code>a = b[x : y]</code>: 两索引各自计算,正值从左侧开始,负值从右侧开始</p>
+<ul>
+<li>左侧索引元素在右侧索引元素左侧,则返回非空</li>
+<li>某侧无索引则代表,从另一侧索引顺方向计数完</li>
+<li>a为两侧索引之内交集元素返回的array</li>
+<li>若两侧索引之内无元素,则a为空array<blockquote>
+<p>a = b[4:2] : a = []<br>a = b[-3:4] : a = []<br>a = b[4:-2] : a = []</p>
+</blockquote>
+</li>
+</ul>
+<ol>
+<li><code>x&gt;0</code> <code>y&gt;0</code></li>
+</ol>
+<ul>
+<li>a = b[x:y]: a = x-y内元素返回array</li>
+<li>a = b[ :y]: a = 0-y内元素返回</li>
+<li>a = b[x: ]: a = x-len(b)内元素返回</li>
+<li>x &lt; y : a = []</li>
+</ul>
+<ol start="2">
+<li><code>x&lt;0</code> or <code>y&lt;0</code></li>
+</ol>
+<ul>
+<li>a = b[-4:-1]: a = b中-4号元素到-1号元素返回</li>
+<li>a = b[-4:1]: a = []</li>
+<li>a = b[-4:]: a = -4 - 0索引之间元素返回</li>
+<li>a = b[:-4]: a = []</li>
+<li>a = b[3:-4]: a = []</li>
+</ul>
+<ol start="3">
+<li><code>a = b[::a]</code></li>
+</ol>
+<ul>
+<li>在b中没隔a取一个元素返回a</li>
+<li>取值方向由a正负决定</li>
+</ul>
+<h3 id="创建一个3-3-值域-0-8的矩阵"><a href="#创建一个3-3-值域-0-8的矩阵" class="headerlink" title="创建一个3 * 3,值域:0-8的矩阵"></a>创建一个3 * 3,值域:0-8的矩阵</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">z = np.arange(<span class="number">0</span>,<span class="number">9</span>).reshape(<span class="number">3</span>,<span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(z)</span><br></pre></td></tr></table></figure>
+<h3 id="找到数组中的0元素索引"><a href="#找到数组中的0元素索引" class="headerlink" title="找到数组中的0元素索引"></a>找到数组中的0元素索引</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">z = np.array([<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">0</span>])</span><br><span class="line"><span class="built_in">print</span>(z.nonzero())</span><br></pre></td></tr></table></figure>
+<h3 id="创建一个3-3的单位矩阵"><a href="#创建一个3-3的单位矩阵" class="headerlink" title="创建一个3 * 3的单位矩阵"></a>创建一个<code>3 * 3</code>的单位矩阵</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">z = np.eye(<span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(z)</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建一个3-3的随机数据"><a href="#创建一个3-3的随机数据" class="headerlink" title="创建一个3 * 3的随机数据"></a>创建一个<code>3 * 3</code>的随机数据</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> random</span><br><span class="line">z = np.random.random((<span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>))</span><br><span class="line"><span class="built_in">print</span>(z)</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建一个10-10的随机数组-并获取最小与最大值"><a href="#创建一个10-10的随机数组-并获取最小与最大值" class="headerlink" title="创建一个10 * 10的随机数组,并获取最小与最大值"></a>创建一个<code>10 * 10</code>的随机数组,并获取最小与最大值</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> random</span><br><span class="line">z = np.random.random((<span class="number">10</span>, <span class="number">10</span>))</span><br><span class="line"><span class="built_in">print</span>(z.<span class="built_in">min</span>(), z.<span class="built_in">max</span>())</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建一个长度为30的随机向量-并获取其平均值"><a href="#创建一个长度为30的随机向量-并获取其平均值" class="headerlink" title="创建一个长度为30的随机向量,并获取其平均值"></a>创建一个长度为<code>30</code>的随机向量,并获取其平均值</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> random</span><br><span class="line">z = np.random.random((<span class="number">30</span>))</span><br><span class="line">zMean = z.mean()</span><br><span class="line"><span class="built_in">print</span>(zMean)</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建一个二维数组-其边界值为1-其余值为0"><a href="#创建一个二维数组-其边界值为1-其余值为0" class="headerlink" title="创建一个二维数组,其边界值为1,其余值为0"></a>创建一个二维数组,其边界值为1,其余值为0</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">z = np.ones((<span class="number">6</span>, <span class="number">6</span>))</span><br><span class="line">z[<span class="number">1</span>:-<span class="number">1</span>, <span class="number">1</span>:-<span class="number">1</span>] = <span class="number">0</span></span><br><span class="line"><span class="built_in">print</span>(z)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>其原理是:用array[a:b,c:d] = x进行对二维数组赋值的方式</li>
+<li>array[1:-1,1:-1] = x其原理类似a = b[1:-1]从行索引为从第一行到-1行(及倒是第二行),这样根据每个array的大小去调整参数</li>
+</ul>
+<h3 id="对于一个存在的数组-如何用0填充其边界"><a href="#对于一个存在的数组-如何用0填充其边界" class="headerlink" title="对于一个存在的数组,如何用0填充其边界"></a>对于一个存在的数组,如何用0填充其边界</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">z = np.ones((<span class="number">6</span>, <span class="number">6</span>))</span><br><span class="line">z = np.pad(z, pad_width=<span class="number">1</span>, mode=<span class="string">&#x27;constant&#x27;</span>, constant_values=<span class="number">0</span>)</span><br><span class="line"><span class="built_in">print</span>(z)</span><br></pre></td></tr></table></figure>
+
+<h3 id="下列各式的运行结果"><a href="#下列各式的运行结果" class="headerlink" title="下列各式的运行结果"></a>下列各式的运行结果</h3><ol>
+<li><code>0 * np.nan</code> –&gt; <code>nan</code></li>
+<li><code>np.nan==np.nan</code> –&gt; <code>False</code></li>
+<li><code>np.inf &gt; np.nan</code> –&gt; <code>False</code></li>
+<li><code>np.nan - np.nan</code> –&gt; <code>nan</code></li>
+<li><code>0.3 == 3 * 0.1</code> –&gt; <code>False</code></li>
+</ol>
+<ul>
+<li>nan 不是数字,是不存在</li>
+<li>inf infinite</li>
+</ul>
+<h3 id="创建一个5-5的矩阵-并设置1-2-3-4落在其对角线的下方"><a href="#创建一个5-5的矩阵-并设置1-2-3-4落在其对角线的下方" class="headerlink" title="创建一个5 * 5的矩阵,并设置1 2 3 4落在其对角线的下方"></a>创建一个<code>5 * 5</code>的矩阵,并设置<code>1 2 3 4</code>落在其对角线的下方</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Z = np.diag(<span class="number">1</span>+np.arange(<span class="number">4</span>), k = -<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(Z)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>np.diag(array_like, k)</code></li>
+</ul>
+<ol>
+<li>返回此array第k位置对角线的矩阵</li>
+<li>当只传入矩阵,则返回此矩阵的对角线元素</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>Numpy</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Numpy</tag>
       </tags>
   </entry>
 </search>
