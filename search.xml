@@ -1,8 +1,327 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Numpy100</title>
+    <url>/2021/07/07/numpy/numpy100/</url>
+    <content><![CDATA[<h1 id="github上的开源项目"><a href="#github上的开源项目" class="headerlink" title="github上的开源项目"></a>github上的开源项目</h1><h2 id="2021-7-4-17：06-cj-at-swjtu-jiuli-campus"><a href="#2021-7-4-17：06-cj-at-swjtu-jiuli-campus" class="headerlink" title="2021.7.4 17：06 cj at swjtu jiuli campus"></a>2021.7.4 17：06 cj at swjtu jiuli campus</h2><h3 id="创建一个长度为10的空向量"><a href="#创建一个长度为10的空向量" class="headerlink" title="创建一个长度为10的空向量"></a>创建一个长度为10的空向量</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">z = np.zeros(<span class="number">10</span>)</span><br><span class="line"><span class="built_in">print</span>(z)</span><br></pre></td></tr></table></figure>
+<h3 id="找到数组的内存大小"><a href="#找到数组的内存大小" class="headerlink" title="找到数组的内存大小"></a>找到数组的内存大小</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">z = np.zeros(<span class="number">10</span>)</span><br><span class="line"><span class="built_in">print</span>(z.size * z.itermsize)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>z.size获取到内部的元素个数<br>z.itemsize获取到各个元素的大小</p>
+</blockquote>
+<h3 id="从命令行对得到相关函数的说明文档"><a href="#从命令行对得到相关函数的说明文档" class="headerlink" title="从命令行对得到相关函数的说明文档"></a>从命令行对得到相关函数的说明文档</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(np.info(np.add))</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建一个长度为10-且除了第五个元素为1的空向量"><a href="#创建一个长度为10-且除了第五个元素为1的空向量" class="headerlink" title="创建一个长度为10,且除了第五个元素为1的空向量"></a>创建一个长度为10,且除了第五个元素为1的空向量</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">z = np.zeros(<span class="number">10</span>)</span><br><span class="line">z[<span class="number">4</span>] = <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(z)</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建值域10-49的向量"><a href="#创建值域10-49的向量" class="headerlink" title="创建值域10-49的向量"></a>创建值域10-49的向量</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">z = np.arange(<span class="number">10</span>, <span class="number">50</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="反转一个向量"><a href="#反转一个向量" class="headerlink" title="反转一个向量"></a>反转一个向量</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">z = np.arange(<span class="number">0</span>, <span class="number">5</span>)</span><br><span class="line"><span class="built_in">print</span>(z)</span><br><span class="line">z = z[::-<span class="number">1</span>]</span><br><span class="line"><span class="built_in">print</span>(z)</span><br></pre></td></tr></table></figure>
+<p><code>b = [0 1 2 3 4]</code><br><code>a = b[x : y]</code>: 两索引各自计算,正值从左侧开始,负值从右侧开始</p>
+<ul>
+<li>左侧索引元素在右侧索引元素左侧,则返回非空</li>
+<li>某侧无索引则代表,从另一侧索引顺方向计数完</li>
+<li>a为两侧索引之内交集元素返回的array</li>
+<li>若两侧索引之内无元素,则a为空array<blockquote>
+<p>a = b[4:2] : a = []<br>a = b[-3:4] : a = []<br>a = b[4:-2] : a = []</p>
+</blockquote>
+</li>
+</ul>
+<ol>
+<li><code>x&gt;0</code> <code>y&gt;0</code></li>
+</ol>
+<ul>
+<li>a = b[x:y]: a = x-y内元素返回array</li>
+<li>a = b[ :y]: a = 0-y内元素返回</li>
+<li>a = b[x: ]: a = x-len(b)内元素返回</li>
+<li>x &lt; y : a = []</li>
+</ul>
+<ol start="2">
+<li><code>x&lt;0</code> or <code>y&lt;0</code></li>
+</ol>
+<ul>
+<li>a = b[-4:-1]: a = b中-4号元素到-1号元素返回</li>
+<li>a = b[-4:1]: a = []</li>
+<li>a = b[-4:]: a = -4 - 0索引之间元素返回</li>
+<li>a = b[:-4]: a = []</li>
+<li>a = b[3:-4]: a = []</li>
+</ul>
+<ol start="3">
+<li><code>a = b[::a]</code></li>
+</ol>
+<ul>
+<li>在b中没隔a取一个元素返回a</li>
+<li>取值方向由a正负决定</li>
+</ul>
+<h3 id="创建一个3-3-值域-0-8的矩阵"><a href="#创建一个3-3-值域-0-8的矩阵" class="headerlink" title="创建一个3 * 3,值域:0-8的矩阵"></a>创建一个3 * 3,值域:0-8的矩阵</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">z = np.arange(<span class="number">0</span>,<span class="number">9</span>).reshape(<span class="number">3</span>,<span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(z)</span><br></pre></td></tr></table></figure>
+<h3 id="找到数组中的0元素索引"><a href="#找到数组中的0元素索引" class="headerlink" title="找到数组中的0元素索引"></a>找到数组中的0元素索引</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">z = np.array([<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">0</span>])</span><br><span class="line"><span class="built_in">print</span>(z.nonzero())</span><br></pre></td></tr></table></figure>
+<h3 id="创建一个3-3的单位矩阵"><a href="#创建一个3-3的单位矩阵" class="headerlink" title="创建一个3 * 3的单位矩阵"></a>创建一个<code>3 * 3</code>的单位矩阵</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">z = np.eye(<span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(z)</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建一个3-3的随机数据"><a href="#创建一个3-3的随机数据" class="headerlink" title="创建一个3 * 3的随机数据"></a>创建一个<code>3 * 3</code>的随机数据</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> random</span><br><span class="line">z = np.random.random((<span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>))</span><br><span class="line"><span class="built_in">print</span>(z)</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建一个10-10的随机数组-并获取最小与最大值"><a href="#创建一个10-10的随机数组-并获取最小与最大值" class="headerlink" title="创建一个10 * 10的随机数组,并获取最小与最大值"></a>创建一个<code>10 * 10</code>的随机数组,并获取最小与最大值</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> random</span><br><span class="line">z = np.random.random((<span class="number">10</span>, <span class="number">10</span>))</span><br><span class="line"><span class="built_in">print</span>(z.<span class="built_in">min</span>(), z.<span class="built_in">max</span>())</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建一个长度为30的随机向量-并获取其平均值"><a href="#创建一个长度为30的随机向量-并获取其平均值" class="headerlink" title="创建一个长度为30的随机向量,并获取其平均值"></a>创建一个长度为<code>30</code>的随机向量,并获取其平均值</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> random</span><br><span class="line">z = np.random.random((<span class="number">30</span>))</span><br><span class="line">zMean = z.mean()</span><br><span class="line"><span class="built_in">print</span>(zMean)</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建一个二维数组-其边界值为1-其余值为0"><a href="#创建一个二维数组-其边界值为1-其余值为0" class="headerlink" title="创建一个二维数组,其边界值为1,其余值为0"></a>创建一个二维数组,其边界值为1,其余值为0</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">z = np.ones((<span class="number">6</span>, <span class="number">6</span>))</span><br><span class="line">z[<span class="number">1</span>:-<span class="number">1</span>, <span class="number">1</span>:-<span class="number">1</span>] = <span class="number">0</span></span><br><span class="line"><span class="built_in">print</span>(z)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>其原理是:用array[a:b,c:d] = x进行对二维数组赋值的方式</li>
+<li>array[1:-1,1:-1] = x其原理类似a = b[1:-1]从行索引为从第一行到-1行(及倒是第二行),这样根据每个array的大小去调整参数</li>
+</ul>
+<h3 id="对于一个存在的数组-如何用0填充其边界"><a href="#对于一个存在的数组-如何用0填充其边界" class="headerlink" title="对于一个存在的数组,如何用0填充其边界"></a>对于一个存在的数组,如何用0填充其边界</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">z = np.ones((<span class="number">6</span>, <span class="number">6</span>))</span><br><span class="line">z = np.pad(z, pad_width=<span class="number">1</span>, mode=<span class="string">&#x27;constant&#x27;</span>, constant_values=<span class="number">0</span>)</span><br><span class="line"><span class="built_in">print</span>(z)</span><br></pre></td></tr></table></figure>
+
+<h3 id="下列各式的运行结果"><a href="#下列各式的运行结果" class="headerlink" title="下列各式的运行结果"></a>下列各式的运行结果</h3><ol>
+<li><code>0 * np.nan</code> –&gt; <code>nan</code></li>
+<li><code>np.nan==np.nan</code> –&gt; <code>False</code></li>
+<li><code>np.inf &gt; np.nan</code> –&gt; <code>False</code></li>
+<li><code>np.nan - np.nan</code> –&gt; <code>nan</code></li>
+<li><code>0.3 == 3 * 0.1</code> –&gt; <code>False</code></li>
+</ol>
+<ul>
+<li>nan 不是数字,是不存在</li>
+<li>inf infinite</li>
+</ul>
+<h3 id="创建一个5-5的矩阵-并设置1-2-3-4落在其对角线的下方"><a href="#创建一个5-5的矩阵-并设置1-2-3-4落在其对角线的下方" class="headerlink" title="创建一个5 * 5的矩阵,并设置1 2 3 4落在其对角线的下方"></a>创建一个<code>5 * 5</code>的矩阵,并设置<code>1 2 3 4</code>落在其对角线的下方</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Z = np.diag(<span class="number">1</span>+np.arange(<span class="number">4</span>), k = -<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(Z)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>np.diag(array_like, k)</code></li>
+</ul>
+<ol>
+<li>返回此array第k位置对角线的矩阵</li>
+<li>当只传入矩阵,则返回此矩阵的对角线元素</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>Numpy</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Numpy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>装饰器</title>
+    <url>/2021/07/07/Python/advance/python%E8%A3%85%E9%A5%B0%E5%99%A8/</url>
+    <content><![CDATA[<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><p>Python装饰器能够动态地改变函数 方法 类的功能,而不用子类重写或修改函数源代码的方式   </p>
+<h2 id="装饰器函数"><a href="#装饰器函数" class="headerlink" title="装饰器函数"></a>装饰器函数</h2><h3 id="装饰器函数基础"><a href="#装饰器函数基础" class="headerlink" title="装饰器函数基础"></a>装饰器函数基础</h3><p><code>装饰器</code> 增强了其他函数的功能</p>
+<ul>
+<li>任何将函数作为传入参数并返回一个增强函数的函数都可以视为一个装饰器函数<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义装饰器函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decoratorFunc</span>(<span class="params">f</span>):</span></span><br><span class="line">    <span class="keyword">return</span> f</span><br><span class="line"><span class="comment"># 语法糖 进行函数装饰</span></span><br><span class="line"><span class="meta">@decoratorFunc</span></span><br><span class="line"><span class="comment"># 定义待装饰函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">toBeEnforce</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;this function has been enforced&#x27;</span>)</span><br><span class="line"><span class="comment"># 调用增强后的函数</span></span><br><span class="line">toBeEnforce()</span><br></pre></td></tr></table></figure>
+<h3 id="装饰器函数语法糖"><a href="#装饰器函数语法糖" class="headerlink" title="装饰器函数语法糖"></a>装饰器函数语法糖</h3></li>
+<li><code>@decoratorFunction</code>作为语法糖:<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@decoratorFunc</span></span><br></pre></td></tr></table></figure>
+等效于:<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">my_function = super_secret_function(my_function)</span><br></pre></td></tr></table></figure>
+以上代码等效于<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义装饰器函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decoratorFunc</span>(<span class="params">f</span>):</span></span><br><span class="line">    <span class="keyword">return</span> f</span><br><span class="line"><span class="comment"># 定义待装饰函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">toBeEnforce</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;this function has been enforced&#x27;</span>)</span><br><span class="line"><span class="comment"># 进行装饰</span></span><br><span class="line">toBeEnforce = decoratorFunc(toBeEnforce)</span><br><span class="line"><span class="comment"># 调用装饰后的函数</span></span><br><span class="line">toBeEnforce()</span><br></pre></td></tr></table></figure></li>
+<li>当然,此案例没有函数装饰作用<h3 id="装饰器函数理解"><a href="#装饰器函数理解" class="headerlink" title="装饰器函数理解"></a>装饰器函数理解</h3></li>
+<li>假设我们现有一个函数用于计算函数的<code>sin cos</code>值的函数:<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">calSinCos</span>(<span class="params">alpha</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">return</span> [math.sin(alpha), math.cos(alpha)]</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>calSinCos(<span class="number">0.5</span>)</span><br><span class="line">[<span class="number">0.479425538604203</span>, <span class="number">0.8775825618903728</span>]</span><br></pre></td></tr></table></figure></li>
+<li>现需要这个函数输出这个角度半角的<code>sin cos</code>的值<ul>
+<li>solution1: ``calSinCos(aplha/2)  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>calSinCos(<span class="number">0.5</span>/<span class="number">2</span>)</span><br><span class="line">[<span class="number">0.24740395925452294</span>, <span class="number">0.9689124217106447</span>]</span><br></pre></td></tr></table></figure></li>
+<li>solution2: 使用装饰器,使这个函数同时返回我们需要的两个值:  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">decoratorCal</span>(<span class="params">f</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">inner_function</span>(<span class="params">*args, **kwargs</span>):</span></span><br><span class="line"><span class="meta">... </span>            temp_list_sin = []</span><br><span class="line"><span class="meta">... </span>            temp_list_cos = []</span><br><span class="line"><span class="meta">... </span>            <span class="keyword">for</span> i <span class="keyword">in</span> args:</span><br><span class="line"><span class="meta">... </span>                    temp_list_sin.append(math.sin(i))</span><br><span class="line"><span class="meta">... </span>                    temp_list_cos.append(math.cos(i))</span><br><span class="line"><span class="meta">... </span>            <span class="keyword">return</span> f(*args, **kwargs), temp_list_sin, temp_list_cos</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">return</span> inner_function</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>@decoratorCal</span><br><span class="line"><span class="meta">... </span><span class="function"><span class="keyword">def</span> <span class="title">cal</span>(<span class="params">a</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">return</span> [math.sin(a), math.cos(a)]</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(cal(<span class="number">0.3</span>))</span><br><span class="line">([<span class="number">0.29552020666133955</span>, <span class="number">0.955336489125606</span>], [<span class="number">0.29552020666133955</span>], [<span class="number">0.955336489125606</span>])  </span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>装饰器函数工作流程:<ul>
+<li>调用待增强函数<code>cal(0.3)</code>时,同时调用装饰器函数<code>decoratorCal</code></li>
+<li><code>decoratorCal</code>内部定义了我们真正寄希望完成预期功能的函数<code>inner_function</code></li>
+<li><code>return inner_function</code>时便开始执行<code>inner_function</code>内代码,首先是完成基于原<code>cal(0.3)</code>的新加功能,最后<code>return f(*args, **kwargs)</code><ul>
+<li>当然也可以<code>return</code> 其他想要的数据</li>
+<li>不一定要返回原函数</li>
+</ul>
+</li>
+<li><code>return f(*args, **kwargs)</code>便开始执行<code>cal(0.3)</code>原函数的功能</li>
+<li>最后得到所有的返回值</li>
+</ul>
+</li>
+<li>从流程上看,<code>cal</code>原函数作为参数,真正运行的是<code>inner_function</code>,<code>inner_function</code>运行后返回<code>cal</code>,<code>cal</code>再运行本身的功能</li>
+<li>之所以<code>decoratorCal</code>必须返回一个函数<code>inner_function</code>,是为了借<code>return</code>来执行<code>inner_function</code>内部我们新加功能的代码</li>
+</ul>
+<hr>
+<ul>
+<li>装饰器更像是一种语法逻辑的产物</li>
+</ul>
+<hr>
+<h2 id="装饰器类"><a href="#装饰器类" class="headerlink" title="装饰器类"></a>装饰器类</h2><p>将装饰器封装为类,</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义装饰器类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Decorator</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="comment"># 初始化,将待装饰方法赋值给装饰器类,作为其属性(对象方法)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, func</span>):</span></span><br><span class="line">        self.func = func</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span>(<span class="params">self, *args, **kwargs</span>):</span></span><br><span class="line">        <span class="comment"># 调用此方法</span></span><br><span class="line">        res = self.func(*args, **kwargs)</span><br><span class="line">        </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">testfunc</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Inside the function.&#x27;</span>)</span><br><span class="line"></span><br><span class="line">testfunc = Decorator(testfunc)</span><br><span class="line"></span><br><span class="line">testfunc()</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>advance</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>map函数</title>
+    <url>/2021/07/07/Python/advance/map%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="map函数"><a href="#map函数" class="headerlink" title="map函数"></a>map函数</h1><ul>
+<li>python内置函数</li>
+<li>会根据给定函数,对指定序列做出映射</li>
+</ul>
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><h3 id="map-function-iterable"><a href="#map-function-iterable" class="headerlink" title="map(function, iterable...)"></a><code>map(function, iterable...)</code></h3><ul>
+<li><code>iterable</code> 作为映射中原数据的来源</li>
+<li><code>function</code> 用于对<code>iterable</code>中的元素进行转换  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;&gt; <span class="function"><span class="keyword">def</span> <span class="title">squ</span>(<span class="params">x</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">return</span> x * x</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>mapResult = <span class="built_in">map</span>(squ, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</span><br></pre></td></tr></table></figure></li>
+<li><code>python 2.</code> 返回列表</li>
+<li><code>python 3.</code> 返回迭代器  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(mapResult.__class__)</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">map</span>&#x27;&gt;</span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">for</span> <span class="title">i</span> <span class="title">in</span> <span class="title">mapResult</span>:</span></span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(i)</span><br><span class="line">...</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">9</span></span><br><span class="line"><span class="number">16</span></span><br><span class="line"><span class="number">25</span></span><br></pre></td></tr></table></figure></li>
+<li>可通过<code>list(map())</code>的显示转换来消除版本之间的差异  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">squ</span>(<span class="params">x</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">return</span> x * x</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list1 = <span class="built_in">list</span>(<span class="built_in">map</span>(squ, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(list1)</span><br><span class="line">[<span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">16</span>, <span class="number">25</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="lambda"><a href="#lambda" class="headerlink" title="lambda"></a><code>lambda</code></h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="keyword">lambda</span> x : x * x, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])))</span><br><span class="line">[<span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">16</span>, <span class="number">25</span>]</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><h3 id="map完成数据类型转换"><a href="#map完成数据类型转换" class="headerlink" title="map完成数据类型转换"></a><code>map</code>完成数据类型转换</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">str</span>, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])))</span><br><span class="line">[<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>, <span class="string">&#x27;4&#x27;</span>, <span class="string">&#x27;5&#x27;</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="map元组转列表"><a href="#map元组转列表" class="headerlink" title="map元组转列表"></a><code>map</code>元组转列表</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>list1 = <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(list1)</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>原理是:元组作为迭代器可作为<code>map()</code>函数参数传入,当元组内部元素数据类型与<code>function</code>转出数据类型一致时,再将<code>map</code>返回迭代器转为列表</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>advance</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>列表推导式</title>
+    <url>/2021/07/07/Python/advance/%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC%E5%BC%8F/</url>
+    <content><![CDATA[<h1 id="列表推导式"><a href="#列表推导式" class="headerlink" title="列表推导式"></a>列表推导式</h1><h2 id="列表推导式基础"><a href="#列表推导式基础" class="headerlink" title="列表推导式基础"></a>列表推导式基础</h2><ul>
+<li><code>result = [ &lt;expression&gt; for &lt;element&gt; in &lt;iterable&gt; ]</code></li>
+<li>根据现有迭代器类<code>iterable</code></li>
+<li>对其中每个元素<code>element</code></li>
+<li>根据函数<code>expression</code>进行相应变化得到结果元素</li>
+<li>将结果元素立即添加到<code>result</code>中<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>testSquares = [x * x <span class="keyword">for</span> x <span class="keyword">in</span> (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>)]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(testSquares)</span><br><span class="line">[<span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">16</span>, <span class="number">25</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="if条件-可选"><a href="#if条件-可选" class="headerlink" title="if条件(可选):"></a><code>if</code>条件(可选):</h2><code>result = [ &lt;expression&gt; for &lt;element&gt; in &lt;iterable&gt; if &lt;condition&gt; ]</code></li>
+<li>每个元素在进行<code>expression</code>前。</li>
+<li>所有结果将在新列表中立即返回。</li>
+<li>Python 中的生成器表达式是懒惰地计算的，但是列表推导会立即施加到整个迭代器，它消耗与迭代器长度成比例的内存。<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>testSquares = [x * x <span class="keyword">for</span> x <span class="keyword">in</span> (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>) <span class="keyword">if</span> x % <span class="number">2</span> == <span class="number">0</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(testSquares)</span><br><span class="line">[<span class="number">4</span>, <span class="number">16</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">*</span> 根据列表<span class="code">``(1,2,3,4,5)`</span>` 创建一个平方数列表,</span><br><span class="line"><span class="bullet">*</span> 只选择其中的偶数进行创建</span><br></pre></td></tr></table></figure>
+<h2 id="else"><a href="#else" class="headerlink" title="else:"></a><code>else</code>:</h2><code>if...else</code> 判断是在 <code>for</code> 循环之前使用，而非以后：</li>
+<li><code>if...else</code>在<code>for</code>后 报错<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>testStr = [x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="string">&#x27;abcd&#x27;</span> <span class="keyword">if</span> x <span class="keyword">is</span> <span class="string">&#x27;a&#x27;</span> <span class="keyword">else</span> <span class="string">&#x27;b&#x27;</span>]</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span></span><br><span class="line">    testStr = [x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="string">&#x27;abcd&#x27;</span> <span class="keyword">if</span> x <span class="keyword">is</span> <span class="string">&#x27;a&#x27;</span> <span class="keyword">else</span> <span class="string">&#x27;b&#x27;</span>]</span><br><span class="line">                                                ^</span><br><span class="line">SyntaxError: invalid syntax</span><br></pre></td></tr></table></figure></li>
+<li><code>if...else</code> 在 <code>for</code> 前</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>testStr = [x <span class="keyword">if</span> x <span class="keyword">is</span> <span class="string">&#x27;a&#x27;</span> <span class="keyword">else</span> <span class="string">&#x27;b&#x27;</span> <span class="keyword">for</span> x <span class="keyword">in</span> <span class="string">&#x27;abcd&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(testStr)</span><br><span class="line">[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;b&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>advance</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>多线程</title>
+    <url>/2021/07/07/Python/advance/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><p>python多线程并非真正意义上的多线程</p>
+<ul>
+<li>每个进程运行时都需要等到<code>GIL</code>释放,然后得到<code>GIL</code>后上锁</li>
+<li>因此,同一时间只有一个<code>python</code>线程在运行<h2 id="创建线程-threading-Thread"><a href="#创建线程-threading-Thread" class="headerlink" title="创建线程 threading.Thread"></a>创建线程 <code>threading.Thread</code></h2>使用<code>threading</code>,创建新的<code>threading.Thread</code>,为其分配要执行的函数来启动新的执行线程<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> threading</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">test</span>():</span></span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(<span class="string">&quot;Running...&quot;</span>)</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>test_thread = threading.Thread(target=test)</span><br></pre></td></tr></table></figure></li>
+<li><code>target</code> 传入函数或可调用对象</li>
+<li>在<code>Thread</code>调用<code>start()</code>方法前,线程不会开始</li>
+</ul>
+<h2 id="开始线程-Thread-start"><a href="#开始线程-Thread-start" class="headerlink" title="开始线程 Thread.start()"></a>开始线程 <code>Thread.start()</code></h2><p><code>Thread.start()</code>开始线程</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>test_thread.start()</span><br><span class="line">Running...</span><br></pre></td></tr></table></figure>
+<ul>
+<li>当一个线程运行结束,再次调用<code>start()</code>方法,则会报错:  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>test_thread.start()</span><br><span class="line">Running...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>test_thread.start()</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">File <span class="string">&quot;D:\Python37\lib\threading.py&quot;</span>, line <span class="number">848</span>, <span class="keyword">in</span> start</span><br><span class="line">    <span class="keyword">raise</span> RuntimeError(<span class="string">&quot;threads can only be started once&quot;</span>)</span><br><span class="line">RuntimeError: threads can only be started once</span><br></pre></td></tr></table></figure></li>
+<li>若想将线程设置为守护线程持续运行,则需设置<code>daemon=True</code></li>
+</ul>
+<h2 id="加入线程-Thread-join"><a href="#加入线程-Thread-join" class="headerlink" title="加入线程 Thread.join()"></a>加入线程 <code>Thread.join()</code></h2>]]></content>
+      <categories>
+        <category>Python</category>
+        <category>advance</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>拷贝</title>
+    <url>/2021/07/07/Python/advance/%E6%95%B0%E6%8D%AE%E6%8B%B7%E8%B4%9D/</url>
+    <content><![CDATA[<h1 id="拷贝"><a href="#拷贝" class="headerlink" title="拷贝"></a>拷贝</h1><ul>
+<li>浅拷贝(<code>shallow copy</code>), 仅拷贝指向对象的指针</li>
+<li>深拷贝(`deep copy``),将整个对象拷贝至另外一块内存</li>
+</ul>
+<h2 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h2><ul>
+<li>假设原有一个列表<code>la = [1,2,3,[4,5,6]]</code>,将其浅拷贝到<code>lb</code></li>
+<li><code>lb</code>中某个元素改变时,会直接根据指针指向此列表所在内存,改变此列表值</li>
+<li>最终<code>la</code>值也改变  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>la = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>lb = la</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>lb[<span class="number">0</span>] = <span class="string">&#x27;a&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(lb)</span><br><span class="line">[<span class="string">&#x27;a&#x27;</span>, <span class="number">2</span>, <span class="number">3</span>, [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(la)</span><br><span class="line">[<span class="string">&#x27;a&#x27;</span>, <span class="number">2</span>, <span class="number">3</span>, [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]]</span><br></pre></td></tr></table></figure>
+  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">1</span>,<span class="number">2</span>,[<span class="number">3</span>,<span class="number">4</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = a.copy()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b[<span class="number">2</span>][<span class="number">1</span>] = <span class="number">0</span> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(a)</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">0</span>]]</span><br></pre></td></tr></table></figure>
+<h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2>通过引入<code>copy</code>,使用<code>copy.deepcopy()</code>方法<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> copy</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">1</span>,<span class="number">2</span>,[<span class="number">3</span>,<span class="number">4</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c = copy.deepcopy(a)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c[<span class="number">2</span>][<span class="number">1</span>] = <span class="number">99</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(c)</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">99</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(a)</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">0</span>]]</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>advance</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>发生器</title>
+    <url>/2021/07/07/Python/advance/%E5%8F%91%E7%94%9F%E5%99%A8/</url>
+    <content><![CDATA[<h1 id="发生器"><a href="#发生器" class="headerlink" title="发生器"></a>发生器</h1><ul>
+<li><p>Python发生器通过关键字<code>yeild</code>创建</p>
+</li>
+<li><p>或通过发生器表达式 <code>expression for x in an_iterator</code>创建</p>
+</li>
+<li><p>生成器保存的算法而非具体数据,因此节约了内存</p>
+<h2 id="发生器-1"><a href="#发生器-1" class="headerlink" title="发生器"></a>发生器</h2></li>
+<li><p>发生器返回对象为 <code>generator</code></p>
+<h3 id="发生器表达式"><a href="#发生器表达式" class="headerlink" title="发生器表达式"></a>发生器表达式</h3></li>
+<li><p>发生器类似于列表推导式,但发生器用<code>()</code>声明</p>
+</li>
+<li><p>当发生器作为函数的唯一参数时,不必多重括号:</p>
+  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">printL</span>(<span class="params">list1</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">for</span> i <span class="keyword">in</span> list1:</span><br><span class="line"><span class="meta">... </span>            <span class="built_in">print</span>(i)</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>printL(x * <span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>))</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="number">8</span></span><br><span class="line"><span class="number">10</span></span><br><span class="line"><span class="number">12</span></span><br><span class="line"><span class="number">14</span></span><br><span class="line"><span class="number">16</span></span><br><span class="line"><span class="number">18</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>((x * <span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>)).__class__)</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">generator</span>&#x27;&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="发生器函数"><a href="#发生器函数" class="headerlink" title="发生器函数"></a>发生器函数</h3></li>
+<li><p>生成器函数类似常规函数</p>
+</li>
+<li><p>生成器函数内部有多个或一个<code>yield</code>关键字</p>
+</li>
+<li><p>生成器函数无返回值 <code>return</code></p>
+</li>
+<li><p>如果要提前停止发生器,则提前使用空<code>return</code></p>
+  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">generatorFunc</span>():</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line"><span class="meta">... </span>            <span class="keyword">yield</span> i * <span class="number">2</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l = generatorFunc()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> l:</span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(i)</span><br><span class="line">...</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="number">8</span></span><br></pre></td></tr></table></figure>
+<h4 id="所有的生成器表达式都有自己对应的生成器函数-反之亦然"><a href="#所有的生成器表达式都有自己对应的生成器函数-反之亦然" class="headerlink" title="所有的生成器表达式都有自己对应的生成器函数,反之亦然"></a>所有的生成器表达式都有自己对应的生成器函数,反之亦然</h4><h3 id="一次性"><a href="#一次性" class="headerlink" title="一次性"></a>一次性</h3><p>生成器对象是一次性的,当一次迭代完成后,则该生成器对象内部函数被销毁</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>l = generatorFunc()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> l:</span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(i)</span><br><span class="line">...</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="number">8</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="built_in">next</span>(l))</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">StopIteration</span><br></pre></td></tr></table></figure>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3></li>
+<li><p>生成器的主体不会立即执行：当调用生成器函数时，它只会返回生成器对象，而不去执行第一个 print 语句。</p>
+</li>
+<li><p>这使得生成器比返回列表的函数消耗更少的内存，并且它能够实现生成无限长的序列。</p>
+</li>
+<li><p>因此,生成器通常用于数据科学以及涉及大量数据的其他环境。</p>
+</li>
+<li><p>另一个优点是其他代码可以立即使用生成器产生的值，而无需等待生成完整的序列。</p>
+</li>
+<li><p>但是，如果你需要多次使用生成器生成的值，并且如果生成它们的成本高于存储，则将 list 生成的值存储为比重新生成序列更好。</p>
+</li>
+</ul>
+<h3 id="next-函数"><a href="#next-函数" class="headerlink" title=".next()函数"></a><code>.next()</code>函数</h3><p>用于从生成器中获取值,并提供迭代结束的默认值</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>advance</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>运算符重载</title>
+    <url>/2021/07/07/Python/advance/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/</url>
+    <content><![CDATA[<h1 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h1><ul>
+<li><code>python</code>中一切都是对象,每个对象都有一些特殊的内部方法</li>
+<li>这些方法都遵循<code>__action__</code>的命名规定</li>
+<li>通过运算符重载,可以让类进行一些数学运算<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vector</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, x, y</span>):</span></span><br><span class="line">        self.x = x</span><br><span class="line">        self.y = y</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__add__</span>(<span class="params">self, v</span>):</span></span><br><span class="line">        <span class="comment"># Addition with another vector.</span></span><br><span class="line">        <span class="keyword">return</span> Vector(self.x + v.x, self.y + v.y)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__sub__</span>(<span class="params">self, v</span>):</span></span><br><span class="line">        <span class="comment"># Subtraction with another vector.</span></span><br><span class="line">        <span class="keyword">return</span> Vector(self.x - v.x, self.y - v.y)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__mul__</span>(<span class="params">self, s</span>):</span></span><br><span class="line">        <span class="comment"># Multiplication with a scalar.</span></span><br><span class="line">        <span class="keyword">return</span> Vector(self.x * s, self.y * s)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__div__</span>(<span class="params">self, s</span>):</span></span><br><span class="line">        <span class="comment"># Division with a scalar.</span></span><br><span class="line">        float_s = <span class="built_in">float</span>(s)</span><br><span class="line">        <span class="keyword">return</span> Vector(self.x / float_s, self.y / float_s)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__floordiv__</span>(<span class="params">self, s</span>):</span></span><br><span class="line">        <span class="comment"># Division with a scalar (value floored).</span></span><br><span class="line">        <span class="keyword">return</span> Vector(self.x // s, self.y // s)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># Print friendly representation of Vector class. Else, it would</span></span><br><span class="line">        <span class="comment"># show up like, &lt;__main__.Vector instance at 0x01DDDDC8&gt;.</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;&lt;Vector (%f, %f)&gt;&#x27;</span> % (self.x, self.y, )</span><br><span class="line"></span><br><span class="line">a = Vector(<span class="number">3</span>, <span class="number">5</span>)</span><br><span class="line">b = Vector(<span class="number">2</span>, <span class="number">7</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> a + b <span class="comment"># Output: &lt;Vector (5.000000, 12.000000)&gt;</span></span><br><span class="line"><span class="built_in">print</span> b - a <span class="comment"># Output: &lt;Vector (-1.000000, 2.000000)&gt;</span></span><br><span class="line"><span class="built_in">print</span> b * <span class="number">1.3</span> <span class="comment"># Output: &lt;Vector (2.600000, 9.100000)&gt;</span></span><br><span class="line"><span class="built_in">print</span> a // <span class="number">17</span> <span class="comment"># Output: &lt;Vector (0.000000, 0.000000)&gt;</span></span><br><span class="line"><span class="built_in">print</span> a / <span class="number">17</span> <span class="comment"># Output: &lt;Vector (0.176471, 0.294118)&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>advance</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Pyhont-Array</title>
-    <url>/2021/07/07/Array/</url>
+    <url>/2021/07/07/Python/basic/Array/</url>
     <content><![CDATA[<h1 id="数组-array"><a href="#数组-array" class="headerlink" title="数组-array"></a>数组-array</h1><p>数组的基本性质:</p>
 <ul>
 <li>数组本身不属于基本数据类型,需要导入<code>array</code>使用数组</li>
@@ -38,8 +357,21 @@
       </tags>
   </entry>
   <entry>
+    <title>Pyhont-Class</title>
+    <url>/2021/07/07/Python/basic/Class/</url>
+    <content><![CDATA[<h1 id="类–CLASS"><a href="#类–CLASS" class="headerlink" title="类–CLASS"></a>类–CLASS</h1><p>类 我的泪 学<code>java</code>的时候搞得很清楚的 操 现在忘干净了</p>
+<h2 id="python中的类与对象"><a href="#python中的类与对象" class="headerlink" title="python中的类与对象"></a>python中的类与对象</h2>]]></content>
+      <categories>
+        <category>Python</category>
+        <category>basic</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Pyhont-Tuple</title>
-    <url>/2021/07/07/ListAndTuple/</url>
+    <url>/2021/07/07/Python/basic/ListAndTuple/</url>
     <content><![CDATA[<h1 id="列表与元组"><a href="#列表与元组" class="headerlink" title="列表与元组"></a>列表与元组</h1><ul>
 <li>当元素类型不一时使用元组,当类型一样则使用列表</li>
 <li>元组遍历更快</li>
@@ -79,101 +411,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Pyhont-Class</title>
-    <url>/2021/07/07/Class/</url>
-    <content><![CDATA[<h1 id="类–CLASS"><a href="#类–CLASS" class="headerlink" title="类–CLASS"></a>类–CLASS</h1><p>类 我的泪 学<code>java</code>的时候搞得很清楚的 操 现在忘干净了</p>
-<h2 id="python中的类与对象"><a href="#python中的类与对象" class="headerlink" title="python中的类与对象"></a>python中的类与对象</h2>]]></content>
-      <categories>
-        <category>Python</category>
-        <category>basic</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Namespace</title>
-    <url>/2021/07/07/NameSpace/</url>
-    <content><![CDATA[<h1 id="命名空间及作用域"><a href="#命名空间及作用域" class="headerlink" title="命名空间及作用域"></a>命名空间及作用域</h1><h2 id="1-命名空间"><a href="#1-命名空间" class="headerlink" title="1.命名空间"></a>1.命名空间</h2><h3 id="1-1-命名空间（Namespace）"><a href="#1-1-命名空间（Namespace）" class="headerlink" title="1.1 命名空间（Namespace）"></a>1.1 命名空间（Namespace）</h3><p><code>1.</code> 是从名称到对象的映射，一般通过字典实现<br><code>2.</code> 类似于<code>c++</code></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std</span><br></pre></td></tr></table></figure>
-<h3 id="1-2-命名空间主要为了避免对象名称冲突"><a href="#1-2-命名空间主要为了避免对象名称冲突" class="headerlink" title="1.2 命名空间主要为了避免对象名称冲突"></a>1.2 命名空间主要为了避免对象名称冲突</h3><p><code>1. </code> 各个命名空间之间相互独立<br><code>2. </code> 命名空间内部不能有同名称对象<br><code>3. </code> 各个命名空间之间可以有相同名称对象</p>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="section"># 如计算机内部文件夹之间的关系：</span></span><br><span class="line"><span class="bullet">    *</span> 单个文件夹内部不能有同名称元素</span><br><span class="line"><span class="bullet">    *</span> 不同文件夹之间可以同名称元素</span><br></pre></td></tr></table></figure>
-<h3 id="1-3-python一般有三种命名空间：内置-built-in-局部-本地-local-全局-global"><a href="#1-3-python一般有三种命名空间：内置-built-in-局部-本地-local-全局-global" class="headerlink" title="1.3 python一般有三种命名空间：内置-built in 局部(本地)-local 全局-global"></a>1.3 python一般有三种命名空间：<code>内置-built in</code> <code>局部(本地)-local</code> <code>全局-global</code></h3><h4 id="1-3-1-局部"><a href="#1-3-1-局部" class="headerlink" title="1.3.1 局部"></a>1.3.1 局部</h4><p><code>1.</code> 局部空间包含:函数中定义的名称,记录了函数的变量,包括函数的参数与局部变量</p>
-<ul>
-<li>此局部指的是此作用域,及其内部包含的对象 名称</li>
-</ul>
-<p><code>2.</code> <code>locals()</code>:返回当前位置的全部局部变量</p>
-<ul>
-<li>当前位置指的是当前<code>locals()</code>函数被调用的位置</li>
-<li>全局内使用<code>locals()</code>:所有有实例的函数 方法 lambda函式以及实现了__call__的,都会返回true<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="built_in">locals</span>())</span><br><span class="line">&#123;<span class="string">&#x27;__name__&#x27;</span>: <span class="string">&#x27;__main__&#x27;</span>, <span class="string">&#x27;__doc__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__package__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__loader__&#x27;</span>: &lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">_frozen_importlib</span>.<span class="title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="title">__spec__</span>&#x27;:</span> <span class="literal">None</span>, <span class="string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="string">&#x27;builtins&#x27;</span> (built-<span class="keyword">in</span>)&gt;, <span class="string">&#x27;len&#x27;</span>: &lt;function <span class="built_in">len</span> at <span class="number">0x00000186888145E8</span>&gt;&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>此时的局部空间等于全局空间</p>
-</blockquote>
-</li>
-<li>函数内部使用<code>locals()</code>:返回此函数空间内的所有名称及对象<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">len</span>(<span class="params">param</span>):</span></span><br><span class="line"><span class="meta">... </span>    in_param = <span class="number">2</span></span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(<span class="built_in">locals</span>())</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>(<span class="number">4</span>)</span><br><span class="line">&#123;<span class="string">&#x27;param&#x27;</span>: <span class="number">4</span>, <span class="string">&#x27;in_param&#x27;</span>: <span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure></li>
-<li>循环内使用<code>locals()</code>:  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> [<span class="number">1</span>,<span class="number">2</span>]:</span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(<span class="built_in">locals</span>())</span><br><span class="line">...</span><br><span class="line">&#123;<span class="string">&#x27;__name__&#x27;</span>: <span class="string">&#x27;__main__&#x27;</span>, <span class="string">&#x27;__doc__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__package__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__loader__&#x27;</span>: &lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">_frozen_importlib</span>.<span class="title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="title">__spec__</span>&#x27;:</span> <span class="literal">None</span>, <span class="string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="string">&#x27;builtins&#x27;</span> (built-<span class="keyword">in</span>)&gt;, <span class="string">&#x27;i&#x27;</span>: <span class="number">1</span>&#125;</span><br><span class="line">&#123;<span class="string">&#x27;__name__&#x27;</span>: <span class="string">&#x27;__main__&#x27;</span>, <span class="string">&#x27;__doc__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__package__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__loader__&#x27;</span>: &lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">_frozen_importlib</span>.<span class="title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="title">__spec__</span>&#x27;:</span> <span class="literal">None</span>, <span class="string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="string">&#x27;builtins&#x27;</span> (built-<span class="keyword">in</span>)&gt;, <span class="string">&#x27;i&#x27;</span>: <span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>证明for循环不算一个单独的作用域</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="1-3-2-全局"><a href="#1-3-2-全局" class="headerlink" title="1.3.2 全局"></a>1.3.2 全局</h4><p><code>1.</code> 全局空间包含:模块中定义的名称,记录了模块的变量,包括函数 类 导入模块</p>
-<ul>
-<li>可理解为此<code>.py</code>文件所代表的空间</li>
-</ul>
-<p><code>2.</code> <code>globals()</code>:返回当前全局空间内的名称及对象</p>
-<ul>
-<li>全局内使用<code>globals()</code>:<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="built_in">globals</span>())</span><br><span class="line">&#123;<span class="string">&#x27;__name__&#x27;</span>: <span class="string">&#x27;__main__&#x27;</span>, <span class="string">&#x27;__doc__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__package__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__loader__&#x27;</span>: &lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">_frozen_importlib</span>.<span class="title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="title">__spec__</span>&#x27;:</span> <span class="literal">None</span>, <span class="string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="string">&#x27;builtins&#x27;</span> (built-<span class="keyword">in</span>)&gt;, <span class="string">&#x27;i&#x27;</span>: <span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure></li>
-<li>全局命名空间里包括了整个模块内的命名名称，比如变量 x y 函数名,而且还包括了一些内置的变量命名，比如 <code>__name__</code> <code>__file__</code>等等。</li>
-<li>全局空间与全局使用局部空间相同:<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">if</span> <span class="built_in">locals</span>() == <span class="built_in">globals</span>():</span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(<span class="string">&#x27;yes&#x27;</span>)</span><br><span class="line"><span class="meta">... </span><span class="keyword">else</span>:</span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(<span class="string">&#x27;no&#x27;</span>)</span><br><span class="line">...</span><br><span class="line">yes</span><br></pre></td></tr></table></figure>
-<h4 id="1-3-3-内置"><a href="#1-3-3-内置" class="headerlink" title="1.3.3 内置"></a>1.3.3 内置</h4><code>1.</code> 内置空间包含:python语言的内置名称,如函数名abs char等<h3 id="1-4-各空间关系"><a href="#1-4-各空间关系" class="headerlink" title="1.4 各空间关系"></a>1.4 各空间关系</h3><code>1. </code>命名空间使用顺序:局部-&gt;全局-&gt;内置</li>
-<li>这样可以完成对<code>全局</code> <code>内置</code>函数的’’改写’’:<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">len</span>(<span class="params">param</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(param)</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br></pre></td></tr></table></figure>
-
-python内置此方法的输出为元素长度:<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="built_in">len</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]))</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br></pre></td></tr></table></figure></li>
-<li>当无法找到此名称的对象时,则抛出异常<h3 id="命名空间的生命周期"><a href="#命名空间的生命周期" class="headerlink" title="命名空间的生命周期"></a>命名空间的生命周期</h3>命名空间的声明周期却决与该变量的作用域,对象执行完成,则该命名空间的生命周期结束<h2 id="2-作用域"><a href="#2-作用域" class="headerlink" title="2. 作用域"></a>2. 作用域</h2><h3 id="2-1-作用域"><a href="#2-1-作用域" class="headerlink" title="2.1 作用域"></a>2.1 作用域</h3><code>1.</code> 作用域:访问某变量 对象的区域</li>
-<li>每个对象都存在特定的作用域中 作用时段中</li>
-<li>当前程序未执行到该作用域,则某些只存在于该作用域的对象则不能被访问</li>
-<li>或者说,只有被赋值且未该赋值区域未完成其全部功能时,该对象才能被访问<blockquote>
-<p>简单来说就是:该对象在未赋值时,不能被访问;使用结束跳出该域后也不能访问</p>
-</blockquote>
-<h3 id="2-2-作用域分类"><a href="#2-2-作用域分类" class="headerlink" title="2.2 作用域分类"></a>2.2 作用域分类</h3><h4 id="2-2-1-L-local-局部作用域"><a href="#2-2-1-L-local-局部作用域" class="headerlink" title="2.2.1 L-local 局部作用域"></a>2.2.1 <code>L-local</code> 局部作用域</h4><h4 id="2-2-2-E-encloing-scope-闭包函数作用域-嵌套函数-A-B-var-c-中var-c所在作用域"><a href="#2-2-2-E-encloing-scope-闭包函数作用域-嵌套函数-A-B-var-c-中var-c所在作用域" class="headerlink" title="2.2.2  E-encloing scope 闭包函数作用域,嵌套函数(A(B(var c)))中var c所在作用域"></a>2.2.2  <code>E-encloing scope</code> 闭包函数作用域,嵌套函数<code>(A(B(var c)))</code>中<code>var c</code>所在作用域</h4><h4 id="2-2-3-G-global"><a href="#2-2-3-G-global" class="headerlink" title="2.2.3  G=global"></a>2.2.3  <code>G=global</code></h4><h4 id="2-2-4-B-built-in"><a href="#2-2-4-B-built-in" class="headerlink" title="2.2.4  B-built in"></a>2.2.4  <code>B-built in</code></h4><code>1.</code> 内置作用域的实现是通过<code>builtin</code>标准模块实现  <blockquote>
-<p>但是此变量名本身并未放入内置作用域,需要导入模块才能使用<br><code>2.</code> <code>builtin</code></p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> builtins</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dir</span>(builtins)</span><br></pre></td></tr></table></figure>
-<h3 id="2-3-规则"><a href="#2-3-规则" class="headerlink" title="2.3 规则"></a>2.3 规则</h3><code>1.</code> 当在函数中引用一个变量的时候，以上的作用域顺序也是 Python 搜索的一个顺序 <code>L-&gt;E-G-B</code>，首先尝试局部作用域，没找到的话，继续搜索闭包函数作用域，然后再是全局作用域和内置作用域。<br><code>2.</code> Python 中只有模块（module），类（class）以及函数（def、lambda）才会引入新的作用域</li>
-<li>其它的代码块（如 if/elif/else/、try/except、for/while等）是不会引入新的作用域的，也就是说这些语句内定义的变量，外部也可以访问(如<code>1.3.1.2</code>) 如:<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">if</span> <span class="literal">True</span>:</span><br><span class="line"><span class="meta">... </span>    testStr = <span class="string">&#x27;this is a testline to test if this is a new region&#x27;</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(testStr)</span><br><span class="line">this <span class="keyword">is</span> a testline to test <span class="keyword">if</span> this <span class="keyword">is</span> a new region</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>basic</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Pyhont-Recursion</title>
-    <url>/2021/07/07/Recursion/</url>
-    <content><![CDATA[<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>计算阶乘</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">cal</span>(<span class="params">n</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line"><span class="meta">... </span>            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">else</span>:</span><br><span class="line"><span class="meta">... </span>            <span class="keyword">return</span> n * cal(n - <span class="number">1</span>)</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(cal(<span class="number">4</span>))</span><br><span class="line"><span class="number">24</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(cal(<span class="number">6</span>))</span><br><span class="line"><span class="number">720</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>递归函数内部会调用函数本身</li>
-<li>某次调用递归函数时,内部调用本身时会指定参数</li>
-<li>在递归函数中,应有一个结束参数信号,在每次递归中,参数不断靠近该信号<h2 id="递归次数限制"><a href="#递归次数限制" class="headerlink" title="递归次数限制"></a>递归次数限制</h2><code>python</code>递归次数限制为<code>3000</code>次,超出此次数则会触发<code>RecursionError</code><h2 id="移除递归次数限制"><a href="#移除递归次数限制" class="headerlink" title="移除递归次数限制"></a>移除递归次数限制</h2><code>sys.setrecursionlimit(5000)</code> 设置次数限制为我们所需要的次数</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>basic</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Pandas-basic</title>
-    <url>/2021/07/07/PandasNotes/</url>
+    <url>/2021/07/07/Python/basic/PandasNotes/</url>
     <content><![CDATA[<h1 id="2142"><a href="#2142" class="headerlink" title="2142"></a>2142</h1><h1 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h1><h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><p>pandas有两种数据结构：Series and dataframe数据框</p>
 <ul>
 <li>Series<br>Series是一个一维标记数组，可以存储任何种类的数据  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">my_series = pd.Series([<span class="number">3</span>,-<span class="number">5</span>,<span class="number">7</span>,<span class="number">4</span>], index=[<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(my_series)  </span><br></pre></td></tr></table></figure>
@@ -396,7 +635,7 @@ python内置此方法的输出为元素长度:<figure class="highlight python"><
   </entry>
   <entry>
     <title>Pyhont-Set</title>
-    <url>/2021/07/07/Set/</url>
+    <url>/2021/07/07/Python/basic/Set/</url>
     <content><![CDATA[<h1 id="集合-set"><a href="#集合-set" class="headerlink" title="集合-set"></a>集合-set</h1><p>集合的基本性质:<br><code>1.</code> 集合包含了不重复且无序的元素<br><code>2.</code> 集合是可变数据类型  </p>
 <ul>
 <li>但是其内部元素必须是不可变数据类型,即元组可以作为其元素,但是列表 集合 字典不能作为其元素  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>c = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,[<span class="number">1</span>,<span class="number">2</span>]&#125;</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">TypeError: unhashable <span class="built_in">type</span>: <span class="string">&#x27;list&#x27;</span></span><br></pre></td></tr></table></figure>
@@ -443,8 +682,27 @@ python内置此方法的输出为元素长度:<figure class="highlight python"><
       </tags>
   </entry>
   <entry>
+    <title>Pyhont-Recursion</title>
+    <url>/2021/07/07/Python/basic/Recursion/</url>
+    <content><![CDATA[<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>计算阶乘</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">cal</span>(<span class="params">n</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line"><span class="meta">... </span>            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">else</span>:</span><br><span class="line"><span class="meta">... </span>            <span class="keyword">return</span> n * cal(n - <span class="number">1</span>)</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(cal(<span class="number">4</span>))</span><br><span class="line"><span class="number">24</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(cal(<span class="number">6</span>))</span><br><span class="line"><span class="number">720</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>递归函数内部会调用函数本身</li>
+<li>某次调用递归函数时,内部调用本身时会指定参数</li>
+<li>在递归函数中,应有一个结束参数信号,在每次递归中,参数不断靠近该信号<h2 id="递归次数限制"><a href="#递归次数限制" class="headerlink" title="递归次数限制"></a>递归次数限制</h2><code>python</code>递归次数限制为<code>3000</code>次,超出此次数则会触发<code>RecursionError</code><h2 id="移除递归次数限制"><a href="#移除递归次数限制" class="headerlink" title="移除递归次数限制"></a>移除递归次数限制</h2><code>sys.setrecursionlimit(5000)</code> 设置次数限制为我们所需要的次数</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>basic</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Pyhont-ArrDictionaryay</title>
-    <url>/2021/07/07/dictionary/</url>
+    <url>/2021/07/07/Python/basic/dictionary/</url>
     <content><![CDATA[<h1 id="字典-Dictionary"><a href="#字典-Dictionary" class="headerlink" title="字典-Dictionary"></a>字典-Dictionary</h1><p>字典的基本性质:</p>
 <ul>
 <li>字典是python的内置数据类型</li>
@@ -484,100 +742,64 @@ python内置此方法的输出为元素长度:<figure class="highlight python"><
       </tags>
   </entry>
   <entry>
-    <title>Numpy100</title>
-    <url>/2021/07/07/numpy/numpy100/</url>
-    <content><![CDATA[<h1 id="github上的开源项目"><a href="#github上的开源项目" class="headerlink" title="github上的开源项目"></a>github上的开源项目</h1><h2 id="2021-7-4-17：06-cj-at-swjtu-jiuli-campus"><a href="#2021-7-4-17：06-cj-at-swjtu-jiuli-campus" class="headerlink" title="2021.7.4 17：06 cj at swjtu jiuli campus"></a>2021.7.4 17：06 cj at swjtu jiuli campus</h2><h3 id="创建一个长度为10的空向量"><a href="#创建一个长度为10的空向量" class="headerlink" title="创建一个长度为10的空向量"></a>创建一个长度为10的空向量</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">z = np.zeros(<span class="number">10</span>)</span><br><span class="line"><span class="built_in">print</span>(z)</span><br></pre></td></tr></table></figure>
-<h3 id="找到数组的内存大小"><a href="#找到数组的内存大小" class="headerlink" title="找到数组的内存大小"></a>找到数组的内存大小</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">z = np.zeros(<span class="number">10</span>)</span><br><span class="line"><span class="built_in">print</span>(z.size * z.itermsize)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>z.size获取到内部的元素个数<br>z.itemsize获取到各个元素的大小</p>
-</blockquote>
-<h3 id="从命令行对得到相关函数的说明文档"><a href="#从命令行对得到相关函数的说明文档" class="headerlink" title="从命令行对得到相关函数的说明文档"></a>从命令行对得到相关函数的说明文档</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(np.info(np.add))</span><br></pre></td></tr></table></figure>
-
-<h3 id="创建一个长度为10-且除了第五个元素为1的空向量"><a href="#创建一个长度为10-且除了第五个元素为1的空向量" class="headerlink" title="创建一个长度为10,且除了第五个元素为1的空向量"></a>创建一个长度为10,且除了第五个元素为1的空向量</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">z = np.zeros(<span class="number">10</span>)</span><br><span class="line">z[<span class="number">4</span>] = <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(z)</span><br></pre></td></tr></table></figure>
-
-<h3 id="创建值域10-49的向量"><a href="#创建值域10-49的向量" class="headerlink" title="创建值域10-49的向量"></a>创建值域10-49的向量</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">z = np.arange(<span class="number">10</span>, <span class="number">50</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="反转一个向量"><a href="#反转一个向量" class="headerlink" title="反转一个向量"></a>反转一个向量</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">z = np.arange(<span class="number">0</span>, <span class="number">5</span>)</span><br><span class="line"><span class="built_in">print</span>(z)</span><br><span class="line">z = z[::-<span class="number">1</span>]</span><br><span class="line"><span class="built_in">print</span>(z)</span><br></pre></td></tr></table></figure>
-<p><code>b = [0 1 2 3 4]</code><br><code>a = b[x : y]</code>: 两索引各自计算,正值从左侧开始,负值从右侧开始</p>
+    <title>Namespace</title>
+    <url>/2021/07/07/Python/basic/NameSpace/</url>
+    <content><![CDATA[<h1 id="命名空间及作用域"><a href="#命名空间及作用域" class="headerlink" title="命名空间及作用域"></a>命名空间及作用域</h1><h2 id="1-命名空间"><a href="#1-命名空间" class="headerlink" title="1.命名空间"></a>1.命名空间</h2><h3 id="1-1-命名空间（Namespace）"><a href="#1-1-命名空间（Namespace）" class="headerlink" title="1.1 命名空间（Namespace）"></a>1.1 命名空间（Namespace）</h3><p><code>1.</code> 是从名称到对象的映射，一般通过字典实现<br><code>2.</code> 类似于<code>c++</code></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-命名空间主要为了避免对象名称冲突"><a href="#1-2-命名空间主要为了避免对象名称冲突" class="headerlink" title="1.2 命名空间主要为了避免对象名称冲突"></a>1.2 命名空间主要为了避免对象名称冲突</h3><p><code>1. </code> 各个命名空间之间相互独立<br><code>2. </code> 命名空间内部不能有同名称对象<br><code>3. </code> 各个命名空间之间可以有相同名称对象</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="section"># 如计算机内部文件夹之间的关系：</span></span><br><span class="line"><span class="bullet">    *</span> 单个文件夹内部不能有同名称元素</span><br><span class="line"><span class="bullet">    *</span> 不同文件夹之间可以同名称元素</span><br></pre></td></tr></table></figure>
+<h3 id="1-3-python一般有三种命名空间：内置-built-in-局部-本地-local-全局-global"><a href="#1-3-python一般有三种命名空间：内置-built-in-局部-本地-local-全局-global" class="headerlink" title="1.3 python一般有三种命名空间：内置-built in 局部(本地)-local 全局-global"></a>1.3 python一般有三种命名空间：<code>内置-built in</code> <code>局部(本地)-local</code> <code>全局-global</code></h3><h4 id="1-3-1-局部"><a href="#1-3-1-局部" class="headerlink" title="1.3.1 局部"></a>1.3.1 局部</h4><p><code>1.</code> 局部空间包含:函数中定义的名称,记录了函数的变量,包括函数的参数与局部变量</p>
 <ul>
-<li>左侧索引元素在右侧索引元素左侧,则返回非空</li>
-<li>某侧无索引则代表,从另一侧索引顺方向计数完</li>
-<li>a为两侧索引之内交集元素返回的array</li>
-<li>若两侧索引之内无元素,则a为空array<blockquote>
-<p>a = b[4:2] : a = []<br>a = b[-3:4] : a = []<br>a = b[4:-2] : a = []</p>
+<li>此局部指的是此作用域,及其内部包含的对象 名称</li>
+</ul>
+<p><code>2.</code> <code>locals()</code>:返回当前位置的全部局部变量</p>
+<ul>
+<li>当前位置指的是当前<code>locals()</code>函数被调用的位置</li>
+<li>全局内使用<code>locals()</code>:所有有实例的函数 方法 lambda函式以及实现了__call__的,都会返回true<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="built_in">locals</span>())</span><br><span class="line">&#123;<span class="string">&#x27;__name__&#x27;</span>: <span class="string">&#x27;__main__&#x27;</span>, <span class="string">&#x27;__doc__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__package__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__loader__&#x27;</span>: &lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">_frozen_importlib</span>.<span class="title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="title">__spec__</span>&#x27;:</span> <span class="literal">None</span>, <span class="string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="string">&#x27;builtins&#x27;</span> (built-<span class="keyword">in</span>)&gt;, <span class="string">&#x27;len&#x27;</span>: &lt;function <span class="built_in">len</span> at <span class="number">0x00000186888145E8</span>&gt;&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>此时的局部空间等于全局空间</p>
+</blockquote>
+</li>
+<li>函数内部使用<code>locals()</code>:返回此函数空间内的所有名称及对象<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">len</span>(<span class="params">param</span>):</span></span><br><span class="line"><span class="meta">... </span>    in_param = <span class="number">2</span></span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(<span class="built_in">locals</span>())</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>(<span class="number">4</span>)</span><br><span class="line">&#123;<span class="string">&#x27;param&#x27;</span>: <span class="number">4</span>, <span class="string">&#x27;in_param&#x27;</span>: <span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure></li>
+<li>循环内使用<code>locals()</code>:  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> [<span class="number">1</span>,<span class="number">2</span>]:</span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(<span class="built_in">locals</span>())</span><br><span class="line">...</span><br><span class="line">&#123;<span class="string">&#x27;__name__&#x27;</span>: <span class="string">&#x27;__main__&#x27;</span>, <span class="string">&#x27;__doc__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__package__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__loader__&#x27;</span>: &lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">_frozen_importlib</span>.<span class="title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="title">__spec__</span>&#x27;:</span> <span class="literal">None</span>, <span class="string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="string">&#x27;builtins&#x27;</span> (built-<span class="keyword">in</span>)&gt;, <span class="string">&#x27;i&#x27;</span>: <span class="number">1</span>&#125;</span><br><span class="line">&#123;<span class="string">&#x27;__name__&#x27;</span>: <span class="string">&#x27;__main__&#x27;</span>, <span class="string">&#x27;__doc__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__package__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__loader__&#x27;</span>: &lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">_frozen_importlib</span>.<span class="title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="title">__spec__</span>&#x27;:</span> <span class="literal">None</span>, <span class="string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="string">&#x27;builtins&#x27;</span> (built-<span class="keyword">in</span>)&gt;, <span class="string">&#x27;i&#x27;</span>: <span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>证明for循环不算一个单独的作用域</p>
 </blockquote>
 </li>
 </ul>
-<ol>
-<li><code>x&gt;0</code> <code>y&gt;0</code></li>
-</ol>
+<h4 id="1-3-2-全局"><a href="#1-3-2-全局" class="headerlink" title="1.3.2 全局"></a>1.3.2 全局</h4><p><code>1.</code> 全局空间包含:模块中定义的名称,记录了模块的变量,包括函数 类 导入模块</p>
 <ul>
-<li>a = b[x:y]: a = x-y内元素返回array</li>
-<li>a = b[ :y]: a = 0-y内元素返回</li>
-<li>a = b[x: ]: a = x-len(b)内元素返回</li>
-<li>x &lt; y : a = []</li>
+<li>可理解为此<code>.py</code>文件所代表的空间</li>
 </ul>
-<ol start="2">
-<li><code>x&lt;0</code> or <code>y&lt;0</code></li>
-</ol>
+<p><code>2.</code> <code>globals()</code>:返回当前全局空间内的名称及对象</p>
 <ul>
-<li>a = b[-4:-1]: a = b中-4号元素到-1号元素返回</li>
-<li>a = b[-4:1]: a = []</li>
-<li>a = b[-4:]: a = -4 - 0索引之间元素返回</li>
-<li>a = b[:-4]: a = []</li>
-<li>a = b[3:-4]: a = []</li>
-</ul>
-<ol start="3">
-<li><code>a = b[::a]</code></li>
-</ol>
-<ul>
-<li>在b中没隔a取一个元素返回a</li>
-<li>取值方向由a正负决定</li>
-</ul>
-<h3 id="创建一个3-3-值域-0-8的矩阵"><a href="#创建一个3-3-值域-0-8的矩阵" class="headerlink" title="创建一个3 * 3,值域:0-8的矩阵"></a>创建一个3 * 3,值域:0-8的矩阵</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">z = np.arange(<span class="number">0</span>,<span class="number">9</span>).reshape(<span class="number">3</span>,<span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(z)</span><br></pre></td></tr></table></figure>
-<h3 id="找到数组中的0元素索引"><a href="#找到数组中的0元素索引" class="headerlink" title="找到数组中的0元素索引"></a>找到数组中的0元素索引</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">z = np.array([<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">0</span>])</span><br><span class="line"><span class="built_in">print</span>(z.nonzero())</span><br></pre></td></tr></table></figure>
-<h3 id="创建一个3-3的单位矩阵"><a href="#创建一个3-3的单位矩阵" class="headerlink" title="创建一个3 * 3的单位矩阵"></a>创建一个<code>3 * 3</code>的单位矩阵</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">z = np.eye(<span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(z)</span><br></pre></td></tr></table></figure>
+<li>全局内使用<code>globals()</code>:<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="built_in">globals</span>())</span><br><span class="line">&#123;<span class="string">&#x27;__name__&#x27;</span>: <span class="string">&#x27;__main__&#x27;</span>, <span class="string">&#x27;__doc__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__package__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__loader__&#x27;</span>: &lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">_frozen_importlib</span>.<span class="title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="title">__spec__</span>&#x27;:</span> <span class="literal">None</span>, <span class="string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="string">&#x27;builtins&#x27;</span> (built-<span class="keyword">in</span>)&gt;, <span class="string">&#x27;i&#x27;</span>: <span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure></li>
+<li>全局命名空间里包括了整个模块内的命名名称，比如变量 x y 函数名,而且还包括了一些内置的变量命名，比如 <code>__name__</code> <code>__file__</code>等等。</li>
+<li>全局空间与全局使用局部空间相同:<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">if</span> <span class="built_in">locals</span>() == <span class="built_in">globals</span>():</span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(<span class="string">&#x27;yes&#x27;</span>)</span><br><span class="line"><span class="meta">... </span><span class="keyword">else</span>:</span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(<span class="string">&#x27;no&#x27;</span>)</span><br><span class="line">...</span><br><span class="line">yes</span><br></pre></td></tr></table></figure>
+<h4 id="1-3-3-内置"><a href="#1-3-3-内置" class="headerlink" title="1.3.3 内置"></a>1.3.3 内置</h4><code>1.</code> 内置空间包含:python语言的内置名称,如函数名abs char等<h3 id="1-4-各空间关系"><a href="#1-4-各空间关系" class="headerlink" title="1.4 各空间关系"></a>1.4 各空间关系</h3><code>1. </code>命名空间使用顺序:局部-&gt;全局-&gt;内置</li>
+<li>这样可以完成对<code>全局</code> <code>内置</code>函数的’’改写’’:<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">len</span>(<span class="params">param</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(param)</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br></pre></td></tr></table></figure>
 
-<h3 id="创建一个3-3的随机数据"><a href="#创建一个3-3的随机数据" class="headerlink" title="创建一个3 * 3的随机数据"></a>创建一个<code>3 * 3</code>的随机数据</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> random</span><br><span class="line">z = np.random.random((<span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>))</span><br><span class="line"><span class="built_in">print</span>(z)</span><br></pre></td></tr></table></figure>
-
-<h3 id="创建一个10-10的随机数组-并获取最小与最大值"><a href="#创建一个10-10的随机数组-并获取最小与最大值" class="headerlink" title="创建一个10 * 10的随机数组,并获取最小与最大值"></a>创建一个<code>10 * 10</code>的随机数组,并获取最小与最大值</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> random</span><br><span class="line">z = np.random.random((<span class="number">10</span>, <span class="number">10</span>))</span><br><span class="line"><span class="built_in">print</span>(z.<span class="built_in">min</span>(), z.<span class="built_in">max</span>())</span><br></pre></td></tr></table></figure>
-
-<h3 id="创建一个长度为30的随机向量-并获取其平均值"><a href="#创建一个长度为30的随机向量-并获取其平均值" class="headerlink" title="创建一个长度为30的随机向量,并获取其平均值"></a>创建一个长度为<code>30</code>的随机向量,并获取其平均值</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> random</span><br><span class="line">z = np.random.random((<span class="number">30</span>))</span><br><span class="line">zMean = z.mean()</span><br><span class="line"><span class="built_in">print</span>(zMean)</span><br></pre></td></tr></table></figure>
-
-<h3 id="创建一个二维数组-其边界值为1-其余值为0"><a href="#创建一个二维数组-其边界值为1-其余值为0" class="headerlink" title="创建一个二维数组,其边界值为1,其余值为0"></a>创建一个二维数组,其边界值为1,其余值为0</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">z = np.ones((<span class="number">6</span>, <span class="number">6</span>))</span><br><span class="line">z[<span class="number">1</span>:-<span class="number">1</span>, <span class="number">1</span>:-<span class="number">1</span>] = <span class="number">0</span></span><br><span class="line"><span class="built_in">print</span>(z)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>其原理是:用array[a:b,c:d] = x进行对二维数组赋值的方式</li>
-<li>array[1:-1,1:-1] = x其原理类似a = b[1:-1]从行索引为从第一行到-1行(及倒是第二行),这样根据每个array的大小去调整参数</li>
+python内置此方法的输出为元素长度:<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="built_in">len</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]))</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br></pre></td></tr></table></figure></li>
+<li>当无法找到此名称的对象时,则抛出异常<h3 id="命名空间的生命周期"><a href="#命名空间的生命周期" class="headerlink" title="命名空间的生命周期"></a>命名空间的生命周期</h3>命名空间的声明周期却决与该变量的作用域,对象执行完成,则该命名空间的生命周期结束<h2 id="2-作用域"><a href="#2-作用域" class="headerlink" title="2. 作用域"></a>2. 作用域</h2><h3 id="2-1-作用域"><a href="#2-1-作用域" class="headerlink" title="2.1 作用域"></a>2.1 作用域</h3><code>1.</code> 作用域:访问某变量 对象的区域</li>
+<li>每个对象都存在特定的作用域中 作用时段中</li>
+<li>当前程序未执行到该作用域,则某些只存在于该作用域的对象则不能被访问</li>
+<li>或者说,只有被赋值且未该赋值区域未完成其全部功能时,该对象才能被访问<blockquote>
+<p>简单来说就是:该对象在未赋值时,不能被访问;使用结束跳出该域后也不能访问</p>
+</blockquote>
+<h3 id="2-2-作用域分类"><a href="#2-2-作用域分类" class="headerlink" title="2.2 作用域分类"></a>2.2 作用域分类</h3><h4 id="2-2-1-L-local-局部作用域"><a href="#2-2-1-L-local-局部作用域" class="headerlink" title="2.2.1 L-local 局部作用域"></a>2.2.1 <code>L-local</code> 局部作用域</h4><h4 id="2-2-2-E-encloing-scope-闭包函数作用域-嵌套函数-A-B-var-c-中var-c所在作用域"><a href="#2-2-2-E-encloing-scope-闭包函数作用域-嵌套函数-A-B-var-c-中var-c所在作用域" class="headerlink" title="2.2.2  E-encloing scope 闭包函数作用域,嵌套函数(A(B(var c)))中var c所在作用域"></a>2.2.2  <code>E-encloing scope</code> 闭包函数作用域,嵌套函数<code>(A(B(var c)))</code>中<code>var c</code>所在作用域</h4><h4 id="2-2-3-G-global"><a href="#2-2-3-G-global" class="headerlink" title="2.2.3  G=global"></a>2.2.3  <code>G=global</code></h4><h4 id="2-2-4-B-built-in"><a href="#2-2-4-B-built-in" class="headerlink" title="2.2.4  B-built in"></a>2.2.4  <code>B-built in</code></h4><code>1.</code> 内置作用域的实现是通过<code>builtin</code>标准模块实现  <blockquote>
+<p>但是此变量名本身并未放入内置作用域,需要导入模块才能使用<br><code>2.</code> <code>builtin</code></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> builtins</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dir</span>(builtins)</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-规则"><a href="#2-3-规则" class="headerlink" title="2.3 规则"></a>2.3 规则</h3><code>1.</code> 当在函数中引用一个变量的时候，以上的作用域顺序也是 Python 搜索的一个顺序 <code>L-&gt;E-G-B</code>，首先尝试局部作用域，没找到的话，继续搜索闭包函数作用域，然后再是全局作用域和内置作用域。<br><code>2.</code> Python 中只有模块（module），类（class）以及函数（def、lambda）才会引入新的作用域</li>
+<li>其它的代码块（如 if/elif/else/、try/except、for/while等）是不会引入新的作用域的，也就是说这些语句内定义的变量，外部也可以访问(如<code>1.3.1.2</code>) 如:<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">if</span> <span class="literal">True</span>:</span><br><span class="line"><span class="meta">... </span>    testStr = <span class="string">&#x27;this is a testline to test if this is a new region&#x27;</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(testStr)</span><br><span class="line">this <span class="keyword">is</span> a testline to test <span class="keyword">if</span> this <span class="keyword">is</span> a new region</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="对于一个存在的数组-如何用0填充其边界"><a href="#对于一个存在的数组-如何用0填充其边界" class="headerlink" title="对于一个存在的数组,如何用0填充其边界"></a>对于一个存在的数组,如何用0填充其边界</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">z = np.ones((<span class="number">6</span>, <span class="number">6</span>))</span><br><span class="line">z = np.pad(z, pad_width=<span class="number">1</span>, mode=<span class="string">&#x27;constant&#x27;</span>, constant_values=<span class="number">0</span>)</span><br><span class="line"><span class="built_in">print</span>(z)</span><br></pre></td></tr></table></figure>
-
-<h3 id="下列各式的运行结果"><a href="#下列各式的运行结果" class="headerlink" title="下列各式的运行结果"></a>下列各式的运行结果</h3><ol>
-<li><code>0 * np.nan</code> –&gt; <code>nan</code></li>
-<li><code>np.nan==np.nan</code> –&gt; <code>False</code></li>
-<li><code>np.inf &gt; np.nan</code> –&gt; <code>False</code></li>
-<li><code>np.nan - np.nan</code> –&gt; <code>nan</code></li>
-<li><code>0.3 == 3 * 0.1</code> –&gt; <code>False</code></li>
-</ol>
-<ul>
-<li>nan 不是数字,是不存在</li>
-<li>inf infinite</li>
-</ul>
-<h3 id="创建一个5-5的矩阵-并设置1-2-3-4落在其对角线的下方"><a href="#创建一个5-5的矩阵-并设置1-2-3-4落在其对角线的下方" class="headerlink" title="创建一个5 * 5的矩阵,并设置1 2 3 4落在其对角线的下方"></a>创建一个<code>5 * 5</code>的矩阵,并设置<code>1 2 3 4</code>落在其对角线的下方</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Z = np.diag(<span class="number">1</span>+np.arange(<span class="number">4</span>), k = -<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(Z)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>np.diag(array_like, k)</code></li>
-</ul>
-<ol>
-<li>返回此array第k位置对角线的矩阵</li>
-<li>当只传入矩阵,则返回此矩阵的对角线元素</li>
-</ol>
 ]]></content>
       <categories>
         <category>Python</category>
-        <category>Numpy</category>
+        <category>basic</category>
       </categories>
       <tags>
         <tag>Python</tag>
-        <tag>Numpy</tag>
       </tags>
   </entry>
 </search>
