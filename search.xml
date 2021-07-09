@@ -190,6 +190,67 @@
       </tags>
   </entry>
   <entry>
+    <title>Namespace</title>
+    <url>/2021/07/07/Python/basic/NameSpace/</url>
+    <content><![CDATA[<h1 id="命名空间及作用域"><a href="#命名空间及作用域" class="headerlink" title="命名空间及作用域"></a>命名空间及作用域</h1><h2 id="1-命名空间"><a href="#1-命名空间" class="headerlink" title="1.命名空间"></a>1.命名空间</h2><h3 id="1-1-命名空间（Namespace）"><a href="#1-1-命名空间（Namespace）" class="headerlink" title="1.1 命名空间（Namespace）"></a>1.1 命名空间（Namespace）</h3><p><code>1.</code> 是从名称到对象的映射，一般通过字典实现<br><code>2.</code> 类似于<code>c++</code></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std<br></code></pre></td></tr></table></figure>
+<h3 id="1-2-命名空间主要为了避免对象名称冲突"><a href="#1-2-命名空间主要为了避免对象名称冲突" class="headerlink" title="1.2 命名空间主要为了避免对象名称冲突"></a>1.2 命名空间主要为了避免对象名称冲突</h3><p><code>1. </code> 各个命名空间之间相互独立<br><code>2. </code> 命名空间内部不能有同名称对象<br><code>3. </code> 各个命名空间之间可以有相同名称对象</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><code class="hljs markdown"><span class="hljs-section"># 如计算机内部文件夹之间的关系：</span><br><span class="hljs-bullet">    *</span> 单个文件夹内部不能有同名称元素<br><span class="hljs-bullet">    *</span> 不同文件夹之间可以同名称元素<br></code></pre></td></tr></table></figure>
+<h3 id="1-3-python一般有三种命名空间：内置-built-in-局部-本地-local-全局-global"><a href="#1-3-python一般有三种命名空间：内置-built-in-局部-本地-local-全局-global" class="headerlink" title="1.3 python一般有三种命名空间：内置-built in 局部(本地)-local 全局-global"></a>1.3 python一般有三种命名空间：<code>内置-built in</code> <code>局部(本地)-local</code> <code>全局-global</code></h3><h4 id="1-3-1-局部"><a href="#1-3-1-局部" class="headerlink" title="1.3.1 局部"></a>1.3.1 局部</h4><p><code>1.</code> 局部空间包含:函数中定义的名称,记录了函数的变量,包括函数的参数与局部变量</p>
+<ul>
+<li>此局部指的是此作用域,及其内部包含的对象 名称</li>
+</ul>
+<p><code>2.</code> <code>locals()</code>:返回当前位置的全部局部变量</p>
+<ul>
+<li>当前位置指的是当前<code>locals()</code>函数被调用的位置</li>
+<li>全局内使用<code>locals()</code>:所有有实例的函数 方法 lambda函式以及实现了__call__的,都会返回true<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">locals</span>())<br>&#123;<span class="hljs-string">&#x27;__name__&#x27;</span>: <span class="hljs-string">&#x27;__main__&#x27;</span>, <span class="hljs-string">&#x27;__doc__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__package__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__loader__&#x27;</span>: &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">_frozen_importlib</span>.<span class="hljs-title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="hljs-title">__spec__</span>&#x27;:</span> <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="hljs-string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="hljs-string">&#x27;builtins&#x27;</span> (built-<span class="hljs-keyword">in</span>)&gt;, <span class="hljs-string">&#x27;len&#x27;</span>: &lt;function <span class="hljs-built_in">len</span> at <span class="hljs-number">0x00000186888145E8</span>&gt;&#125;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>此时的局部空间等于全局空间</p>
+</blockquote>
+</li>
+<li>函数内部使用<code>locals()</code>:返回此函数空间内的所有名称及对象<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">len</span>(<span class="hljs-params">param</span>):</span><br><span class="hljs-meta">... </span>    in_param = <span class="hljs-number">2</span><br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(<span class="hljs-built_in">locals</span>())<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">len</span>(<span class="hljs-number">4</span>)<br>&#123;<span class="hljs-string">&#x27;param&#x27;</span>: <span class="hljs-number">4</span>, <span class="hljs-string">&#x27;in_param&#x27;</span>: <span class="hljs-number">2</span>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>循环内使用<code>locals()</code>:  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>]:<br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(<span class="hljs-built_in">locals</span>())<br>...<br>&#123;<span class="hljs-string">&#x27;__name__&#x27;</span>: <span class="hljs-string">&#x27;__main__&#x27;</span>, <span class="hljs-string">&#x27;__doc__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__package__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__loader__&#x27;</span>: &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">_frozen_importlib</span>.<span class="hljs-title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="hljs-title">__spec__</span>&#x27;:</span> <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="hljs-string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="hljs-string">&#x27;builtins&#x27;</span> (built-<span class="hljs-keyword">in</span>)&gt;, <span class="hljs-string">&#x27;i&#x27;</span>: <span class="hljs-number">1</span>&#125;<br>&#123;<span class="hljs-string">&#x27;__name__&#x27;</span>: <span class="hljs-string">&#x27;__main__&#x27;</span>, <span class="hljs-string">&#x27;__doc__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__package__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__loader__&#x27;</span>: &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">_frozen_importlib</span>.<span class="hljs-title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="hljs-title">__spec__</span>&#x27;:</span> <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="hljs-string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="hljs-string">&#x27;builtins&#x27;</span> (built-<span class="hljs-keyword">in</span>)&gt;, <span class="hljs-string">&#x27;i&#x27;</span>: <span class="hljs-number">2</span>&#125;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>证明for循环不算一个单独的作用域</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="1-3-2-全局"><a href="#1-3-2-全局" class="headerlink" title="1.3.2 全局"></a>1.3.2 全局</h4><p><code>1.</code> 全局空间包含:模块中定义的名称,记录了模块的变量,包括函数 类 导入模块</p>
+<ul>
+<li>可理解为此<code>.py</code>文件所代表的空间</li>
+</ul>
+<p><code>2.</code> <code>globals()</code>:返回当前全局空间内的名称及对象</p>
+<ul>
+<li>全局内使用<code>globals()</code>:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">globals</span>())<br>&#123;<span class="hljs-string">&#x27;__name__&#x27;</span>: <span class="hljs-string">&#x27;__main__&#x27;</span>, <span class="hljs-string">&#x27;__doc__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__package__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__loader__&#x27;</span>: &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">_frozen_importlib</span>.<span class="hljs-title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="hljs-title">__spec__</span>&#x27;:</span> <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="hljs-string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="hljs-string">&#x27;builtins&#x27;</span> (built-<span class="hljs-keyword">in</span>)&gt;, <span class="hljs-string">&#x27;i&#x27;</span>: <span class="hljs-number">2</span>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>全局命名空间里包括了整个模块内的命名名称，比如变量 x y 函数名,而且还包括了一些内置的变量命名，比如 <code>__name__</code> <code>__file__</code>等等。</li>
+<li>全局空间与全局使用局部空间相同:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">if</span> <span class="hljs-built_in">locals</span>() == <span class="hljs-built_in">globals</span>():<br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;yes&#x27;</span>)<br><span class="hljs-meta">... </span><span class="hljs-keyword">else</span>:<br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;no&#x27;</span>)<br>...<br>yes<br></code></pre></td></tr></table></figure>
+<h4 id="1-3-3-内置"><a href="#1-3-3-内置" class="headerlink" title="1.3.3 内置"></a>1.3.3 内置</h4><code>1.</code> 内置空间包含:python语言的内置名称,如函数名abs char等<h3 id="1-4-各空间关系"><a href="#1-4-各空间关系" class="headerlink" title="1.4 各空间关系"></a>1.4 各空间关系</h3><code>1. </code>命名空间使用顺序:局部-&gt;全局-&gt;内置</li>
+<li>这样可以完成对<code>全局</code> <code>内置</code>函数的’’改写’’:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">len</span>(<span class="hljs-params">param</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(param)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">len</span>([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>])<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]<br></code></pre></td></tr></table></figure>
+
+python内置此方法的输出为元素长度:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">len</span>([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]))<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]<br></code></pre></td></tr></table></figure></li>
+<li>当无法找到此名称的对象时,则抛出异常<h3 id="命名空间的生命周期"><a href="#命名空间的生命周期" class="headerlink" title="命名空间的生命周期"></a>命名空间的生命周期</h3>命名空间的声明周期却决与该变量的作用域,对象执行完成,则该命名空间的生命周期结束<h2 id="2-作用域"><a href="#2-作用域" class="headerlink" title="2. 作用域"></a>2. 作用域</h2><h3 id="2-1-作用域"><a href="#2-1-作用域" class="headerlink" title="2.1 作用域"></a>2.1 作用域</h3><code>1.</code> 作用域:访问某变量 对象的区域</li>
+<li>每个对象都存在特定的作用域中 作用时段中</li>
+<li>当前程序未执行到该作用域,则某些只存在于该作用域的对象则不能被访问</li>
+<li>或者说,只有被赋值且未该赋值区域未完成其全部功能时,该对象才能被访问<blockquote>
+<p>简单来说就是:该对象在未赋值时,不能被访问;使用结束跳出该域后也不能访问</p>
+</blockquote>
+<h3 id="2-2-作用域分类"><a href="#2-2-作用域分类" class="headerlink" title="2.2 作用域分类"></a>2.2 作用域分类</h3><h4 id="2-2-1-L-local-局部作用域"><a href="#2-2-1-L-local-局部作用域" class="headerlink" title="2.2.1 L-local 局部作用域"></a>2.2.1 <code>L-local</code> 局部作用域</h4><h4 id="2-2-2-E-encloing-scope-闭包函数作用域-嵌套函数-A-B-var-c-中var-c所在作用域"><a href="#2-2-2-E-encloing-scope-闭包函数作用域-嵌套函数-A-B-var-c-中var-c所在作用域" class="headerlink" title="2.2.2  E-encloing scope 闭包函数作用域,嵌套函数(A(B(var c)))中var c所在作用域"></a>2.2.2  <code>E-encloing scope</code> 闭包函数作用域,嵌套函数<code>(A(B(var c)))</code>中<code>var c</code>所在作用域</h4><h4 id="2-2-3-G-global"><a href="#2-2-3-G-global" class="headerlink" title="2.2.3  G=global"></a>2.2.3  <code>G=global</code></h4><h4 id="2-2-4-B-built-in"><a href="#2-2-4-B-built-in" class="headerlink" title="2.2.4  B-built in"></a>2.2.4  <code>B-built in</code></h4><code>1.</code> 内置作用域的实现是通过<code>builtin</code>标准模块实现  <blockquote>
+<p>但是此变量名本身并未放入内置作用域,需要导入模块才能使用<br><code>2.</code> <code>builtin</code></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> builtins<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">dir</span>(builtins)<br></code></pre></td></tr></table></figure>
+<h3 id="2-3-规则"><a href="#2-3-规则" class="headerlink" title="2.3 规则"></a>2.3 规则</h3><code>1.</code> 当在函数中引用一个变量的时候，以上的作用域顺序也是 Python 搜索的一个顺序 <code>L-&gt;E-G-B</code>，首先尝试局部作用域，没找到的话，继续搜索闭包函数作用域，然后再是全局作用域和内置作用域。<br><code>2.</code> Python 中只有模块（module），类（class）以及函数（def、lambda）才会引入新的作用域</li>
+<li>其它的代码块（如 if/elif/else/、try/except、for/while等）是不会引入新的作用域的，也就是说这些语句内定义的变量，外部也可以访问(如<code>1.3.1.2</code>) 如:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">if</span> <span class="hljs-literal">True</span>:<br><span class="hljs-meta">... </span>    testStr = <span class="hljs-string">&#x27;this is a testline to test if this is a new region&#x27;</span><br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(testStr)<br>this <span class="hljs-keyword">is</span> a testline to test <span class="hljs-keyword">if</span> this <span class="hljs-keyword">is</span> a new region<br></code></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>basic</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Pandas-basic</title>
     <url>/2021/07/07/Python/basic/PandasNotes/</url>
     <content><![CDATA[<h1 id="2142"><a href="#2142" class="headerlink" title="2142"></a>2142</h1><h1 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h1><h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><p>pandas有两种数据结构：Series and dataframe数据框</p>
@@ -413,25 +474,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Pyhont-Recursion</title>
-    <url>/2021/07/07/Python/basic/Recursion/</url>
-    <content><![CDATA[<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>计算阶乘</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">cal</span>(<span class="hljs-params">n</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">if</span> n == <span class="hljs-number">1</span>:<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">else</span>:<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">return</span> n * cal(n - <span class="hljs-number">1</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(cal(<span class="hljs-number">4</span>))<br><span class="hljs-number">24</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(cal(<span class="hljs-number">6</span>))<br><span class="hljs-number">720</span><br></code></pre></td></tr></table></figure>
-<ul>
-<li>递归函数内部会调用函数本身</li>
-<li>某次调用递归函数时,内部调用本身时会指定参数</li>
-<li>在递归函数中,应有一个结束参数信号,在每次递归中,参数不断靠近该信号<h2 id="递归次数限制"><a href="#递归次数限制" class="headerlink" title="递归次数限制"></a>递归次数限制</h2><code>python</code>递归次数限制为<code>3000</code>次,超出此次数则会触发<code>RecursionError</code><h2 id="移除递归次数限制"><a href="#移除递归次数限制" class="headerlink" title="移除递归次数限制"></a>移除递归次数限制</h2><code>sys.setrecursionlimit(5000)</code> 设置次数限制为我们所需要的次数</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>basic</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Pyhont-Set</title>
     <url>/2021/07/07/Python/basic/Set/</url>
     <content><![CDATA[<h1 id="集合-set"><a href="#集合-set" class="headerlink" title="集合-set"></a>集合-set</h1><p>集合的基本性质:<br><code>1.</code> 集合包含了不重复且无序的元素<br><code>2.</code> 集合是可变数据类型  </p>
@@ -480,67 +522,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Namespace</title>
-    <url>/2021/07/07/Python/basic/NameSpace/</url>
-    <content><![CDATA[<h1 id="命名空间及作用域"><a href="#命名空间及作用域" class="headerlink" title="命名空间及作用域"></a>命名空间及作用域</h1><h2 id="1-命名空间"><a href="#1-命名空间" class="headerlink" title="1.命名空间"></a>1.命名空间</h2><h3 id="1-1-命名空间（Namespace）"><a href="#1-1-命名空间（Namespace）" class="headerlink" title="1.1 命名空间（Namespace）"></a>1.1 命名空间（Namespace）</h3><p><code>1.</code> 是从名称到对象的映射，一般通过字典实现<br><code>2.</code> 类似于<code>c++</code></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std<br></code></pre></td></tr></table></figure>
-<h3 id="1-2-命名空间主要为了避免对象名称冲突"><a href="#1-2-命名空间主要为了避免对象名称冲突" class="headerlink" title="1.2 命名空间主要为了避免对象名称冲突"></a>1.2 命名空间主要为了避免对象名称冲突</h3><p><code>1. </code> 各个命名空间之间相互独立<br><code>2. </code> 命名空间内部不能有同名称对象<br><code>3. </code> 各个命名空间之间可以有相同名称对象</p>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><code class="hljs markdown"><span class="hljs-section"># 如计算机内部文件夹之间的关系：</span><br><span class="hljs-bullet">    *</span> 单个文件夹内部不能有同名称元素<br><span class="hljs-bullet">    *</span> 不同文件夹之间可以同名称元素<br></code></pre></td></tr></table></figure>
-<h3 id="1-3-python一般有三种命名空间：内置-built-in-局部-本地-local-全局-global"><a href="#1-3-python一般有三种命名空间：内置-built-in-局部-本地-local-全局-global" class="headerlink" title="1.3 python一般有三种命名空间：内置-built in 局部(本地)-local 全局-global"></a>1.3 python一般有三种命名空间：<code>内置-built in</code> <code>局部(本地)-local</code> <code>全局-global</code></h3><h4 id="1-3-1-局部"><a href="#1-3-1-局部" class="headerlink" title="1.3.1 局部"></a>1.3.1 局部</h4><p><code>1.</code> 局部空间包含:函数中定义的名称,记录了函数的变量,包括函数的参数与局部变量</p>
-<ul>
-<li>此局部指的是此作用域,及其内部包含的对象 名称</li>
-</ul>
-<p><code>2.</code> <code>locals()</code>:返回当前位置的全部局部变量</p>
-<ul>
-<li>当前位置指的是当前<code>locals()</code>函数被调用的位置</li>
-<li>全局内使用<code>locals()</code>:所有有实例的函数 方法 lambda函式以及实现了__call__的,都会返回true<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">locals</span>())<br>&#123;<span class="hljs-string">&#x27;__name__&#x27;</span>: <span class="hljs-string">&#x27;__main__&#x27;</span>, <span class="hljs-string">&#x27;__doc__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__package__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__loader__&#x27;</span>: &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">_frozen_importlib</span>.<span class="hljs-title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="hljs-title">__spec__</span>&#x27;:</span> <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="hljs-string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="hljs-string">&#x27;builtins&#x27;</span> (built-<span class="hljs-keyword">in</span>)&gt;, <span class="hljs-string">&#x27;len&#x27;</span>: &lt;function <span class="hljs-built_in">len</span> at <span class="hljs-number">0x00000186888145E8</span>&gt;&#125;<br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>此时的局部空间等于全局空间</p>
-</blockquote>
-</li>
-<li>函数内部使用<code>locals()</code>:返回此函数空间内的所有名称及对象<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">len</span>(<span class="hljs-params">param</span>):</span><br><span class="hljs-meta">... </span>    in_param = <span class="hljs-number">2</span><br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(<span class="hljs-built_in">locals</span>())<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">len</span>(<span class="hljs-number">4</span>)<br>&#123;<span class="hljs-string">&#x27;param&#x27;</span>: <span class="hljs-number">4</span>, <span class="hljs-string">&#x27;in_param&#x27;</span>: <span class="hljs-number">2</span>&#125;<br></code></pre></td></tr></table></figure></li>
-<li>循环内使用<code>locals()</code>:  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>]:<br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(<span class="hljs-built_in">locals</span>())<br>...<br>&#123;<span class="hljs-string">&#x27;__name__&#x27;</span>: <span class="hljs-string">&#x27;__main__&#x27;</span>, <span class="hljs-string">&#x27;__doc__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__package__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__loader__&#x27;</span>: &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">_frozen_importlib</span>.<span class="hljs-title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="hljs-title">__spec__</span>&#x27;:</span> <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="hljs-string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="hljs-string">&#x27;builtins&#x27;</span> (built-<span class="hljs-keyword">in</span>)&gt;, <span class="hljs-string">&#x27;i&#x27;</span>: <span class="hljs-number">1</span>&#125;<br>&#123;<span class="hljs-string">&#x27;__name__&#x27;</span>: <span class="hljs-string">&#x27;__main__&#x27;</span>, <span class="hljs-string">&#x27;__doc__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__package__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__loader__&#x27;</span>: &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">_frozen_importlib</span>.<span class="hljs-title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="hljs-title">__spec__</span>&#x27;:</span> <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="hljs-string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="hljs-string">&#x27;builtins&#x27;</span> (built-<span class="hljs-keyword">in</span>)&gt;, <span class="hljs-string">&#x27;i&#x27;</span>: <span class="hljs-number">2</span>&#125;<br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>证明for循环不算一个单独的作用域</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="1-3-2-全局"><a href="#1-3-2-全局" class="headerlink" title="1.3.2 全局"></a>1.3.2 全局</h4><p><code>1.</code> 全局空间包含:模块中定义的名称,记录了模块的变量,包括函数 类 导入模块</p>
-<ul>
-<li>可理解为此<code>.py</code>文件所代表的空间</li>
-</ul>
-<p><code>2.</code> <code>globals()</code>:返回当前全局空间内的名称及对象</p>
-<ul>
-<li>全局内使用<code>globals()</code>:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">globals</span>())<br>&#123;<span class="hljs-string">&#x27;__name__&#x27;</span>: <span class="hljs-string">&#x27;__main__&#x27;</span>, <span class="hljs-string">&#x27;__doc__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__package__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__loader__&#x27;</span>: &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">_frozen_importlib</span>.<span class="hljs-title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="hljs-title">__spec__</span>&#x27;:</span> <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="hljs-string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="hljs-string">&#x27;builtins&#x27;</span> (built-<span class="hljs-keyword">in</span>)&gt;, <span class="hljs-string">&#x27;i&#x27;</span>: <span class="hljs-number">2</span>&#125;<br></code></pre></td></tr></table></figure></li>
-<li>全局命名空间里包括了整个模块内的命名名称，比如变量 x y 函数名,而且还包括了一些内置的变量命名，比如 <code>__name__</code> <code>__file__</code>等等。</li>
-<li>全局空间与全局使用局部空间相同:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">if</span> <span class="hljs-built_in">locals</span>() == <span class="hljs-built_in">globals</span>():<br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;yes&#x27;</span>)<br><span class="hljs-meta">... </span><span class="hljs-keyword">else</span>:<br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;no&#x27;</span>)<br>...<br>yes<br></code></pre></td></tr></table></figure>
-<h4 id="1-3-3-内置"><a href="#1-3-3-内置" class="headerlink" title="1.3.3 内置"></a>1.3.3 内置</h4><code>1.</code> 内置空间包含:python语言的内置名称,如函数名abs char等<h3 id="1-4-各空间关系"><a href="#1-4-各空间关系" class="headerlink" title="1.4 各空间关系"></a>1.4 各空间关系</h3><code>1. </code>命名空间使用顺序:局部-&gt;全局-&gt;内置</li>
-<li>这样可以完成对<code>全局</code> <code>内置</code>函数的’’改写’’:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">len</span>(<span class="hljs-params">param</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(param)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">len</span>([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>])<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]<br></code></pre></td></tr></table></figure>
-
-python内置此方法的输出为元素长度:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">len</span>([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]))<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]<br></code></pre></td></tr></table></figure></li>
-<li>当无法找到此名称的对象时,则抛出异常<h3 id="命名空间的生命周期"><a href="#命名空间的生命周期" class="headerlink" title="命名空间的生命周期"></a>命名空间的生命周期</h3>命名空间的声明周期却决与该变量的作用域,对象执行完成,则该命名空间的生命周期结束<h2 id="2-作用域"><a href="#2-作用域" class="headerlink" title="2. 作用域"></a>2. 作用域</h2><h3 id="2-1-作用域"><a href="#2-1-作用域" class="headerlink" title="2.1 作用域"></a>2.1 作用域</h3><code>1.</code> 作用域:访问某变量 对象的区域</li>
-<li>每个对象都存在特定的作用域中 作用时段中</li>
-<li>当前程序未执行到该作用域,则某些只存在于该作用域的对象则不能被访问</li>
-<li>或者说,只有被赋值且未该赋值区域未完成其全部功能时,该对象才能被访问<blockquote>
-<p>简单来说就是:该对象在未赋值时,不能被访问;使用结束跳出该域后也不能访问</p>
-</blockquote>
-<h3 id="2-2-作用域分类"><a href="#2-2-作用域分类" class="headerlink" title="2.2 作用域分类"></a>2.2 作用域分类</h3><h4 id="2-2-1-L-local-局部作用域"><a href="#2-2-1-L-local-局部作用域" class="headerlink" title="2.2.1 L-local 局部作用域"></a>2.2.1 <code>L-local</code> 局部作用域</h4><h4 id="2-2-2-E-encloing-scope-闭包函数作用域-嵌套函数-A-B-var-c-中var-c所在作用域"><a href="#2-2-2-E-encloing-scope-闭包函数作用域-嵌套函数-A-B-var-c-中var-c所在作用域" class="headerlink" title="2.2.2  E-encloing scope 闭包函数作用域,嵌套函数(A(B(var c)))中var c所在作用域"></a>2.2.2  <code>E-encloing scope</code> 闭包函数作用域,嵌套函数<code>(A(B(var c)))</code>中<code>var c</code>所在作用域</h4><h4 id="2-2-3-G-global"><a href="#2-2-3-G-global" class="headerlink" title="2.2.3  G=global"></a>2.2.3  <code>G=global</code></h4><h4 id="2-2-4-B-built-in"><a href="#2-2-4-B-built-in" class="headerlink" title="2.2.4  B-built in"></a>2.2.4  <code>B-built in</code></h4><code>1.</code> 内置作用域的实现是通过<code>builtin</code>标准模块实现  <blockquote>
-<p>但是此变量名本身并未放入内置作用域,需要导入模块才能使用<br><code>2.</code> <code>builtin</code></p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> builtins<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">dir</span>(builtins)<br></code></pre></td></tr></table></figure>
-<h3 id="2-3-规则"><a href="#2-3-规则" class="headerlink" title="2.3 规则"></a>2.3 规则</h3><code>1.</code> 当在函数中引用一个变量的时候，以上的作用域顺序也是 Python 搜索的一个顺序 <code>L-&gt;E-G-B</code>，首先尝试局部作用域，没找到的话，继续搜索闭包函数作用域，然后再是全局作用域和内置作用域。<br><code>2.</code> Python 中只有模块（module），类（class）以及函数（def、lambda）才会引入新的作用域</li>
-<li>其它的代码块（如 if/elif/else/、try/except、for/while等）是不会引入新的作用域的，也就是说这些语句内定义的变量，外部也可以访问(如<code>1.3.1.2</code>) 如:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">if</span> <span class="hljs-literal">True</span>:<br><span class="hljs-meta">... </span>    testStr = <span class="hljs-string">&#x27;this is a testline to test if this is a new region&#x27;</span><br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(testStr)<br>this <span class="hljs-keyword">is</span> a testline to test <span class="hljs-keyword">if</span> this <span class="hljs-keyword">is</span> a new region<br></code></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>basic</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Pyhont-ArrDictionaryay</title>
     <url>/2021/07/07/Python/basic/dictionary/</url>
     <content><![CDATA[<h1 id="字典-Dictionary"><a href="#字典-Dictionary" class="headerlink" title="字典-Dictionary"></a>字典-Dictionary</h1><p>字典的基本性质:</p>
@@ -572,6 +553,25 @@ python内置此方法的输出为元素长度:<figure class="highlight python"><
 <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d.clear()<br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;&#125;<br></code></pre></td></tr></table></figure>
 <p><code>4.</code> <code>del</code> 删除特定键值对或删除整个字典</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">5</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;pink&#x27;</span>, <span class="hljs-number">3</span>: <span class="hljs-string">&#x27;floyd&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">del</span> d[<span class="hljs-number">1</span>]<br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">5</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;pink&#x27;</span>, <span class="hljs-number">3</span>: <span class="hljs-string">&#x27;floyd&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">del</span> d<br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>NameError: name <span class="hljs-string">&#x27;d&#x27;</span> <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> defined<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>basic</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Pyhont-Recursion</title>
+    <url>/2021/07/07/Python/basic/Recursion/</url>
+    <content><![CDATA[<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>计算阶乘</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">cal</span>(<span class="hljs-params">n</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">if</span> n == <span class="hljs-number">1</span>:<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">else</span>:<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">return</span> n * cal(n - <span class="hljs-number">1</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(cal(<span class="hljs-number">4</span>))<br><span class="hljs-number">24</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(cal(<span class="hljs-number">6</span>))<br><span class="hljs-number">720</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>递归函数内部会调用函数本身</li>
+<li>某次调用递归函数时,内部调用本身时会指定参数</li>
+<li>在递归函数中,应有一个结束参数信号,在每次递归中,参数不断靠近该信号<h2 id="递归次数限制"><a href="#递归次数限制" class="headerlink" title="递归次数限制"></a>递归次数限制</h2><code>python</code>递归次数限制为<code>3000</code>次,超出此次数则会触发<code>RecursionError</code><h2 id="移除递归次数限制"><a href="#移除递归次数限制" class="headerlink" title="移除递归次数限制"></a>移除递归次数限制</h2><code>sys.setrecursionlimit(5000)</code> 设置次数限制为我们所需要的次数</li>
+</ul>
 ]]></content>
       <categories>
         <category>Python</category>
@@ -660,6 +660,36 @@ python内置此方法的输出为元素长度:<figure class="highlight python"><
       </tags>
   </entry>
   <entry>
+    <title>列表推导式</title>
+    <url>/2021/07/07/Python/advance/%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC%E5%BC%8F/</url>
+    <content><![CDATA[<h1 id="列表推导式"><a href="#列表推导式" class="headerlink" title="列表推导式"></a>列表推导式</h1><h2 id="列表推导式基础"><a href="#列表推导式基础" class="headerlink" title="列表推导式基础"></a>列表推导式基础</h2><ul>
+<li><code>result = [ &lt;expression&gt; for &lt;element&gt; in &lt;iterable&gt; ]</code></li>
+<li>根据现有迭代器类<code>iterable</code></li>
+<li>对其中每个元素<code>element</code></li>
+<li>根据函数<code>expression</code>进行相应变化得到结果元素</li>
+<li>将结果元素立即添加到<code>result</code>中<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>testSquares = [x * x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> (<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>)]<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(testSquares)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>]<br></code></pre></td></tr></table></figure>
+<h2 id="if条件-可选"><a href="#if条件-可选" class="headerlink" title="if条件(可选):"></a><code>if</code>条件(可选):</h2><code>result = [ &lt;expression&gt; for &lt;element&gt; in &lt;iterable&gt; if &lt;condition&gt; ]</code></li>
+<li>每个元素在进行<code>expression</code>前。</li>
+<li>所有结果将在新列表中立即返回。</li>
+<li>Python 中的生成器表达式是懒惰地计算的，但是列表推导会立即施加到整个迭代器，它消耗与迭代器长度成比例的内存。<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>testSquares = [x * x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> (<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>) <span class="hljs-keyword">if</span> x % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>]<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(testSquares)<br>[<span class="hljs-number">4</span>, <span class="hljs-number">16</span>]<br></code></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">*</span> 根据列表<span class="hljs-code">``(1,2,3,4,5)`</span>` 创建一个平方数列表,<br><span class="hljs-bullet">*</span> 只选择其中的偶数进行创建<br></code></pre></td></tr></table></figure>
+<h2 id="else"><a href="#else" class="headerlink" title="else:"></a><code>else</code>:</h2><code>if...else</code> 判断是在 <code>for</code> 循环之前使用，而非以后：</li>
+<li><code>if...else</code>在<code>for</code>后 报错<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>testStr = [x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;abcd&#x27;</span> <span class="hljs-keyword">if</span> x <span class="hljs-keyword">is</span> <span class="hljs-string">&#x27;a&#x27;</span> <span class="hljs-keyword">else</span> <span class="hljs-string">&#x27;b&#x27;</span>]<br>  File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="hljs-number">1</span><br>    testStr = [x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;abcd&#x27;</span> <span class="hljs-keyword">if</span> x <span class="hljs-keyword">is</span> <span class="hljs-string">&#x27;a&#x27;</span> <span class="hljs-keyword">else</span> <span class="hljs-string">&#x27;b&#x27;</span>]<br>                                                ^<br>SyntaxError: invalid syntax<br></code></pre></td></tr></table></figure></li>
+<li><code>if...else</code> 在 <code>for</code> 前</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>testStr = [x <span class="hljs-keyword">if</span> x <span class="hljs-keyword">is</span> <span class="hljs-string">&#x27;a&#x27;</span> <span class="hljs-keyword">else</span> <span class="hljs-string">&#x27;b&#x27;</span> <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;abcd&#x27;</span>]<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(testStr)<br>[<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>]<br></code></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>advance</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>发生器</title>
     <url>/2021/07/07/Python/advance/%E5%8F%91%E7%94%9F%E5%99%A8/</url>
     <content><![CDATA[<h1 id="发生器"><a href="#发生器" class="headerlink" title="发生器"></a>发生器</h1><ul>
@@ -699,36 +729,6 @@ python内置此方法的输出为元素长度:<figure class="highlight python"><
 </li>
 </ul>
 <h3 id="next-函数"><a href="#next-函数" class="headerlink" title=".next()函数"></a><code>.next()</code>函数</h3><p>用于从生成器中获取值,并提供迭代结束的默认值</p>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>advance</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>列表推导式</title>
-    <url>/2021/07/07/Python/advance/%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC%E5%BC%8F/</url>
-    <content><![CDATA[<h1 id="列表推导式"><a href="#列表推导式" class="headerlink" title="列表推导式"></a>列表推导式</h1><h2 id="列表推导式基础"><a href="#列表推导式基础" class="headerlink" title="列表推导式基础"></a>列表推导式基础</h2><ul>
-<li><code>result = [ &lt;expression&gt; for &lt;element&gt; in &lt;iterable&gt; ]</code></li>
-<li>根据现有迭代器类<code>iterable</code></li>
-<li>对其中每个元素<code>element</code></li>
-<li>根据函数<code>expression</code>进行相应变化得到结果元素</li>
-<li>将结果元素立即添加到<code>result</code>中<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>testSquares = [x * x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> (<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>)]<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(testSquares)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>]<br></code></pre></td></tr></table></figure>
-<h2 id="if条件-可选"><a href="#if条件-可选" class="headerlink" title="if条件(可选):"></a><code>if</code>条件(可选):</h2><code>result = [ &lt;expression&gt; for &lt;element&gt; in &lt;iterable&gt; if &lt;condition&gt; ]</code></li>
-<li>每个元素在进行<code>expression</code>前。</li>
-<li>所有结果将在新列表中立即返回。</li>
-<li>Python 中的生成器表达式是懒惰地计算的，但是列表推导会立即施加到整个迭代器，它消耗与迭代器长度成比例的内存。<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>testSquares = [x * x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> (<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>) <span class="hljs-keyword">if</span> x % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>]<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(testSquares)<br>[<span class="hljs-number">4</span>, <span class="hljs-number">16</span>]<br></code></pre></td></tr></table></figure>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">*</span> 根据列表<span class="hljs-code">``(1,2,3,4,5)`</span>` 创建一个平方数列表,<br><span class="hljs-bullet">*</span> 只选择其中的偶数进行创建<br></code></pre></td></tr></table></figure>
-<h2 id="else"><a href="#else" class="headerlink" title="else:"></a><code>else</code>:</h2><code>if...else</code> 判断是在 <code>for</code> 循环之前使用，而非以后：</li>
-<li><code>if...else</code>在<code>for</code>后 报错<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>testStr = [x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;abcd&#x27;</span> <span class="hljs-keyword">if</span> x <span class="hljs-keyword">is</span> <span class="hljs-string">&#x27;a&#x27;</span> <span class="hljs-keyword">else</span> <span class="hljs-string">&#x27;b&#x27;</span>]<br>  File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="hljs-number">1</span><br>    testStr = [x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;abcd&#x27;</span> <span class="hljs-keyword">if</span> x <span class="hljs-keyword">is</span> <span class="hljs-string">&#x27;a&#x27;</span> <span class="hljs-keyword">else</span> <span class="hljs-string">&#x27;b&#x27;</span>]<br>                                                ^<br>SyntaxError: invalid syntax<br></code></pre></td></tr></table></figure></li>
-<li><code>if...else</code> 在 <code>for</code> 前</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>testStr = [x <span class="hljs-keyword">if</span> x <span class="hljs-keyword">is</span> <span class="hljs-string">&#x27;a&#x27;</span> <span class="hljs-keyword">else</span> <span class="hljs-string">&#x27;b&#x27;</span> <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;abcd&#x27;</span>]<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(testStr)<br>[<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>]<br></code></pre></td></tr></table></figure>
-
-
 ]]></content>
       <categories>
         <category>Python</category>
