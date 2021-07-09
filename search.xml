@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>map函数</title>
+    <url>/2021/07/07/Python/advance/map%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="map函数"><a href="#map函数" class="headerlink" title="map函数"></a>map函数</h1><ul>
+<li>python内置函数</li>
+<li>会根据给定函数,对指定序列做出映射</li>
+</ul>
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><h3 id="map-function-iterable"><a href="#map-function-iterable" class="headerlink" title="map(function, iterable...)"></a><code>map(function, iterable...)</code></h3><ul>
+<li><code>iterable</code> 作为映射中原数据的来源</li>
+<li><code>function</code> 用于对<code>iterable</code>中的元素进行转换  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">&gt;&gt; <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">squ</span>(<span class="hljs-params">x</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> x * x<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>mapResult = <span class="hljs-built_in">map</span>(squ, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])<br></code></pre></td></tr></table></figure></li>
+<li><code>python 2.</code> 返回列表</li>
+<li><code>python 3.</code> 返回迭代器  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(mapResult.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">map</span>&#x27;&gt;</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">for</span> <span class="hljs-title">i</span> <span class="hljs-title">in</span> <span class="hljs-title">mapResult</span>:</span><br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(i)<br>...<br><span class="hljs-number">1</span><br><span class="hljs-number">4</span><br><span class="hljs-number">9</span><br><span class="hljs-number">16</span><br><span class="hljs-number">25</span><br></code></pre></td></tr></table></figure></li>
+<li>可通过<code>list(map())</code>的显示转换来消除版本之间的差异  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">squ</span>(<span class="hljs-params">x</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> x * x<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>list1 = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(squ, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]))<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(list1)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>]<br></code></pre></td></tr></table></figure>
+<h3 id="lambda"><a href="#lambda" class="headerlink" title="lambda"></a><code>lambda</code></h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-keyword">lambda</span> x : x * x, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])))<br>[<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>]<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><h3 id="map完成数据类型转换"><a href="#map完成数据类型转换" class="headerlink" title="map完成数据类型转换"></a><code>map</code>完成数据类型转换</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">str</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])))<br>[<span class="hljs-string">&#x27;1&#x27;</span>, <span class="hljs-string">&#x27;2&#x27;</span>, <span class="hljs-string">&#x27;3&#x27;</span>, <span class="hljs-string">&#x27;4&#x27;</span>, <span class="hljs-string">&#x27;5&#x27;</span>]<br></code></pre></td></tr></table></figure>
+<h3 id="map元组转列表"><a href="#map元组转列表" class="headerlink" title="map元组转列表"></a><code>map</code>元组转列表</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>list1 = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>,(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)))<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(list1)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
+<ul>
+<li>原理是:元组作为迭代器可作为<code>map()</code>函数参数传入,当元组内部元素数据类型与<code>function</code>转出数据类型一致时,再将<code>map</code>返回迭代器转为列表</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>advance</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Numpy100</title>
     <url>/2021/07/07/numpy/numpy100/</url>
     <content><![CDATA[<h1 id="github上的开源项目"><a href="#github上的开源项目" class="headerlink" title="github上的开源项目"></a>github上的开源项目</h1><h2 id="2021-7-4-17：06-cj-at-swjtu-jiuli-campus"><a href="#2021-7-4-17：06-cj-at-swjtu-jiuli-campus" class="headerlink" title="2021.7.4 17：06 cj at swjtu jiuli campus"></a>2021.7.4 17：06 cj at swjtu jiuli campus</h2><h3 id="创建一个长度为10的空向量"><a href="#创建一个长度为10的空向量" class="headerlink" title="创建一个长度为10的空向量"></a>创建一个长度为10的空向量</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.zeros(<span class="hljs-number">10</span>)<br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
@@ -98,84 +127,6 @@
       </tags>
   </entry>
   <entry>
-    <title>map函数</title>
-    <url>/2021/07/07/Python/advance/map%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="map函数"><a href="#map函数" class="headerlink" title="map函数"></a>map函数</h1><ul>
-<li>python内置函数</li>
-<li>会根据给定函数,对指定序列做出映射</li>
-</ul>
-<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><h3 id="map-function-iterable"><a href="#map-function-iterable" class="headerlink" title="map(function, iterable...)"></a><code>map(function, iterable...)</code></h3><ul>
-<li><code>iterable</code> 作为映射中原数据的来源</li>
-<li><code>function</code> 用于对<code>iterable</code>中的元素进行转换  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">&gt;&gt; <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">squ</span>(<span class="hljs-params">x</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> x * x<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>mapResult = <span class="hljs-built_in">map</span>(squ, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])<br></code></pre></td></tr></table></figure></li>
-<li><code>python 2.</code> 返回列表</li>
-<li><code>python 3.</code> 返回迭代器  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(mapResult.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">map</span>&#x27;&gt;</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">for</span> <span class="hljs-title">i</span> <span class="hljs-title">in</span> <span class="hljs-title">mapResult</span>:</span><br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(i)<br>...<br><span class="hljs-number">1</span><br><span class="hljs-number">4</span><br><span class="hljs-number">9</span><br><span class="hljs-number">16</span><br><span class="hljs-number">25</span><br></code></pre></td></tr></table></figure></li>
-<li>可通过<code>list(map())</code>的显示转换来消除版本之间的差异  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">squ</span>(<span class="hljs-params">x</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> x * x<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>list1 = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(squ, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]))<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(list1)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>]<br></code></pre></td></tr></table></figure>
-<h3 id="lambda"><a href="#lambda" class="headerlink" title="lambda"></a><code>lambda</code></h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-keyword">lambda</span> x : x * x, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])))<br>[<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>]<br></code></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><h3 id="map完成数据类型转换"><a href="#map完成数据类型转换" class="headerlink" title="map完成数据类型转换"></a><code>map</code>完成数据类型转换</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">str</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])))<br>[<span class="hljs-string">&#x27;1&#x27;</span>, <span class="hljs-string">&#x27;2&#x27;</span>, <span class="hljs-string">&#x27;3&#x27;</span>, <span class="hljs-string">&#x27;4&#x27;</span>, <span class="hljs-string">&#x27;5&#x27;</span>]<br></code></pre></td></tr></table></figure>
-<h3 id="map元组转列表"><a href="#map元组转列表" class="headerlink" title="map元组转列表"></a><code>map</code>元组转列表</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>list1 = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>,(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)))<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(list1)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
-<ul>
-<li>原理是:元组作为迭代器可作为<code>map()</code>函数参数传入,当元组内部元素数据类型与<code>function</code>转出数据类型一致时,再将<code>map</code>返回迭代器转为列表</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>advance</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>发生器</title>
-    <url>/2021/07/07/Python/advance/%E5%8F%91%E7%94%9F%E5%99%A8/</url>
-    <content><![CDATA[<h1 id="发生器"><a href="#发生器" class="headerlink" title="发生器"></a>发生器</h1><ul>
-<li><p>Python发生器通过关键字<code>yeild</code>创建</p>
-</li>
-<li><p>或通过发生器表达式 <code>expression for x in an_iterator</code>创建</p>
-</li>
-<li><p>生成器保存的算法而非具体数据,因此节约了内存</p>
-<h2 id="发生器-1"><a href="#发生器-1" class="headerlink" title="发生器"></a>发生器</h2></li>
-<li><p>发生器返回对象为 <code>generator</code></p>
-<h3 id="发生器表达式"><a href="#发生器表达式" class="headerlink" title="发生器表达式"></a>发生器表达式</h3></li>
-<li><p>发生器类似于列表推导式,但发生器用<code>()</code>声明</p>
-</li>
-<li><p>当发生器作为函数的唯一参数时,不必多重括号:</p>
-  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">printL</span>(<span class="hljs-params">list1</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> list1:<br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(i)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>printL(x * <span class="hljs-number">2</span> <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>))<br><span class="hljs-number">0</span><br><span class="hljs-number">2</span><br><span class="hljs-number">4</span><br><span class="hljs-number">6</span><br><span class="hljs-number">8</span><br><span class="hljs-number">10</span><br><span class="hljs-number">12</span><br><span class="hljs-number">14</span><br><span class="hljs-number">16</span><br><span class="hljs-number">18</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>((x * <span class="hljs-number">2</span> <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>)).__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">generator</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
-<h3 id="发生器函数"><a href="#发生器函数" class="headerlink" title="发生器函数"></a>发生器函数</h3></li>
-<li><p>生成器函数类似常规函数</p>
-</li>
-<li><p>生成器函数内部有多个或一个<code>yield</code>关键字</p>
-</li>
-<li><p>生成器函数无返回值 <code>return</code></p>
-</li>
-<li><p>如果要提前停止发生器,则提前使用空<code>return</code></p>
-  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">generatorFunc</span>():</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>):<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">yield</span> i * <span class="hljs-number">2</span><br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>l = generatorFunc()<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> l:<br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(i)<br>...<br><span class="hljs-number">0</span><br><span class="hljs-number">2</span><br><span class="hljs-number">4</span><br><span class="hljs-number">6</span><br><span class="hljs-number">8</span><br></code></pre></td></tr></table></figure>
-<h4 id="所有的生成器表达式都有自己对应的生成器函数-反之亦然"><a href="#所有的生成器表达式都有自己对应的生成器函数-反之亦然" class="headerlink" title="所有的生成器表达式都有自己对应的生成器函数,反之亦然"></a>所有的生成器表达式都有自己对应的生成器函数,反之亦然</h4><h3 id="一次性"><a href="#一次性" class="headerlink" title="一次性"></a>一次性</h3><p>生成器对象是一次性的,当一次迭代完成后,则该生成器对象内部函数被销毁</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>l = generatorFunc()<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> l:<br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(i)<br>...<br><span class="hljs-number">0</span><br><span class="hljs-number">2</span><br><span class="hljs-number">4</span><br><span class="hljs-number">6</span><br><span class="hljs-number">8</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">next</span>(l))<br>Traceback (most recent call last):<br>File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>StopIteration<br></code></pre></td></tr></table></figure>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3></li>
-<li><p>生成器的主体不会立即执行：当调用生成器函数时，它只会返回生成器对象，而不去执行第一个 print 语句。</p>
-</li>
-<li><p>这使得生成器比返回列表的函数消耗更少的内存，并且它能够实现生成无限长的序列。</p>
-</li>
-<li><p>因此,生成器通常用于数据科学以及涉及大量数据的其他环境。</p>
-</li>
-<li><p>另一个优点是其他代码可以立即使用生成器产生的值，而无需等待生成完整的序列。</p>
-</li>
-<li><p>但是，如果你需要多次使用生成器生成的值，并且如果生成它们的成本高于存储，则将 list 生成的值存储为比重新生成序列更好。</p>
-</li>
-</ul>
-<h3 id="next-函数"><a href="#next-函数" class="headerlink" title=".next()函数"></a><code>.next()</code>函数</h3><p>用于从生成器中获取值,并提供迭代结束的默认值</p>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>advance</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>装饰器</title>
     <url>/2021/07/07/Python/advance/python%E8%A3%85%E9%A5%B0%E5%99%A8/</url>
     <content><![CDATA[<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><p>Python装饰器能够动态地改变函数 方法 类的功能,而不用子类重写或修改函数源代码的方式   </p>
@@ -255,6 +206,55 @@
       </tags>
   </entry>
   <entry>
+    <title>发生器</title>
+    <url>/2021/07/07/Python/advance/%E5%8F%91%E7%94%9F%E5%99%A8/</url>
+    <content><![CDATA[<h1 id="发生器"><a href="#发生器" class="headerlink" title="发生器"></a>发生器</h1><ul>
+<li><p>Python发生器通过关键字<code>yeild</code>创建</p>
+</li>
+<li><p>或通过发生器表达式 <code>expression for x in an_iterator</code>创建</p>
+</li>
+<li><p>生成器保存的算法而非具体数据,因此节约了内存</p>
+<h2 id="发生器-1"><a href="#发生器-1" class="headerlink" title="发生器"></a>发生器</h2></li>
+<li><p>发生器返回对象为 <code>generator</code></p>
+<h3 id="发生器表达式"><a href="#发生器表达式" class="headerlink" title="发生器表达式"></a>发生器表达式</h3></li>
+<li><p>发生器类似于列表推导式,但发生器用<code>()</code>声明</p>
+</li>
+<li><p>当发生器作为函数的唯一参数时,不必多重括号:</p>
+  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">printL</span>(<span class="hljs-params">list1</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> list1:<br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(i)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>printL(x * <span class="hljs-number">2</span> <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>))<br><span class="hljs-number">0</span><br><span class="hljs-number">2</span><br><span class="hljs-number">4</span><br><span class="hljs-number">6</span><br><span class="hljs-number">8</span><br><span class="hljs-number">10</span><br><span class="hljs-number">12</span><br><span class="hljs-number">14</span><br><span class="hljs-number">16</span><br><span class="hljs-number">18</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>((x * <span class="hljs-number">2</span> <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>)).__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">generator</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="发生器函数"><a href="#发生器函数" class="headerlink" title="发生器函数"></a>发生器函数</h3></li>
+<li><p>生成器函数类似常规函数</p>
+</li>
+<li><p>生成器函数内部有多个或一个<code>yield</code>关键字</p>
+</li>
+<li><p>生成器函数无返回值 <code>return</code></p>
+</li>
+<li><p>如果要提前停止发生器,则提前使用空<code>return</code></p>
+  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">generatorFunc</span>():</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>):<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">yield</span> i * <span class="hljs-number">2</span><br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>l = generatorFunc()<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> l:<br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(i)<br>...<br><span class="hljs-number">0</span><br><span class="hljs-number">2</span><br><span class="hljs-number">4</span><br><span class="hljs-number">6</span><br><span class="hljs-number">8</span><br></code></pre></td></tr></table></figure>
+<h4 id="所有的生成器表达式都有自己对应的生成器函数-反之亦然"><a href="#所有的生成器表达式都有自己对应的生成器函数-反之亦然" class="headerlink" title="所有的生成器表达式都有自己对应的生成器函数,反之亦然"></a>所有的生成器表达式都有自己对应的生成器函数,反之亦然</h4><h3 id="一次性"><a href="#一次性" class="headerlink" title="一次性"></a>一次性</h3><p>生成器对象是一次性的,当一次迭代完成后,则该生成器对象内部函数被销毁</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>l = generatorFunc()<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> l:<br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(i)<br>...<br><span class="hljs-number">0</span><br><span class="hljs-number">2</span><br><span class="hljs-number">4</span><br><span class="hljs-number">6</span><br><span class="hljs-number">8</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">next</span>(l))<br>Traceback (most recent call last):<br>File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>StopIteration<br></code></pre></td></tr></table></figure>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3></li>
+<li><p>生成器的主体不会立即执行：当调用生成器函数时，它只会返回生成器对象，而不去执行第一个 print 语句。</p>
+</li>
+<li><p>这使得生成器比返回列表的函数消耗更少的内存，并且它能够实现生成无限长的序列。</p>
+</li>
+<li><p>因此,生成器通常用于数据科学以及涉及大量数据的其他环境。</p>
+</li>
+<li><p>另一个优点是其他代码可以立即使用生成器产生的值，而无需等待生成完整的序列。</p>
+</li>
+<li><p>但是，如果你需要多次使用生成器生成的值，并且如果生成它们的成本高于存储，则将 list 生成的值存储为比重新生成序列更好。</p>
+</li>
+</ul>
+<h3 id="next-函数"><a href="#next-函数" class="headerlink" title=".next()函数"></a><code>.next()</code>函数</h3><p>用于从生成器中获取值,并提供迭代结束的默认值</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>advance</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>多线程</title>
     <url>/2021/07/07/Python/advance/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</url>
     <content><![CDATA[<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><p>python多线程并非真正意义上的多线程</p>
@@ -271,23 +271,6 @@
 <li>若想将线程设置为守护线程持续运行,则需设置<code>daemon=True</code></li>
 </ul>
 <h2 id="加入线程-Thread-join"><a href="#加入线程-Thread-join" class="headerlink" title="加入线程 Thread.join()"></a>加入线程 <code>Thread.join()</code></h2>]]></content>
-      <categories>
-        <category>Python</category>
-        <category>advance</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>运算符重载</title>
-    <url>/2021/07/07/Python/advance/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/</url>
-    <content><![CDATA[<h1 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h1><ul>
-<li><code>python</code>中一切都是对象,每个对象都有一些特殊的内部方法</li>
-<li>这些方法都遵循<code>__action__</code>的命名规定</li>
-<li>通过运算符重载,可以让类进行一些数学运算<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Vector</span>(<span class="hljs-params"><span class="hljs-built_in">object</span></span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, x, y</span>):</span><br>        self.x = x<br>        self.y = y<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__add__</span>(<span class="hljs-params">self, v</span>):</span><br>        <span class="hljs-comment"># Addition with another vector.</span><br>        <span class="hljs-keyword">return</span> Vector(self.x + v.x, self.y + v.y)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__sub__</span>(<span class="hljs-params">self, v</span>):</span><br>        <span class="hljs-comment"># Subtraction with another vector.</span><br>        <span class="hljs-keyword">return</span> Vector(self.x - v.x, self.y - v.y)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__mul__</span>(<span class="hljs-params">self, s</span>):</span><br>        <span class="hljs-comment"># Multiplication with a scalar.</span><br>        <span class="hljs-keyword">return</span> Vector(self.x * s, self.y * s)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__div__</span>(<span class="hljs-params">self, s</span>):</span><br>        <span class="hljs-comment"># Division with a scalar.</span><br>        float_s = <span class="hljs-built_in">float</span>(s)<br>        <span class="hljs-keyword">return</span> Vector(self.x / float_s, self.y / float_s)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__floordiv__</span>(<span class="hljs-params">self, s</span>):</span><br>        <span class="hljs-comment"># Division with a scalar (value floored).</span><br>        <span class="hljs-keyword">return</span> Vector(self.x // s, self.y // s)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__repr__</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-comment"># Print friendly representation of Vector class. Else, it would</span><br>        <span class="hljs-comment"># show up like, &lt;__main__.Vector instance at 0x01DDDDC8&gt;.</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&lt;Vector (%f, %f)&gt;&#x27;</span> % (self.x, self.y, )<br><br>a = Vector(<span class="hljs-number">3</span>, <span class="hljs-number">5</span>)<br>b = Vector(<span class="hljs-number">2</span>, <span class="hljs-number">7</span>)<br><br><span class="hljs-built_in">print</span> a + b <span class="hljs-comment"># Output: &lt;Vector (5.000000, 12.000000)&gt;</span><br><span class="hljs-built_in">print</span> b - a <span class="hljs-comment"># Output: &lt;Vector (-1.000000, 2.000000)&gt;</span><br><span class="hljs-built_in">print</span> b * <span class="hljs-number">1.3</span> <span class="hljs-comment"># Output: &lt;Vector (2.600000, 9.100000)&gt;</span><br><span class="hljs-built_in">print</span> a // <span class="hljs-number">17</span> <span class="hljs-comment"># Output: &lt;Vector (0.000000, 0.000000)&gt;</span><br><span class="hljs-built_in">print</span> a / <span class="hljs-number">17</span> <span class="hljs-comment"># Output: &lt;Vector (0.176471, 0.294118)&gt;</span><br></code></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
       <categories>
         <category>Python</category>
         <category>advance</category>
@@ -370,6 +353,65 @@
       </tags>
   </entry>
   <entry>
+    <title>运算符重载</title>
+    <url>/2021/07/07/Python/advance/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/</url>
+    <content><![CDATA[<h1 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h1><ul>
+<li><code>python</code>中一切都是对象,每个对象都有一些特殊的内部方法</li>
+<li>这些方法都遵循<code>__action__</code>的命名规定</li>
+<li>通过运算符重载,可以让类进行一些数学运算<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Vector</span>(<span class="hljs-params"><span class="hljs-built_in">object</span></span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, x, y</span>):</span><br>        self.x = x<br>        self.y = y<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__add__</span>(<span class="hljs-params">self, v</span>):</span><br>        <span class="hljs-comment"># Addition with another vector.</span><br>        <span class="hljs-keyword">return</span> Vector(self.x + v.x, self.y + v.y)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__sub__</span>(<span class="hljs-params">self, v</span>):</span><br>        <span class="hljs-comment"># Subtraction with another vector.</span><br>        <span class="hljs-keyword">return</span> Vector(self.x - v.x, self.y - v.y)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__mul__</span>(<span class="hljs-params">self, s</span>):</span><br>        <span class="hljs-comment"># Multiplication with a scalar.</span><br>        <span class="hljs-keyword">return</span> Vector(self.x * s, self.y * s)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__div__</span>(<span class="hljs-params">self, s</span>):</span><br>        <span class="hljs-comment"># Division with a scalar.</span><br>        float_s = <span class="hljs-built_in">float</span>(s)<br>        <span class="hljs-keyword">return</span> Vector(self.x / float_s, self.y / float_s)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__floordiv__</span>(<span class="hljs-params">self, s</span>):</span><br>        <span class="hljs-comment"># Division with a scalar (value floored).</span><br>        <span class="hljs-keyword">return</span> Vector(self.x // s, self.y // s)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__repr__</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-comment"># Print friendly representation of Vector class. Else, it would</span><br>        <span class="hljs-comment"># show up like, &lt;__main__.Vector instance at 0x01DDDDC8&gt;.</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&lt;Vector (%f, %f)&gt;&#x27;</span> % (self.x, self.y, )<br><br>a = Vector(<span class="hljs-number">3</span>, <span class="hljs-number">5</span>)<br>b = Vector(<span class="hljs-number">2</span>, <span class="hljs-number">7</span>)<br><br><span class="hljs-built_in">print</span> a + b <span class="hljs-comment"># Output: &lt;Vector (5.000000, 12.000000)&gt;</span><br><span class="hljs-built_in">print</span> b - a <span class="hljs-comment"># Output: &lt;Vector (-1.000000, 2.000000)&gt;</span><br><span class="hljs-built_in">print</span> b * <span class="hljs-number">1.3</span> <span class="hljs-comment"># Output: &lt;Vector (2.600000, 9.100000)&gt;</span><br><span class="hljs-built_in">print</span> a // <span class="hljs-number">17</span> <span class="hljs-comment"># Output: &lt;Vector (0.000000, 0.000000)&gt;</span><br><span class="hljs-built_in">print</span> a / <span class="hljs-number">17</span> <span class="hljs-comment"># Output: &lt;Vector (0.176471, 0.294118)&gt;</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>advance</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Pyhont-Tuple</title>
+    <url>/2021/07/07/Python/basic/ListAndTuple/</url>
+    <content><![CDATA[<h1 id="列表与元组"><a href="#列表与元组" class="headerlink" title="列表与元组"></a>列表与元组</h1><ul>
+<li>当元素类型不一时使用元组,当类型一样则使用列表</li>
+<li>元组遍历更快</li>
+<li>使用元组元素(不可变)可作为字典的键值,而列表不可</li>
+<li>元组保证了数据的安全<span id="more"></span>
+<h2 id="1-列表"><a href="#1-列表" class="headerlink" title="1 列表"></a>1 列表</h2></li>
+</ul>
+<p>–</p>
+<h2 id="2-元组-tuple"><a href="#2-元组-tuple" class="headerlink" title="2 元组-tuple"></a>2 元组-<code>tuple</code></h2><p>元组类似于列表,但区别在于元组中的元素是不可变的</p>
+<h3 id="2-1-创建一个元组"><a href="#2-1-创建一个元组" class="headerlink" title="2.1 创建一个元组"></a>2.1 创建一个元组</h3><p><code>1.</code> 使用<code>()</code>创建一个元组,使用<code>,</code>间隔元素<br><code>2.</code> 类似于列表,元组中的元素可以是任何数据类型</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuple1 = (<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(tuple1, tuple1.__class__)<br>(<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]) &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">tuple</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>因为元组不能改变,所以创建伊始就应该指定正确的元素</p>
+</blockquote>
+<p><code>3.</code> 创建元组时只指明一个元素<code>(dtype A)</code>,则该元组(你意图创建的)会被视为<code>A</code>的对象</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># case1</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>a = (<span class="hljs-string">&#x27;aa&#x27;</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">str</span>&#x27;&gt;</span><br><span class="hljs-class"># <span class="hljs-title">case2</span></span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">b</span> = (<span class="hljs-params">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]</span>)</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">print</span>(<span class="hljs-params">b.__class__</span>)</span><br><span class="hljs-class">&lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">list</span>&#x27;&gt;</span><br><span class="hljs-class"># <span class="hljs-title">case3</span></span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">c</span> = (<span class="hljs-params"><span class="hljs-number">1</span></span>)</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">print</span>(<span class="hljs-params">c.__class__</span>)</span><br><span class="hljs-class">&lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">int</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
+<p><code>case1-3</code>中意图创建元组<code>a b c</code>,但创建时指指定了一个内部元素<code>param(dtype A)</code>,因此该元组被视为<code>A</code>类的一个对象</p>
+<h3 id="2-2-访问元组元素"><a href="#2-2-访问元组元素" class="headerlink" title="2.2 访问元组元素"></a>2.2 访问元组元素</h3><h4 id="2-2-1-索引-index"><a href="#2-2-1-索引-index" class="headerlink" title="2.2.1 索引-index"></a>2.2.1 索引-index</h4><p><code>[index:int]</code>使用索引操作符来访问元组中的元素<br><code>1.</code> 正索引 : <code>0-len(tuple)-1</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuple1 = (<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(tuple1[<span class="hljs-number">2</span>])<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
+<p><code>2.</code> 负索引</p>
+<h4 id="2-2-2-切片"><a href="#2-2-2-切片" class="headerlink" title="2.2.2 切片"></a>2.2.2 切片</h4><p><code>:</code>使用切片操作符</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuple1 = (<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(tuple1[<span class="hljs-number">1</span>:])<br>(<span class="hljs-number">1</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])<br></code></pre></td></tr></table></figure>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p><code>1.</code> <code>enumerate()</code>: 将元组内所有对象及其索引枚举,以元组的形式返回</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">enumerate</span>(tuple1).__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">enumerate</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
+<p><code>2.</code> <code>tuple()</code>: 将序列（元组，字符串，字典）转换为元组</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>list1 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-string">&#x27;aa&#x27;</span>,(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)]<br><span class="hljs-meta">&gt;&gt;&gt; </span>tp1 = <span class="hljs-built_in">tuple</span>(list1)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(list1.__class__, tp1.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">list</span>&#x27;&gt; &lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">tuple</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
+<p><code>3.</code> <code>sorted</code>: 返回一个排序元组</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuplle1 = (<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">0</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">sorted</span>(tuplle1))<br>[<span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>basic</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Namespace</title>
     <url>/2021/07/07/Python/basic/NameSpace/</url>
     <content><![CDATA[<h1 id="命名空间及作用域"><a href="#命名空间及作用域" class="headerlink" title="命名空间及作用域"></a>命名空间及作用域</h1><h2 id="1-命名空间"><a href="#1-命名空间" class="headerlink" title="1.命名空间"></a>1.命名空间</h2><h3 id="1-1-命名空间（Namespace）"><a href="#1-1-命名空间（Namespace）" class="headerlink" title="1.1 命名空间（Namespace）"></a>1.1 命名空间（Namespace）</h3><p><code>1.</code> 是从名称到对象的映射，一般通过字典实现<br><code>2.</code> 类似于<code>c++</code></p>
@@ -421,47 +463,6 @@ python内置此方法的输出为元素长度:<figure class="highlight python"><
 <h3 id="2-3-规则"><a href="#2-3-规则" class="headerlink" title="2.3 规则"></a>2.3 规则</h3><code>1.</code> 当在函数中引用一个变量的时候，以上的作用域顺序也是 Python 搜索的一个顺序 <code>L-&gt;E-G-B</code>，首先尝试局部作用域，没找到的话，继续搜索闭包函数作用域，然后再是全局作用域和内置作用域。<br><code>2.</code> Python 中只有模块（module），类（class）以及函数（def、lambda）才会引入新的作用域</li>
 <li>其它的代码块（如 if/elif/else/、try/except、for/while等）是不会引入新的作用域的，也就是说这些语句内定义的变量，外部也可以访问(如<code>1.3.1.2</code>) 如:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">if</span> <span class="hljs-literal">True</span>:<br><span class="hljs-meta">... </span>    testStr = <span class="hljs-string">&#x27;this is a testline to test if this is a new region&#x27;</span><br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(testStr)<br>this <span class="hljs-keyword">is</span> a testline to test <span class="hljs-keyword">if</span> this <span class="hljs-keyword">is</span> a new region<br></code></pre></td></tr></table></figure></li>
 </ul>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>basic</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Pyhont-Tuple</title>
-    <url>/2021/07/07/Python/basic/ListAndTuple/</url>
-    <content><![CDATA[<h1 id="列表与元组"><a href="#列表与元组" class="headerlink" title="列表与元组"></a>列表与元组</h1><ul>
-<li>当元素类型不一时使用元组,当类型一样则使用列表</li>
-<li>元组遍历更快</li>
-<li>使用元组元素(不可变)可作为字典的键值,而列表不可</li>
-<li>元组保证了数据的安全<h2 id="1-列表"><a href="#1-列表" class="headerlink" title="1 列表"></a>1 列表</h2></li>
-</ul>
-<p>–</p>
-<h2 id="2-元组-tuple"><a href="#2-元组-tuple" class="headerlink" title="2 元组-tuple"></a>2 元组-<code>tuple</code></h2><p>元组类似于列表,但区别在于元组中的元素是不可变的</p>
-<h3 id="2-1-创建一个元组"><a href="#2-1-创建一个元组" class="headerlink" title="2.1 创建一个元组"></a>2.1 创建一个元组</h3><p><code>1.</code> 使用<code>()</code>创建一个元组,使用<code>,</code>间隔元素<br><code>2.</code> 类似于列表,元组中的元素可以是任何数据类型</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuple1 = (<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(tuple1, tuple1.__class__)<br>(<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]) &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">tuple</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>因为元组不能改变,所以创建伊始就应该指定正确的元素</p>
-</blockquote>
-<p><code>3.</code> 创建元组时只指明一个元素<code>(dtype A)</code>,则该元组(你意图创建的)会被视为<code>A</code>的对象</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># case1</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>a = (<span class="hljs-string">&#x27;aa&#x27;</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">str</span>&#x27;&gt;</span><br><span class="hljs-class"># <span class="hljs-title">case2</span></span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">b</span> = (<span class="hljs-params">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]</span>)</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">print</span>(<span class="hljs-params">b.__class__</span>)</span><br><span class="hljs-class">&lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">list</span>&#x27;&gt;</span><br><span class="hljs-class"># <span class="hljs-title">case3</span></span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">c</span> = (<span class="hljs-params"><span class="hljs-number">1</span></span>)</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">print</span>(<span class="hljs-params">c.__class__</span>)</span><br><span class="hljs-class">&lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">int</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
-<p><code>case1-3</code>中意图创建元组<code>a b c</code>,但创建时指指定了一个内部元素<code>param(dtype A)</code>,因此该元组被视为<code>A</code>类的一个对象</p>
-<h3 id="2-2-访问元组元素"><a href="#2-2-访问元组元素" class="headerlink" title="2.2 访问元组元素"></a>2.2 访问元组元素</h3><h4 id="2-2-1-索引-index"><a href="#2-2-1-索引-index" class="headerlink" title="2.2.1 索引-index"></a>2.2.1 索引-index</h4><p><code>[index:int]</code>使用索引操作符来访问元组中的元素<br><code>1.</code> 正索引 : <code>0-len(tuple)-1</code></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuple1 = (<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(tuple1[<span class="hljs-number">2</span>])<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
-<p><code>2.</code> 负索引</p>
-<h4 id="2-2-2-切片"><a href="#2-2-2-切片" class="headerlink" title="2.2.2 切片"></a>2.2.2 切片</h4><p><code>:</code>使用切片操作符</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuple1 = (<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(tuple1[<span class="hljs-number">1</span>:])<br>(<span class="hljs-number">1</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])<br></code></pre></td></tr></table></figure>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p><code>1.</code> <code>enumerate()</code>: 将元组内所有对象及其索引枚举,以元组的形式返回</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">enumerate</span>(tuple1).__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">enumerate</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
-<p><code>2.</code> <code>tuple()</code>: 将序列（元组，字符串，字典）转换为元组</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>list1 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-string">&#x27;aa&#x27;</span>,(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)]<br><span class="hljs-meta">&gt;&gt;&gt; </span>tp1 = <span class="hljs-built_in">tuple</span>(list1)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(list1.__class__, tp1.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">list</span>&#x27;&gt; &lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">tuple</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
-<p><code>3.</code> <code>sorted</code>: 返回一个排序元组</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuplle1 = (<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">0</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">sorted</span>(tuplle1))<br>[<span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
-
-
 ]]></content>
       <categories>
         <category>Python</category>

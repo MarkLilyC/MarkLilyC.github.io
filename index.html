@@ -52,7 +52,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>MarkLily</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -197,12 +197,7 @@
 当元素类型不一时使用元组,当类型一样则使用列表
 元组遍历更快
 使用元组元素(不可变)可作为字典的键值,而列表不可
-元组保证了数据的安全1 列表
-
-–
-2 元组-tuple元组类似于列表,但区别在于元组中的元素是不可变的
-2.1 创建一个元组1. 使用()创建一个元组,使用,间隔元素2. 类似于列表,元组中的元素可以是任何数据类型
-123&gt;&gt;&gt; tuple1 = (&#
+元组保证了数据的安全
         </a>
       </p>
 
@@ -405,65 +400,6 @@ python中的类与对象
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/07/07/numpy/numpy100/" target="_self">
-          Numpy100
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/07/07/numpy/numpy100/" target="_self">
-          
-          
-            
-          
-          github上的开源项目2021.7.4 17：06 cj at swjtu jiuli campus创建一个长度为10的空向量12z = np.zeros(10)print(z)
-找到数组的内存大小12z = np.zeros(10)print(z.size * z.itermsize)
-
-z.size获取到内部的元素个数z.itemsize获取到各个元素的大小
-
-从命令行对得到相关函数的说明文
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-07 15:22" pubdate>
-              2021-07-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/Python/">Python</a>
-            
-              <a href="/categories/Python/Numpy/">Numpy</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Python/">Python</a>
-            
-              <a href="/tags/Numpy/">Numpy</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
         <a href="/2021/07/07/Python/advance/map%E5%87%BD%E6%95%B0/" target="_self">
           map函数
         </a>
@@ -522,30 +458,23 @@ function 用于对iterable中的元素进行转换  1234&gt;&gt; def squ(x):... 
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/07/07/Python/advance/%E5%8F%91%E7%94%9F%E5%99%A8/" target="_self">
-          发生器
+        <a href="/2021/07/07/numpy/numpy100/" target="_self">
+          Numpy100
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/07/07/Python/advance/%E5%8F%91%E7%94%9F%E5%99%A8/" target="_self">
+        <a href="/2021/07/07/numpy/numpy100/" target="_self">
           
           
             
           
-          发生器
-Python发生器通过关键字yeild创建
+          github上的开源项目2021.7.4 17：06 cj at swjtu jiuli campus创建一个长度为10的空向量12z = np.zeros(10)print(z)
+找到数组的内存大小12z = np.zeros(10)print(z.size * z.itermsize)
 
-或通过发生器表达式 expression for x in an_iterator创建
+z.size获取到内部的元素个数z.itemsize获取到各个元素的大小
 
-生成器保存的算法而非具体数据,因此节约了内存
-发生器
-发生器返回对象为 generator
-发生器表达式
-发生器类似于列表推导式,但发生器用()声明
-
-当发生器作为函数的唯一参数时,不必多重括号:
-  1234567891011121314151617&g
+从命令行对得到相关函数的说明文
         </a>
       </p>
 
@@ -564,7 +493,7 @@ Python发生器通过关键字yeild创建
             
               <a href="/categories/Python/">Python</a>
             
-              <a href="/categories/Python/advance/">advance</a>
+              <a href="/categories/Python/Numpy/">Numpy</a>
             
           </div>
         
@@ -573,6 +502,8 @@ Python发生器通过关键字yeild创建
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/Python/">Python</a>
+            
+              <a href="/tags/Numpy/">Numpy</a>
             
           </div>
         
@@ -658,6 +589,70 @@ result = [ &lt;expression&gt; for &lt;element&gt; in &lt;iterable&gt; ]
 对其中每个元素element
 根据函数expression进行相应变化得到结果元素
 将结果元素立即添加到result中123&gt;&gt;&gt; testSquares = [x * x fo
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-07 15:22" pubdate>
+              2021-07-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Python/">Python</a>
+            
+              <a href="/categories/Python/advance/">advance</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Python/">Python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/07/Python/advance/%E5%8F%91%E7%94%9F%E5%99%A8/" target="_self">
+          发生器
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/07/Python/advance/%E5%8F%91%E7%94%9F%E5%99%A8/" target="_self">
+          
+          
+            
+          
+          发生器
+Python发生器通过关键字yeild创建
+
+或通过发生器表达式 expression for x in an_iterator创建
+
+生成器保存的算法而非具体数据,因此节约了内存
+发生器
+发生器返回对象为 generator
+发生器表达式
+发生器类似于列表推导式,但发生器用()声明
+
+当发生器作为函数的唯一参数时,不必多重括号:
+  1234567891011121314151617&g
         </a>
       </p>
 
