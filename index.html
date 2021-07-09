@@ -142,7 +142,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/fluidPics%5Chome.jpg') no-repeat center center;
+         style="background: url('/fluidPics/home.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -194,7 +194,7 @@
             
           
           列表与元组
-当元素类型不一时使用元组,当类型一样则使用列表
+当元素类型不一时使用元组,当类型一样则使用列表 [1]
 元组遍历更快
 使用元组元素(不可变)可作为字典的键值,而列表不可
 元组保证了数据的安全
@@ -459,24 +459,21 @@ z.size获取到内部的元素个数z.itemsize获取到各个元素的大小
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/07/07/Python/basic/Array/" target="_self">
-          Pyhont-Array
+        <a href="/2021/07/07/Python/advance/python%E8%A3%85%E9%A5%B0%E5%99%A8/" target="_self">
+          装饰器
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/07/07/Python/basic/Array/" target="_self">
+        <a href="/2021/07/07/Python/advance/python%E8%A3%85%E9%A5%B0%E5%99%A8/" target="_self">
           
           
             
           
-          数组-array数组的基本性质:
+          装饰器Python装饰器能够动态地改变函数 方法 类的功能,而不用子类重写或修改函数源代码的方式   
+装饰器函数装饰器函数基础装饰器 增强了其他函数的功能
 
-数组本身不属于基本数据类型,需要导入array使用数组
-数组内部元素类型相同
-数组不同于列表:内部元素相同,列表内部元素可以不同
-人如其名,内部元素只能是数字数组定义
-声明一个数组,必须遵循基本语法:arrayName = array(typecode, [initializers]): typecode:str  123&gt;&gt;&gt; arr1 = 
+任何将函数作为传入参数并返回一个增强函数的函数都可以视为一个装饰器函数12345678910# 定义装饰器函数def decoratorFunc(f):    return f# 语法糖 进行函数装饰@decoratorFunc# 定义待装
         </a>
       </p>
 
@@ -495,7 +492,7 @@ z.size获取到内部的元素个数z.itemsize获取到各个元素的大小
             
               <a href="/categories/Python/">Python</a>
             
-              <a href="/categories/Python/basic/">basic</a>
+              <a href="/categories/Python/advance/">advance</a>
             
           </div>
         
@@ -535,6 +532,70 @@ python内置函数
 mapmap(function, iterable...)
 iterable 作为映射中原数据的来源
 function 用于对iterable中的元素进行转换  1234&gt;&gt; def squ(x):...     return x * x...&gt;&gt;&gt; mapResult = map(squ, [1
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-07 15:22" pubdate>
+              2021-07-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Python/">Python</a>
+            
+              <a href="/categories/Python/advance/">advance</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Python/">Python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/07/Python/advance/%E5%8F%91%E7%94%9F%E5%99%A8/" target="_self">
+          发生器
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/07/Python/advance/%E5%8F%91%E7%94%9F%E5%99%A8/" target="_self">
+          
+          
+            
+          
+          发生器
+Python发生器通过关键字yeild创建
+
+或通过发生器表达式 expression for x in an_iterator创建
+
+生成器保存的算法而非具体数据,因此节约了内存
+发生器
+发生器返回对象为 generator
+发生器表达式
+发生器类似于列表推导式,但发生器用()声明
+
+当发生器作为函数的唯一参数时,不必多重括号:
+  1234567891011121314151617&g
         </a>
       </p>
 
@@ -632,85 +693,21 @@ result = [ &lt;expression&gt; for &lt;element&gt; in &lt;iterable&gt; ]
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/07/07/Python/advance/python%E8%A3%85%E9%A5%B0%E5%99%A8/" target="_self">
-          装饰器
+        <a href="/2021/07/07/Python/advance/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" target="_self">
+          多线程
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/07/07/Python/advance/python%E8%A3%85%E9%A5%B0%E5%99%A8/" target="_self">
+        <a href="/2021/07/07/Python/advance/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" target="_self">
           
           
             
           
-          装饰器Python装饰器能够动态地改变函数 方法 类的功能,而不用子类重写或修改函数源代码的方式   
-装饰器函数装饰器函数基础装饰器 增强了其他函数的功能
+          多线程python多线程并非真正意义上的多线程
 
-任何将函数作为传入参数并返回一个增强函数的函数都可以视为一个装饰器函数12345678910# 定义装饰器函数def decoratorFunc(f):    return f# 语法糖 进行函数装饰@decoratorFunc# 定义待装
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-07 15:22" pubdate>
-              2021-07-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/Python/">Python</a>
-            
-              <a href="/categories/Python/advance/">advance</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Python/">Python</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/07/07/Python/advance/%E5%8F%91%E7%94%9F%E5%99%A8/" target="_self">
-          发生器
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/07/07/Python/advance/%E5%8F%91%E7%94%9F%E5%99%A8/" target="_self">
-          
-          
-            
-          
-          发生器
-Python发生器通过关键字yeild创建
-
-或通过发生器表达式 expression for x in an_iterator创建
-
-生成器保存的算法而非具体数据,因此节约了内存
-发生器
-发生器返回对象为 generator
-发生器表达式
-发生器类似于列表推导式,但发生器用()声明
-
-当发生器作为函数的唯一参数时,不必多重括号:
-  1234567891011121314151617&g
+每个进程运行时都需要等到GIL释放,然后得到GIL后上锁
+因此,同一时间只有一个python线程在运行创建线程 threading.Thread使用threading,创建新的threading.Thread,为其分配要执行的函数来启动新的执行线程12345&gt;&gt;&gt; import threading&gt;&gt;&gt; def 
         </a>
       </p>
 
