@@ -72,7 +72,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>MarkLily</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -162,7 +162,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/fluidPics/beatles.jpg') no-repeat center center;
+         style="background: url('/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -189,7 +189,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      554 字
+      557 字
     </span>
   
 
@@ -237,9 +237,8 @@
 <li>元组遍历更快</li>
 <li>使用元组元素(不可变)可作为字典的键值,而列表不可</li>
 <li>元组保证了数据的安全<span id="more"></span>
-<h2 id="1-列表"><a href="#1-列表" class="headerlink" title="1 列表"></a>1 列表</h2></li>
+<h2 id="1-列表"><a href="#1-列表" class="headerlink" title="1 列表"></a>1 列表</h2>略</li>
 </ul>
-<p>–</p>
 <h2 id="2-元组-tuple"><a href="#2-元组-tuple" class="headerlink" title="2 元组-tuple"></a>2 元组-<code>tuple</code></h2><p>元组类似于列表,但区别在于元组中的元素是不可变的</p>
 <h3 id="2-1-创建一个元组"><a href="#2-1-创建一个元组" class="headerlink" title="2.1 创建一个元组"></a>2.1 创建一个元组</h3><p><code>1.</code> 使用<code>()</code>创建一个元组,使用<code>,</code>间隔元素<br><code>2.</code> 类似于列表,元组中的元素可以是任何数据类型</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuple1 = (<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(tuple1, tuple1.__class__)<br>(<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]) &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">tuple</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
@@ -260,9 +259,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>list1 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-string">&#x27;aa&#x27;</span>,(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)]<br><span class="hljs-meta">&gt;&gt;&gt; </span>tp1 = <span class="hljs-built_in">tuple</span>(list1)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(list1.__class__, tp1.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">list</span>&#x27;&gt; &lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">tuple</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
 <p><code>3.</code> <code>sorted</code>: 返回一个排序元组</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuplle1 = (<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">0</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">sorted</span>(tuplle1))<br>[<span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
-
-
-
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2>
             </div>
             <hr>
             <div>
@@ -313,15 +310,6 @@
               
             </div>
 
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-
-              </article>
             
           </article>
         </div>
