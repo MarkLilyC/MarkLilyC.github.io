@@ -98,6 +98,35 @@
       </tags>
   </entry>
   <entry>
+    <title>map函数</title>
+    <url>/2021/07/07/Python/advance/map%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="map函数"><a href="#map函数" class="headerlink" title="map函数"></a>map函数</h1><ul>
+<li>python内置函数</li>
+<li>会根据给定函数,对指定序列做出映射</li>
+</ul>
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><h3 id="map-function-iterable"><a href="#map-function-iterable" class="headerlink" title="map(function, iterable...)"></a><code>map(function, iterable...)</code></h3><ul>
+<li><code>iterable</code> 作为映射中原数据的来源</li>
+<li><code>function</code> 用于对<code>iterable</code>中的元素进行转换  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;&gt; <span class="function"><span class="keyword">def</span> <span class="title">squ</span>(<span class="params">x</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">return</span> x * x</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>mapResult = <span class="built_in">map</span>(squ, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</span><br></pre></td></tr></table></figure></li>
+<li><code>python 2.</code> 返回列表</li>
+<li><code>python 3.</code> 返回迭代器  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(mapResult.__class__)</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">map</span>&#x27;&gt;</span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">for</span> <span class="title">i</span> <span class="title">in</span> <span class="title">mapResult</span>:</span></span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(i)</span><br><span class="line">...</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">9</span></span><br><span class="line"><span class="number">16</span></span><br><span class="line"><span class="number">25</span></span><br></pre></td></tr></table></figure></li>
+<li>可通过<code>list(map())</code>的显示转换来消除版本之间的差异  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">squ</span>(<span class="params">x</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">return</span> x * x</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list1 = <span class="built_in">list</span>(<span class="built_in">map</span>(squ, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(list1)</span><br><span class="line">[<span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">16</span>, <span class="number">25</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="lambda"><a href="#lambda" class="headerlink" title="lambda"></a><code>lambda</code></h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="keyword">lambda</span> x : x * x, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])))</span><br><span class="line">[<span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">16</span>, <span class="number">25</span>]</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><h3 id="map完成数据类型转换"><a href="#map完成数据类型转换" class="headerlink" title="map完成数据类型转换"></a><code>map</code>完成数据类型转换</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">str</span>, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])))</span><br><span class="line">[<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>, <span class="string">&#x27;4&#x27;</span>, <span class="string">&#x27;5&#x27;</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="map元组转列表"><a href="#map元组转列表" class="headerlink" title="map元组转列表"></a><code>map</code>元组转列表</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>list1 = <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(list1)</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>原理是:元组作为迭代器可作为<code>map()</code>函数参数传入,当元组内部元素数据类型与<code>function</code>转出数据类型一致时,再将<code>map</code>返回迭代器转为列表</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>advance</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>装饰器</title>
     <url>/2021/07/07/Python/advance/python%E8%A3%85%E9%A5%B0%E5%99%A8/</url>
     <content><![CDATA[<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><p>Python装饰器能够动态地改变函数 方法 类的功能,而不用子类重写或修改函数源代码的方式   </p>
@@ -147,35 +176,6 @@
       </tags>
   </entry>
   <entry>
-    <title>map函数</title>
-    <url>/2021/07/07/Python/advance/map%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="map函数"><a href="#map函数" class="headerlink" title="map函数"></a>map函数</h1><ul>
-<li>python内置函数</li>
-<li>会根据给定函数,对指定序列做出映射</li>
-</ul>
-<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><h3 id="map-function-iterable"><a href="#map-function-iterable" class="headerlink" title="map(function, iterable...)"></a><code>map(function, iterable...)</code></h3><ul>
-<li><code>iterable</code> 作为映射中原数据的来源</li>
-<li><code>function</code> 用于对<code>iterable</code>中的元素进行转换  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;&gt; <span class="function"><span class="keyword">def</span> <span class="title">squ</span>(<span class="params">x</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">return</span> x * x</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>mapResult = <span class="built_in">map</span>(squ, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</span><br></pre></td></tr></table></figure></li>
-<li><code>python 2.</code> 返回列表</li>
-<li><code>python 3.</code> 返回迭代器  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(mapResult.__class__)</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">map</span>&#x27;&gt;</span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">for</span> <span class="title">i</span> <span class="title">in</span> <span class="title">mapResult</span>:</span></span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(i)</span><br><span class="line">...</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">9</span></span><br><span class="line"><span class="number">16</span></span><br><span class="line"><span class="number">25</span></span><br></pre></td></tr></table></figure></li>
-<li>可通过<code>list(map())</code>的显示转换来消除版本之间的差异  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">squ</span>(<span class="params">x</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">return</span> x * x</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list1 = <span class="built_in">list</span>(<span class="built_in">map</span>(squ, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(list1)</span><br><span class="line">[<span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">16</span>, <span class="number">25</span>]</span><br></pre></td></tr></table></figure>
-<h3 id="lambda"><a href="#lambda" class="headerlink" title="lambda"></a><code>lambda</code></h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="keyword">lambda</span> x : x * x, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])))</span><br><span class="line">[<span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">16</span>, <span class="number">25</span>]</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><h3 id="map完成数据类型转换"><a href="#map完成数据类型转换" class="headerlink" title="map完成数据类型转换"></a><code>map</code>完成数据类型转换</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">str</span>, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])))</span><br><span class="line">[<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>, <span class="string">&#x27;4&#x27;</span>, <span class="string">&#x27;5&#x27;</span>]</span><br></pre></td></tr></table></figure>
-<h3 id="map元组转列表"><a href="#map元组转列表" class="headerlink" title="map元组转列表"></a><code>map</code>元组转列表</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>list1 = <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(list1)</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
-<ul>
-<li>原理是:元组作为迭代器可作为<code>map()</code>函数参数传入,当元组内部元素数据类型与<code>function</code>转出数据类型一致时,再将<code>map</code>返回迭代器转为列表</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>advance</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>列表推导式</title>
     <url>/2021/07/07/Python/advance/%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC%E5%BC%8F/</url>
     <content><![CDATA[<h1 id="列表推导式"><a href="#列表推导式" class="headerlink" title="列表推导式"></a>列表推导式</h1><h2 id="列表推导式基础"><a href="#列表推导式基础" class="headerlink" title="列表推导式基础"></a>列表推导式基础</h2><ul>
@@ -196,54 +196,6 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>testStr = [x <span class="keyword">if</span> x <span class="keyword">is</span> <span class="string">&#x27;a&#x27;</span> <span class="keyword">else</span> <span class="string">&#x27;b&#x27;</span> <span class="keyword">for</span> x <span class="keyword">in</span> <span class="string">&#x27;abcd&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(testStr)</span><br><span class="line">[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;b&#x27;</span>]</span><br></pre></td></tr></table></figure>
 
 
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>advance</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>多线程</title>
-    <url>/2021/07/07/Python/advance/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><p>python多线程并非真正意义上的多线程</p>
-<ul>
-<li>每个进程运行时都需要等到<code>GIL</code>释放,然后得到<code>GIL</code>后上锁</li>
-<li>因此,同一时间只有一个<code>python</code>线程在运行<h2 id="创建线程-threading-Thread"><a href="#创建线程-threading-Thread" class="headerlink" title="创建线程 threading.Thread"></a>创建线程 <code>threading.Thread</code></h2>使用<code>threading</code>,创建新的<code>threading.Thread</code>,为其分配要执行的函数来启动新的执行线程<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> threading</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">test</span>():</span></span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(<span class="string">&quot;Running...&quot;</span>)</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>test_thread = threading.Thread(target=test)</span><br></pre></td></tr></table></figure></li>
-<li><code>target</code> 传入函数或可调用对象</li>
-<li>在<code>Thread</code>调用<code>start()</code>方法前,线程不会开始</li>
-</ul>
-<h2 id="开始线程-Thread-start"><a href="#开始线程-Thread-start" class="headerlink" title="开始线程 Thread.start()"></a>开始线程 <code>Thread.start()</code></h2><p><code>Thread.start()</code>开始线程</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>test_thread.start()</span><br><span class="line">Running...</span><br></pre></td></tr></table></figure>
-<ul>
-<li>当一个线程运行结束,再次调用<code>start()</code>方法,则会报错:  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>test_thread.start()</span><br><span class="line">Running...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>test_thread.start()</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">File <span class="string">&quot;D:\Python37\lib\threading.py&quot;</span>, line <span class="number">848</span>, <span class="keyword">in</span> start</span><br><span class="line">    <span class="keyword">raise</span> RuntimeError(<span class="string">&quot;threads can only be started once&quot;</span>)</span><br><span class="line">RuntimeError: threads can only be started once</span><br></pre></td></tr></table></figure></li>
-<li>若想将线程设置为守护线程持续运行,则需设置<code>daemon=True</code></li>
-</ul>
-<h2 id="加入线程-Thread-join"><a href="#加入线程-Thread-join" class="headerlink" title="加入线程 Thread.join()"></a>加入线程 <code>Thread.join()</code></h2>]]></content>
-      <categories>
-        <category>Python</category>
-        <category>advance</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>拷贝</title>
-    <url>/2021/07/07/Python/advance/%E6%95%B0%E6%8D%AE%E6%8B%B7%E8%B4%9D/</url>
-    <content><![CDATA[<h1 id="拷贝"><a href="#拷贝" class="headerlink" title="拷贝"></a>拷贝</h1><ul>
-<li>浅拷贝(<code>shallow copy</code>), 仅拷贝指向对象的指针</li>
-<li>深拷贝(`deep copy``),将整个对象拷贝至另外一块内存</li>
-</ul>
-<h2 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h2><ul>
-<li>假设原有一个列表<code>la = [1,2,3,[4,5,6]]</code>,将其浅拷贝到<code>lb</code></li>
-<li><code>lb</code>中某个元素改变时,会直接根据指针指向此列表所在内存,改变此列表值</li>
-<li>最终<code>la</code>值也改变  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>la = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>lb = la</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>lb[<span class="number">0</span>] = <span class="string">&#x27;a&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(lb)</span><br><span class="line">[<span class="string">&#x27;a&#x27;</span>, <span class="number">2</span>, <span class="number">3</span>, [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(la)</span><br><span class="line">[<span class="string">&#x27;a&#x27;</span>, <span class="number">2</span>, <span class="number">3</span>, [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]]</span><br></pre></td></tr></table></figure>
-  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">1</span>,<span class="number">2</span>,[<span class="number">3</span>,<span class="number">4</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = a.copy()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b[<span class="number">2</span>][<span class="number">1</span>] = <span class="number">0</span> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(a)</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">0</span>]]</span><br></pre></td></tr></table></figure>
-<h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2>通过引入<code>copy</code>,使用<code>copy.deepcopy()</code>方法<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> copy</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">1</span>,<span class="number">2</span>,[<span class="number">3</span>,<span class="number">4</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c = copy.deepcopy(a)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c[<span class="number">2</span>][<span class="number">1</span>] = <span class="number">99</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(c)</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">99</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(a)</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">0</span>]]</span><br></pre></td></tr></table></figure></li>
-</ul>
 ]]></content>
       <categories>
         <category>Python</category>
@@ -294,6 +246,54 @@
 </ul>
 <h3 id="next-函数"><a href="#next-函数" class="headerlink" title=".next()函数"></a><code>.next()</code>函数</h3><p>用于从生成器中获取值,并提供迭代结束的默认值</p>
 ]]></content>
+      <categories>
+        <category>Python</category>
+        <category>advance</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>拷贝</title>
+    <url>/2021/07/07/Python/advance/%E6%95%B0%E6%8D%AE%E6%8B%B7%E8%B4%9D/</url>
+    <content><![CDATA[<h1 id="拷贝"><a href="#拷贝" class="headerlink" title="拷贝"></a>拷贝</h1><ul>
+<li>浅拷贝(<code>shallow copy</code>), 仅拷贝指向对象的指针</li>
+<li>深拷贝(`deep copy``),将整个对象拷贝至另外一块内存</li>
+</ul>
+<h2 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h2><ul>
+<li>假设原有一个列表<code>la = [1,2,3,[4,5,6]]</code>,将其浅拷贝到<code>lb</code></li>
+<li><code>lb</code>中某个元素改变时,会直接根据指针指向此列表所在内存,改变此列表值</li>
+<li>最终<code>la</code>值也改变  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>la = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>lb = la</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>lb[<span class="number">0</span>] = <span class="string">&#x27;a&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(lb)</span><br><span class="line">[<span class="string">&#x27;a&#x27;</span>, <span class="number">2</span>, <span class="number">3</span>, [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(la)</span><br><span class="line">[<span class="string">&#x27;a&#x27;</span>, <span class="number">2</span>, <span class="number">3</span>, [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]]</span><br></pre></td></tr></table></figure>
+  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">1</span>,<span class="number">2</span>,[<span class="number">3</span>,<span class="number">4</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = a.copy()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b[<span class="number">2</span>][<span class="number">1</span>] = <span class="number">0</span> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(a)</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">0</span>]]</span><br></pre></td></tr></table></figure>
+<h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2>通过引入<code>copy</code>,使用<code>copy.deepcopy()</code>方法<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> copy</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">1</span>,<span class="number">2</span>,[<span class="number">3</span>,<span class="number">4</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c = copy.deepcopy(a)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c[<span class="number">2</span>][<span class="number">1</span>] = <span class="number">99</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(c)</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">99</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(a)</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">0</span>]]</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>advance</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>多线程</title>
+    <url>/2021/07/07/Python/advance/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><p>python多线程并非真正意义上的多线程</p>
+<ul>
+<li>每个进程运行时都需要等到<code>GIL</code>释放,然后得到<code>GIL</code>后上锁</li>
+<li>因此,同一时间只有一个<code>python</code>线程在运行<h2 id="创建线程-threading-Thread"><a href="#创建线程-threading-Thread" class="headerlink" title="创建线程 threading.Thread"></a>创建线程 <code>threading.Thread</code></h2>使用<code>threading</code>,创建新的<code>threading.Thread</code>,为其分配要执行的函数来启动新的执行线程<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> threading</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">test</span>():</span></span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(<span class="string">&quot;Running...&quot;</span>)</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>test_thread = threading.Thread(target=test)</span><br></pre></td></tr></table></figure></li>
+<li><code>target</code> 传入函数或可调用对象</li>
+<li>在<code>Thread</code>调用<code>start()</code>方法前,线程不会开始</li>
+</ul>
+<h2 id="开始线程-Thread-start"><a href="#开始线程-Thread-start" class="headerlink" title="开始线程 Thread.start()"></a>开始线程 <code>Thread.start()</code></h2><p><code>Thread.start()</code>开始线程</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>test_thread.start()</span><br><span class="line">Running...</span><br></pre></td></tr></table></figure>
+<ul>
+<li>当一个线程运行结束,再次调用<code>start()</code>方法,则会报错:  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>test_thread.start()</span><br><span class="line">Running...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>test_thread.start()</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">File <span class="string">&quot;D:\Python37\lib\threading.py&quot;</span>, line <span class="number">848</span>, <span class="keyword">in</span> start</span><br><span class="line">    <span class="keyword">raise</span> RuntimeError(<span class="string">&quot;threads can only be started once&quot;</span>)</span><br><span class="line">RuntimeError: threads can only be started once</span><br></pre></td></tr></table></figure></li>
+<li>若想将线程设置为守护线程持续运行,则需设置<code>daemon=True</code></li>
+</ul>
+<h2 id="加入线程-Thread-join"><a href="#加入线程-Thread-join" class="headerlink" title="加入线程 Thread.join()"></a>加入线程 <code>Thread.join()</code></h2>]]></content>
       <categories>
         <category>Python</category>
         <category>advance</category>
@@ -401,6 +401,86 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>tuplle1 = (<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="built_in">sorted</span>(tuplle1))</span><br><span class="line">[<span class="number">0</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
 
 
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>basic</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Namespace</title>
+    <url>/2021/07/07/Python/basic/NameSpace/</url>
+    <content><![CDATA[<h1 id="命名空间及作用域"><a href="#命名空间及作用域" class="headerlink" title="命名空间及作用域"></a>命名空间及作用域</h1><h2 id="1-命名空间"><a href="#1-命名空间" class="headerlink" title="1.命名空间"></a>1.命名空间</h2><h3 id="1-1-命名空间（Namespace）"><a href="#1-1-命名空间（Namespace）" class="headerlink" title="1.1 命名空间（Namespace）"></a>1.1 命名空间（Namespace）</h3><p><code>1.</code> 是从名称到对象的映射，一般通过字典实现<br><code>2.</code> 类似于<code>c++</code></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-命名空间主要为了避免对象名称冲突"><a href="#1-2-命名空间主要为了避免对象名称冲突" class="headerlink" title="1.2 命名空间主要为了避免对象名称冲突"></a>1.2 命名空间主要为了避免对象名称冲突</h3><p><code>1. </code> 各个命名空间之间相互独立<br><code>2. </code> 命名空间内部不能有同名称对象<br><code>3. </code> 各个命名空间之间可以有相同名称对象</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="section"># 如计算机内部文件夹之间的关系：</span></span><br><span class="line"><span class="bullet">    *</span> 单个文件夹内部不能有同名称元素</span><br><span class="line"><span class="bullet">    *</span> 不同文件夹之间可以同名称元素</span><br></pre></td></tr></table></figure>
+<h3 id="1-3-python一般有三种命名空间：内置-built-in-局部-本地-local-全局-global"><a href="#1-3-python一般有三种命名空间：内置-built-in-局部-本地-local-全局-global" class="headerlink" title="1.3 python一般有三种命名空间：内置-built in 局部(本地)-local 全局-global"></a>1.3 python一般有三种命名空间：<code>内置-built in</code> <code>局部(本地)-local</code> <code>全局-global</code></h3><h4 id="1-3-1-局部"><a href="#1-3-1-局部" class="headerlink" title="1.3.1 局部"></a>1.3.1 局部</h4><p><code>1.</code> 局部空间包含:函数中定义的名称,记录了函数的变量,包括函数的参数与局部变量</p>
+<ul>
+<li>此局部指的是此作用域,及其内部包含的对象 名称</li>
+</ul>
+<p><code>2.</code> <code>locals()</code>:返回当前位置的全部局部变量</p>
+<ul>
+<li>当前位置指的是当前<code>locals()</code>函数被调用的位置</li>
+<li>全局内使用<code>locals()</code>:所有有实例的函数 方法 lambda函式以及实现了__call__的,都会返回true<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="built_in">locals</span>())</span><br><span class="line">&#123;<span class="string">&#x27;__name__&#x27;</span>: <span class="string">&#x27;__main__&#x27;</span>, <span class="string">&#x27;__doc__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__package__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__loader__&#x27;</span>: &lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">_frozen_importlib</span>.<span class="title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="title">__spec__</span>&#x27;:</span> <span class="literal">None</span>, <span class="string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="string">&#x27;builtins&#x27;</span> (built-<span class="keyword">in</span>)&gt;, <span class="string">&#x27;len&#x27;</span>: &lt;function <span class="built_in">len</span> at <span class="number">0x00000186888145E8</span>&gt;&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>此时的局部空间等于全局空间</p>
+</blockquote>
+</li>
+<li>函数内部使用<code>locals()</code>:返回此函数空间内的所有名称及对象<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">len</span>(<span class="params">param</span>):</span></span><br><span class="line"><span class="meta">... </span>    in_param = <span class="number">2</span></span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(<span class="built_in">locals</span>())</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>(<span class="number">4</span>)</span><br><span class="line">&#123;<span class="string">&#x27;param&#x27;</span>: <span class="number">4</span>, <span class="string">&#x27;in_param&#x27;</span>: <span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure></li>
+<li>循环内使用<code>locals()</code>:  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> [<span class="number">1</span>,<span class="number">2</span>]:</span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(<span class="built_in">locals</span>())</span><br><span class="line">...</span><br><span class="line">&#123;<span class="string">&#x27;__name__&#x27;</span>: <span class="string">&#x27;__main__&#x27;</span>, <span class="string">&#x27;__doc__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__package__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__loader__&#x27;</span>: &lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">_frozen_importlib</span>.<span class="title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="title">__spec__</span>&#x27;:</span> <span class="literal">None</span>, <span class="string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="string">&#x27;builtins&#x27;</span> (built-<span class="keyword">in</span>)&gt;, <span class="string">&#x27;i&#x27;</span>: <span class="number">1</span>&#125;</span><br><span class="line">&#123;<span class="string">&#x27;__name__&#x27;</span>: <span class="string">&#x27;__main__&#x27;</span>, <span class="string">&#x27;__doc__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__package__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__loader__&#x27;</span>: &lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">_frozen_importlib</span>.<span class="title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="title">__spec__</span>&#x27;:</span> <span class="literal">None</span>, <span class="string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="string">&#x27;builtins&#x27;</span> (built-<span class="keyword">in</span>)&gt;, <span class="string">&#x27;i&#x27;</span>: <span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>证明for循环不算一个单独的作用域</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="1-3-2-全局"><a href="#1-3-2-全局" class="headerlink" title="1.3.2 全局"></a>1.3.2 全局</h4><p><code>1.</code> 全局空间包含:模块中定义的名称,记录了模块的变量,包括函数 类 导入模块</p>
+<ul>
+<li>可理解为此<code>.py</code>文件所代表的空间</li>
+</ul>
+<p><code>2.</code> <code>globals()</code>:返回当前全局空间内的名称及对象</p>
+<ul>
+<li>全局内使用<code>globals()</code>:<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="built_in">globals</span>())</span><br><span class="line">&#123;<span class="string">&#x27;__name__&#x27;</span>: <span class="string">&#x27;__main__&#x27;</span>, <span class="string">&#x27;__doc__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__package__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__loader__&#x27;</span>: &lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">_frozen_importlib</span>.<span class="title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="title">__spec__</span>&#x27;:</span> <span class="literal">None</span>, <span class="string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="string">&#x27;builtins&#x27;</span> (built-<span class="keyword">in</span>)&gt;, <span class="string">&#x27;i&#x27;</span>: <span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure></li>
+<li>全局命名空间里包括了整个模块内的命名名称，比如变量 x y 函数名,而且还包括了一些内置的变量命名，比如 <code>__name__</code> <code>__file__</code>等等。</li>
+<li>全局空间与全局使用局部空间相同:<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">if</span> <span class="built_in">locals</span>() == <span class="built_in">globals</span>():</span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(<span class="string">&#x27;yes&#x27;</span>)</span><br><span class="line"><span class="meta">... </span><span class="keyword">else</span>:</span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(<span class="string">&#x27;no&#x27;</span>)</span><br><span class="line">...</span><br><span class="line">yes</span><br></pre></td></tr></table></figure>
+<h4 id="1-3-3-内置"><a href="#1-3-3-内置" class="headerlink" title="1.3.3 内置"></a>1.3.3 内置</h4><code>1.</code> 内置空间包含:python语言的内置名称,如函数名abs char等<h3 id="1-4-各空间关系"><a href="#1-4-各空间关系" class="headerlink" title="1.4 各空间关系"></a>1.4 各空间关系</h3><code>1. </code>命名空间使用顺序:局部-&gt;全局-&gt;内置</li>
+<li>这样可以完成对<code>全局</code> <code>内置</code>函数的’’改写’’:<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">len</span>(<span class="params">param</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(param)</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br></pre></td></tr></table></figure>
+
+python内置此方法的输出为元素长度:<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="built_in">len</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]))</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br></pre></td></tr></table></figure></li>
+<li>当无法找到此名称的对象时,则抛出异常<h3 id="命名空间的生命周期"><a href="#命名空间的生命周期" class="headerlink" title="命名空间的生命周期"></a>命名空间的生命周期</h3>命名空间的声明周期却决与该变量的作用域,对象执行完成,则该命名空间的生命周期结束<h2 id="2-作用域"><a href="#2-作用域" class="headerlink" title="2. 作用域"></a>2. 作用域</h2><h3 id="2-1-作用域"><a href="#2-1-作用域" class="headerlink" title="2.1 作用域"></a>2.1 作用域</h3><code>1.</code> 作用域:访问某变量 对象的区域</li>
+<li>每个对象都存在特定的作用域中 作用时段中</li>
+<li>当前程序未执行到该作用域,则某些只存在于该作用域的对象则不能被访问</li>
+<li>或者说,只有被赋值且未该赋值区域未完成其全部功能时,该对象才能被访问<blockquote>
+<p>简单来说就是:该对象在未赋值时,不能被访问;使用结束跳出该域后也不能访问</p>
+</blockquote>
+<h3 id="2-2-作用域分类"><a href="#2-2-作用域分类" class="headerlink" title="2.2 作用域分类"></a>2.2 作用域分类</h3><h4 id="2-2-1-L-local-局部作用域"><a href="#2-2-1-L-local-局部作用域" class="headerlink" title="2.2.1 L-local 局部作用域"></a>2.2.1 <code>L-local</code> 局部作用域</h4><h4 id="2-2-2-E-encloing-scope-闭包函数作用域-嵌套函数-A-B-var-c-中var-c所在作用域"><a href="#2-2-2-E-encloing-scope-闭包函数作用域-嵌套函数-A-B-var-c-中var-c所在作用域" class="headerlink" title="2.2.2  E-encloing scope 闭包函数作用域,嵌套函数(A(B(var c)))中var c所在作用域"></a>2.2.2  <code>E-encloing scope</code> 闭包函数作用域,嵌套函数<code>(A(B(var c)))</code>中<code>var c</code>所在作用域</h4><h4 id="2-2-3-G-global"><a href="#2-2-3-G-global" class="headerlink" title="2.2.3  G=global"></a>2.2.3  <code>G=global</code></h4><h4 id="2-2-4-B-built-in"><a href="#2-2-4-B-built-in" class="headerlink" title="2.2.4  B-built in"></a>2.2.4  <code>B-built in</code></h4><code>1.</code> 内置作用域的实现是通过<code>builtin</code>标准模块实现  <blockquote>
+<p>但是此变量名本身并未放入内置作用域,需要导入模块才能使用<br><code>2.</code> <code>builtin</code></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> builtins</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dir</span>(builtins)</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-规则"><a href="#2-3-规则" class="headerlink" title="2.3 规则"></a>2.3 规则</h3><code>1.</code> 当在函数中引用一个变量的时候，以上的作用域顺序也是 Python 搜索的一个顺序 <code>L-&gt;E-G-B</code>，首先尝试局部作用域，没找到的话，继续搜索闭包函数作用域，然后再是全局作用域和内置作用域。<br><code>2.</code> Python 中只有模块（module），类（class）以及函数（def、lambda）才会引入新的作用域</li>
+<li>其它的代码块（如 if/elif/else/、try/except、for/while等）是不会引入新的作用域的，也就是说这些语句内定义的变量，外部也可以访问(如<code>1.3.1.2</code>) 如:<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">if</span> <span class="literal">True</span>:</span><br><span class="line"><span class="meta">... </span>    testStr = <span class="string">&#x27;this is a testline to test if this is a new region&#x27;</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(testStr)</span><br><span class="line">this <span class="keyword">is</span> a testline to test <span class="keyword">if</span> this <span class="keyword">is</span> a new region</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>basic</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Pyhont-Recursion</title>
+    <url>/2021/07/07/Python/basic/Recursion/</url>
+    <content><![CDATA[<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>计算阶乘</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">cal</span>(<span class="params">n</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line"><span class="meta">... </span>            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">else</span>:</span><br><span class="line"><span class="meta">... </span>            <span class="keyword">return</span> n * cal(n - <span class="number">1</span>)</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(cal(<span class="number">4</span>))</span><br><span class="line"><span class="number">24</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(cal(<span class="number">6</span>))</span><br><span class="line"><span class="number">720</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>递归函数内部会调用函数本身</li>
+<li>某次调用递归函数时,内部调用本身时会指定参数</li>
+<li>在递归函数中,应有一个结束参数信号,在每次递归中,参数不断靠近该信号<h2 id="递归次数限制"><a href="#递归次数限制" class="headerlink" title="递归次数限制"></a>递归次数限制</h2><code>python</code>递归次数限制为<code>3000</code>次,超出此次数则会触发<code>RecursionError</code><h2 id="移除递归次数限制"><a href="#移除递归次数限制" class="headerlink" title="移除递归次数限制"></a>移除递归次数限制</h2><code>sys.setrecursionlimit(5000)</code> 设置次数限制为我们所需要的次数</li>
+</ul>
 ]]></content>
       <categories>
         <category>Python</category>
@@ -682,25 +762,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Pyhont-Recursion</title>
-    <url>/2021/07/07/Python/basic/Recursion/</url>
-    <content><![CDATA[<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>计算阶乘</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">cal</span>(<span class="params">n</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line"><span class="meta">... </span>            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">else</span>:</span><br><span class="line"><span class="meta">... </span>            <span class="keyword">return</span> n * cal(n - <span class="number">1</span>)</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(cal(<span class="number">4</span>))</span><br><span class="line"><span class="number">24</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(cal(<span class="number">6</span>))</span><br><span class="line"><span class="number">720</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>递归函数内部会调用函数本身</li>
-<li>某次调用递归函数时,内部调用本身时会指定参数</li>
-<li>在递归函数中,应有一个结束参数信号,在每次递归中,参数不断靠近该信号<h2 id="递归次数限制"><a href="#递归次数限制" class="headerlink" title="递归次数限制"></a>递归次数限制</h2><code>python</code>递归次数限制为<code>3000</code>次,超出此次数则会触发<code>RecursionError</code><h2 id="移除递归次数限制"><a href="#移除递归次数限制" class="headerlink" title="移除递归次数限制"></a>移除递归次数限制</h2><code>sys.setrecursionlimit(5000)</code> 设置次数限制为我们所需要的次数</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>basic</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Pyhont-ArrDictionaryay</title>
     <url>/2021/07/07/Python/basic/dictionary/</url>
     <content><![CDATA[<h1 id="字典-Dictionary"><a href="#字典-Dictionary" class="headerlink" title="字典-Dictionary"></a>字典-Dictionary</h1><p>字典的基本性质:</p>
@@ -732,67 +793,6 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d.clear()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d</span><br><span class="line">&#123;&#125;</span><br></pre></td></tr></table></figure>
 <p><code>4.</code> <code>del</code> 删除特定键值对或删除整个字典</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d</span><br><span class="line">&#123;<span class="number">1</span>: <span class="string">&#x27;cjblue&#x27;</span>, <span class="number">5</span>: <span class="string">&#x27;marklily&#x27;</span>, <span class="number">2</span>: <span class="string">&#x27;pink&#x27;</span>, <span class="number">3</span>: <span class="string">&#x27;floyd&#x27;</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> d[<span class="number">1</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d</span><br><span class="line">&#123;<span class="number">5</span>: <span class="string">&#x27;marklily&#x27;</span>, <span class="number">2</span>: <span class="string">&#x27;pink&#x27;</span>, <span class="number">3</span>: <span class="string">&#x27;floyd&#x27;</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> d</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">NameError: name <span class="string">&#x27;d&#x27;</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>basic</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Namespace</title>
-    <url>/2021/07/07/Python/basic/NameSpace/</url>
-    <content><![CDATA[<h1 id="命名空间及作用域"><a href="#命名空间及作用域" class="headerlink" title="命名空间及作用域"></a>命名空间及作用域</h1><h2 id="1-命名空间"><a href="#1-命名空间" class="headerlink" title="1.命名空间"></a>1.命名空间</h2><h3 id="1-1-命名空间（Namespace）"><a href="#1-1-命名空间（Namespace）" class="headerlink" title="1.1 命名空间（Namespace）"></a>1.1 命名空间（Namespace）</h3><p><code>1.</code> 是从名称到对象的映射，一般通过字典实现<br><code>2.</code> 类似于<code>c++</code></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std</span><br></pre></td></tr></table></figure>
-<h3 id="1-2-命名空间主要为了避免对象名称冲突"><a href="#1-2-命名空间主要为了避免对象名称冲突" class="headerlink" title="1.2 命名空间主要为了避免对象名称冲突"></a>1.2 命名空间主要为了避免对象名称冲突</h3><p><code>1. </code> 各个命名空间之间相互独立<br><code>2. </code> 命名空间内部不能有同名称对象<br><code>3. </code> 各个命名空间之间可以有相同名称对象</p>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="section"># 如计算机内部文件夹之间的关系：</span></span><br><span class="line"><span class="bullet">    *</span> 单个文件夹内部不能有同名称元素</span><br><span class="line"><span class="bullet">    *</span> 不同文件夹之间可以同名称元素</span><br></pre></td></tr></table></figure>
-<h3 id="1-3-python一般有三种命名空间：内置-built-in-局部-本地-local-全局-global"><a href="#1-3-python一般有三种命名空间：内置-built-in-局部-本地-local-全局-global" class="headerlink" title="1.3 python一般有三种命名空间：内置-built in 局部(本地)-local 全局-global"></a>1.3 python一般有三种命名空间：<code>内置-built in</code> <code>局部(本地)-local</code> <code>全局-global</code></h3><h4 id="1-3-1-局部"><a href="#1-3-1-局部" class="headerlink" title="1.3.1 局部"></a>1.3.1 局部</h4><p><code>1.</code> 局部空间包含:函数中定义的名称,记录了函数的变量,包括函数的参数与局部变量</p>
-<ul>
-<li>此局部指的是此作用域,及其内部包含的对象 名称</li>
-</ul>
-<p><code>2.</code> <code>locals()</code>:返回当前位置的全部局部变量</p>
-<ul>
-<li>当前位置指的是当前<code>locals()</code>函数被调用的位置</li>
-<li>全局内使用<code>locals()</code>:所有有实例的函数 方法 lambda函式以及实现了__call__的,都会返回true<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="built_in">locals</span>())</span><br><span class="line">&#123;<span class="string">&#x27;__name__&#x27;</span>: <span class="string">&#x27;__main__&#x27;</span>, <span class="string">&#x27;__doc__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__package__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__loader__&#x27;</span>: &lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">_frozen_importlib</span>.<span class="title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="title">__spec__</span>&#x27;:</span> <span class="literal">None</span>, <span class="string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="string">&#x27;builtins&#x27;</span> (built-<span class="keyword">in</span>)&gt;, <span class="string">&#x27;len&#x27;</span>: &lt;function <span class="built_in">len</span> at <span class="number">0x00000186888145E8</span>&gt;&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>此时的局部空间等于全局空间</p>
-</blockquote>
-</li>
-<li>函数内部使用<code>locals()</code>:返回此函数空间内的所有名称及对象<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">len</span>(<span class="params">param</span>):</span></span><br><span class="line"><span class="meta">... </span>    in_param = <span class="number">2</span></span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(<span class="built_in">locals</span>())</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>(<span class="number">4</span>)</span><br><span class="line">&#123;<span class="string">&#x27;param&#x27;</span>: <span class="number">4</span>, <span class="string">&#x27;in_param&#x27;</span>: <span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure></li>
-<li>循环内使用<code>locals()</code>:  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> [<span class="number">1</span>,<span class="number">2</span>]:</span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(<span class="built_in">locals</span>())</span><br><span class="line">...</span><br><span class="line">&#123;<span class="string">&#x27;__name__&#x27;</span>: <span class="string">&#x27;__main__&#x27;</span>, <span class="string">&#x27;__doc__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__package__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__loader__&#x27;</span>: &lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">_frozen_importlib</span>.<span class="title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="title">__spec__</span>&#x27;:</span> <span class="literal">None</span>, <span class="string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="string">&#x27;builtins&#x27;</span> (built-<span class="keyword">in</span>)&gt;, <span class="string">&#x27;i&#x27;</span>: <span class="number">1</span>&#125;</span><br><span class="line">&#123;<span class="string">&#x27;__name__&#x27;</span>: <span class="string">&#x27;__main__&#x27;</span>, <span class="string">&#x27;__doc__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__package__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__loader__&#x27;</span>: &lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">_frozen_importlib</span>.<span class="title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="title">__spec__</span>&#x27;:</span> <span class="literal">None</span>, <span class="string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="string">&#x27;builtins&#x27;</span> (built-<span class="keyword">in</span>)&gt;, <span class="string">&#x27;i&#x27;</span>: <span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>证明for循环不算一个单独的作用域</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="1-3-2-全局"><a href="#1-3-2-全局" class="headerlink" title="1.3.2 全局"></a>1.3.2 全局</h4><p><code>1.</code> 全局空间包含:模块中定义的名称,记录了模块的变量,包括函数 类 导入模块</p>
-<ul>
-<li>可理解为此<code>.py</code>文件所代表的空间</li>
-</ul>
-<p><code>2.</code> <code>globals()</code>:返回当前全局空间内的名称及对象</p>
-<ul>
-<li>全局内使用<code>globals()</code>:<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="built_in">globals</span>())</span><br><span class="line">&#123;<span class="string">&#x27;__name__&#x27;</span>: <span class="string">&#x27;__main__&#x27;</span>, <span class="string">&#x27;__doc__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__package__&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;__loader__&#x27;</span>: &lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">_frozen_importlib</span>.<span class="title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="title">__spec__</span>&#x27;:</span> <span class="literal">None</span>, <span class="string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="string">&#x27;builtins&#x27;</span> (built-<span class="keyword">in</span>)&gt;, <span class="string">&#x27;i&#x27;</span>: <span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure></li>
-<li>全局命名空间里包括了整个模块内的命名名称，比如变量 x y 函数名,而且还包括了一些内置的变量命名，比如 <code>__name__</code> <code>__file__</code>等等。</li>
-<li>全局空间与全局使用局部空间相同:<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">if</span> <span class="built_in">locals</span>() == <span class="built_in">globals</span>():</span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(<span class="string">&#x27;yes&#x27;</span>)</span><br><span class="line"><span class="meta">... </span><span class="keyword">else</span>:</span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(<span class="string">&#x27;no&#x27;</span>)</span><br><span class="line">...</span><br><span class="line">yes</span><br></pre></td></tr></table></figure>
-<h4 id="1-3-3-内置"><a href="#1-3-3-内置" class="headerlink" title="1.3.3 内置"></a>1.3.3 内置</h4><code>1.</code> 内置空间包含:python语言的内置名称,如函数名abs char等<h3 id="1-4-各空间关系"><a href="#1-4-各空间关系" class="headerlink" title="1.4 各空间关系"></a>1.4 各空间关系</h3><code>1. </code>命名空间使用顺序:局部-&gt;全局-&gt;内置</li>
-<li>这样可以完成对<code>全局</code> <code>内置</code>函数的’’改写’’:<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">len</span>(<span class="params">param</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(param)</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br></pre></td></tr></table></figure>
-
-python内置此方法的输出为元素长度:<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="built_in">len</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]))</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br></pre></td></tr></table></figure></li>
-<li>当无法找到此名称的对象时,则抛出异常<h3 id="命名空间的生命周期"><a href="#命名空间的生命周期" class="headerlink" title="命名空间的生命周期"></a>命名空间的生命周期</h3>命名空间的声明周期却决与该变量的作用域,对象执行完成,则该命名空间的生命周期结束<h2 id="2-作用域"><a href="#2-作用域" class="headerlink" title="2. 作用域"></a>2. 作用域</h2><h3 id="2-1-作用域"><a href="#2-1-作用域" class="headerlink" title="2.1 作用域"></a>2.1 作用域</h3><code>1.</code> 作用域:访问某变量 对象的区域</li>
-<li>每个对象都存在特定的作用域中 作用时段中</li>
-<li>当前程序未执行到该作用域,则某些只存在于该作用域的对象则不能被访问</li>
-<li>或者说,只有被赋值且未该赋值区域未完成其全部功能时,该对象才能被访问<blockquote>
-<p>简单来说就是:该对象在未赋值时,不能被访问;使用结束跳出该域后也不能访问</p>
-</blockquote>
-<h3 id="2-2-作用域分类"><a href="#2-2-作用域分类" class="headerlink" title="2.2 作用域分类"></a>2.2 作用域分类</h3><h4 id="2-2-1-L-local-局部作用域"><a href="#2-2-1-L-local-局部作用域" class="headerlink" title="2.2.1 L-local 局部作用域"></a>2.2.1 <code>L-local</code> 局部作用域</h4><h4 id="2-2-2-E-encloing-scope-闭包函数作用域-嵌套函数-A-B-var-c-中var-c所在作用域"><a href="#2-2-2-E-encloing-scope-闭包函数作用域-嵌套函数-A-B-var-c-中var-c所在作用域" class="headerlink" title="2.2.2  E-encloing scope 闭包函数作用域,嵌套函数(A(B(var c)))中var c所在作用域"></a>2.2.2  <code>E-encloing scope</code> 闭包函数作用域,嵌套函数<code>(A(B(var c)))</code>中<code>var c</code>所在作用域</h4><h4 id="2-2-3-G-global"><a href="#2-2-3-G-global" class="headerlink" title="2.2.3  G=global"></a>2.2.3  <code>G=global</code></h4><h4 id="2-2-4-B-built-in"><a href="#2-2-4-B-built-in" class="headerlink" title="2.2.4  B-built in"></a>2.2.4  <code>B-built in</code></h4><code>1.</code> 内置作用域的实现是通过<code>builtin</code>标准模块实现  <blockquote>
-<p>但是此变量名本身并未放入内置作用域,需要导入模块才能使用<br><code>2.</code> <code>builtin</code></p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> builtins</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dir</span>(builtins)</span><br></pre></td></tr></table></figure>
-<h3 id="2-3-规则"><a href="#2-3-规则" class="headerlink" title="2.3 规则"></a>2.3 规则</h3><code>1.</code> 当在函数中引用一个变量的时候，以上的作用域顺序也是 Python 搜索的一个顺序 <code>L-&gt;E-G-B</code>，首先尝试局部作用域，没找到的话，继续搜索闭包函数作用域，然后再是全局作用域和内置作用域。<br><code>2.</code> Python 中只有模块（module），类（class）以及函数（def、lambda）才会引入新的作用域</li>
-<li>其它的代码块（如 if/elif/else/、try/except、for/while等）是不会引入新的作用域的，也就是说这些语句内定义的变量，外部也可以访问(如<code>1.3.1.2</code>) 如:<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">if</span> <span class="literal">True</span>:</span><br><span class="line"><span class="meta">... </span>    testStr = <span class="string">&#x27;this is a testline to test if this is a new region&#x27;</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(testStr)</span><br><span class="line">this <span class="keyword">is</span> a testline to test <span class="keyword">if</span> this <span class="keyword">is</span> a new region</span><br></pre></td></tr></table></figure></li>
-</ul>
 ]]></content>
       <categories>
         <category>Python</category>
