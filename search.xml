@@ -1,35 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>python--map函数</title>
-    <url>/2021/07/07/Python/advance/map%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="map函数"><a href="#map函数" class="headerlink" title="map函数"></a>map函数</h1><ul>
-<li>python内置函数</li>
-<li>会根据给定函数,对指定序列做出映射</li>
-</ul>
-<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><h3 id="map-function-iterable"><a href="#map-function-iterable" class="headerlink" title="map(function, iterable...)"></a><code>map(function, iterable...)</code></h3><ul>
-<li><code>iterable</code> 作为映射中原数据的来源</li>
-<li><code>function</code> 用于对<code>iterable</code>中的元素进行转换  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">&gt;&gt; <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">squ</span>(<span class="hljs-params">x</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> x * x<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>mapResult = <span class="hljs-built_in">map</span>(squ, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])<br></code></pre></td></tr></table></figure></li>
-<li><code>python 2.</code> 返回列表</li>
-<li><code>python 3.</code> 返回迭代器  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(mapResult.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">map</span>&#x27;&gt;</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">for</span> <span class="hljs-title">i</span> <span class="hljs-title">in</span> <span class="hljs-title">mapResult</span>:</span><br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(i)<br>...<br><span class="hljs-number">1</span><br><span class="hljs-number">4</span><br><span class="hljs-number">9</span><br><span class="hljs-number">16</span><br><span class="hljs-number">25</span><br></code></pre></td></tr></table></figure></li>
-<li>可通过<code>list(map())</code>的显示转换来消除版本之间的差异  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">squ</span>(<span class="hljs-params">x</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> x * x<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>list1 = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(squ, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]))<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(list1)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>]<br></code></pre></td></tr></table></figure>
-<h3 id="lambda"><a href="#lambda" class="headerlink" title="lambda"></a><code>lambda</code></h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-keyword">lambda</span> x : x * x, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])))<br>[<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>]<br></code></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><h3 id="map完成数据类型转换"><a href="#map完成数据类型转换" class="headerlink" title="map完成数据类型转换"></a><code>map</code>完成数据类型转换</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">str</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])))<br>[<span class="hljs-string">&#x27;1&#x27;</span>, <span class="hljs-string">&#x27;2&#x27;</span>, <span class="hljs-string">&#x27;3&#x27;</span>, <span class="hljs-string">&#x27;4&#x27;</span>, <span class="hljs-string">&#x27;5&#x27;</span>]<br></code></pre></td></tr></table></figure>
-<h3 id="map元组转列表"><a href="#map元组转列表" class="headerlink" title="map元组转列表"></a><code>map</code>元组转列表</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>list1 = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>,(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)))<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(list1)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
-<ul>
-<li>原理是:元组作为迭代器可作为<code>map()</code>函数参数传入,当元组内部元素数据类型与<code>function</code>转出数据类型一致时,再将<code>map</code>返回迭代器转为列表</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>advance</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Numpy100--Numpy100</title>
     <url>/2021/07/07/numpy/numpy100/</url>
     <content><![CDATA[<h1 id="github上的开源项目"><a href="#github上的开源项目" class="headerlink" title="github上的开源项目"></a>github上的开源项目</h1><h2 id="2021-7-4-17：06"><a href="#2021-7-4-17：06" class="headerlink" title="2021.7.4 17：06"></a>2021.7.4 17：06</h2><span id="more"></span>
@@ -125,6 +96,35 @@
       <tags>
         <tag>Python</tag>
         <tag>Numpy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python--map函数</title>
+    <url>/2021/07/07/Python/advance/map%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="map函数"><a href="#map函数" class="headerlink" title="map函数"></a>map函数</h1><ul>
+<li>python内置函数</li>
+<li>会根据给定函数,对指定序列做出映射</li>
+</ul>
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><h3 id="map-function-iterable"><a href="#map-function-iterable" class="headerlink" title="map(function, iterable...)"></a><code>map(function, iterable...)</code></h3><ul>
+<li><code>iterable</code> 作为映射中原数据的来源</li>
+<li><code>function</code> 用于对<code>iterable</code>中的元素进行转换  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">&gt;&gt; <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">squ</span>(<span class="hljs-params">x</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> x * x<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>mapResult = <span class="hljs-built_in">map</span>(squ, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])<br></code></pre></td></tr></table></figure></li>
+<li><code>python 2.</code> 返回列表</li>
+<li><code>python 3.</code> 返回迭代器  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(mapResult.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">map</span>&#x27;&gt;</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">for</span> <span class="hljs-title">i</span> <span class="hljs-title">in</span> <span class="hljs-title">mapResult</span>:</span><br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(i)<br>...<br><span class="hljs-number">1</span><br><span class="hljs-number">4</span><br><span class="hljs-number">9</span><br><span class="hljs-number">16</span><br><span class="hljs-number">25</span><br></code></pre></td></tr></table></figure></li>
+<li>可通过<code>list(map())</code>的显示转换来消除版本之间的差异  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">squ</span>(<span class="hljs-params">x</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> x * x<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>list1 = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(squ, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]))<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(list1)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>]<br></code></pre></td></tr></table></figure>
+<h3 id="lambda"><a href="#lambda" class="headerlink" title="lambda"></a><code>lambda</code></h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-keyword">lambda</span> x : x * x, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])))<br>[<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>]<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><h3 id="map完成数据类型转换"><a href="#map完成数据类型转换" class="headerlink" title="map完成数据类型转换"></a><code>map</code>完成数据类型转换</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">str</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])))<br>[<span class="hljs-string">&#x27;1&#x27;</span>, <span class="hljs-string">&#x27;2&#x27;</span>, <span class="hljs-string">&#x27;3&#x27;</span>, <span class="hljs-string">&#x27;4&#x27;</span>, <span class="hljs-string">&#x27;5&#x27;</span>]<br></code></pre></td></tr></table></figure>
+<h3 id="map元组转列表"><a href="#map元组转列表" class="headerlink" title="map元组转列表"></a><code>map</code>元组转列表</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>list1 = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>,(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)))<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(list1)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
+<ul>
+<li>原理是:元组作为迭代器可作为<code>map()</code>函数参数传入,当元组内部元素数据类型与<code>function</code>转出数据类型一致时,再将<code>map</code>返回迭代器转为列表</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>advance</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -294,23 +294,6 @@
 <li>最终<code>la</code>值也改变  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>la = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,[<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>]]<br><span class="hljs-meta">&gt;&gt;&gt; </span>lb = la<br><span class="hljs-meta">&gt;&gt;&gt; </span>lb[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;a&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(lb)<br>[<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]]<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(la)<br>[<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]]<br></code></pre></td></tr></table></figure>
   <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>a = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,[<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]]<br><span class="hljs-meta">&gt;&gt;&gt; </span>b = a.copy()<br><span class="hljs-meta">&gt;&gt;&gt; </span>b[<span class="hljs-number">2</span>][<span class="hljs-number">1</span>] = <span class="hljs-number">0</span> <br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, [<span class="hljs-number">3</span>, <span class="hljs-number">0</span>]]<br></code></pre></td></tr></table></figure>
 <h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2>通过引入<code>copy</code>,使用<code>copy.deepcopy()</code>方法<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> copy<br><span class="hljs-meta">&gt;&gt;&gt; </span>a = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,[<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]]<br><span class="hljs-meta">&gt;&gt;&gt; </span>c = copy.deepcopy(a)<br><span class="hljs-meta">&gt;&gt;&gt; </span>c[<span class="hljs-number">2</span>][<span class="hljs-number">1</span>] = <span class="hljs-number">99</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(c)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, [<span class="hljs-number">3</span>, <span class="hljs-number">99</span>]]<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, [<span class="hljs-number">3</span>, <span class="hljs-number">0</span>]]<br></code></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>advance</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python--运算符重载</title>
-    <url>/2021/07/07/Python/advance/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/</url>
-    <content><![CDATA[<h1 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h1><ul>
-<li><code>python</code>中一切都是对象,每个对象都有一些特殊的内部方法</li>
-<li>这些方法都遵循<code>__action__</code>的命名规定<span id="more"></span></li>
-<li>通过运算符重载,可以让类进行一些数学运算<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Vector</span>(<span class="hljs-params"><span class="hljs-built_in">object</span></span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, x, y</span>):</span><br>        self.x = x<br>        self.y = y<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__add__</span>(<span class="hljs-params">self, v</span>):</span><br>        <span class="hljs-comment"># Addition with another vector.</span><br>        <span class="hljs-keyword">return</span> Vector(self.x + v.x, self.y + v.y)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__sub__</span>(<span class="hljs-params">self, v</span>):</span><br>        <span class="hljs-comment"># Subtraction with another vector.</span><br>        <span class="hljs-keyword">return</span> Vector(self.x - v.x, self.y - v.y)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__mul__</span>(<span class="hljs-params">self, s</span>):</span><br>        <span class="hljs-comment"># Multiplication with a scalar.</span><br>        <span class="hljs-keyword">return</span> Vector(self.x * s, self.y * s)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__div__</span>(<span class="hljs-params">self, s</span>):</span><br>        <span class="hljs-comment"># Division with a scalar.</span><br>        float_s = <span class="hljs-built_in">float</span>(s)<br>        <span class="hljs-keyword">return</span> Vector(self.x / float_s, self.y / float_s)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__floordiv__</span>(<span class="hljs-params">self, s</span>):</span><br>        <span class="hljs-comment"># Division with a scalar (value floored).</span><br>        <span class="hljs-keyword">return</span> Vector(self.x // s, self.y // s)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__repr__</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-comment"># Print friendly representation of Vector class. Else, it would</span><br>        <span class="hljs-comment"># show up like, &lt;__main__.Vector instance at 0x01DDDDC8&gt;.</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&lt;Vector (%f, %f)&gt;&#x27;</span> % (self.x, self.y, )<br><br>a = Vector(<span class="hljs-number">3</span>, <span class="hljs-number">5</span>)<br>b = Vector(<span class="hljs-number">2</span>, <span class="hljs-number">7</span>)<br><br><span class="hljs-built_in">print</span> a + b <span class="hljs-comment"># Output: &lt;Vector (5.000000, 12.000000)&gt;</span><br><span class="hljs-built_in">print</span> b - a <span class="hljs-comment"># Output: &lt;Vector (-1.000000, 2.000000)&gt;</span><br><span class="hljs-built_in">print</span> b * <span class="hljs-number">1.3</span> <span class="hljs-comment"># Output: &lt;Vector (2.600000, 9.100000)&gt;</span><br><span class="hljs-built_in">print</span> a // <span class="hljs-number">17</span> <span class="hljs-comment"># Output: &lt;Vector (0.000000, 0.000000)&gt;</span><br><span class="hljs-built_in">print</span> a / <span class="hljs-number">17</span> <span class="hljs-comment"># Output: &lt;Vector (0.176471, 0.294118)&gt;</span><br></code></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
       <categories>
@@ -546,6 +529,23 @@
       </tags>
   </entry>
   <entry>
+    <title>python--运算符重载</title>
+    <url>/2021/07/07/Python/advance/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/</url>
+    <content><![CDATA[<h1 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h1><ul>
+<li><code>python</code>中一切都是对象,每个对象都有一些特殊的内部方法</li>
+<li>这些方法都遵循<code>__action__</code>的命名规定<span id="more"></span></li>
+<li>通过运算符重载,可以让类进行一些数学运算<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Vector</span>(<span class="hljs-params"><span class="hljs-built_in">object</span></span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, x, y</span>):</span><br>        self.x = x<br>        self.y = y<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__add__</span>(<span class="hljs-params">self, v</span>):</span><br>        <span class="hljs-comment"># Addition with another vector.</span><br>        <span class="hljs-keyword">return</span> Vector(self.x + v.x, self.y + v.y)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__sub__</span>(<span class="hljs-params">self, v</span>):</span><br>        <span class="hljs-comment"># Subtraction with another vector.</span><br>        <span class="hljs-keyword">return</span> Vector(self.x - v.x, self.y - v.y)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__mul__</span>(<span class="hljs-params">self, s</span>):</span><br>        <span class="hljs-comment"># Multiplication with a scalar.</span><br>        <span class="hljs-keyword">return</span> Vector(self.x * s, self.y * s)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__div__</span>(<span class="hljs-params">self, s</span>):</span><br>        <span class="hljs-comment"># Division with a scalar.</span><br>        float_s = <span class="hljs-built_in">float</span>(s)<br>        <span class="hljs-keyword">return</span> Vector(self.x / float_s, self.y / float_s)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__floordiv__</span>(<span class="hljs-params">self, s</span>):</span><br>        <span class="hljs-comment"># Division with a scalar (value floored).</span><br>        <span class="hljs-keyword">return</span> Vector(self.x // s, self.y // s)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__repr__</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-comment"># Print friendly representation of Vector class. Else, it would</span><br>        <span class="hljs-comment"># show up like, &lt;__main__.Vector instance at 0x01DDDDC8&gt;.</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&lt;Vector (%f, %f)&gt;&#x27;</span> % (self.x, self.y, )<br><br>a = Vector(<span class="hljs-number">3</span>, <span class="hljs-number">5</span>)<br>b = Vector(<span class="hljs-number">2</span>, <span class="hljs-number">7</span>)<br><br><span class="hljs-built_in">print</span> a + b <span class="hljs-comment"># Output: &lt;Vector (5.000000, 12.000000)&gt;</span><br><span class="hljs-built_in">print</span> b - a <span class="hljs-comment"># Output: &lt;Vector (-1.000000, 2.000000)&gt;</span><br><span class="hljs-built_in">print</span> b * <span class="hljs-number">1.3</span> <span class="hljs-comment"># Output: &lt;Vector (2.600000, 9.100000)&gt;</span><br><span class="hljs-built_in">print</span> a // <span class="hljs-number">17</span> <span class="hljs-comment"># Output: &lt;Vector (0.000000, 0.000000)&gt;</span><br><span class="hljs-built_in">print</span> a / <span class="hljs-number">17</span> <span class="hljs-comment"># Output: &lt;Vector (0.176471, 0.294118)&gt;</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>advance</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python--元组</title>
     <url>/2021/07/07/Python/basic/%E5%85%83%E7%BB%84/</url>
     <content><![CDATA[<h1 id="列表与元组"><a href="#列表与元组" class="headerlink" title="列表与元组"></a>列表与元组</h1><ul>
@@ -579,6 +579,33 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuplle1 = (<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">0</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">sorted</span>(tuplle1))<br>[<span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>参考资料1
 <a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
+      <categories>
+        <category>Python</category>
+        <category>basic</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python--函数</title>
+    <url>/2021/07/10/Python/basic/%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="函数-1"><a href="#函数-1" class="headerlink" title="函数"></a>函数</h2><p>–</p>
+<h2 id="函数参数"><a href="#函数参数" class="headerlink" title="函数参数"></a>函数参数</h2><hr>
+<h3 id="参数类型"><a href="#参数类型" class="headerlink" title="参数类型"></a>参数类型</h3><span id="more"></span>
+<h4 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h4><ul>
+<li>定义函数时设置默认值,则调用函数时不需要指定参数值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func</span>(<span class="hljs-params">a = <span class="hljs-number">1</span>, b = <span class="hljs-number">4</span></span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> a * b<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func())<br><span class="hljs-number">4</span><br></code></pre></td></tr></table></figure></li>
+<li>定义函数时设置默认值,调用函数指定他值,则他值覆盖默认值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func</span>(<span class="hljs-params">a = <span class="hljs-number">1</span>, b = <span class="hljs-number">4</span></span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> a * b<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func())<br><span class="hljs-number">4</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func(<span class="hljs-number">2</span>, <span class="hljs-number">5</span>))<br><span class="hljs-number">10</span><br></code></pre></td></tr></table></figure>
+<h4 id="关键字参数-参数关键字"><a href="#关键字参数-参数关键字" class="headerlink" title="关键字参数(参数关键字)"></a>关键字参数(参数关键字)</h4></li>
+<li>调用函数传入参数时,若不指定各传入值对应参数名,则传入值会按照默认顺序(函数定义式中的参数顺序)进行参数赋值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func2</span>(<span class="hljs-params">a, b, c, d</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span>(a * <span class="hljs-number">1000</span> + b * <span class="hljs-number">100</span> + c * <span class="hljs-number">10</span> + d)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>))<br><span class="hljs-number">1234</span><br></code></pre></td></tr></table></figure></li>
+<li>调用函数传入参数时,指定参数关键字则不用在意参数传入顺序<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func2</span>(<span class="hljs-params">a, b, c, d</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span>(a * <span class="hljs-number">1000</span> + b * <span class="hljs-number">100</span> + c * <span class="hljs-number">10</span> + d)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>))<br><span class="hljs-number">1234</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(d=<span class="hljs-number">4</span>, a=<span class="hljs-number">1</span>, c=<span class="hljs-number">3</span>, b=<span class="hljs-number">2</span>))<br><span class="hljs-number">1234</span><br></code></pre></td></tr></table></figure>
+<h4 id="任意参数"><a href="#任意参数" class="headerlink" title="任意参数"></a>任意参数</h4><code>1.</code> 在任意参数前添加<code>*</code>标定此参数为任意参数</li>
+<li>它将非关键字的参数作为元组传入函数内部<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func2</span>(<span class="hljs-params">a, b, c, d</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span>(a * <span class="hljs-number">1000</span> + b * <span class="hljs-number">100</span> + c * <span class="hljs-number">10</span> + d)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>))<br><span class="hljs-number">1234</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(d=<span class="hljs-number">4</span>, a=<span class="hljs-number">1</span>, c=<span class="hljs-number">3</span>, b=<span class="hljs-number">2</span>))<br><span class="hljs-number">1234</span><br></code></pre></td></tr></table></figure>
+<code>2.</code> <code>**kwargs</code> 用以传递任意关键字参数<code>(kew = ars)</code></li>
+<li>将带传入参数及其关键字以<code>&#39;&#39;键值对&#39;&#39;</code>形式传入</li>
+<li>传入参数及其关键字被转换为<code>dict</code>传入函数内部,通过关键字定位参数值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func4</span>(<span class="hljs-params">**kwargs</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(kwargs.__class__)<br><span class="hljs-meta">... </span>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> kwargs:<br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;this is &#x27;</span> + <span class="hljs-built_in">str</span>(i) + <span class="hljs-string">&#x27; and its arg = &#x27;</span> +<span class="hljs-built_in">str</span>(kwargs[i]))<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>func4(name = <span class="hljs-string">&#x27;markilily&#x27;</span>,age = <span class="hljs-number">120</span>)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">dict</span>&#x27;&gt;</span><br><span class="hljs-class"><span class="hljs-title">this</span> <span class="hljs-title">is</span> <span class="hljs-title">name</span> <span class="hljs-title">and</span> <span class="hljs-title">its</span> <span class="hljs-title">arg</span> = <span class="hljs-title">markilily</span></span><br><span class="hljs-class"><span class="hljs-title">this</span> <span class="hljs-title">is</span> <span class="hljs-title">age</span> <span class="hljs-title">and</span> <span class="hljs-title">its</span> <span class="hljs-title">arg</span> = 120</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
       <categories>
         <category>Python</category>
         <category>basic</category>
@@ -650,33 +677,6 @@ python内置此方法的输出为元素长度:<figure class="highlight python"><
       </tags>
   </entry>
   <entry>
-    <title>python--函数</title>
-    <url>/2021/07/10/Python/basic/%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="函数-1"><a href="#函数-1" class="headerlink" title="函数"></a>函数</h2><p>–</p>
-<h2 id="函数参数"><a href="#函数参数" class="headerlink" title="函数参数"></a>函数参数</h2><hr>
-<h3 id="参数类型"><a href="#参数类型" class="headerlink" title="参数类型"></a>参数类型</h3><span id="more"></span>
-<h4 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h4><ul>
-<li>定义函数时设置默认值,则调用函数时不需要指定参数值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func</span>(<span class="hljs-params">a = <span class="hljs-number">1</span>, b = <span class="hljs-number">4</span></span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> a * b<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func())<br><span class="hljs-number">4</span><br></code></pre></td></tr></table></figure></li>
-<li>定义函数时设置默认值,调用函数指定他值,则他值覆盖默认值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func</span>(<span class="hljs-params">a = <span class="hljs-number">1</span>, b = <span class="hljs-number">4</span></span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> a * b<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func())<br><span class="hljs-number">4</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func(<span class="hljs-number">2</span>, <span class="hljs-number">5</span>))<br><span class="hljs-number">10</span><br></code></pre></td></tr></table></figure>
-<h4 id="关键字参数-参数关键字"><a href="#关键字参数-参数关键字" class="headerlink" title="关键字参数(参数关键字)"></a>关键字参数(参数关键字)</h4></li>
-<li>调用函数传入参数时,若不指定各传入值对应参数名,则传入值会按照默认顺序(函数定义式中的参数顺序)进行参数赋值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func2</span>(<span class="hljs-params">a, b, c, d</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span>(a * <span class="hljs-number">1000</span> + b * <span class="hljs-number">100</span> + c * <span class="hljs-number">10</span> + d)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>))<br><span class="hljs-number">1234</span><br></code></pre></td></tr></table></figure></li>
-<li>调用函数传入参数时,指定参数关键字则不用在意参数传入顺序<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func2</span>(<span class="hljs-params">a, b, c, d</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span>(a * <span class="hljs-number">1000</span> + b * <span class="hljs-number">100</span> + c * <span class="hljs-number">10</span> + d)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>))<br><span class="hljs-number">1234</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(d=<span class="hljs-number">4</span>, a=<span class="hljs-number">1</span>, c=<span class="hljs-number">3</span>, b=<span class="hljs-number">2</span>))<br><span class="hljs-number">1234</span><br></code></pre></td></tr></table></figure>
-<h4 id="任意参数"><a href="#任意参数" class="headerlink" title="任意参数"></a>任意参数</h4><code>1.</code> 在任意参数前添加<code>*</code>标定此参数为任意参数</li>
-<li>它将非关键字的参数作为元组传入函数内部<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func2</span>(<span class="hljs-params">a, b, c, d</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span>(a * <span class="hljs-number">1000</span> + b * <span class="hljs-number">100</span> + c * <span class="hljs-number">10</span> + d)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>))<br><span class="hljs-number">1234</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(d=<span class="hljs-number">4</span>, a=<span class="hljs-number">1</span>, c=<span class="hljs-number">3</span>, b=<span class="hljs-number">2</span>))<br><span class="hljs-number">1234</span><br></code></pre></td></tr></table></figure>
-<code>2.</code> <code>**kwargs</code> 用以传递任意关键字参数<code>(kew = ars)</code></li>
-<li>将带传入参数及其关键字以<code>&#39;&#39;键值对&#39;&#39;</code>形式传入</li>
-<li>传入参数及其关键字被转换为<code>dict</code>传入函数内部,通过关键字定位参数值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func4</span>(<span class="hljs-params">**kwargs</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(kwargs.__class__)<br><span class="hljs-meta">... </span>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> kwargs:<br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;this is &#x27;</span> + <span class="hljs-built_in">str</span>(i) + <span class="hljs-string">&#x27; and its arg = &#x27;</span> +<span class="hljs-built_in">str</span>(kwargs[i]))<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>func4(name = <span class="hljs-string">&#x27;markilily&#x27;</span>,age = <span class="hljs-number">120</span>)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">dict</span>&#x27;&gt;</span><br><span class="hljs-class"><span class="hljs-title">this</span> <span class="hljs-title">is</span> <span class="hljs-title">name</span> <span class="hljs-title">and</span> <span class="hljs-title">its</span> <span class="hljs-title">arg</span> = <span class="hljs-title">markilily</span></span><br><span class="hljs-class"><span class="hljs-title">this</span> <span class="hljs-title">is</span> <span class="hljs-title">age</span> <span class="hljs-title">and</span> <span class="hljs-title">its</span> <span class="hljs-title">arg</span> = 120</span><br></code></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>basic</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Pyhont--字典</title>
     <url>/2021/07/07/Python/basic/%E5%AD%97%E5%85%B8/</url>
     <content><![CDATA[<h1 id="字典-Dictionary"><a href="#字典-Dictionary" class="headerlink" title="字典-Dictionary"></a>字典-Dictionary</h1><p>字典的基本性质:</p>
@@ -719,6 +719,20 @@ python内置此方法的输出为元素长度:<figure class="highlight python"><
       </tags>
   </entry>
   <entry>
+    <title>python--类</title>
+    <url>/2021/07/07/Python/basic/%E7%B1%BB/</url>
+    <content><![CDATA[<h1 id="类–CLASS"><a href="#类–CLASS" class="headerlink" title="类–CLASS"></a>类–CLASS</h1><span id="more"></span>
+<p>类 我的泪 学<code>java</code>的时候搞得很清楚的 操 现在忘干净了</p>
+<h2 id="python中的类与对象"><a href="#python中的类与对象" class="headerlink" title="python中的类与对象"></a>python中的类与对象</h2>]]></content>
+      <categories>
+        <category>Python</category>
+        <category>basic</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python--数组</title>
     <url>/2021/07/07/Python/basic/%E6%95%B0%E7%BB%84/</url>
     <content><![CDATA[<h1 id="数组-array"><a href="#数组-array" class="headerlink" title="数组-array"></a>数组-array</h1><p>数组的基本性质:</p>
@@ -747,20 +761,6 @@ python内置此方法的输出为元素长度:<figure class="highlight python"><
 也可指定<code>pop</code>对象索引<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(arr2)<br>array(<span class="hljs-string">&#x27;i&#x27;</span>, [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span>arr2.pop(<span class="hljs-number">2</span>)<br><span class="hljs-number">3</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(arr2)<br>array(<span class="hljs-string">&#x27;i&#x27;</span>, [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">4</span>])<br></code></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
-      <categories>
-        <category>Python</category>
-        <category>basic</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python--类</title>
-    <url>/2021/07/07/Python/basic/%E7%B1%BB/</url>
-    <content><![CDATA[<h1 id="类–CLASS"><a href="#类–CLASS" class="headerlink" title="类–CLASS"></a>类–CLASS</h1><span id="more"></span>
-<p>类 我的泪 学<code>java</code>的时候搞得很清楚的 操 现在忘干净了</p>
-<h2 id="python中的类与对象"><a href="#python中的类与对象" class="headerlink" title="python中的类与对象"></a>python中的类与对象</h2>]]></content>
       <categories>
         <category>Python</category>
         <category>basic</category>
