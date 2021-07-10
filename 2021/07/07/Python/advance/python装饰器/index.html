@@ -14,7 +14,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
+  <meta name="description" content="装饰器Python装饰器能够动态地改变函数 方法 类的功能,而不用子类重写或修改函数源代码的方式   ">
   <meta name="author" content="CJBLUE">
   <meta name="keywords" content="">
   
@@ -229,6 +229,7 @@
             
             <div class="markdown-body">
               <h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><p>Python装饰器能够动态地改变函数 方法 类的功能,而不用子类重写或修改函数源代码的方式   </p>
+<span id="more"></span>
 <h2 id="装饰器函数"><a href="#装饰器函数" class="headerlink" title="装饰器函数"></a>装饰器函数</h2><h3 id="装饰器函数基础"><a href="#装饰器函数基础" class="headerlink" title="装饰器函数基础"></a>装饰器函数基础</h3><p><code>装饰器</code> 增强了其他函数的功能</p>
 <ul>
 <li>任何将函数作为传入参数并返回一个增强函数的函数都可以视为一个装饰器函数<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 定义装饰器函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">decoratorFunc</span>(<span class="hljs-params">f</span>):</span><br>    <span class="hljs-keyword">return</span> f<br><span class="hljs-comment"># 语法糖 进行函数装饰</span><br><span class="hljs-meta">@decoratorFunc</span><br><span class="hljs-comment"># 定义待装饰函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">toBeEnforce</span>():</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;this function has been enforced&#x27;</span>)<br><span class="hljs-comment"># 调用增强后的函数</span><br>toBeEnforce()<br></code></pre></td></tr></table></figure>
@@ -301,9 +302,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/07/07/numpy/numpy100/">
+                      <a href="/2021/07/07/Python/advance/map%E5%87%BD%E6%95%B0/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Numpy1--Numpy100</span>
+                        <span class="hidden-mobile">python--map函数</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -311,8 +312,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/07/07/Python/advance/map%E5%87%BD%E6%95%B0/">
-                        <span class="hidden-mobile">python--map函数</span>
+                      <a href="/2021/07/07/Python/advance/%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC%E5%BC%8F/">
+                        <span class="hidden-mobile">python--列表推导式</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

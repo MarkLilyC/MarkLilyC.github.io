@@ -14,16 +14,11 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="列表与元组
-当元素类型不一时使用元组,当类型一样则使用列表 [1]
-元组遍历更快
-使用元组元素(不可变)可作为字典的键值,而列表不可
-元组保证了数据的安全
-">
+  <meta name="description" content="类–CLASS">
   <meta name="author" content="CJBLUE">
   <meta name="keywords" content="">
   
-  <title>python--元组 - MarkLily</title>
+  <title>python--类 - MarkLily</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,12 +158,12 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/fluidPics/girls_top.jpg') no-repeat center center;
+         style="background: url('/img/fluidPics/libertines.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="python--元组">
+            <span class="h2" id="subtitle" title="python--类">
               
             </span>
 
@@ -178,7 +173,7 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-07-07 15:55" pubdate>
+      <time datetime="2021-07-07 15:33" pubdate>
         2021年7月7日 下午
       </time>
     </span>
@@ -190,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      563 字
+      31 字
     </span>
   
 
@@ -200,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      1
        分钟
     </span>
   
@@ -230,40 +225,12 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">python--元组</h1>
+            <h1 style="display: none">python--类</h1>
             
             <div class="markdown-body">
-              <h1 id="列表与元组"><a href="#列表与元组" class="headerlink" title="列表与元组"></a>列表与元组</h1><ul>
-<li>当元素类型不一时使用元组,当类型一样则使用列表 <sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="参考资料1
-">[1]</span></a></sup></li>
-<li>元组遍历更快</li>
-<li>使用元组元素(不可变)可作为字典的键值,而列表不可</li>
-<li>元组保证了数据的安全</li>
-</ul>
-<span id="more"></span>
-<h2 id="1-列表"><a href="#1-列表" class="headerlink" title="1 列表"></a>1 列表</h2><p>略</p>
-<h2 id="2-元组-tuple"><a href="#2-元组-tuple" class="headerlink" title="2 元组-tuple"></a>2 元组-<code>tuple</code></h2><p>元组类似于列表,但区别在于元组中的元素是不可变的</p>
-<h3 id="2-1-创建一个元组"><a href="#2-1-创建一个元组" class="headerlink" title="2.1 创建一个元组"></a>2.1 创建一个元组</h3><p><code>1.</code> 使用<code>()</code>创建一个元组,使用<code>,</code>间隔元素<br><code>2.</code> 类似于列表,元组中的元素可以是任何数据类型</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuple1 = (<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(tuple1, tuple1.__class__)<br>(<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]) &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">tuple</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>因为元组不能改变,所以创建伊始就应该指定正确的元素</p>
-</blockquote>
-<p><code>3.</code> 创建元组时只指明一个元素<code>(dtype A)</code>,则该元组(你意图创建的)会被视为<code>A</code>的对象</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># case1</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>a = (<span class="hljs-string">&#x27;aa&#x27;</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">str</span>&#x27;&gt;</span><br><span class="hljs-class"># <span class="hljs-title">case2</span></span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">b</span> = (<span class="hljs-params">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]</span>)</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">print</span>(<span class="hljs-params">b.__class__</span>)</span><br><span class="hljs-class">&lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">list</span>&#x27;&gt;</span><br><span class="hljs-class"># <span class="hljs-title">case3</span></span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">c</span> = (<span class="hljs-params"><span class="hljs-number">1</span></span>)</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">print</span>(<span class="hljs-params">c.__class__</span>)</span><br><span class="hljs-class">&lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">int</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
-<p><code>case1-3</code>中意图创建元组<code>a b c</code>,但创建时指指定了一个内部元素<code>param(dtype A)</code>,因此该元组被视为<code>A</code>类的一个对象</p>
-<h3 id="2-2-访问元组元素"><a href="#2-2-访问元组元素" class="headerlink" title="2.2 访问元组元素"></a>2.2 访问元组元素</h3><h4 id="2-2-1-索引-index"><a href="#2-2-1-索引-index" class="headerlink" title="2.2.1 索引-index"></a>2.2.1 索引-index</h4><p><code>[index:int]</code>使用索引操作符来访问元组中的元素<br><code>1.</code> 正索引 : <code>0-len(tuple)-1</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuple1 = (<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(tuple1[<span class="hljs-number">2</span>])<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
-<p><code>2.</code> 负索引</p>
-<h4 id="2-2-2-切片"><a href="#2-2-2-切片" class="headerlink" title="2.2.2 切片"></a>2.2.2 切片</h4><p><code>:</code>使用切片操作符</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuple1 = (<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(tuple1[<span class="hljs-number">1</span>:])<br>(<span class="hljs-number">1</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])<br></code></pre></td></tr></table></figure>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p><code>1.</code> <code>enumerate()</code>: 将元组内所有对象及其索引枚举,以元组的形式返回</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">enumerate</span>(tuple1).__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">enumerate</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
-<p><code>2.</code> <code>tuple()</code>: 将序列（元组，字符串，字典）转换为元组</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>list1 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-string">&#x27;aa&#x27;</span>,(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)]<br><span class="hljs-meta">&gt;&gt;&gt; </span>tp1 = <span class="hljs-built_in">tuple</span>(list1)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(list1.__class__, tp1.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">list</span>&#x27;&gt; &lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">tuple</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
-<p><code>3.</code> <code>sorted</code>: 返回一个排序元组</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuplle1 = (<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">0</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">sorted</span>(tuplle1))<br>[<span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>参考资料1
-<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
+              <h1 id="类–CLASS"><a href="#类–CLASS" class="headerlink" title="类–CLASS"></a>类–CLASS</h1><span id="more"></span>
+<p>类 我的泪 学<code>java</code>的时候搞得很清楚的 操 现在忘干净了</p>
+<h2 id="python中的类与对象"><a href="#python中的类与对象" class="headerlink" title="python中的类与对象"></a>python中的类与对象</h2>
             </div>
             <hr>
             <div>
@@ -299,9 +266,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/07/10/Python/basic/%E5%87%BD%E6%95%B0/">
+                      <a href="/2021/07/07/Python/basic/%E9%9B%86%E5%90%88/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">python--函数</span>
+                        <span class="hidden-mobile">python--集合</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -309,8 +276,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/07/07/Python/basic/NameSpace/">
-                        <span class="hidden-mobile">python--命名空间</span>
+                      <a href="/2021/07/07/numpy/numpy100/">
+                        <span class="hidden-mobile">Numpy1--Numpy100</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
