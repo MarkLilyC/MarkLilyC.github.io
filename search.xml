@@ -98,6 +98,36 @@
       </tags>
   </entry>
   <entry>
+    <title>列表推导式</title>
+    <url>/2021/07/07/Python/advance/%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC%E5%BC%8F/</url>
+    <content><![CDATA[<h1 id="列表推导式"><a href="#列表推导式" class="headerlink" title="列表推导式"></a>列表推导式</h1><h2 id="列表推导式基础"><a href="#列表推导式基础" class="headerlink" title="列表推导式基础"></a>列表推导式基础</h2><ul>
+<li><code>result = [ &lt;expression&gt; for &lt;element&gt; in &lt;iterable&gt; ]</code></li>
+<li>根据现有迭代器类<code>iterable</code></li>
+<li>对其中每个元素<code>element</code></li>
+<li>根据函数<code>expression</code>进行相应变化得到结果元素</li>
+<li>将结果元素立即添加到<code>result</code>中<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>testSquares = [x * x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> (<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>)]<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(testSquares)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>]<br></code></pre></td></tr></table></figure>
+<h2 id="if条件-可选"><a href="#if条件-可选" class="headerlink" title="if条件(可选):"></a><code>if</code>条件(可选):</h2><code>result = [ &lt;expression&gt; for &lt;element&gt; in &lt;iterable&gt; if &lt;condition&gt; ]</code></li>
+<li>每个元素在进行<code>expression</code>前。</li>
+<li>所有结果将在新列表中立即返回。</li>
+<li>Python 中的生成器表达式是懒惰地计算的，但是列表推导会立即施加到整个迭代器，它消耗与迭代器长度成比例的内存。<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>testSquares = [x * x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> (<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>) <span class="hljs-keyword">if</span> x % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>]<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(testSquares)<br>[<span class="hljs-number">4</span>, <span class="hljs-number">16</span>]<br></code></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">*</span> 根据列表<span class="hljs-code">``(1,2,3,4,5)`</span>` 创建一个平方数列表,<br><span class="hljs-bullet">*</span> 只选择其中的偶数进行创建<br></code></pre></td></tr></table></figure>
+<h2 id="else"><a href="#else" class="headerlink" title="else:"></a><code>else</code>:</h2><code>if...else</code> 判断是在 <code>for</code> 循环之前使用，而非以后：</li>
+<li><code>if...else</code>在<code>for</code>后 报错<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>testStr = [x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;abcd&#x27;</span> <span class="hljs-keyword">if</span> x <span class="hljs-keyword">is</span> <span class="hljs-string">&#x27;a&#x27;</span> <span class="hljs-keyword">else</span> <span class="hljs-string">&#x27;b&#x27;</span>]<br>  File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="hljs-number">1</span><br>    testStr = [x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;abcd&#x27;</span> <span class="hljs-keyword">if</span> x <span class="hljs-keyword">is</span> <span class="hljs-string">&#x27;a&#x27;</span> <span class="hljs-keyword">else</span> <span class="hljs-string">&#x27;b&#x27;</span>]<br>                                                ^<br>SyntaxError: invalid syntax<br></code></pre></td></tr></table></figure></li>
+<li><code>if...else</code> 在 <code>for</code> 前</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>testStr = [x <span class="hljs-keyword">if</span> x <span class="hljs-keyword">is</span> <span class="hljs-string">&#x27;a&#x27;</span> <span class="hljs-keyword">else</span> <span class="hljs-string">&#x27;b&#x27;</span> <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;abcd&#x27;</span>]<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(testStr)<br>[<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>]<br></code></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>advance</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>map函数</title>
     <url>/2021/07/07/Python/advance/map%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<h1 id="map函数"><a href="#map函数" class="headerlink" title="map函数"></a>map函数</h1><ul>
@@ -225,36 +255,6 @@
       </tags>
   </entry>
   <entry>
-    <title>列表推导式</title>
-    <url>/2021/07/07/Python/advance/%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC%E5%BC%8F/</url>
-    <content><![CDATA[<h1 id="列表推导式"><a href="#列表推导式" class="headerlink" title="列表推导式"></a>列表推导式</h1><h2 id="列表推导式基础"><a href="#列表推导式基础" class="headerlink" title="列表推导式基础"></a>列表推导式基础</h2><ul>
-<li><code>result = [ &lt;expression&gt; for &lt;element&gt; in &lt;iterable&gt; ]</code></li>
-<li>根据现有迭代器类<code>iterable</code></li>
-<li>对其中每个元素<code>element</code></li>
-<li>根据函数<code>expression</code>进行相应变化得到结果元素</li>
-<li>将结果元素立即添加到<code>result</code>中<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>testSquares = [x * x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> (<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>)]<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(testSquares)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>]<br></code></pre></td></tr></table></figure>
-<h2 id="if条件-可选"><a href="#if条件-可选" class="headerlink" title="if条件(可选):"></a><code>if</code>条件(可选):</h2><code>result = [ &lt;expression&gt; for &lt;element&gt; in &lt;iterable&gt; if &lt;condition&gt; ]</code></li>
-<li>每个元素在进行<code>expression</code>前。</li>
-<li>所有结果将在新列表中立即返回。</li>
-<li>Python 中的生成器表达式是懒惰地计算的，但是列表推导会立即施加到整个迭代器，它消耗与迭代器长度成比例的内存。<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>testSquares = [x * x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> (<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>) <span class="hljs-keyword">if</span> x % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>]<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(testSquares)<br>[<span class="hljs-number">4</span>, <span class="hljs-number">16</span>]<br></code></pre></td></tr></table></figure>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">*</span> 根据列表<span class="hljs-code">``(1,2,3,4,5)`</span>` 创建一个平方数列表,<br><span class="hljs-bullet">*</span> 只选择其中的偶数进行创建<br></code></pre></td></tr></table></figure>
-<h2 id="else"><a href="#else" class="headerlink" title="else:"></a><code>else</code>:</h2><code>if...else</code> 判断是在 <code>for</code> 循环之前使用，而非以后：</li>
-<li><code>if...else</code>在<code>for</code>后 报错<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>testStr = [x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;abcd&#x27;</span> <span class="hljs-keyword">if</span> x <span class="hljs-keyword">is</span> <span class="hljs-string">&#x27;a&#x27;</span> <span class="hljs-keyword">else</span> <span class="hljs-string">&#x27;b&#x27;</span>]<br>  File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="hljs-number">1</span><br>    testStr = [x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;abcd&#x27;</span> <span class="hljs-keyword">if</span> x <span class="hljs-keyword">is</span> <span class="hljs-string">&#x27;a&#x27;</span> <span class="hljs-keyword">else</span> <span class="hljs-string">&#x27;b&#x27;</span>]<br>                                                ^<br>SyntaxError: invalid syntax<br></code></pre></td></tr></table></figure></li>
-<li><code>if...else</code> 在 <code>for</code> 前</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>testStr = [x <span class="hljs-keyword">if</span> x <span class="hljs-keyword">is</span> <span class="hljs-string">&#x27;a&#x27;</span> <span class="hljs-keyword">else</span> <span class="hljs-string">&#x27;b&#x27;</span> <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;abcd&#x27;</span>]<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(testStr)<br>[<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>]<br></code></pre></td></tr></table></figure>
-
-
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>advance</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>多线程</title>
     <url>/2021/07/07/Python/advance/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</url>
     <content><![CDATA[<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><p>python多线程并非真正意义上的多线程</p>
@@ -320,6 +320,19 @@
       </tags>
   </entry>
   <entry>
+    <title>Pyhont-Class</title>
+    <url>/2021/07/07/Python/basic/Class/</url>
+    <content><![CDATA[<h1 id="类–CLASS"><a href="#类–CLASS" class="headerlink" title="类–CLASS"></a>类–CLASS</h1><p>类 我的泪 学<code>java</code>的时候搞得很清楚的 操 现在忘干净了</p>
+<h2 id="python中的类与对象"><a href="#python中的类与对象" class="headerlink" title="python中的类与对象"></a>python中的类与对象</h2>]]></content>
+      <categories>
+        <category>Python</category>
+        <category>basic</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Pyhont-Array</title>
     <url>/2021/07/07/Python/basic/Array/</url>
     <content><![CDATA[<h1 id="数组-array"><a href="#数组-array" class="headerlink" title="数组-array"></a>数组-array</h1><p>数组的基本性质:</p>
@@ -348,19 +361,6 @@
 也可指定<code>pop</code>对象索引<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(arr2)<br>array(<span class="hljs-string">&#x27;i&#x27;</span>, [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span>arr2.pop(<span class="hljs-number">2</span>)<br><span class="hljs-number">3</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(arr2)<br>array(<span class="hljs-string">&#x27;i&#x27;</span>, [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">4</span>])<br></code></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
-      <categories>
-        <category>Python</category>
-        <category>basic</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Pyhont-Class</title>
-    <url>/2021/07/07/Python/basic/Class/</url>
-    <content><![CDATA[<h1 id="类–CLASS"><a href="#类–CLASS" class="headerlink" title="类–CLASS"></a>类–CLASS</h1><p>类 我的泪 学<code>java</code>的时候搞得很清楚的 操 现在忘干净了</p>
-<h2 id="python中的类与对象"><a href="#python中的类与对象" class="headerlink" title="python中的类与对象"></a>python中的类与对象</h2>]]></content>
       <categories>
         <category>Python</category>
         <category>basic</category>
@@ -462,6 +462,114 @@ python内置此方法的输出为元素长度:<figure class="highlight python"><
 <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> builtins<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">dir</span>(builtins)<br></code></pre></td></tr></table></figure>
 <h3 id="2-3-规则"><a href="#2-3-规则" class="headerlink" title="2.3 规则"></a>2.3 规则</h3><code>1.</code> 当在函数中引用一个变量的时候，以上的作用域顺序也是 Python 搜索的一个顺序 <code>L-&gt;E-G-B</code>，首先尝试局部作用域，没找到的话，继续搜索闭包函数作用域，然后再是全局作用域和内置作用域。<br><code>2.</code> Python 中只有模块（module），类（class）以及函数（def、lambda）才会引入新的作用域</li>
 <li>其它的代码块（如 if/elif/else/、try/except、for/while等）是不会引入新的作用域的，也就是说这些语句内定义的变量，外部也可以访问(如<code>1.3.1.2</code>) 如:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">if</span> <span class="hljs-literal">True</span>:<br><span class="hljs-meta">... </span>    testStr = <span class="hljs-string">&#x27;this is a testline to test if this is a new region&#x27;</span><br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(testStr)<br>this <span class="hljs-keyword">is</span> a testline to test <span class="hljs-keyword">if</span> this <span class="hljs-keyword">is</span> a new region<br></code></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>basic</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Pyhont-ArrDictionaryay</title>
+    <url>/2021/07/07/Python/basic/dictionary/</url>
+    <content><![CDATA[<h1 id="字典-Dictionary"><a href="#字典-Dictionary" class="headerlink" title="字典-Dictionary"></a>字典-Dictionary</h1><p>字典的基本性质:</p>
+<ul>
+<li>字典是python的内置数据类型</li>
+<li>字典的数据是键值对一一对应,根据键索引指定值<h2 id="创建字典"><a href="#创建字典" class="headerlink" title="创建字典"></a>创建字典</h2><code>1.</code> 使用<code>&#123;&#125;</code>创建字典,声明其类型</li>
+<li>字典键是不可变数据类型,用元组或不可变集合创建</li>
+<li>字典值是可变数据类型<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>dict1 = &#123;<span class="hljs-number">1</span>:<span class="hljs-string">&#x27;value1&#x27;</span>, <span class="hljs-string">&#x27;key2&#x27;</span>:<span class="hljs-string">&#x27;value2&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(dict1))<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">dict</span>&#x27;&gt;</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">print</span>(<span class="hljs-params">dict1[<span class="hljs-number">1</span>]</span>)</span><br><span class="hljs-class"><span class="hljs-title">value1</span></span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<blockquote>
+<p>键只能是不可变数据类型:元组 不可变集合<br>值都可</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>dict1 = &#123;tp1:tp1&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(dict1, dict1.__class__)<br>&#123;(<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">11</span>): (<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">11</span>)&#125; &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">dict</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
+<p><code>2.</code> 使用<code>dict()</code>初始化字典</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;Blue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">2</span>]<br><span class="hljs-string">&#x27;Pink&#x27;</span><br></code></pre></td></tr></table></figure>
+<h2 id="访问字典"><a href="#访问字典" class="headerlink" title="访问字典"></a>访问字典</h2><h3 id="键"><a href="#键" class="headerlink" title="键"></a>键</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;Blue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">2</span>]<br><span class="hljs-string">&#x27;Pink&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">3</span>]<br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>KeyError: <span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
+<p><code>[]</code>索引找不到值则报错</p>
+<h3 id="get"><a href="#get" class="headerlink" title="get()"></a><code>get()</code></h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;Blue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">2</span>]<br><span class="hljs-string">&#x27;Pink&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">1</span>]<br><span class="hljs-string">&#x27;Blue&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>d.get(<span class="hljs-number">1</span>)<br><span class="hljs-string">&#x27;Blue&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">3</span>]<br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>KeyError: <span class="hljs-number">3</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>d.get(<span class="hljs-number">3</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(d.get(<span class="hljs-number">3</span>))<br><span class="hljs-literal">None</span><br></code></pre></td></tr></table></figure>
+<p>当<code>.get()</code>方法找不到值,则返回<code>None</code></p>
+<h3 id="更新值"><a href="#更新值" class="headerlink" title="更新值"></a>更新值</h3><p>使用键定位,更新值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;Blue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">1</span>] = <span class="hljs-string">&#x27;cjblue&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(d)<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>&#125;<br></code></pre></td></tr></table></figure>
+<p>直接使用新键,则添加新值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">5</span>] = <span class="hljs-string">&#x27;marklily&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>, <span class="hljs-number">5</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h3><p><code>1.</code> <code>pop()</code> 删除并返回给定键的值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>, <span class="hljs-number">5</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>d.pop(<span class="hljs-number">2</span>)<br><span class="hljs-string">&#x27;Pink&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">5</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>&#125;<br></code></pre></td></tr></table></figure>
+<p><code>2.</code> <code>popitem()</code> 删除并返回任意一个键值对</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">5</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;pink&#x27;</span>, <span class="hljs-number">3</span>: <span class="hljs-string">&#x27;floyd&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>d.popitem()<br>(<span class="hljs-number">3</span>, <span class="hljs-string">&#x27;floyd&#x27;</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">5</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;pink&#x27;</span>&#125;<br></code></pre></td></tr></table></figure>
+<p><code>3.</code> <code>clear()</code> 删除所有元素但不删除字典本身</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d.clear()<br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;&#125;<br></code></pre></td></tr></table></figure>
+<p><code>4.</code> <code>del</code> 删除特定键值对或删除整个字典</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">5</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;pink&#x27;</span>, <span class="hljs-number">3</span>: <span class="hljs-string">&#x27;floyd&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">del</span> d[<span class="hljs-number">1</span>]<br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">5</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;pink&#x27;</span>, <span class="hljs-number">3</span>: <span class="hljs-string">&#x27;floyd&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">del</span> d<br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>NameError: name <span class="hljs-string">&#x27;d&#x27;</span> <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> defined<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>basic</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Pyhont-Set</title>
+    <url>/2021/07/07/Python/basic/Set/</url>
+    <content><![CDATA[<h1 id="集合-set"><a href="#集合-set" class="headerlink" title="集合-set"></a>集合-set</h1><p>集合的基本性质:<br><code>1.</code> 集合包含了不重复且无序的元素<br><code>2.</code> 集合是可变数据类型  </p>
+<ul>
+<li>但是其内部元素必须是不可变数据类型,即元组可以作为其元素,但是列表 集合 字典不能作为其元素  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>c = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>]&#125;<br>Traceback (most recent call last):<br>File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>TypeError: unhashable <span class="hljs-built_in">type</span>: <span class="hljs-string">&#x27;list&#x27;</span><br></code></pre></td></tr></table></figure>
+<h2 id="1-创建集合"><a href="#1-创建集合" class="headerlink" title="1. 创建集合"></a>1. 创建集合</h2></li>
+<li>使用<code>&#123;&#125;</code>创建集合,内部元素使用<code>,</code>分隔</li>
+<li>使用python内置函数<code>set()</code><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>a = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,tuplle1&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>b = <span class="hljs-built_in">set</span>([<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-string">&#x27;SS&#x27;</span>,tuplle1])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a.__class__, b.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">set</span>&#x27;&gt; &lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">set</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="2-修改集合"><a href="#2-修改集合" class="headerlink" title="2. 修改集合"></a>2. 修改集合</h2></li>
+<li>不能通过索引 切片操作来访问其中的元素,因为集合是无序的<h3 id="2-1-添加元素"><a href="#2-1-添加元素" class="headerlink" title="2.1 添加元素"></a>2.1 添加元素</h3><code>1.</code> <code>add()</code>方法添加单个元素<br><code>2.</code> <code>update()</code>方法添加多个元素<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>a = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,tuplle1&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>a.add(<span class="hljs-string">&#x27;aa&#x27;</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a)<br><br><span class="hljs-meta">&gt;&gt;&gt; </span>a = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>a.update([<span class="hljs-number">2</span>,<span class="hljs-number">4</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a)<br>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>&#125;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>集合内不重复的性质会自动去掉update()参数中的重复元素</p>
+</blockquote>
+<h3 id="2-2-删除元素"><a href="#2-2-删除元素" class="headerlink" title="2.2 删除元素"></a>2.2 删除元素</h3><code>1.</code> <code>discard()</code><br><code>2.</code> <code>remove()</code><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>a.discard(<span class="hljs-number">2</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a)<br>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>&#125;<br><br><span class="hljs-meta">&gt;&gt;&gt; </span>a.remove(<span class="hljs-number">1</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a)<br>&#123;<span class="hljs-number">3</span>, <span class="hljs-number">4</span>&#125;<br><br><span class="hljs-meta">&gt;&gt;&gt; </span>a.discard(<span class="hljs-number">10</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span>a.remove(<span class="hljs-number">11</span>)<br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>KeyError: <span class="hljs-number">11</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>二者差别在于,当被去除元素不存在时,<code>discard</code>不会报错,<code>remove</code>报错</p>
+</blockquote>
+</li>
+</ul>
+<p><code>3.</code> <code>pop()</code>:去掉任意一个元素</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>a.pop()<br><span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
+<p><code>4.</code> <code>clear()</code> 清空结合</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>a.update([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">9</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a)<br>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">9</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>a.clear()<br><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a)<br><span class="hljs-built_in">set</span>()<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-3-集合的逻辑操作"><a href="#2-3-集合的逻辑操作" class="headerlink" title="2.3 集合的逻辑操作"></a>2.3 集合的逻辑操作</h3><p><code>1.</code> <code>&amp;</code> / <code>intersection</code> – 交集</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>x = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>y = &#123;<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(x&amp;y)<br><span class="hljs-built_in">set</span>()<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(x.intersection(y))<br><span class="hljs-built_in">set</span>()<br><span class="hljs-meta">&gt;&gt;&gt; </span>x.update([<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(x.intersection(y))<br>&#123;<span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">7</span>&#125;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>当二者无交集,则返回空<code>set</code></p>
+</blockquote>
+<p><code>2.</code> <code>-</code> / <code>difference</code> – 差集:只在其一集合中出现</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">x = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>&#125;<br>y = &#123;<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(x-y)<br>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(x.difference(y))<br>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>&#125;<br></code></pre></td></tr></table></figure>
+<p><code>3.</code> <code>^</code> / <code>symmetric_difference</code> – 对称差集:不同时出现在两个集合的元素</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(x^y, x.symmetric_difference(y))<br>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>&#125; &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>&#125;<br></code></pre></td></tr></table></figure>
+<p><code>4.</code> <code>union()</code> – 求并集</p>
+<h2 id="3-不可变集合"><a href="#3-不可变集合" class="headerlink" title="3 不可变集合"></a>3 不可变集合</h2><ul>
+<li>由于集合的元素可变,所以无法作为字典的键值</li>
+<li>采用<code>frozenset()</code>可以创建不可变元素的不可变集合  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>a = <span class="hljs-built_in">frozenset</span>(&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a)<br><span class="hljs-built_in">frozenset</span>(&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125;)<br></code></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>basic</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Pyhont-Recursion</title>
+    <url>/2021/07/07/Python/basic/Recursion/</url>
+    <content><![CDATA[<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>计算阶乘</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">cal</span>(<span class="hljs-params">n</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">if</span> n == <span class="hljs-number">1</span>:<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">else</span>:<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">return</span> n * cal(n - <span class="hljs-number">1</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(cal(<span class="hljs-number">4</span>))<br><span class="hljs-number">24</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(cal(<span class="hljs-number">6</span>))<br><span class="hljs-number">720</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>递归函数内部会调用函数本身</li>
+<li>某次调用递归函数时,内部调用本身时会指定参数</li>
+<li>在递归函数中,应有一个结束参数信号,在每次递归中,参数不断靠近该信号<h2 id="递归次数限制"><a href="#递归次数限制" class="headerlink" title="递归次数限制"></a>递归次数限制</h2><code>python</code>递归次数限制为<code>3000</code>次,超出此次数则会触发<code>RecursionError</code><h2 id="移除递归次数限制"><a href="#移除递归次数限制" class="headerlink" title="移除递归次数限制"></a>移除递归次数限制</h2><code>sys.setrecursionlimit(5000)</code> 设置次数限制为我们所需要的次数</li>
 </ul>
 ]]></content>
       <categories>
@@ -693,114 +801,6 @@ python内置此方法的输出为元素长度:<figure class="highlight python"><
       </categories>
       <tags>
         <tag>Pandas</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Pyhont-Set</title>
-    <url>/2021/07/07/Python/basic/Set/</url>
-    <content><![CDATA[<h1 id="集合-set"><a href="#集合-set" class="headerlink" title="集合-set"></a>集合-set</h1><p>集合的基本性质:<br><code>1.</code> 集合包含了不重复且无序的元素<br><code>2.</code> 集合是可变数据类型  </p>
-<ul>
-<li>但是其内部元素必须是不可变数据类型,即元组可以作为其元素,但是列表 集合 字典不能作为其元素  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>c = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>]&#125;<br>Traceback (most recent call last):<br>File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>TypeError: unhashable <span class="hljs-built_in">type</span>: <span class="hljs-string">&#x27;list&#x27;</span><br></code></pre></td></tr></table></figure>
-<h2 id="1-创建集合"><a href="#1-创建集合" class="headerlink" title="1. 创建集合"></a>1. 创建集合</h2></li>
-<li>使用<code>&#123;&#125;</code>创建集合,内部元素使用<code>,</code>分隔</li>
-<li>使用python内置函数<code>set()</code><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>a = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,tuplle1&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>b = <span class="hljs-built_in">set</span>([<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-string">&#x27;SS&#x27;</span>,tuplle1])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a.__class__, b.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">set</span>&#x27;&gt; &lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">set</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
-<h2 id="2-修改集合"><a href="#2-修改集合" class="headerlink" title="2. 修改集合"></a>2. 修改集合</h2></li>
-<li>不能通过索引 切片操作来访问其中的元素,因为集合是无序的<h3 id="2-1-添加元素"><a href="#2-1-添加元素" class="headerlink" title="2.1 添加元素"></a>2.1 添加元素</h3><code>1.</code> <code>add()</code>方法添加单个元素<br><code>2.</code> <code>update()</code>方法添加多个元素<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>a = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,tuplle1&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>a.add(<span class="hljs-string">&#x27;aa&#x27;</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a)<br><br><span class="hljs-meta">&gt;&gt;&gt; </span>a = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>a.update([<span class="hljs-number">2</span>,<span class="hljs-number">4</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a)<br>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>&#125;<br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>集合内不重复的性质会自动去掉update()参数中的重复元素</p>
-</blockquote>
-<h3 id="2-2-删除元素"><a href="#2-2-删除元素" class="headerlink" title="2.2 删除元素"></a>2.2 删除元素</h3><code>1.</code> <code>discard()</code><br><code>2.</code> <code>remove()</code><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>a.discard(<span class="hljs-number">2</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a)<br>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>&#125;<br><br><span class="hljs-meta">&gt;&gt;&gt; </span>a.remove(<span class="hljs-number">1</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a)<br>&#123;<span class="hljs-number">3</span>, <span class="hljs-number">4</span>&#125;<br><br><span class="hljs-meta">&gt;&gt;&gt; </span>a.discard(<span class="hljs-number">10</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span>a.remove(<span class="hljs-number">11</span>)<br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>KeyError: <span class="hljs-number">11</span><br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>二者差别在于,当被去除元素不存在时,<code>discard</code>不会报错,<code>remove</code>报错</p>
-</blockquote>
-</li>
-</ul>
-<p><code>3.</code> <code>pop()</code>:去掉任意一个元素</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>a.pop()<br><span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
-<p><code>4.</code> <code>clear()</code> 清空结合</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>a.update([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">9</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a)<br>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">9</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>a.clear()<br><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a)<br><span class="hljs-built_in">set</span>()<br></code></pre></td></tr></table></figure>
-
-<h3 id="2-3-集合的逻辑操作"><a href="#2-3-集合的逻辑操作" class="headerlink" title="2.3 集合的逻辑操作"></a>2.3 集合的逻辑操作</h3><p><code>1.</code> <code>&amp;</code> / <code>intersection</code> – 交集</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>x = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>y = &#123;<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(x&amp;y)<br><span class="hljs-built_in">set</span>()<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(x.intersection(y))<br><span class="hljs-built_in">set</span>()<br><span class="hljs-meta">&gt;&gt;&gt; </span>x.update([<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(x.intersection(y))<br>&#123;<span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">7</span>&#125;<br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>当二者无交集,则返回空<code>set</code></p>
-</blockquote>
-<p><code>2.</code> <code>-</code> / <code>difference</code> – 差集:只在其一集合中出现</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">x = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>&#125;<br>y = &#123;<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(x-y)<br>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(x.difference(y))<br>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>&#125;<br></code></pre></td></tr></table></figure>
-<p><code>3.</code> <code>^</code> / <code>symmetric_difference</code> – 对称差集:不同时出现在两个集合的元素</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(x^y, x.symmetric_difference(y))<br>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>&#125; &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>&#125;<br></code></pre></td></tr></table></figure>
-<p><code>4.</code> <code>union()</code> – 求并集</p>
-<h2 id="3-不可变集合"><a href="#3-不可变集合" class="headerlink" title="3 不可变集合"></a>3 不可变集合</h2><ul>
-<li>由于集合的元素可变,所以无法作为字典的键值</li>
-<li>采用<code>frozenset()</code>可以创建不可变元素的不可变集合  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>a = <span class="hljs-built_in">frozenset</span>(&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a)<br><span class="hljs-built_in">frozenset</span>(&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125;)<br></code></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>basic</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Pyhont-Recursion</title>
-    <url>/2021/07/07/Python/basic/Recursion/</url>
-    <content><![CDATA[<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>计算阶乘</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">cal</span>(<span class="hljs-params">n</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">if</span> n == <span class="hljs-number">1</span>:<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">else</span>:<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">return</span> n * cal(n - <span class="hljs-number">1</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(cal(<span class="hljs-number">4</span>))<br><span class="hljs-number">24</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(cal(<span class="hljs-number">6</span>))<br><span class="hljs-number">720</span><br></code></pre></td></tr></table></figure>
-<ul>
-<li>递归函数内部会调用函数本身</li>
-<li>某次调用递归函数时,内部调用本身时会指定参数</li>
-<li>在递归函数中,应有一个结束参数信号,在每次递归中,参数不断靠近该信号<h2 id="递归次数限制"><a href="#递归次数限制" class="headerlink" title="递归次数限制"></a>递归次数限制</h2><code>python</code>递归次数限制为<code>3000</code>次,超出此次数则会触发<code>RecursionError</code><h2 id="移除递归次数限制"><a href="#移除递归次数限制" class="headerlink" title="移除递归次数限制"></a>移除递归次数限制</h2><code>sys.setrecursionlimit(5000)</code> 设置次数限制为我们所需要的次数</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>basic</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Pyhont-ArrDictionaryay</title>
-    <url>/2021/07/07/Python/basic/dictionary/</url>
-    <content><![CDATA[<h1 id="字典-Dictionary"><a href="#字典-Dictionary" class="headerlink" title="字典-Dictionary"></a>字典-Dictionary</h1><p>字典的基本性质:</p>
-<ul>
-<li>字典是python的内置数据类型</li>
-<li>字典的数据是键值对一一对应,根据键索引指定值<h2 id="创建字典"><a href="#创建字典" class="headerlink" title="创建字典"></a>创建字典</h2><code>1.</code> 使用<code>&#123;&#125;</code>创建字典,声明其类型</li>
-<li>字典键是不可变数据类型,用元组或不可变集合创建</li>
-<li>字典值是可变数据类型<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>dict1 = &#123;<span class="hljs-number">1</span>:<span class="hljs-string">&#x27;value1&#x27;</span>, <span class="hljs-string">&#x27;key2&#x27;</span>:<span class="hljs-string">&#x27;value2&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(dict1))<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">dict</span>&#x27;&gt;</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">print</span>(<span class="hljs-params">dict1[<span class="hljs-number">1</span>]</span>)</span><br><span class="hljs-class"><span class="hljs-title">value1</span></span><br></code></pre></td></tr></table></figure></li>
-</ul>
-<blockquote>
-<p>键只能是不可变数据类型:元组 不可变集合<br>值都可</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>dict1 = &#123;tp1:tp1&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(dict1, dict1.__class__)<br>&#123;(<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">11</span>): (<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">11</span>)&#125; &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">dict</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
-<p><code>2.</code> 使用<code>dict()</code>初始化字典</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;Blue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">2</span>]<br><span class="hljs-string">&#x27;Pink&#x27;</span><br></code></pre></td></tr></table></figure>
-<h2 id="访问字典"><a href="#访问字典" class="headerlink" title="访问字典"></a>访问字典</h2><h3 id="键"><a href="#键" class="headerlink" title="键"></a>键</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;Blue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">2</span>]<br><span class="hljs-string">&#x27;Pink&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">3</span>]<br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>KeyError: <span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
-<p><code>[]</code>索引找不到值则报错</p>
-<h3 id="get"><a href="#get" class="headerlink" title="get()"></a><code>get()</code></h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;Blue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">2</span>]<br><span class="hljs-string">&#x27;Pink&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">1</span>]<br><span class="hljs-string">&#x27;Blue&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>d.get(<span class="hljs-number">1</span>)<br><span class="hljs-string">&#x27;Blue&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">3</span>]<br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>KeyError: <span class="hljs-number">3</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>d.get(<span class="hljs-number">3</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(d.get(<span class="hljs-number">3</span>))<br><span class="hljs-literal">None</span><br></code></pre></td></tr></table></figure>
-<p>当<code>.get()</code>方法找不到值,则返回<code>None</code></p>
-<h3 id="更新值"><a href="#更新值" class="headerlink" title="更新值"></a>更新值</h3><p>使用键定位,更新值</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;Blue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">1</span>] = <span class="hljs-string">&#x27;cjblue&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(d)<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>&#125;<br></code></pre></td></tr></table></figure>
-<p>直接使用新键,则添加新值</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">5</span>] = <span class="hljs-string">&#x27;marklily&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>, <span class="hljs-number">5</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h3><p><code>1.</code> <code>pop()</code> 删除并返回给定键的值</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>, <span class="hljs-number">5</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>d.pop(<span class="hljs-number">2</span>)<br><span class="hljs-string">&#x27;Pink&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">5</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>&#125;<br></code></pre></td></tr></table></figure>
-<p><code>2.</code> <code>popitem()</code> 删除并返回任意一个键值对</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">5</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;pink&#x27;</span>, <span class="hljs-number">3</span>: <span class="hljs-string">&#x27;floyd&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>d.popitem()<br>(<span class="hljs-number">3</span>, <span class="hljs-string">&#x27;floyd&#x27;</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">5</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;pink&#x27;</span>&#125;<br></code></pre></td></tr></table></figure>
-<p><code>3.</code> <code>clear()</code> 删除所有元素但不删除字典本身</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d.clear()<br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;&#125;<br></code></pre></td></tr></table></figure>
-<p><code>4.</code> <code>del</code> 删除特定键值对或删除整个字典</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">5</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;pink&#x27;</span>, <span class="hljs-number">3</span>: <span class="hljs-string">&#x27;floyd&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">del</span> d[<span class="hljs-number">1</span>]<br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">5</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;pink&#x27;</span>, <span class="hljs-number">3</span>: <span class="hljs-string">&#x27;floyd&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">del</span> d<br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>NameError: name <span class="hljs-string">&#x27;d&#x27;</span> <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> defined<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>basic</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
       </tags>
   </entry>
 </search>
