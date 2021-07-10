@@ -142,7 +142,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/fluidPics/home.jpg') no-repeat center center;
+         style="background: url('/img/fluidPics/abbey_road.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -180,29 +180,33 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/07/07/Python/advance/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" target="_self">
-          <img src="/img/fluidPics/girls_top.jpg" srcset="/img/loading.gif" lazyload alt="多线程">
+        <a href="/2021/07/07/Python/advance/%E6%95%B0%E6%8D%AE%E6%8B%B7%E8%B4%9D/" target="_self">
+          <img src="/img/fluidPics/gnr.jpg" srcset="/img/loading.gif" lazyload alt="拷贝">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/07/07/Python/advance/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" target="_self">
-          多线程
+        <a href="/2021/07/07/Python/advance/%E6%95%B0%E6%8D%AE%E6%8B%B7%E8%B4%9D/" target="_self">
+          拷贝
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/07/07/Python/advance/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" target="_self">
+        <a href="/2021/07/07/Python/advance/%E6%95%B0%E6%8D%AE%E6%8B%B7%E8%B4%9D/" target="_self">
           
           
             
           
-          多线程python多线程并非真正意义上的多线程
+          拷贝
+浅拷贝(shallow copy), 仅拷贝指向对象的指针
+深拷贝(`deep copy``),将整个对象拷贝至另外一块内存
 
-每个进程运行时都需要等到GIL释放,然后得到GIL后上锁
-因此,同一时间只有一个python线程在运行创建线程 threading.Thread使用threading,创建新的threading.Thread,为其分配要执行的函数来启动新的执行线程12345&gt;&gt;&gt; import threading&gt;&gt;&gt; def 
+浅拷贝
+假设原有一个列表la = [1,2,3,[4,5,6]],将其浅拷贝到lb
+lb中某个元素改变时,会直接根据指针指向此列表所在内存,改变此列表值
+最终la值也改变  1234567&gt;&gt;&gt; la = [1,2,3,[4,5,6]]&gt;&g
         </a>
       </p>
 
@@ -241,33 +245,29 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/07/07/Python/advance/%E6%95%B0%E6%8D%AE%E6%8B%B7%E8%B4%9D/" target="_self">
-          <img src="/img/fluidPics/girls_top.jpg" srcset="/img/loading.gif" lazyload alt="拷贝">
+        <a href="/2021/07/07/Python/advance/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/" target="_self">
+          <img src="/img/fluidPics/girls_top.jpg" srcset="/img/loading.gif" lazyload alt="运算符重载">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/07/07/Python/advance/%E6%95%B0%E6%8D%AE%E6%8B%B7%E8%B4%9D/" target="_self">
-          拷贝
+        <a href="/2021/07/07/Python/advance/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/" target="_self">
+          运算符重载
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/07/07/Python/advance/%E6%95%B0%E6%8D%AE%E6%8B%B7%E8%B4%9D/" target="_self">
+        <a href="/2021/07/07/Python/advance/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/" target="_self">
           
           
             
           
-          拷贝
-浅拷贝(shallow copy), 仅拷贝指向对象的指针
-深拷贝(`deep copy``),将整个对象拷贝至另外一块内存
-
-浅拷贝
-假设原有一个列表la = [1,2,3,[4,5,6]],将其浅拷贝到lb
-lb中某个元素改变时,会直接根据指针指向此列表所在内存,改变此列表值
-最终la值也改变  1234567&gt;&gt;&gt; la = [1,2,3,[4,5,6]]&gt;&g
+          运算符重载
+python中一切都是对象,每个对象都有一些特殊的内部方法
+这些方法都遵循__action__的命名规定
+通过运算符重载,可以让类进行一些数学运算123456789101112131415161718192021222324252627282930313233343536373839class Vector(object):    def __init__(self, x, y):  
         </a>
       </p>
 

@@ -255,23 +255,6 @@
       </tags>
   </entry>
   <entry>
-    <title>运算符重载</title>
-    <url>/2021/07/07/Python/advance/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/</url>
-    <content><![CDATA[<h1 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h1><ul>
-<li><code>python</code>中一切都是对象,每个对象都有一些特殊的内部方法</li>
-<li>这些方法都遵循<code>__action__</code>的命名规定</li>
-<li>通过运算符重载,可以让类进行一些数学运算<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Vector</span>(<span class="hljs-params"><span class="hljs-built_in">object</span></span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, x, y</span>):</span><br>        self.x = x<br>        self.y = y<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__add__</span>(<span class="hljs-params">self, v</span>):</span><br>        <span class="hljs-comment"># Addition with another vector.</span><br>        <span class="hljs-keyword">return</span> Vector(self.x + v.x, self.y + v.y)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__sub__</span>(<span class="hljs-params">self, v</span>):</span><br>        <span class="hljs-comment"># Subtraction with another vector.</span><br>        <span class="hljs-keyword">return</span> Vector(self.x - v.x, self.y - v.y)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__mul__</span>(<span class="hljs-params">self, s</span>):</span><br>        <span class="hljs-comment"># Multiplication with a scalar.</span><br>        <span class="hljs-keyword">return</span> Vector(self.x * s, self.y * s)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__div__</span>(<span class="hljs-params">self, s</span>):</span><br>        <span class="hljs-comment"># Division with a scalar.</span><br>        float_s = <span class="hljs-built_in">float</span>(s)<br>        <span class="hljs-keyword">return</span> Vector(self.x / float_s, self.y / float_s)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__floordiv__</span>(<span class="hljs-params">self, s</span>):</span><br>        <span class="hljs-comment"># Division with a scalar (value floored).</span><br>        <span class="hljs-keyword">return</span> Vector(self.x // s, self.y // s)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__repr__</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-comment"># Print friendly representation of Vector class. Else, it would</span><br>        <span class="hljs-comment"># show up like, &lt;__main__.Vector instance at 0x01DDDDC8&gt;.</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&lt;Vector (%f, %f)&gt;&#x27;</span> % (self.x, self.y, )<br><br>a = Vector(<span class="hljs-number">3</span>, <span class="hljs-number">5</span>)<br>b = Vector(<span class="hljs-number">2</span>, <span class="hljs-number">7</span>)<br><br><span class="hljs-built_in">print</span> a + b <span class="hljs-comment"># Output: &lt;Vector (5.000000, 12.000000)&gt;</span><br><span class="hljs-built_in">print</span> b - a <span class="hljs-comment"># Output: &lt;Vector (-1.000000, 2.000000)&gt;</span><br><span class="hljs-built_in">print</span> b * <span class="hljs-number">1.3</span> <span class="hljs-comment"># Output: &lt;Vector (2.600000, 9.100000)&gt;</span><br><span class="hljs-built_in">print</span> a // <span class="hljs-number">17</span> <span class="hljs-comment"># Output: &lt;Vector (0.000000, 0.000000)&gt;</span><br><span class="hljs-built_in">print</span> a / <span class="hljs-number">17</span> <span class="hljs-comment"># Output: &lt;Vector (0.176471, 0.294118)&gt;</span><br></code></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>advance</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>多线程</title>
     <url>/2021/07/07/Python/advance/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</url>
     <content><![CDATA[<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><p>python多线程并非真正意义上的多线程</p>
@@ -309,6 +292,23 @@
 <li>最终<code>la</code>值也改变  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>la = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,[<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>]]<br><span class="hljs-meta">&gt;&gt;&gt; </span>lb = la<br><span class="hljs-meta">&gt;&gt;&gt; </span>lb[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;a&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(lb)<br>[<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]]<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(la)<br>[<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]]<br></code></pre></td></tr></table></figure>
   <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>a = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,[<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]]<br><span class="hljs-meta">&gt;&gt;&gt; </span>b = a.copy()<br><span class="hljs-meta">&gt;&gt;&gt; </span>b[<span class="hljs-number">2</span>][<span class="hljs-number">1</span>] = <span class="hljs-number">0</span> <br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, [<span class="hljs-number">3</span>, <span class="hljs-number">0</span>]]<br></code></pre></td></tr></table></figure>
 <h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2>通过引入<code>copy</code>,使用<code>copy.deepcopy()</code>方法<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> copy<br><span class="hljs-meta">&gt;&gt;&gt; </span>a = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,[<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]]<br><span class="hljs-meta">&gt;&gt;&gt; </span>c = copy.deepcopy(a)<br><span class="hljs-meta">&gt;&gt;&gt; </span>c[<span class="hljs-number">2</span>][<span class="hljs-number">1</span>] = <span class="hljs-number">99</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(c)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, [<span class="hljs-number">3</span>, <span class="hljs-number">99</span>]]<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, [<span class="hljs-number">3</span>, <span class="hljs-number">0</span>]]<br></code></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>advance</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>运算符重载</title>
+    <url>/2021/07/07/Python/advance/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/</url>
+    <content><![CDATA[<h1 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h1><ul>
+<li><code>python</code>中一切都是对象,每个对象都有一些特殊的内部方法</li>
+<li>这些方法都遵循<code>__action__</code>的命名规定</li>
+<li>通过运算符重载,可以让类进行一些数学运算<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Vector</span>(<span class="hljs-params"><span class="hljs-built_in">object</span></span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, x, y</span>):</span><br>        self.x = x<br>        self.y = y<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__add__</span>(<span class="hljs-params">self, v</span>):</span><br>        <span class="hljs-comment"># Addition with another vector.</span><br>        <span class="hljs-keyword">return</span> Vector(self.x + v.x, self.y + v.y)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__sub__</span>(<span class="hljs-params">self, v</span>):</span><br>        <span class="hljs-comment"># Subtraction with another vector.</span><br>        <span class="hljs-keyword">return</span> Vector(self.x - v.x, self.y - v.y)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__mul__</span>(<span class="hljs-params">self, s</span>):</span><br>        <span class="hljs-comment"># Multiplication with a scalar.</span><br>        <span class="hljs-keyword">return</span> Vector(self.x * s, self.y * s)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__div__</span>(<span class="hljs-params">self, s</span>):</span><br>        <span class="hljs-comment"># Division with a scalar.</span><br>        float_s = <span class="hljs-built_in">float</span>(s)<br>        <span class="hljs-keyword">return</span> Vector(self.x / float_s, self.y / float_s)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__floordiv__</span>(<span class="hljs-params">self, s</span>):</span><br>        <span class="hljs-comment"># Division with a scalar (value floored).</span><br>        <span class="hljs-keyword">return</span> Vector(self.x // s, self.y // s)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__repr__</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-comment"># Print friendly representation of Vector class. Else, it would</span><br>        <span class="hljs-comment"># show up like, &lt;__main__.Vector instance at 0x01DDDDC8&gt;.</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&lt;Vector (%f, %f)&gt;&#x27;</span> % (self.x, self.y, )<br><br>a = Vector(<span class="hljs-number">3</span>, <span class="hljs-number">5</span>)<br>b = Vector(<span class="hljs-number">2</span>, <span class="hljs-number">7</span>)<br><br><span class="hljs-built_in">print</span> a + b <span class="hljs-comment"># Output: &lt;Vector (5.000000, 12.000000)&gt;</span><br><span class="hljs-built_in">print</span> b - a <span class="hljs-comment"># Output: &lt;Vector (-1.000000, 2.000000)&gt;</span><br><span class="hljs-built_in">print</span> b * <span class="hljs-number">1.3</span> <span class="hljs-comment"># Output: &lt;Vector (2.600000, 9.100000)&gt;</span><br><span class="hljs-built_in">print</span> a // <span class="hljs-number">17</span> <span class="hljs-comment"># Output: &lt;Vector (0.000000, 0.000000)&gt;</span><br><span class="hljs-built_in">print</span> a / <span class="hljs-number">17</span> <span class="hljs-comment"># Output: &lt;Vector (0.176471, 0.294118)&gt;</span><br></code></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
       <categories>
@@ -462,25 +462,6 @@ python内置此方法的输出为元素长度:<figure class="highlight python"><
 <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> builtins<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">dir</span>(builtins)<br></code></pre></td></tr></table></figure>
 <h3 id="2-3-规则"><a href="#2-3-规则" class="headerlink" title="2.3 规则"></a>2.3 规则</h3><code>1.</code> 当在函数中引用一个变量的时候，以上的作用域顺序也是 Python 搜索的一个顺序 <code>L-&gt;E-G-B</code>，首先尝试局部作用域，没找到的话，继续搜索闭包函数作用域，然后再是全局作用域和内置作用域。<br><code>2.</code> Python 中只有模块（module），类（class）以及函数（def、lambda）才会引入新的作用域</li>
 <li>其它的代码块（如 if/elif/else/、try/except、for/while等）是不会引入新的作用域的，也就是说这些语句内定义的变量，外部也可以访问(如<code>1.3.1.2</code>) 如:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">if</span> <span class="hljs-literal">True</span>:<br><span class="hljs-meta">... </span>    testStr = <span class="hljs-string">&#x27;this is a testline to test if this is a new region&#x27;</span><br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(testStr)<br>this <span class="hljs-keyword">is</span> a testline to test <span class="hljs-keyword">if</span> this <span class="hljs-keyword">is</span> a new region<br></code></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>basic</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Pyhont-Recursion</title>
-    <url>/2021/07/07/Python/basic/Recursion/</url>
-    <content><![CDATA[<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>计算阶乘</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">cal</span>(<span class="hljs-params">n</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">if</span> n == <span class="hljs-number">1</span>:<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">else</span>:<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">return</span> n * cal(n - <span class="hljs-number">1</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(cal(<span class="hljs-number">4</span>))<br><span class="hljs-number">24</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(cal(<span class="hljs-number">6</span>))<br><span class="hljs-number">720</span><br></code></pre></td></tr></table></figure>
-<ul>
-<li>递归函数内部会调用函数本身</li>
-<li>某次调用递归函数时,内部调用本身时会指定参数</li>
-<li>在递归函数中,应有一个结束参数信号,在每次递归中,参数不断靠近该信号<h2 id="递归次数限制"><a href="#递归次数限制" class="headerlink" title="递归次数限制"></a>递归次数限制</h2><code>python</code>递归次数限制为<code>3000</code>次,超出此次数则会触发<code>RecursionError</code><h2 id="移除递归次数限制"><a href="#移除递归次数限制" class="headerlink" title="移除递归次数限制"></a>移除递归次数限制</h2><code>sys.setrecursionlimit(5000)</code> 设置次数限制为我们所需要的次数</li>
 </ul>
 ]]></content>
       <categories>
@@ -752,6 +733,25 @@ python内置此方法的输出为元素长度:<figure class="highlight python"><
 <h2 id="3-不可变集合"><a href="#3-不可变集合" class="headerlink" title="3 不可变集合"></a>3 不可变集合</h2><ul>
 <li>由于集合的元素可变,所以无法作为字典的键值</li>
 <li>采用<code>frozenset()</code>可以创建不可变元素的不可变集合  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>a = <span class="hljs-built_in">frozenset</span>(&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a)<br><span class="hljs-built_in">frozenset</span>(&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125;)<br></code></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>basic</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Pyhont-Recursion</title>
+    <url>/2021/07/07/Python/basic/Recursion/</url>
+    <content><![CDATA[<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>计算阶乘</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">cal</span>(<span class="hljs-params">n</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">if</span> n == <span class="hljs-number">1</span>:<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">else</span>:<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">return</span> n * cal(n - <span class="hljs-number">1</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(cal(<span class="hljs-number">4</span>))<br><span class="hljs-number">24</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(cal(<span class="hljs-number">6</span>))<br><span class="hljs-number">720</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>递归函数内部会调用函数本身</li>
+<li>某次调用递归函数时,内部调用本身时会指定参数</li>
+<li>在递归函数中,应有一个结束参数信号,在每次递归中,参数不断靠近该信号<h2 id="递归次数限制"><a href="#递归次数限制" class="headerlink" title="递归次数限制"></a>递归次数限制</h2><code>python</code>递归次数限制为<code>3000</code>次,超出此次数则会触发<code>RecursionError</code><h2 id="移除递归次数限制"><a href="#移除递归次数限制" class="headerlink" title="移除递归次数限制"></a>移除递归次数限制</h2><code>sys.setrecursionlimit(5000)</code> 设置次数限制为我们所需要的次数</li>
 </ul>
 ]]></content>
       <categories>
