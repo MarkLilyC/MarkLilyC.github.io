@@ -1,780 +1,694 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="CJBLUE">
+  <meta name="keywords" content="">
   
   <title>MarkLily</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="MarkLily">
-<meta property="og:url" content="http://example.com/page/2/index.html">
-<meta property="og:site_name" content="MarkLily">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="CJBLUE">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="MarkLily" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
-  
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.4.0"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">MarkLily</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">Tell me what you want,and i&#39;ll aviod it</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>MarkLily</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-          <a class="main-nav-link" href="/">Home</a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
         
-      </nav>
-      <nav id="sub-nav">
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
         
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-Python/basic/Array" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/07/07/Python/basic/Array/" class="article-date">
-  <time class="dt-published" datetime="2021-07-07T07:22:24.000Z" itemprop="datePublished">2021-07-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Python/">Python</a>►<a class="article-category-link" href="/categories/Python/basic/">basic</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
         
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/07/07/Python/basic/Array/">Pyhont-Array</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="数组-array"><a href="#数组-array" class="headerlink" title="数组-array"></a>数组-array</h1><p>数组的基本性质:</p>
-<ul>
-<li>数组本身不属于基本数据类型,需要导入<code>array</code>使用数组</li>
-<li>数组内部元素类型相同</li>
-<li>数组不同于列表:内部元素相同,列表内部元素可以不同</li>
-<li>人如其名,内部元素只能是数字<h2 id="数组定义"><a href="#数组定义" class="headerlink" title="数组定义"></a>数组定义</h2></li>
-<li>声明一个数组,必须遵循基本语法:<br><code>arrayName = array(typecode, [initializers])</code>: typecode:str  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr1 = array(<span class="string">&#x27;i&#x27;</span>,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(arr1, arr1.__class__)</span><br><span class="line">array(<span class="string">&#x27;i&#x27;</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]) &lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">array</span>.<span class="title">array</span>&#x27;&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li>当声明数据类型与<code>initializers</code>数据类型不一,则报错:  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr1 = array(<span class="string">&#x27;i&#x27;</span>,[<span class="number">1</span>,<span class="number">2.2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">TypeError: integer argument expected, got <span class="built_in">float</span></span><br></pre></td></tr></table></figure></li>
-<li>指定数据类型后,<code>initializers</code>可为空:  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr1 = array(<span class="string">&#x27;i&#x27;</span>,[])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(arr1)</span><br><span class="line">array(<span class="string">&#x27;i&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="访问数组"><a href="#访问数组" class="headerlink" title="访问数组"></a>访问数组</h2><h3 id="索引–"><a href="#索引–" class="headerlink" title="索引–[]"></a>索引–<code>[]</code></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr1 = array(<span class="string">&#x27;i&#x27;</span>,[<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">5</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(arr1[<span class="number">1</span>])</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
-<h3 id="切片–"><a href="#切片–" class="headerlink" title="切片–:"></a>切片–<code>:</code></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(arr1[<span class="number">1</span>:])</span><br><span class="line">array(<span class="string">&#x27;i&#x27;</span>, [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">5</span>])</span><br></pre></td></tr></table></figure>
-<h3 id="index-x"><a href="#index-x" class="headerlink" title="index(x)"></a><code>index(x)</code></h3>返回首次出现<code>x</code>的最小索引<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr1 = array(<span class="string">&#x27;i&#x27;</span>,[<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">5</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(arr1.index(<span class="number">5</span>))</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
-<h3 id="负索引"><a href="#负索引" class="headerlink" title="负索引"></a>负索引</h3><h2 id="修改数组"><a href="#修改数组" class="headerlink" title="修改数组"></a>修改数组</h2><h3 id="append"><a href="#append" class="headerlink" title="append()"></a><code>append()</code></h3>将一个元素添加到数组末尾<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = array(<span class="string">&#x27;i&#x27;</span>, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.append(<span class="number">10</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(a)</span><br><span class="line">array(<span class="string">&#x27;i&#x27;</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>])</span><br></pre></td></tr></table></figure>
-<h3 id="insert-x-i"><a href="#insert-x-i" class="headerlink" title="insert(x, i)"></a><code>insert(x, i)</code></h3>将元素<code>x</code>指定添加到<code>i</code>处<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = array(<span class="string">&#x27;i&#x27;</span>, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.insert(<span class="number">1</span>, <span class="number">22</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(a)</span><br><span class="line">array(<span class="string">&#x27;i&#x27;</span>, [<span class="number">1</span>, <span class="number">22</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br></pre></td></tr></table></figure>
-<h3 id="extend-x"><a href="#extend-x" class="headerlink" title="extend(x)"></a><code>extend(x)</code></h3>将x元素添加到数组,若<code>x</code>时数组,则二者应有相同的数据类型<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr1 = array(<span class="string">&#x27;i&#x27;</span>, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr2 = array(<span class="string">&#x27;i&#x27;</span>, [<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr1.extend(arr2)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(arr1)</span><br><span class="line">array(<span class="string">&#x27;i&#x27;</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br></pre></td></tr></table></figure>
-<h3 id="fromlist"><a href="#fromlist" class="headerlink" title="fromlist()"></a><code>fromlist()</code></h3>将<code>list</code>中的元素添加到数组中<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = array(<span class="string">&#x27;i&#x27;</span>, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l = [<span class="number">10</span>,<span class="number">11</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.fromlist(l)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(a)</span><br><span class="line">array(<span class="string">&#x27;i&#x27;</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>])</span><br></pre></td></tr></table></figure>
-<h3 id="reverse"><a href="#reverse" class="headerlink" title="reverse()"></a><code>reverse()</code></h3>反转数组<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(arr1)</span><br><span class="line">array(<span class="string">&#x27;i&#x27;</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(arr1.reverse())</span><br><span class="line"><span class="literal">None</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr1.reverse()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(arr1)</span><br><span class="line">array(<span class="string">&#x27;i&#x27;</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr1.reverse()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(arr1)</span><br><span class="line">array(<span class="string">&#x27;i&#x27;</span>, [<span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>])</span><br></pre></td></tr></table></figure>
-<h3 id=""><a href="#" class="headerlink" title="+"></a><code>+</code></h3>将两个数组拼接<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(arr1 + arr2)</span><br><span class="line">array(<span class="string">&#x27;i&#x27;</span>, [<span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br></pre></td></tr></table></figure>
-<h3 id="-1"><a href="#-1" class="headerlink" title="*"></a><code>*</code></h3>将数组复制添加到本身<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(arr1*<span class="number">2</span>)</span><br><span class="line">array(<span class="string">&#x27;i&#x27;</span>, [<span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>])</span><br></pre></td></tr></table></figure>
-<h3 id="del-arr-i"><a href="#del-arr-i" class="headerlink" title="del arr[i]"></a><code>del arr[i]</code></h3>删除某个元素,或数组<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr1</span><br><span class="line">array(<span class="string">&#x27;i&#x27;</span>, [<span class="number">4</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> arr1[<span class="number">0</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(arr1)</span><br><span class="line">array(<span class="string">&#x27;i&#x27;</span>, [<span class="number">3</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>])</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> arr1</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(arr1)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">NameError: name <span class="string">&#x27;arr1&#x27;</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br></pre></td></tr></table></figure>
-<h3 id="remove"><a href="#remove" class="headerlink" title="remove()"></a><code>remove()</code></h3>从数组中删除第一个出现的<code>x</code>元素<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr2</span><br><span class="line">array(<span class="string">&#x27;i&#x27;</span>, [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr2.remove(<span class="number">3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(arr2)</span><br><span class="line">array(<span class="string">&#x27;i&#x27;</span>, [<span class="number">4</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br></pre></td></tr></table></figure>
-<h3 id="pop"><a href="#pop" class="headerlink" title="pop()"></a><code>pop()</code></h3>删除并返回数组的最后一个元素<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr2</span><br><span class="line">array(<span class="string">&#x27;i&#x27;</span>, [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr2.remove(<span class="number">3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(arr2)</span><br><span class="line">array(<span class="string">&#x27;i&#x27;</span>, [<span class="number">4</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br></pre></td></tr></table></figure>
-也可指定<code>pop</code>对象索引<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(arr2)</span><br><span class="line">array(<span class="string">&#x27;i&#x27;</span>, [<span class="number">4</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr2.pop(<span class="number">2</span>)</span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(arr2)</span><br><span class="line">array(<span class="string">&#x27;i&#x27;</span>, [<span class="number">4</span>, <span class="number">5</span>, <span class="number">4</span>])</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/07/Python/basic/Array/" data-id="ckqxn9woo000df4vd4wmlh7yy" data-title="Pyhont-Array" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python/advance/发生器" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/07/07/Python/advance/%E5%8F%91%E7%94%9F%E5%99%A8/" class="article-date">
-  <time class="dt-published" datetime="2021-07-07T07:22:24.000Z" itemprop="datePublished">2021-07-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Python/">Python</a>►<a class="article-category-link" href="/categories/Python/advance/">advance</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/07/07/Python/advance/%E5%8F%91%E7%94%9F%E5%99%A8/">发生器</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="发生器"><a href="#发生器" class="headerlink" title="发生器"></a>发生器</h1><ul>
-<li><p>Python发生器通过关键字<code>yeild</code>创建</p>
-</li>
-<li><p>或通过发生器表达式 <code>expression for x in an_iterator</code>创建</p>
-</li>
-<li><p>生成器保存的算法而非具体数据,因此节约了内存</p>
-<h2 id="发生器-1"><a href="#发生器-1" class="headerlink" title="发生器"></a>发生器</h2></li>
-<li><p>发生器返回对象为 <code>generator</code></p>
-<h3 id="发生器表达式"><a href="#发生器表达式" class="headerlink" title="发生器表达式"></a>发生器表达式</h3></li>
-<li><p>发生器类似于列表推导式,但发生器用<code>()</code>声明</p>
-</li>
-<li><p>当发生器作为函数的唯一参数时,不必多重括号:</p>
-  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">printL</span>(<span class="params">list1</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">for</span> i <span class="keyword">in</span> list1:</span><br><span class="line"><span class="meta">... </span>            <span class="built_in">print</span>(i)</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>printL(x * <span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>))</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="number">8</span></span><br><span class="line"><span class="number">10</span></span><br><span class="line"><span class="number">12</span></span><br><span class="line"><span class="number">14</span></span><br><span class="line"><span class="number">16</span></span><br><span class="line"><span class="number">18</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>((x * <span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>)).__class__)</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">generator</span>&#x27;&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="发生器函数"><a href="#发生器函数" class="headerlink" title="发生器函数"></a>发生器函数</h3></li>
-<li><p>生成器函数类似常规函数</p>
-</li>
-<li><p>生成器函数内部有多个或一个<code>yield</code>关键字</p>
-</li>
-<li><p>生成器函数无返回值 <code>return</code></p>
-</li>
-<li><p>如果要提前停止发生器,则提前使用空<code>return</code></p>
-  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">generatorFunc</span>():</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line"><span class="meta">... </span>            <span class="keyword">yield</span> i * <span class="number">2</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l = generatorFunc()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> l:</span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(i)</span><br><span class="line">...</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="number">8</span></span><br></pre></td></tr></table></figure>
-<h4 id="所有的生成器表达式都有自己对应的生成器函数-反之亦然"><a href="#所有的生成器表达式都有自己对应的生成器函数-反之亦然" class="headerlink" title="所有的生成器表达式都有自己对应的生成器函数,反之亦然"></a>所有的生成器表达式都有自己对应的生成器函数,反之亦然</h4><h3 id="一次性"><a href="#一次性" class="headerlink" title="一次性"></a>一次性</h3><p>生成器对象是一次性的,当一次迭代完成后,则该生成器对象内部函数被销毁</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>l = generatorFunc()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> l:</span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(i)</span><br><span class="line">...</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="number">8</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="built_in">next</span>(l))</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">StopIteration</span><br></pre></td></tr></table></figure>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3></li>
-<li><p>生成器的主体不会立即执行：当调用生成器函数时，它只会返回生成器对象，而不去执行第一个 print 语句。</p>
-</li>
-<li><p>这使得生成器比返回列表的函数消耗更少的内存，并且它能够实现生成无限长的序列。</p>
-</li>
-<li><p>因此,生成器通常用于数据科学以及涉及大量数据的其他环境。</p>
-</li>
-<li><p>另一个优点是其他代码可以立即使用生成器产生的值，而无需等待生成完整的序列。</p>
-</li>
-<li><p>但是，如果你需要多次使用生成器生成的值，并且如果生成它们的成本高于存储，则将 list 生成的值存储为比重新生成序列更好。</p>
-</li>
-</ul>
-<h3 id="next-函数"><a href="#next-函数" class="headerlink" title=".next()函数"></a><code>.next()</code>函数</h3><p>用于从生成器中获取值,并提供迭代结束的默认值</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/07/Python/advance/%E5%8F%91%E7%94%9F%E5%99%A8/" data-id="ckqxn9wor000hf4vd9exo5r6l" data-title="发生器" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python/advance/运算符重载" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/07/07/Python/advance/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/" class="article-date">
-  <time class="dt-published" datetime="2021-07-07T07:22:24.000Z" itemprop="datePublished">2021-07-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Python/">Python</a>►<a class="article-category-link" href="/categories/Python/advance/">advance</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/07/07/Python/advance/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/">运算符重载</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h1><ul>
-<li><code>python</code>中一切都是对象,每个对象都有一些特殊的内部方法</li>
-<li>这些方法都遵循<code>__action__</code>的命名规定</li>
-<li>通过运算符重载,可以让类进行一些数学运算<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vector</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, x, y</span>):</span></span><br><span class="line">        self.x = x</span><br><span class="line">        self.y = y</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__add__</span>(<span class="params">self, v</span>):</span></span><br><span class="line">        <span class="comment"># Addition with another vector.</span></span><br><span class="line">        <span class="keyword">return</span> Vector(self.x + v.x, self.y + v.y)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__sub__</span>(<span class="params">self, v</span>):</span></span><br><span class="line">        <span class="comment"># Subtraction with another vector.</span></span><br><span class="line">        <span class="keyword">return</span> Vector(self.x - v.x, self.y - v.y)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__mul__</span>(<span class="params">self, s</span>):</span></span><br><span class="line">        <span class="comment"># Multiplication with a scalar.</span></span><br><span class="line">        <span class="keyword">return</span> Vector(self.x * s, self.y * s)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__div__</span>(<span class="params">self, s</span>):</span></span><br><span class="line">        <span class="comment"># Division with a scalar.</span></span><br><span class="line">        float_s = <span class="built_in">float</span>(s)</span><br><span class="line">        <span class="keyword">return</span> Vector(self.x / float_s, self.y / float_s)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__floordiv__</span>(<span class="params">self, s</span>):</span></span><br><span class="line">        <span class="comment"># Division with a scalar (value floored).</span></span><br><span class="line">        <span class="keyword">return</span> Vector(self.x // s, self.y // s)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># Print friendly representation of Vector class. Else, it would</span></span><br><span class="line">        <span class="comment"># show up like, &lt;__main__.Vector instance at 0x01DDDDC8&gt;.</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;&lt;Vector (%f, %f)&gt;&#x27;</span> % (self.x, self.y, )</span><br><span class="line"></span><br><span class="line">a = Vector(<span class="number">3</span>, <span class="number">5</span>)</span><br><span class="line">b = Vector(<span class="number">2</span>, <span class="number">7</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> a + b <span class="comment"># Output: &lt;Vector (5.000000, 12.000000)&gt;</span></span><br><span class="line"><span class="built_in">print</span> b - a <span class="comment"># Output: &lt;Vector (-1.000000, 2.000000)&gt;</span></span><br><span class="line"><span class="built_in">print</span> b * <span class="number">1.3</span> <span class="comment"># Output: &lt;Vector (2.600000, 9.100000)&gt;</span></span><br><span class="line"><span class="built_in">print</span> a // <span class="number">17</span> <span class="comment"># Output: &lt;Vector (0.000000, 0.000000)&gt;</span></span><br><span class="line"><span class="built_in">print</span> a / <span class="number">17</span> <span class="comment"># Output: &lt;Vector (0.176471, 0.294118)&gt;</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/07/Python/advance/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/" data-id="ckqxn9wos000jf4vd9muz4700" data-title="运算符重载" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python/basic/dictionary" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/07/07/Python/basic/dictionary/" class="article-date">
-  <time class="dt-published" datetime="2021-07-07T07:02:24.000Z" itemprop="datePublished">2021-07-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Python/">Python</a>►<a class="article-category-link" href="/categories/Python/basic/">basic</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/07/07/Python/basic/dictionary/">Pyhont-ArrDictionaryay</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="字典-Dictionary"><a href="#字典-Dictionary" class="headerlink" title="字典-Dictionary"></a>字典-Dictionary</h1><p>字典的基本性质:</p>
-<ul>
-<li>字典是python的内置数据类型</li>
-<li>字典的数据是键值对一一对应,根据键索引指定值<h2 id="创建字典"><a href="#创建字典" class="headerlink" title="创建字典"></a>创建字典</h2><code>1.</code> 使用<code>&#123;&#125;</code>创建字典,声明其类型</li>
-<li>字典键是不可变数据类型,用元组或不可变集合创建</li>
-<li>字典值是可变数据类型<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>dict1 = &#123;<span class="number">1</span>:<span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>:<span class="string">&#x27;value2&#x27;</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="built_in">type</span>(dict1))</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">dict</span>&#x27;&gt;</span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">print</span>(<span class="params">dict1[<span class="number">1</span>]</span>)</span></span><br><span class="line"><span class="class"><span class="title">value1</span></span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<blockquote>
-<p>键只能是不可变数据类型:元组 不可变集合<br>值都可</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>dict1 = &#123;tp1:tp1&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(dict1, dict1.__class__)</span><br><span class="line">&#123;(<span class="number">3</span>, <span class="number">2</span>, <span class="number">11</span>): (<span class="number">3</span>, <span class="number">2</span>, <span class="number">11</span>)&#125; &lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">dict</span>&#x27;&gt;</span></span><br></pre></td></tr></table></figure>
-<p><code>2.</code> 使用<code>dict()</code>初始化字典</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d</span><br><span class="line">&#123;<span class="number">1</span>: <span class="string">&#x27;Blue&#x27;</span>, <span class="number">2</span>: <span class="string">&#x27;Pink&#x27;</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d[<span class="number">2</span>]</span><br><span class="line"><span class="string">&#x27;Pink&#x27;</span></span><br></pre></td></tr></table></figure>
-<h2 id="访问字典"><a href="#访问字典" class="headerlink" title="访问字典"></a>访问字典</h2><h3 id="键"><a href="#键" class="headerlink" title="键"></a>键</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d</span><br><span class="line">&#123;<span class="number">1</span>: <span class="string">&#x27;Blue&#x27;</span>, <span class="number">2</span>: <span class="string">&#x27;Pink&#x27;</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d[<span class="number">2</span>]</span><br><span class="line"><span class="string">&#x27;Pink&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d[<span class="number">3</span>]</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">KeyError: <span class="number">3</span></span><br></pre></td></tr></table></figure>
-<p><code>[]</code>索引找不到值则报错</p>
-<h3 id="get"><a href="#get" class="headerlink" title="get()"></a><code>get()</code></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d</span><br><span class="line">&#123;<span class="number">1</span>: <span class="string">&#x27;Blue&#x27;</span>, <span class="number">2</span>: <span class="string">&#x27;Pink&#x27;</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d[<span class="number">2</span>]</span><br><span class="line"><span class="string">&#x27;Pink&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d[<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;Blue&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d.get(<span class="number">1</span>)</span><br><span class="line"><span class="string">&#x27;Blue&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d[<span class="number">3</span>]</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">KeyError: <span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d.get(<span class="number">3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(d.get(<span class="number">3</span>))</span><br><span class="line"><span class="literal">None</span></span><br></pre></td></tr></table></figure>
-<p>当<code>.get()</code>方法找不到值,则返回<code>None</code></p>
-<h3 id="更新值"><a href="#更新值" class="headerlink" title="更新值"></a>更新值</h3><p>使用键定位,更新值</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d</span><br><span class="line">&#123;<span class="number">1</span>: <span class="string">&#x27;Blue&#x27;</span>, <span class="number">2</span>: <span class="string">&#x27;Pink&#x27;</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d[<span class="number">1</span>] = <span class="string">&#x27;cjblue&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(d)</span><br><span class="line">&#123;<span class="number">1</span>: <span class="string">&#x27;cjblue&#x27;</span>, <span class="number">2</span>: <span class="string">&#x27;Pink&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
-<p>直接使用新键,则添加新值</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d</span><br><span class="line">&#123;<span class="number">1</span>: <span class="string">&#x27;cjblue&#x27;</span>, <span class="number">2</span>: <span class="string">&#x27;Pink&#x27;</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d[<span class="number">5</span>] = <span class="string">&#x27;marklily&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d</span><br><span class="line">&#123;<span class="number">1</span>: <span class="string">&#x27;cjblue&#x27;</span>, <span class="number">2</span>: <span class="string">&#x27;Pink&#x27;</span>, <span class="number">5</span>: <span class="string">&#x27;marklily&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h3><p><code>1.</code> <code>pop()</code> 删除并返回给定键的值</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d</span><br><span class="line">&#123;<span class="number">1</span>: <span class="string">&#x27;cjblue&#x27;</span>, <span class="number">2</span>: <span class="string">&#x27;Pink&#x27;</span>, <span class="number">5</span>: <span class="string">&#x27;marklily&#x27;</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d.pop(<span class="number">2</span>)</span><br><span class="line"><span class="string">&#x27;Pink&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d</span><br><span class="line">&#123;<span class="number">1</span>: <span class="string">&#x27;cjblue&#x27;</span>, <span class="number">5</span>: <span class="string">&#x27;marklily&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
-<p><code>2.</code> <code>popitem()</code> 删除并返回任意一个键值对</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d</span><br><span class="line">&#123;<span class="number">1</span>: <span class="string">&#x27;cjblue&#x27;</span>, <span class="number">5</span>: <span class="string">&#x27;marklily&#x27;</span>, <span class="number">2</span>: <span class="string">&#x27;pink&#x27;</span>, <span class="number">3</span>: <span class="string">&#x27;floyd&#x27;</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d.popitem()</span><br><span class="line">(<span class="number">3</span>, <span class="string">&#x27;floyd&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d</span><br><span class="line">&#123;<span class="number">1</span>: <span class="string">&#x27;cjblue&#x27;</span>, <span class="number">5</span>: <span class="string">&#x27;marklily&#x27;</span>, <span class="number">2</span>: <span class="string">&#x27;pink&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
-<p><code>3.</code> <code>clear()</code> 删除所有元素但不删除字典本身</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d.clear()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d</span><br><span class="line">&#123;&#125;</span><br></pre></td></tr></table></figure>
-<p><code>4.</code> <code>del</code> 删除特定键值对或删除整个字典</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d</span><br><span class="line">&#123;<span class="number">1</span>: <span class="string">&#x27;cjblue&#x27;</span>, <span class="number">5</span>: <span class="string">&#x27;marklily&#x27;</span>, <span class="number">2</span>: <span class="string">&#x27;pink&#x27;</span>, <span class="number">3</span>: <span class="string">&#x27;floyd&#x27;</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> d[<span class="number">1</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d</span><br><span class="line">&#123;<span class="number">5</span>: <span class="string">&#x27;marklily&#x27;</span>, <span class="number">2</span>: <span class="string">&#x27;pink&#x27;</span>, <span class="number">3</span>: <span class="string">&#x27;floyd&#x27;</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> d</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">NameError: name <span class="string">&#x27;d&#x27;</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/07/Python/basic/dictionary/" data-id="ckqxn9wpa0025f4vdh6z18jjt" data-title="Pyhont-ArrDictionaryay" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python/basic/Recursion" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/07/07/Python/basic/Recursion/" class="article-date">
-  <time class="dt-published" datetime="2021-07-07T05:40:24.000Z" itemprop="datePublished">2021-07-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Python/">Python</a>►<a class="article-category-link" href="/categories/Python/basic/">basic</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/07/07/Python/basic/Recursion/">Pyhont-Recursion</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>计算阶乘</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">cal</span>(<span class="params">n</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line"><span class="meta">... </span>            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">else</span>:</span><br><span class="line"><span class="meta">... </span>            <span class="keyword">return</span> n * cal(n - <span class="number">1</span>)</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(cal(<span class="number">4</span>))</span><br><span class="line"><span class="number">24</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(cal(<span class="number">6</span>))</span><br><span class="line"><span class="number">720</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>递归函数内部会调用函数本身</li>
-<li>某次调用递归函数时,内部调用本身时会指定参数</li>
-<li>在递归函数中,应有一个结束参数信号,在每次递归中,参数不断靠近该信号<h2 id="递归次数限制"><a href="#递归次数限制" class="headerlink" title="递归次数限制"></a>递归次数限制</h2><code>python</code>递归次数限制为<code>3000</code>次,超出此次数则会触发<code>RecursionError</code><h2 id="移除递归次数限制"><a href="#移除递归次数限制" class="headerlink" title="移除递归次数限制"></a>移除递归次数限制</h2><code>sys.setrecursionlimit(5000)</code> 设置次数限制为我们所需要的次数</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/07/Python/basic/Recursion/" data-id="ckqxn9woy000uf4vd8ctq66id" data-title="Pyhont-Recursion" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python/basic/PandasNotes" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/07/07/Python/basic/PandasNotes/" class="article-date">
-  <time class="dt-published" datetime="2021-07-07T02:40:24.000Z" itemprop="datePublished">2021-07-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Python/">Python</a>►<a class="article-category-link" href="/categories/Python/pandas/">pandas</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/07/07/Python/basic/PandasNotes/">Pandas-basic</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="2142"><a href="#2142" class="headerlink" title="2142"></a>2142</h1><h1 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h1><h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><p>pandas有两种数据结构：Series and dataframe数据框</p>
-<ul>
-<li>Series<br>Series是一个一维标记数组，可以存储任何种类的数据  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">my_series = pd.Series([<span class="number">3</span>,-<span class="number">5</span>,<span class="number">7</span>,<span class="number">4</span>], index=[<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(my_series)  </span><br></pre></td></tr></table></figure>
-  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a    <span class="number">3</span></span><br><span class="line">b   -<span class="number">5</span></span><br><span class="line">c    <span class="number">7</span></span><br><span class="line">d    <span class="number">4</span></span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
-  Series中的数据可通过index找到  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(my_series[<span class="string">&#x27;d&#x27;</span>])</span><br></pre></td></tr></table></figure>
-  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>series类似于字典(当然这只是个人直观感受)</p>
-</blockquote>
-</li>
-<li>dataframe是一个二维数据结构,包含不同的列  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">data = &#123;</span><br><span class="line">    <span class="string">&#x27;Country&#x27;</span> : [<span class="string">&#x27;Belgium&#x27;</span>, <span class="string">&#x27;India&#x27;</span>, <span class="string">&#x27;Brazil&#x27;</span> ],</span><br><span class="line">    <span class="string">&#x27;Capital&#x27;</span>: [<span class="string">&#x27;Brussels&#x27;</span>, <span class="string">&#x27;New   Delhi&#x27;</span>, <span class="string">&#x27;Brassilia&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;Population&#x27;</span>: [<span class="number">1234</span>,<span class="number">1234</span>,<span class="number">1234</span>]&#125;</span><br><span class="line">datas = pd.DataFrame(data, columns=[<span class="string">&#x27;Country&#x27;</span>,<span class="string">&#x27;Capital&#x27;</span>,<span class="string">&#x27;Population&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(data))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(datas))</span><br><span class="line"><span class="built_in">print</span>(datas)</span><br></pre></td></tr></table></figure>
-  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">dict</span>&#x27;&gt;</span></span><br><span class="line"><span class="class">&lt;<span class="title">class</span> &#x27;<span class="title">pandas</span>.<span class="title">core</span>.<span class="title">frame</span>.<span class="title">DataFrame</span>&#x27;&gt;</span></span><br><span class="line"><span class="class"><span class="title">Country</span>    <span class="title">Capital</span>  <span class="title">Population</span></span></span><br><span class="line"><span class="class">0  <span class="title">Belgium</span>   <span class="title">Brussels</span>        1234</span></span><br><span class="line"><span class="class">1    <span class="title">India</span>  <span class="title">New</span> <span class="title">Delhi</span>        1234</span></span><br><span class="line"><span class="class">2   <span class="title">Brazil</span>  <span class="title">Brassilia</span>        1234</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>创建dataframe时,在写入或打印时会自动生成从第一行正式数据开始的行序号 and 第一列正式数据开始的列序号<br>dataframe类似于数组,可直接使用行列序号进行访问具体的数据</p>
-</blockquote>
-<h2 id="调用-读取数据"><a href="#调用-读取数据" class="headerlink" title="调用/读取数据"></a>调用/读取数据</h2></li>
-<li>CSV文件  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pd = pd.read_csv(<span class="string">&#x27;.//testdata/demo1.csv&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(pd.__class__)</span><br></pre></td></tr></table></figure>
-  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">pandas</span>.<span class="title">core</span>.<span class="title">frame</span>.<span class="title">DataFrame</span>&#x27;&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li>xlsx文件  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df = pd.read_excel(<span class="string">&#x27;.//testdata/demo1.xlsx&#x27;</span> )</span><br><span class="line"><span class="built_in">print</span>(df.__class__)</span><br></pre></td></tr></table></figure>
-  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">pandas</span>.<span class="title">core</span>.<span class="title">frame</span>.<span class="title">DataFrame</span>&#x27;&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h2>各类文件读取成为dataframe数据后可随意转存为其他格式的文件  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">df_cvs = pd.read_csv(<span class="string">&#x27;.//testdata/demo1.csv&#x27;</span> )</span><br><span class="line">df_xlsx = pd.read_excel(<span class="string">&#x27;.//testdata/demo1.xlsx&#x27;</span> )</span><br><span class="line"><span class="comment"># csv读取的文件保存为csv</span></span><br><span class="line">df_cvs.to_csv(<span class="string">&#x27;csv_to_csv.csv&#x27;</span>)</span><br><span class="line"><span class="comment"># excel读取的数据保存为excel</span></span><br><span class="line">df_xlsx.to_excel(<span class="string">&#x27;xlsx_to_xlsx.xlsx&#x27;</span>)</span><br><span class="line"><span class="comment"># csv读取的数据保存为excel</span></span><br><span class="line">df_cvs.to_excel(<span class="string">&#x27;csv_to_xlsx.xlsx&#x27;</span>)</span><br><span class="line"><span class="comment"># excel读取的数据保存为csv</span></span><br><span class="line">df_xlsx.to_csv(<span class="string">&#x27;xlsx_to_csv.csv&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="创建测试对象"><a href="#创建测试对象" class="headerlink" title="创建测试对象"></a>创建测试对象</h2>创建一个<code>20 × 5</code> 的随机数的数据框(dataframe)</li>
-</ul>
-<ol>
-<li><p>使用np生成矩阵的形式创建dataframe’</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">test_data = pd.DataFrame(np.random.randint(<span class="number">0</span>, <span class="number">20</span>, size=(<span class="number">20</span>, <span class="number">5</span>)))</span><br><span class="line"><span class="built_in">print</span>(test_data)</span><br></pre></td></tr></table></figure></li>
-<li><p>直接输入生成</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(&#123;<span class="string">&quot;id&quot;</span>:[<span class="number">1001</span>,<span class="number">1002</span>,<span class="number">1003</span>,<span class="number">1004</span>,<span class="number">1005</span>,<span class="number">1006</span>], </span><br><span class="line"><span class="string">&quot;date&quot;</span>:pd.date_range(<span class="string">&#x27;20130102&#x27;</span>, periods=<span class="number">6</span>),</span><br><span class="line"><span class="string">&quot;city&quot;</span>:[<span class="string">&#x27;Beijing &#x27;</span>, <span class="string">&#x27;SH&#x27;</span>, <span class="string">&#x27; guangzhou &#x27;</span>, <span class="string">&#x27;Shenzhen&#x27;</span>, <span class="string">&#x27;shanghai&#x27;</span>, <span class="string">&#x27;BEIJING &#x27;</span>],</span><br><span class="line"><span class="string">&quot;age&quot;</span>:[<span class="number">23</span>,<span class="number">44</span>,<span class="number">54</span>,<span class="number">32</span>,<span class="number">34</span>,<span class="number">32</span>],</span><br><span class="line"><span class="string">&quot;category&quot;</span>:[<span class="string">&#x27;100-A&#x27;</span>,<span class="string">&#x27;100-B&#x27;</span>,<span class="string">&#x27;110-A&#x27;</span>,<span class="string">&#x27;110-C&#x27;</span>,<span class="string">&#x27;210-A&#x27;</span>,<span class="string">&#x27;130-F&#x27;</span>],</span><br><span class="line"><span class="string">&quot;price&quot;</span>:[<span class="number">1200</span>,np.nan,<span class="number">2133</span>,<span class="number">5433</span>,np.nan,<span class="number">4432</span>]&#125;,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>可在{}内数据内容后添加<code>columns =[&#39;id&#39;,&#39;date&#39;,&#39;city&#39;,&#39;category&#39;,&#39;age&#39;,&#39;price&#39;]</code>,借此自定义dataframe内数据的列次序<h3 id="统计数据函数"><a href="#统计数据函数" class="headerlink" title="统计数据函数"></a>统计数据函数</h3></li>
-</ul>
-</li>
-<li><p>df.info() :本函数提供dataframe的以下信息:</p>
-<ul>
-<li>RangeIndex:有多少数据</li>
-<li>Data Columns:指定找到多少列</li>
-<li>Columns:提供关于columns的信息</li>
-<li>dtypes:提供dataframe内的数据类型</li>
-<li>memory usage:表明内存使用量<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">test_data = pd.DataFrame(np.random.randint(<span class="number">0</span>, <span class="number">20</span>, size=(<span class="number">20</span>, <span class="number">5</span>)))</span><br><span class="line"><span class="built_in">print</span>(test_data.info()</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">pandas</span>.<span class="title">core</span>.<span class="title">frame</span>.<span class="title">DataFrame</span>&#x27;&gt;</span></span><br><span class="line"><span class="class"><span class="title">RangeIndex</span>:</span> <span class="number">20</span> entries, <span class="number">0</span> to <span class="number">19</span></span><br><span class="line">Data columns (total <span class="number">5</span> columns):</span><br><span class="line"><span class="comment">#   Column  Non-Null Count  Dtype</span></span><br><span class="line">---  ------  --------------  -----</span><br><span class="line"><span class="number">0</span>   <span class="number">0</span>       <span class="number">20</span> non-null     int32</span><br><span class="line"><span class="number">1</span>   <span class="number">1</span>       <span class="number">20</span> non-null     int32</span><br><span class="line"><span class="number">2</span>   <span class="number">2</span>       <span class="number">20</span> non-null     int32</span><br><span class="line"><span class="number">3</span>   <span class="number">3</span>       <span class="number">20</span> non-null     int32</span><br><span class="line"><span class="number">4</span>   <span class="number">4</span>       <span class="number">20</span> non-null     int32</span><br><span class="line">dtypes: int32(<span class="number">5</span>)</span><br><span class="line">memory usage: <span class="number">528.0</span> <span class="built_in">bytes</span></span><br><span class="line"><span class="literal">None</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>df.shape</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(test_data.shape)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">20</span>, <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>类似于数组,shape作为属性,而非函数</p>
-</blockquote>
-</li>
-<li><p>df.index():显示找到的索引信息</p>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(test_data.index)</span><br></pre></td></tr></table></figure>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RangeIndex(start=<span class="number">0</span>, stop=<span class="number">20</span>, step=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>index作为属性 not callable</p>
-</blockquote>
-</li>
-<li><p>df.count():给出每一列中有多少数据</p>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(test_data.count())</span><br></pre></td></tr></table></figure>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span>    <span class="number">20</span></span><br><span class="line"><span class="number">1</span>    <span class="number">20</span></span><br><span class="line"><span class="number">2</span>    <span class="number">20</span></span><br><span class="line"><span class="number">3</span>    <span class="number">20</span></span><br><span class="line"><span class="number">4</span>    <span class="number">20</span></span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure></li>
-<li><p>df.sum():给出每一列中的求和</p>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(test_data.sum())</span><br></pre></td></tr></table></figure>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span>    <span class="number">200</span></span><br><span class="line"><span class="number">1</span>    <span class="number">119</span></span><br><span class="line"><span class="number">2</span>    <span class="number">240</span></span><br><span class="line"><span class="number">3</span>    <span class="number">214</span></span><br><span class="line"><span class="number">4</span>    <span class="number">204</span></span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure></li>
-<li><p>df.sum():给出每一列中的求和</p>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(test_data.sum())</span><br></pre></td></tr></table></figure>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span>    <span class="number">200</span></span><br><span class="line"><span class="number">1</span>    <span class="number">119</span></span><br><span class="line"><span class="number">2</span>    <span class="number">240</span></span><br><span class="line"><span class="number">3</span>    <span class="number">214</span></span><br><span class="line"><span class="number">4</span>    <span class="number">204</span></span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure></li>
-<li><p>df.cumsum()<br> 给出依次将每列前n行求和的结果</p>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(test_data.cumsum())</span><br></pre></td></tr></table></figure>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> <span class="built_in">id</span>       date         city category  age   price</span><br><span class="line"><span class="number">0</span>  <span class="number">1001</span> <span class="number">2013</span>-01-02     Beijing     <span class="number">100</span>-A   <span class="number">23</span>  <span class="number">1200.0</span></span><br><span class="line"><span class="number">1</span>  <span class="number">1002</span> <span class="number">2013</span>-01-03           SH    <span class="number">100</span>-B   <span class="number">44</span>     NaN</span><br><span class="line"><span class="number">2</span>  <span class="number">1003</span> <span class="number">2013</span>-01-04   guangzhou     <span class="number">110</span>-A   <span class="number">54</span>  <span class="number">2133.0</span></span><br><span class="line"><span class="number">3</span>  <span class="number">1004</span> <span class="number">2013</span>-01-05     Shenzhen    <span class="number">110</span>-C   <span class="number">32</span>  <span class="number">5433.0</span></span><br><span class="line"><span class="number">5</span>  <span class="number">1006</span> <span class="number">2013</span>-01-07     BEIJING     <span class="number">130</span>-F   <span class="number">32</span>  <span class="number">4432.0</span></span><br><span class="line"><span class="built_in">id</span>       date                                           city                        category  age    price     </span><br><span class="line"><span class="number">0</span>  <span class="number">1001</span> <span class="number">2013</span>-01-02                                       Beijing                            <span class="number">100</span>-A   <span class="number">23</span>   <span class="number">1200.0</span>     </span><br><span class="line"><span class="number">1</span>  <span class="number">2003</span> <span class="number">2056</span>-01-05                                     Beijing SH                      <span class="number">100</span>-A100-B   <span class="number">67</span>      NaN     </span><br><span class="line"><span class="number">2</span>  <span class="number">3006</span> <span class="number">2099</span>-01-08                          Beijing SH guangzhou                  <span class="number">100</span>-A100-B110-A  <span class="number">121</span>   <span class="number">3333.0</span>     </span><br><span class="line"><span class="number">3</span>  <span class="number">4010</span> <span class="number">2142</span>-01-<span class="number">13</span>                  Beijing SH guangzhou Shenzhen            <span class="number">100</span>-A100-B110-A110-C  <span class="number">153</span>   <span class="number">8766.0</span>     </span><br><span class="line"><span class="number">4</span>  <span class="number">5015</span> <span class="number">2185</span>-01-<span class="number">18</span>          Beijing SH guangzhou Shenzhenshanghai       <span class="number">100</span>-A100-B110-A110-C210-A  <span class="number">187</span>      NaN     </span><br><span class="line"><span class="number">5</span>  <span class="number">6021</span> <span class="number">2228</span>-01-<span class="number">26</span>  Beijing SH guangzhou ShenzhenshanghaiBEIJING   <span class="number">100</span>-A100-B110-A110-C210-A130-F  <span class="number">219</span>  <span class="number">13198.0</span> </span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>所得结果依然为dataframe</p>
-</blockquote>
-<ol>
-<li>指定列时，只计算该列的累加值:<blockquote>
-<p>tar = df[‘id’].cumsum()</p>
-</blockquote>
-</li>
-<li>不指定列时，则将返回各列的累加值</li>
-</ol>
-</li>
-<li><p>df.min():给出每列中的最小值</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">id</span>                         <span class="number">1001</span></span><br><span class="line">date        <span class="number">2013</span>-01-02 <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span></span><br><span class="line">city                 guangzhou </span><br><span class="line">category                  <span class="number">100</span>-A</span><br><span class="line">age                          <span class="number">23</span></span><br><span class="line">price                    <span class="number">1200.0</span></span><br><span class="line">dtype: <span class="built_in">object</span> </span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">pandas</span>.<span class="title">core</span>.<span class="title">series</span>.<span class="title">Series</span>&#x27;&gt;</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>所得结果为Series</p>
-</blockquote>
-</li>
-<li><p>df.describe():函数提供了有关数据的基本统计信息（基于列计算）：count、mean、std、min、25%、50%、75%、max</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">            <span class="built_in">id</span>       age        price</span><br><span class="line">count     <span class="number">6.000000</span>   <span class="number">6.00000</span>     <span class="number">4.000000</span></span><br><span class="line">mean   <span class="number">1003.500000</span>  <span class="number">36.50000</span>  <span class="number">3299.500000</span></span><br><span class="line">std       <span class="number">1.870829</span>  <span class="number">10.87658</span>  <span class="number">1966.638503</span></span><br><span class="line"><span class="built_in">min</span>    <span class="number">1001.000000</span>  <span class="number">23.00000</span>  <span class="number">1200.000000</span></span><br><span class="line"><span class="number">25</span>%    <span class="number">1002.250000</span>  <span class="number">32.00000</span>  <span class="number">1899.750000</span></span><br><span class="line"><span class="number">50</span>%    <span class="number">1003.500000</span>  <span class="number">33.00000</span>  <span class="number">3282.500000</span></span><br><span class="line"><span class="number">75</span>%    <span class="number">1004.750000</span>  <span class="number">41.50000</span>  <span class="number">4682.250000</span></span><br><span class="line"><span class="built_in">max</span>    <span class="number">1006.000000</span>  <span class="number">54.00000</span>  <span class="number">5433.000000</span> </span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">pandas</span>.<span class="title">core</span>.<span class="title">frame</span>.<span class="title">DataFrame</span>&#x27;&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>df.mean():给出每列中的均值</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tar = df.mean()</span><br><span class="line"><span class="built_in">id</span>       <span class="number">1003.5</span></span><br><span class="line">age        <span class="number">36.5</span></span><br><span class="line">price    <span class="number">3299.5</span></span><br><span class="line">dtype: float64</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">pandas</span>.<span class="title">core</span>.<span class="title">series</span>.<span class="title">Series</span>&#x27;&gt;</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>只针对dataframe中的数字</p>
-</blockquote>
-</li>
-<li><p>df.median():给出每列中的中位数  </p>
-<blockquote>
-</blockquote>
-</li>
-<li><p>df.quantlie([0.25, 0.75]):给出每列中的25% 和 75%的分位数</p>
-<blockquote>
-</blockquote>
-</li>
-<li><p>df.var()–方差值</p>
-<blockquote>
-</blockquote>
-</li>
-<li><p>df.std()–标准差值</p>
-<blockquote>
-</blockquote>
-</li>
-<li><p>df.cummin()–返回前n行的最小值</p>
-<blockquote>
-</blockquote>
-</li>
-<li><p>len(df):确定列的行数</p>
-<blockquote>
-<p>len(df[‘columnId’]):返回某列的行数</p>
-</blockquote>
-</li>
-<li><p>df.count():返回Nan值个数</p>
-<blockquote>
-</blockquote>
-</li>
-<li><p>df.isnull():返回dataframe中各值是否为null</p>
-<blockquote>
-<p>return DataFrame</p>
-</blockquote>
-</li>
-<li><p>df.corr():返回各列之间的相关系数</p>
-<h3 id="pandas中的选择与过滤"><a href="#pandas中的选择与过滤" class="headerlink" title="pandas中的选择与过滤"></a>pandas中的选择与过滤</h3></li>
-<li><p>Series: mySeries[‘index’]–返回索引值为’index’的value</p>
-<blockquote>
-</blockquote>
-</li>
-<li><p>df[n:N]–返回行n到N-1的dataframe</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar =df[<span class="number">2</span>:<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">id</span>       date         city category  age   price</span><br><span class="line"><span class="number">2</span>  <span class="number">1003</span> <span class="number">2013</span>-01-04   guangzhou     <span class="number">110</span>-A   <span class="number">54</span>  <span class="number">2133.0</span></span><br><span class="line"><span class="number">3</span>  <span class="number">1004</span> <span class="number">2013</span>-01-05     Shenzhen    <span class="number">110</span>-C   <span class="number">32</span>  <span class="number">5433.0</span></span><br><span class="line"><span class="number">4</span>  <span class="number">1005</span> <span class="number">2013</span>-01-06     shanghai    <span class="number">210</span>-A   <span class="number">34</span>     NaN</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">pandas</span>.<span class="title">core</span>.<span class="title">frame</span>.<span class="title">DataFrame</span>&#x27;&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>df.head()–返回dataframe中的前几行,默认为5行</p>
-</li>
-<li><p>df.tail()</p>
-</li>
-<li><p>df.sample()–随机选取几行,按频数</p>
-</li>
-<li><p>create filter–创建一个过滤条件</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">filters = df.<span class="built_in">id</span> &gt; <span class="number">1003</span></span><br><span class="line">df[<span class="built_in">filter</span>]</span><br></pre></td></tr></table></figure>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span>  <span class="number">1004</span> <span class="number">2013</span>-01-05  Shenzhen    <span class="number">110</span>-C   <span class="number">32</span>  <span class="number">5433.0</span></span><br><span class="line"><span class="number">4</span>  <span class="number">1005</span> <span class="number">2013</span>-01-06  shanghai    <span class="number">210</span>-A   <span class="number">34</span>     NaN</span><br><span class="line"><span class="number">5</span>  <span class="number">1006</span> <span class="number">2013</span>-01-07  BEIJING     <span class="number">130</span>-F   <span class="number">32</span>  <span class="number">4432.0</span> </span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">pandas</span>.<span class="title">core</span>.<span class="title">frame</span>.<span class="title">DataFrame</span>&#x27;&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>df.filter(regex = ‘code’)–表示regex = ‘code’的列通过过滤条件</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar = df.<span class="built_in">filter</span>(regex=<span class="string">&#x27;date&#x27;</span>).head()</span><br></pre></td></tr></table></figure>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">        date</span><br><span class="line"><span class="number">0</span> <span class="number">2013</span>-01-02</span><br><span class="line"><span class="number">1</span> <span class="number">2013</span>-01-03</span><br><span class="line"><span class="number">2</span> <span class="number">2013</span>-01-04</span><br><span class="line"><span class="number">3</span> <span class="number">2013</span>-01-05</span><br><span class="line"><span class="number">4</span> <span class="number">2013</span>-01-06</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">pandas</span>.<span class="title">core</span>.<span class="title">frame</span>.<span class="title">DataFrame</span>&#x27;&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>np.logicl_and(filter1, filter2)–并行多个filter</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar =df[np.logical_and(df[<span class="string">&#x27;id&#x27;</span>] &gt; <span class="number">1003</span>, df[<span class="string">&#x27;age&#x27;</span>] &gt; <span class="number">33</span>)]</span><br></pre></td></tr></table></figure>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">4</span>  <span class="number">1005</span> <span class="number">2013</span>-01-06  shanghai    <span class="number">210</span>-A   <span class="number">34</span>    NaN</span><br></pre></td></tr></table></figure></li>
-<li><p>df[(filter1) &amp; (filter2)]</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar =df[(df[<span class="string">&#x27;id&#x27;</span>] &gt; <span class="number">1003</span>) &amp; (df[<span class="string">&#x27;age&#x27;</span>] &gt; <span class="number">33</span>)]</span><br></pre></td></tr></table></figure>
-<h3 id="sort-data"><a href="#sort-data" class="headerlink" title="sort data"></a>sort data</h3></li>
-<li><p>df.sort_values(‘columnName’, ascending=True)</p>
-<ul>
-<li>对columnName列排序</li>
-<li>ascending=true表示升序<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.sort_values(<span class="string">&#x27;age&#x27;</span>, ascending=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">     <span class="built_in">id</span>       date         city category  age   price</span><br><span class="line"><span class="number">0</span>  <span class="number">1001</span> <span class="number">2013</span>-01-02     Beijing     <span class="number">100</span>-A   <span class="number">23</span>  <span class="number">1200.0</span></span><br><span class="line"><span class="number">1</span>  <span class="number">1002</span> <span class="number">2013</span>-01-03           SH    <span class="number">100</span>-B   <span class="number">44</span>     NaN</span><br><span class="line"><span class="number">2</span>  <span class="number">1003</span> <span class="number">2013</span>-01-04   guangzhou     <span class="number">110</span>-A   <span class="number">54</span>  <span class="number">2133.0</span></span><br><span class="line"><span class="number">3</span>  <span class="number">1004</span> <span class="number">2013</span>-01-05     Shenzhen    <span class="number">110</span>-C   <span class="number">32</span>  <span class="number">5433.0</span></span><br><span class="line"><span class="number">4</span>  <span class="number">1005</span> <span class="number">2013</span>-01-06     shanghai    <span class="number">210</span>-A   <span class="number">34</span>     NaN</span><br><span class="line"><span class="number">5</span>  <span class="number">1006</span> <span class="number">2013</span>-01-07     BEIJING     <span class="number">130</span>-F   <span class="number">32</span>  <span class="number">4432.0</span></span><br><span class="line">    <span class="built_in">id</span>       date         city category  age   price</span><br><span class="line"><span class="number">0</span>  <span class="number">1001</span> <span class="number">2013</span>-01-02     Beijing     <span class="number">100</span>-A   <span class="number">23</span>  <span class="number">1200.0</span></span><br><span class="line"><span class="number">3</span>  <span class="number">1004</span> <span class="number">2013</span>-01-05     Shenzhen    <span class="number">110</span>-C   <span class="number">32</span>  <span class="number">5433.0</span></span><br><span class="line"><span class="number">5</span>  <span class="number">1006</span> <span class="number">2013</span>-01-07     BEIJING     <span class="number">130</span>-F   <span class="number">32</span>  <span class="number">4432.0</span></span><br><span class="line"><span class="number">4</span>  <span class="number">1005</span> <span class="number">2013</span>-01-06     shanghai    <span class="number">210</span>-A   <span class="number">34</span>     NaN</span><br><span class="line"><span class="number">1</span>  <span class="number">1002</span> <span class="number">2013</span>-01-03           SH    <span class="number">100</span>-B   <span class="number">44</span>     NaN</span><br><span class="line"><span class="number">2</span>  <span class="number">1003</span> <span class="number">2013</span>-01-04   guangzhou     <span class="number">110</span>-A   <span class="number">54</span>  <span class="number">2133.0</span></span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">pandas</span>.<span class="title">core</span>.<span class="title">frame</span>.<span class="title">DataFrame</span>&#x27;&gt;</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>df.sort_index()</p>
-<ul>
-<li>对索引按照默认升序<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.sort_index()</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### 重命名&amp;定义\修改新的列</span></span><br><span class="line"><span class="number">1.</span> df.rename(columns = &#123;<span class="string">&#x27;oldColumnName&#x27;</span>:<span class="string">&#x27;newColumnName&#x27;</span>&#125;)</span><br><span class="line">   * 重命名</span><br><span class="line"> <span class="number">9</span>   ```python</span><br><span class="line">    tar = df.rename(columns = &#123;<span class="string">&#x27;id&#x27;</span>:<span class="string">&#x27;newId&#x27;</span>&#125;)</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>df[‘newColume’] = newDesignWay</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;thisisanewcolumn&#x27;</span>] = pd.Series(np.arange(<span class="number">0</span>, <span class="number">6</span>, <span class="number">1</span>))</span><br></pre></td></tr></table></figure>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">     <span class="built_in">id</span>       date         city category  age   price  thisisanewcolumn</span><br><span class="line"><span class="number">0</span>  <span class="number">1001</span> <span class="number">2013</span>-01-02     Beijing     <span class="number">100</span>-A   <span class="number">23</span>  <span class="number">1200.0</span>                 <span class="number">0</span></span><br><span class="line"><span class="number">1</span>  <span class="number">1002</span> <span class="number">2013</span>-01-03           SH    <span class="number">100</span>-B   <span class="number">44</span>     NaN                 <span class="number">1</span></span><br><span class="line"><span class="number">2</span>  <span class="number">1003</span> <span class="number">2013</span>-01-04   guangzhou     <span class="number">110</span>-A   <span class="number">54</span>  <span class="number">2133.0</span>                 <span class="number">2</span></span><br><span class="line"><span class="number">3</span>  <span class="number">1004</span> <span class="number">2013</span>-01-05     Shenzhen    <span class="number">110</span>-C   <span class="number">32</span>  <span class="number">5433.0</span>                 <span class="number">3</span></span><br><span class="line"><span class="number">4</span>  <span class="number">1005</span> <span class="number">2013</span>-01-06     shanghai    <span class="number">210</span>-A   <span class="number">34</span>     NaN                 <span class="number">4</span></span><br><span class="line"><span class="number">5</span>  <span class="number">1006</span> <span class="number">2013</span>-01-07     BEIJING     <span class="number">130</span>-F   <span class="number">32</span>  <span class="number">4432.0</span>                 <span class="number">5</span></span><br></pre></td></tr></table></figure></li>
-<li><p>df.index.name = “index_name”</p>
-<ul>
-<li>修改index为新index<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    ```</span><br><span class="line"><span class="number">4.</span> df.columns = <span class="built_in">map</span>(<span class="built_in">str</span>.lower, df.columns)</span><br><span class="line">    * 所有列名变大写字母</span><br><span class="line">    ```python</span><br><span class="line">    df.columns = <span class="built_in">map</span>(<span class="built_in">str</span>.lower, df.columns)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>map()–python的内置函数,接受一个function,数个待迭代的list,使用function对list进行处理得到新的list,并不改变原list</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="Drop-Data"><a href="#Drop-Data" class="headerlink" title="Drop Data"></a>Drop Data</h3><ol>
-<li>df.drop(columns=[‘columnName’])<ul>
-<li>指定删除某列数据<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar = df.drop(columns=[<span class="string">&#x27;Id&#x27;</span>])</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>mySeries.drop([‘a’])<ul>
-<li>指定删除索引值指向的value</li>
-</ul>
-</li>
-<li>f.drop(‘Volume’, axis=1)<ul>
-<li>删除一个变量\一个量<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar =  df.drop(<span class="string">&#x27;Id&#x27;</span>, axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="转换数据类型"><a href="#转换数据类型" class="headerlink" title="转换数据类型"></a>转换数据类型</h3></li>
-</ul>
-</li>
-<li>df.dtypes<br> dataframe内各列的数据类型</li>
-<li>df[‘columnName’] = df[‘columnName’].astype(‘dataType’)<ul>
-<li>转换指定行的数据类型<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;Id&#x27;</span>] = df[<span class="string">&#x27;Id&#x27;</span>].astype(<span class="string">&#x27;float&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="apply函数"><a href="#apply函数" class="headerlink" title="apply函数"></a>apply函数</h3></li>
-</ul>
-</li>
-<li>方法1–自定义def函数 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">examples</span>(<span class="params">x</span>):</span>   <span class="comment">#create a function</span></span><br><span class="line"><span class="keyword">return</span> x*<span class="number">2</span></span><br><span class="line"></span><br><span class="line">df.Open.apply(examples).head()  <span class="comment">#use the function with apply()  </span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>自定义函数后,df.ColumnName获取df中需要使用此函数的列,再对此列使用apply函数,传入需要使用的函数</p>
-</blockquote>
-</li>
-<li>lambda函数 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.Open.apply(<span class="keyword">lambda</span> x: x*<span class="number">2</span>).head()</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>df.ColumnName获取df中需要使用此函数的列,再对此列使用lambda 声明数据处理方法</p>
-</blockquote>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/07/Python/basic/PandasNotes/" data-id="ckqxn9wp80022f4vdbmr0d10t" data-title="Pandas-basic" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pandas/" rel="tag">Pandas</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-  </nav>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Numpy/">Numpy</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/advance/">advance</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/basic/">basic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/pandas/">pandas</a></li></ul></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Numpy/" rel="tag">Numpy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pandas/" rel="tag">Pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Numpy/" style="font-size: 10px;">Numpy</a> <a href="/tags/Pandas/" style="font-size: 10px;">Pandas</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2021/07/07/Python/basic/ListAndTuple/">Pyhont-Tuple</a>
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
           </li>
         
-          <li>
-            <a href="/2021/07/07/Python/basic/NameSpace/">Namespace</a>
-          </li>
         
-          <li>
-            <a href="/2021/07/07/Python/basic/Set/">Pyhont-Set</a>
-          </li>
-        
-          <li>
-            <a href="/2021/07/07/Python/basic/Class/">Pyhont-Class</a>
-          </li>
-        
-          <li>
-            <a href="/2021/07/07/Python/advance/map%E5%87%BD%E6%95%B0/">map函数</a>
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
     </div>
   </div>
+</nav>
 
-  
-</aside>
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/fluidPics/home.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Tell me what you want, and i'll avoid it">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/07/07/Python/advance/%E6%95%B0%E6%8D%AE%E6%8B%B7%E8%B4%9D/" target="_self">
+          <img src="/fluidPics/beatles.jpg" srcset="/img/loading.gif" lazyload alt="拷贝">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/07/Python/advance/%E6%95%B0%E6%8D%AE%E6%8B%B7%E8%B4%9D/" target="_self">
+          拷贝
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/07/Python/advance/%E6%95%B0%E6%8D%AE%E6%8B%B7%E8%B4%9D/" target="_self">
+          
+          
+            
+          
+          拷贝
+浅拷贝(shallow copy), 仅拷贝指向对象的指针
+深拷贝(`deep copy``),将整个对象拷贝至另外一块内存
+
+浅拷贝
+假设原有一个列表la = [1,2,3,[4,5,6]],将其浅拷贝到lb
+lb中某个元素改变时,会直接根据指针指向此列表所在内存,改变此列表值
+最终la值也改变  1234567&gt;&gt;&gt; la = [1,2,3,[4,5,6]]&gt;&g
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-07 15:22" pubdate>
+              2021-07-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Python/">Python</a>
+            
+              <a href="/categories/Python/advance/">advance</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Python/">Python</a>
+            
+          </div>
         
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2021 CJBLUE<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
+    </article>
   </div>
-</footer>
 
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/07/07/Python/advance/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/" target="_self">
+          <img src="/fluidPics/beatles.jpg" srcset="/img/loading.gif" lazyload alt="运算符重载">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/07/Python/advance/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/" target="_self">
+          运算符重载
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/07/Python/advance/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/" target="_self">
+          
+          
+            
+          
+          运算符重载
+python中一切都是对象,每个对象都有一些特殊的内部方法
+这些方法都遵循__action__的命名规定
+通过运算符重载,可以让类进行一些数学运算123456789101112131415161718192021222324252627282930313233343536373839class Vector(object):    def __init__(self, x, y):  
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-07 15:22" pubdate>
+              2021-07-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Python/">Python</a>
+            
+              <a href="/categories/Python/advance/">advance</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Python/">Python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/07/07/Python/basic/Array/" target="_self">
+          <img src="/fluidPics/beatles.jpg" srcset="/img/loading.gif" lazyload alt="Pyhont-Array">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/07/Python/basic/Array/" target="_self">
+          Pyhont-Array
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/07/Python/basic/Array/" target="_self">
+          
+          
+            
+          
+          数组-array数组的基本性质:
+
+数组本身不属于基本数据类型,需要导入array使用数组
+数组内部元素类型相同
+数组不同于列表:内部元素相同,列表内部元素可以不同
+人如其名,内部元素只能是数字数组定义
+声明一个数组,必须遵循基本语法:arrayName = array(typecode, [initializers]): typecode:str  123&gt;&gt;&gt; arr1 = 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-07 15:22" pubdate>
+              2021-07-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Python/">Python</a>
+            
+              <a href="/categories/Python/basic/">basic</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Python/">Python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/07/07/Python/basic/dictionary/" target="_self">
+          <img src="/fluidPics/beatles.jpg" srcset="/img/loading.gif" lazyload alt="Pyhont-ArrDictionaryay">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/07/Python/basic/dictionary/" target="_self">
+          Pyhont-ArrDictionaryay
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/07/Python/basic/dictionary/" target="_self">
+          
+          
+            
+          
+          字典-Dictionary字典的基本性质:
+
+字典是python的内置数据类型
+字典的数据是键值对一一对应,根据键索引指定值创建字典1. 使用&#123;&#125;创建字典,声明其类型
+字典键是不可变数据类型,用元组或不可变集合创建
+字典值是可变数据类型12345&gt;&gt;&gt; dict1 = &#123;1:&#x27;value1&#x27;, &#x27;key2&#x27;:&
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-07 15:02" pubdate>
+              2021-07-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Python/">Python</a>
+            
+              <a href="/categories/Python/basic/">basic</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Python/">Python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/07/07/Python/basic/Recursion/" target="_self">
+          <img src="/fluidPics/beatles.jpg" srcset="/img/loading.gif" lazyload alt="Pyhont-Recursion">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/07/Python/basic/Recursion/" target="_self">
+          Pyhont-Recursion
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/07/Python/basic/Recursion/" target="_self">
+          
+          
+            
+          
+          递归举例计算阶乘
+12345678910&gt;&gt;&gt; def cal(n):...     if n == 1:...             return 1...     else:...             return n * cal(n - 1)...&gt;&gt;&gt; print(cal(4))24&gt;&gt;&gt; print(cal(6))720
+
+递归
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-07 13:40" pubdate>
+              2021-07-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Python/">Python</a>
+            
+              <a href="/categories/Python/basic/">basic</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Python/">Python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/07/07/Python/basic/PandasNotes/" target="_self">
+          <img src="/fluidPics/beatles.jpg" srcset="/img/loading.gif" lazyload alt="Pandas-basic">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/07/Python/basic/PandasNotes/" target="_self">
+          Pandas-basic
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/07/Python/basic/PandasNotes/" target="_self">
+          
+          
+            
+          
+          2142Pandas数据结构pandas有两种数据结构：Series and dataframe数据框
+
+SeriesSeries是一个一维标记数组，可以存储任何种类的数据  12my_series = pd.Series([3,-5,7,4], index=[&#x27;a&#x27;,&#x27;b&#x27;,&#x27;c&#x27;,&#x27;d&#x27;])print(my_ser
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-07 10:40" pubdate>
+              2021-07-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Python/">Python</a>
+            
+              <a href="/categories/Python/pandas/">pandas</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Pandas/">Pandas</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     
 
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-<script src="/js/jquery-3.4.1.min.js"></script>
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
 
 
 
 
 
-  </div>
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
 </body>
 </html>
