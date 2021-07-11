@@ -14,13 +14,11 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="map函数
-python内置函数
-会根据给定函数,对指定序列做出映射">
+  <meta name="description" content="git–文件操作git删除文件最简单的将文件从追踪中删除并最终从仓库中删除的方法是git rm">
   <meta name="author" content="CJBLUE">
   <meta name="keywords" content="">
   
-  <title>python--map函数 - MarkLily</title>
+  <title>git--文件操作 - MarkLily</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -160,12 +158,12 @@ python内置函数
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/fluidPics/club.JPG') no-repeat center center;
+         style="background: url('/img/fluidPics/rollingstones7.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="python--map函数">
+            <span class="h2" id="subtitle" title="git--文件操作">
               
             </span>
 
@@ -175,8 +173,8 @@ python内置函数
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-07-07 15:22" pubdate>
-        2021年7月7日 下午
+      <time datetime="2021-07-11 16:53" pubdate>
+        2021年7月11日 下午
       </time>
     </span>
   
@@ -187,7 +185,7 @@ python内置函数
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      297 字
+      521 字
     </span>
   
 
@@ -197,7 +195,7 @@ python内置函数
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      7
        分钟
     </span>
   
@@ -227,25 +225,42 @@ python内置函数
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">python--map函数</h1>
+            <h1 style="display: none">git--文件操作</h1>
             
             <div class="markdown-body">
-              <h1 id="map函数"><a href="#map函数" class="headerlink" title="map函数"></a>map函数</h1><ul>
-<li>python内置函数</li>
-<li>会根据给定函数,对指定序列做出映射<span id="more"></span>
-<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><h3 id="map-function-iterable"><a href="#map-function-iterable" class="headerlink" title="map(function, iterable...)"></a><code>map(function, iterable...)</code></h3></li>
-<li><code>iterable</code> 作为映射中原数据的来源</li>
-<li><code>function</code> 用于对<code>iterable</code>中的元素进行转换  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">&gt;&gt; <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">squ</span>(<span class="hljs-params">x</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> x * x<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>mapResult = <span class="hljs-built_in">map</span>(squ, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])<br></code></pre></td></tr></table></figure></li>
-<li><code>python 2.</code> 返回列表</li>
-<li><code>python 3.</code> 返回迭代器  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(mapResult.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">map</span>&#x27;&gt;</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">for</span> <span class="hljs-title">i</span> <span class="hljs-title">in</span> <span class="hljs-title">mapResult</span>:</span><br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(i)<br>...<br><span class="hljs-number">1</span><br><span class="hljs-number">4</span><br><span class="hljs-number">9</span><br><span class="hljs-number">16</span><br><span class="hljs-number">25</span><br></code></pre></td></tr></table></figure></li>
-<li>可通过<code>list(map())</code>的显示转换来消除版本之间的差异  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">squ</span>(<span class="hljs-params">x</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> x * x<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>list1 = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(squ, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]))<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(list1)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>]<br></code></pre></td></tr></table></figure>
-<h3 id="lambda"><a href="#lambda" class="headerlink" title="lambda"></a><code>lambda</code></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-keyword">lambda</span> x : x * x, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])))<br>[<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>]<br></code></pre></td></tr></table></figure></li>
+              <h1 id="git–文件操作"><a href="#git–文件操作" class="headerlink" title="git–文件操作"></a>git–文件操作</h1><h2 id="git删除文件"><a href="#git删除文件" class="headerlink" title="git删除文件"></a><code>git</code>删除文件</h2><p>最简单的将文件从追踪中删除并最终从仓库中删除的方法是<code>git rm</code></p>
+<span id="more"></span>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git rm t2.txt<br>rm &#x27;t2.txt&#x27;<br></code></pre></td></tr></table></figure>
+<p>运行本命令后,<code>t2.txt</code>文件将会被从本地文件夹以及仓库删除,并且删除的操作信息也会被添加到暂存区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br>Changes to be committed:<br>  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)<br>        deleted:    t2.txt<br></code></pre></td></tr></table></figure>
+
+<h2 id="git重命名文件"><a href="#git重命名文件" class="headerlink" title="git重命名文件"></a><code>git</code>重命名文件</h2><h4 id="当直接在工作区-文件夹内-重命名文件时-git会执行两个操作"><a href="#当直接在工作区-文件夹内-重命名文件时-git会执行两个操作" class="headerlink" title="当直接在工作区(文件夹内)重命名文件时,git会执行两个操作;"></a>当直接在工作区(文件夹内)重命名文件时,<code>git</code>会执行两个操作;</h4><ul>
+<li><ol>
+<li>将源文件从工作区删除  </li>
+</ol>
+</li>
+<li><ol start="2">
+<li>将新文件添加到工作区<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br>Changes to be committed:<br>  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)<br>        deleted:    t2.txt<br><br>Changes not staged for commit:<br>  (use &quot;git add/rm &lt;file&gt;...&quot; to update what will be committed)<br>  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)<br>        deleted:    text1.txt<br><br>Untracked files:<br>  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)<br>        text1_rename.txt<br></code></pre></td></tr></table></figure>
+这样做的缺点是会破坏掉文件的历史版本记录,此后你便无法查看此文件在重命名前的历史记录</li>
+</ol>
+</li>
 </ul>
-<h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><h3 id="map完成数据类型转换"><a href="#map完成数据类型转换" class="headerlink" title="map完成数据类型转换"></a><code>map</code>完成数据类型转换</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">str</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])))<br>[<span class="hljs-string">&#x27;1&#x27;</span>, <span class="hljs-string">&#x27;2&#x27;</span>, <span class="hljs-string">&#x27;3&#x27;</span>, <span class="hljs-string">&#x27;4&#x27;</span>, <span class="hljs-string">&#x27;5&#x27;</span>]<br></code></pre></td></tr></table></figure>
-<h3 id="map元组转列表"><a href="#map元组转列表" class="headerlink" title="map元组转列表"></a><code>map</code>元组转列表</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>list1 = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>,(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)))<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(list1)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
-<ul>
-<li>原理是:元组作为迭代器可作为<code>map()</code>函数参数传入,当元组内部元素数据类型与<code>function</code>转出数据类型一致时,再将<code>map</code>返回迭代器转为列表</li>
-</ul>
+<h4 id="git-mv命令则可以解决这个历史记录断链的问题"><a href="#git-mv命令则可以解决这个历史记录断链的问题" class="headerlink" title="git mv命令则可以解决这个历史记录断链的问题"></a><code>git mv</code>命令则可以解决这个历史记录断链的问题</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git mv text1.txt test1_rename.txt<br></code></pre></td></tr></table></figure>
+<p><code>mv</code>命令相当于<code>move</code>,此处重命名文件也就是<code>text1.txt</code>被移动重命名为<code>text1_rename.txt</code></p>
+<p>此时检查工作区状态,<code>mv</code>命令会被解析为<code>rename</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br>Changes to be committed:<br>  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)<br>        renamed:    test1_rename.txt -&gt; text1_rename.txt<br></code></pre></td></tr></table></figure>
+
+<h2 id="git移动文件"><a href="#git移动文件" class="headerlink" title="git移动文件"></a><code>git</code>移动文件</h2><p>同样使用<code>mv</code>命令,当在移动后文件名前加上移动后的文件夹路径,即可完成对文件的移动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git mv test.txt move/test1.txt<br></code></pre></td></tr></table></figure>
+<p>查看工作区状态”</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br>Changes to be committed:<br>  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)<br>        renamed:    test.txt -&gt; move/test1.txt<br></code></pre></td></tr></table></figure>
+<p>可以看见移动文件操作同样属于<code>rename</code>操作</p>
+<blockquote>
+<p>移动前请记得创建目标文件夹</p>
+</blockquote>
+<p>查看目标文件夹:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/git/gitlearn (master)<br>$ ls<br>move/<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/git/gitlearn (master)<br>$ cd move<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/git/gitlearn/move (master)<br>$ ls<br>test1.txt<br></code></pre></td></tr></table></figure>
+
 
             </div>
             <hr>
@@ -255,9 +270,7 @@ python内置函数
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/Python/">Python</a>
-                    
-                      <a class="hover-with-bg" href="/categories/Python/advance/">advance</a>
+                      <a class="hover-with-bg" href="/categories/Git/">Git</a>
                     
                   </div>
                 
@@ -265,7 +278,7 @@ python内置函数
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Python/">Python</a>
+                      <a class="hover-with-bg" href="/tags/Git/">Git</a>
                     
                   </div>
                 
@@ -282,9 +295,9 @@ python内置函数
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/07/07/numpy/NumpyNotes/">
+                      <a href="/2021/07/11/git/git-%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Numpy--NumpyNotes</span>
+                        <span class="hidden-mobile">git--初始化本地仓库</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -292,8 +305,8 @@ python内置函数
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/07/07/numpy/numpy100/">
-                        <span class="hidden-mobile">Numpy100--Numpy100</span>
+                      <a href="/2021/07/11/git/git-%E5%88%9D%E5%A7%8B%E5%8C%96%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/">
+                        <span class="hidden-mobile">git--初始化本地仓库</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
