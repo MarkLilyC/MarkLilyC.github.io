@@ -14,14 +14,11 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="多线程python多线程并非真正意义上的多线程
-
-每个进程运行时都需要等到GIL释放,然后得到GIL后上锁
-因此,同一时间只有一个python线程在运行">
+  <meta name="description" content="">
   <meta name="author" content="CJBLUE">
   <meta name="keywords" content="">
   
-  <title>python--多线程 - MarkLily</title>
+  <title>git-区 - MarkLily</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -161,12 +158,12 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/fluidPics/woodstock2.jpg') no-repeat center center;
+         style="background: url('/img/fluidPics/girls_top.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="python--多线程">
+            <span class="h2" id="subtitle" title="git-区">
               
             </span>
 
@@ -176,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-07-07 15:22" pubdate>
-        2021年7月7日 下午
+      <time datetime="2021-07-12 21:12" pubdate>
+        2021年7月12日 晚上
       </time>
     </span>
   
@@ -188,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      262 字
+      0 字
     </span>
   
 
@@ -198,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3
+      1
        分钟
     </span>
   
@@ -228,45 +225,15 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">python--多线程</h1>
+            <h1 style="display: none">git-区</h1>
             
             <div class="markdown-body">
-              <h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><p>python多线程并非真正意义上的多线程</p>
-<ul>
-<li>每个进程运行时都需要等到<code>GIL</code>释放,然后得到<code>GIL</code>后上锁</li>
-<li>因此,同一时间只有一个<code>python</code>线程在运行<span id="more"></span>
-<h2 id="创建线程-threading-Thread"><a href="#创建线程-threading-Thread" class="headerlink" title="创建线程 threading.Thread"></a>创建线程 <code>threading.Thread</code></h2>使用<code>threading</code>,创建新的<code>threading.Thread</code>,为其分配要执行的函数来启动新的执行线程<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> threading<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">test</span>():</span><br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Running...&quot;</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>test_thread = threading.Thread(target=test)<br></code></pre></td></tr></table></figure></li>
-<li><code>target</code> 传入函数或可调用对象</li>
-<li>在<code>Thread</code>调用<code>start()</code>方法前,线程不会开始</li>
-</ul>
-<h2 id="开始线程-Thread-start"><a href="#开始线程-Thread-start" class="headerlink" title="开始线程 Thread.start()"></a>开始线程 <code>Thread.start()</code></h2><p><code>Thread.start()</code>开始线程</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>test_thread.start()<br>Running...<br></code></pre></td></tr></table></figure>
-<ul>
-<li>当一个线程运行结束,再次调用<code>start()</code>方法,则会报错:  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>test_thread.start()<br>Running...<br><span class="hljs-meta">&gt;&gt;&gt; </span>test_thread.start()<br>Traceback (most recent call last):<br>File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>File <span class="hljs-string">&quot;D:\Python37\lib\threading.py&quot;</span>, line <span class="hljs-number">848</span>, <span class="hljs-keyword">in</span> start<br>    <span class="hljs-keyword">raise</span> RuntimeError(<span class="hljs-string">&quot;threads can only be started once&quot;</span>)<br>RuntimeError: threads can only be started once<br></code></pre></td></tr></table></figure></li>
-<li>若想将线程设置为守护线程持续运行,则需设置<code>daemon=True</code></li>
-</ul>
-<h2 id="加入线程-Thread-join"><a href="#加入线程-Thread-join" class="headerlink" title="加入线程 Thread.join()"></a>加入线程 <code>Thread.join()</code></h2>
+              
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/Python/">Python</a>
-                    
-                      <a class="hover-with-bg" href="/categories/Python/advance/">advance</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/Python/">Python</a>
-                    
-                  </div>
                 
               </div>
               
@@ -281,18 +248,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/07/07/Python/advance/%E5%8F%91%E7%94%9F%E5%99%A8/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">python--发生器</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/07/07/Python/advance/%E6%95%B0%E6%8D%AE%E6%8B%B7%E8%B4%9D/">
-                        <span class="hidden-mobile">python--拷贝</span>
+                      <a href="/2021/07/12/fluid-tip/">
+                        <span class="hidden-mobile">fluid-tip.md</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
