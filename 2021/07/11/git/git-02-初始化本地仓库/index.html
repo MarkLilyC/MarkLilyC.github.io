@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      968 字
+      986 字
     </span>
   
 
@@ -238,8 +238,6 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git init<br></code></pre></td></tr></table></figure>
 <p>随后便可以看见初始化成功的确认信息</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git init<br>Initialized empty Git repository in A:/Git/gitlearn/.git/<br></code></pre></td></tr></table></figure>
-
-
 <h5 id="创建好第一个仓库后-我们简单进行一些本地的数据管理演示"><a href="#创建好第一个仓库后-我们简单进行一些本地的数据管理演示" class="headerlink" title="创建好第一个仓库后, 我们简单进行一些本地的数据管理演示"></a>创建好第一个仓库后, 我们简单进行一些本地的数据管理演示</h5><hr>
 <h1 id="git-status-工作区状态"><a href="#git-status-工作区状态" class="headerlink" title="git status - 工作区状态"></a><h1 id="1"><code><font color='dodgerblue'>git status - 工作区状态</font></code></h1></h1><h2 id="status-工作区状态"><a href="#status-工作区状态" class="headerlink" title="status - 工作区状态"></a><code>status - 工作区状态</code></h2><p>我们在本地对文件进行修改后, <code>git</code>会检测到这些修改, 并提供相应的后续处理建议</p>
 <p>以上操作记录即操作建议, 构成了工作区状态–<code>status</code></p>
@@ -252,7 +250,7 @@
 <li>使用 <code>touch filename</code>创建一个文件</li>
 <li>使用 <code>ls</code>查看当前路径下的所有文件<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs git">26676@DESKTOP-JCSGJPO MINGW64 /a/Git/gitlearn (master)<br>$ touch test.txt<br><br>26676@DESKTOP-JCSGJPO MINGW64 /a/Git/gitlearn (master)<br>$ ls<br>test.txt  <br></code></pre></td></tr></table></figure></li>
 </ul>
-<p class="note note-info">此处, 我们也可在文件夹内"新建文件夹"/p>
+<p class="note note-info">此处, 我们也可在文件夹内"新建文件夹"</p>
 
 <h3 id="查看新日志"><a href="#查看新日志" class="headerlink" title="查看新日志"></a><code>查看新日志</code></h3><p>我们再次使用<code>git status</code>查看信息,可得 ：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br><br>No commits yet<br><br>Untracked files:<br>  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)<br>        text1.txt<br><br>nothing added to commit but untracked files present (use &quot;git add&quot; to track)<br><br></code></pre></td></tr></table></figure>
@@ -270,13 +268,21 @@
 </ul>
 <h4 id="git-status-查看状态-1"><a href="#git-status-查看状态-1" class="headerlink" title="git status - 查看状态"></a><code>git status - 查看状态</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br><br>No commits yet<br><br>Changes to be committed:<br>  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)<br>        new file:   text1.txt<br></code></pre></td></tr></table></figure>
 <p>此时的提示信息更新为 ：<code>git rm --cached &lt;file&gt;...</code> ，提示我们使用<code>rm</code>来将文件从暂存区撤回<br><a href="#1">git status - 工作区状态</a></p>
-<h4 id="使用git-commit将暂存区的文件提交到仓库中"><a href="#使用git-commit将暂存区的文件提交到仓库中" class="headerlink" title="使用git commit将暂存区的文件提交到仓库中"></a>使用<code>git commit</code>将暂存区的文件提交到仓库中</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git commit -m &quot;the first commit. add text1.txt to the repository&quot;<br>[master (root-commit) 21dced3] the first commit. add text1.txt to the repository<br> 1 file changed, 1 insertion(+)<br> create mode 100644 text1.txt<br></code></pre></td></tr></table></figure>
+<h1 id="2"><code><font color='dodgerblue'>git commit - 提交版本库</font></code></h1>
+
+<p>使用<code>git commit -m &quot;info&quot;</code>将暂存区的文件提交到仓库中 ：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git commit -m &quot;the first commit. add text1.txt to the repository&quot;<br>[master (root-commit) 21dced3] the first commit. add text1.txt to the repository<br> 1 file changed, 1 insertion(+)<br> create mode 100644 text1.txt<br></code></pre></td></tr></table></figure>
 <p><code>-m</code>后的信息为此次<code>commit</code>的信息</p>
 <p>此时再次检查工作区的状态,可以看见干净的工作树</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br>nothing to commit, working tree clean<br></code></pre></td></tr></table></figure>
-<h4 id="使用git-log获得历史提交记录"><a href="#使用git-log获得历史提交记录" class="headerlink" title="使用git log获得历史提交记录"></a>使用<code>git log</code>获得历史提交记录</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git log<br>commit 21dced3ee6053a17e148ef75cd2d35863155f4a9 (HEAD -&gt; master)<br>Author: MarkLilyC &lt;2667602812@qq.com&gt;<br>Date:   Sun Jul 11 16:50:18 2021 +0800<br><br>    the first commit. add text1.txt to the repository<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="4"><code><font color='dodgerblue'>git log - 日志信息</font></code></h1>
+
+<p>使用<code>git log</code>获得历史提交记录 ：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git log<br>commit 21dced3ee6053a17e148ef75cd2d35863155f4a9 (HEAD -&gt; master)<br>Author: MarkLilyC &lt;2667602812@qq.com&gt;<br>Date:   Sun Jul 11 16:50:18 2021 +0800<br><br>    the first commit. add text1.txt to the repository<br></code></pre></td></tr></table></figure>
 <p>可见我们设置的提交信息被打印了出来</p>
-<h4 id="简化日志信息"><a href="#简化日志信息" class="headerlink" title="简化日志信息"></a>简化日志信息</h4><p>使用命令<code>git log  --pretty=onelin --abbrev-commit</code></p>
+<h3 id="简化日志信息"><a href="#简化日志信息" class="headerlink" title="简化日志信息"></a>简化日志信息</h3><p>使用命令<code>git log  --pretty=onelin --abbrev-commit</code></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git log --pretty=oneline --abbrev-commit<br>8244163 (HEAD -&gt; master, tag: v2.0) commit to test recall from commit<br>abfb3b5 commit this testfile to comiit hist<br>3699296 aa<br>1dd8abb aa<br>543a126 aa<br>7abf4b6 add a new line by vim<br>00e7919 add a test.txt to repo<br>40442a5 AA<br>85f2fbb ADD T2.TXT<br>bd8bfc5 add a line id = 3<br>d5fe445 add a line id = 2<br>fb84050 add a line id = 1<br>2e7ebbb add t.txt to the repo<br>440e71c remove a file<br>1e71bf1 rename<br>8377709 rename<br>8b0aa8b aa<br>199f71f (tag: v1.0) AA<br>0bbb931 aa<br>d219e28 aa<br>08926e9 aa<br>a638d98 aa<br>9ee99cc aa<br><br></code></pre></td></tr></table></figure>
 
 <p>按下<code>q</code>退出</p>
