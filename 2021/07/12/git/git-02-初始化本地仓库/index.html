@@ -232,14 +232,13 @@
 <span id="more"></span>
 
 <p>在<code>c</code>盘创建一个<code>Git</code>文件夹,但此文件夹不是必要的<br>在<code>Git</code>文件夹内创建一个用于学习git的文件夹<code>gitlearn</code> </p>
-<h1 id="0"><code><font color='dodgerblue'>git init-初始化仓库</font></code></h1>
-
-<p>使用命令<code>git init</code>初始化仓库</p>
+<hr>
+<h1 id="git-init-初始化仓库"><a href="#git-init-初始化仓库" class="headerlink" title="git init - 初始化仓库"></a><code><font color='dodgerblue'>git init - 初始化仓库</font></code></h1><p>使用命令<code>git init</code>初始化仓库</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git init<br></code></pre></td></tr></table></figure>
 <p>随后便可以看见初始化成功的确认信息</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git init<br>Initialized empty Git repository in A:/Git/gitlearn/.git/<br></code></pre></td></tr></table></figure>
 <h5 id="创建好第一个仓库后-我们简单进行一些本地的数据管理演示"><a href="#创建好第一个仓库后-我们简单进行一些本地的数据管理演示" class="headerlink" title="创建好第一个仓库后, 我们简单进行一些本地的数据管理演示"></a>创建好第一个仓库后, 我们简单进行一些本地的数据管理演示</h5><hr>
-<h1 id="git-status-工作区状态"><a href="#git-status-工作区状态" class="headerlink" title="git status - 工作区状态"></a><h1 id="1"><code><font color='dodgerblue'>git status - 工作区状态</font></code></h1></h1><h2 id="status-工作区状态"><a href="#status-工作区状态" class="headerlink" title="status - 工作区状态"></a><code>status - 工作区状态</code></h2><p>我们在本地对文件进行修改后, <code>git</code>会检测到这些修改, 并提供相应的后续处理建议</p>
+<h1 id="git-status-工作区状态"><a href="#git-status-工作区状态" class="headerlink" title="git status - 工作区状态"></a><code><font color='dodgerblue'>git status - 工作区状态</font></code></h1><h2 id="status-工作区状态"><a href="#status-工作区状态" class="headerlink" title="status - 工作区状态"></a><code>status - 工作区状态</code></h2><p>我们在本地对文件进行修改后, <code>git</code>会检测到这些修改, 并提供相应的后续处理建议</p>
 <p>以上操作记录即操作建议, 构成了工作区状态–<code>status</code></p>
 <h2 id="git-status-查看状态"><a href="#git-status-查看状态" class="headerlink" title="git status - 查看状态"></a><code>git status - 查看状态</code></h2><p>使用 <code><font color='dodgerblue'>git status</font></code> 查看当前仓库信息</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br><br>No commits yet<br><br>nothing to commit (create/copy files and use &quot;git add&quot; to track)<br></code></pre></td></tr></table></figure>
@@ -258,7 +257,8 @@
 <li>显示我们新建了一个<code>text1.txt</code>文件,但是该文件未在<code>git</code>的追踪目录内</li>
 <li>如果我们不添加和提交此文件,<code>git</code>便不会跟踪此文件</li>
 </ul>
-<h1 id="git-add-提交暂存区"><a href="#git-add-提交暂存区" class="headerlink" title="git add - 提交暂存区"></a><h1 id="2"><code><font color='dodgerblue'>git add - 提交暂存区</font></code></h1></h1><p>对于我们新建的文件<code>test.txt</code>, 我们想让<code>git</code>追踪其版本更迭, 此时我们应如上面<code>git</code>建议所 ：使用<code>git add</code>命令将其提交到暂存区</p>
+<hr>
+<h1 id="git-add-提交暂存区"><a href="#git-add-提交暂存区" class="headerlink" title="git add - 提交暂存区"></a><code><font color='dodgerblue'>git add - 提交暂存区</font></code></h1><p>对于我们新建的文件<code>test.txt</code>, 我们想让<code>git</code>追踪其版本更迭, 此时我们应如上面<code>git</code>建议所 ：使用<code>git add</code>命令将其提交到暂存区</p>
 <h4 id="git-add-提交暂存区-1"><a href="#git-add-提交暂存区-1" class="headerlink" title="git add - 提交暂存区"></a><code>git add - 提交暂存区</code></h4><p>使用<code>git add &lt;name&gt;</code>命令将该文件添加到<code>staging</code>区域(即暂存区) ， 可得 ：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git add text1.txt<br>warning: LF will be replaced by CRLF in text1.txt.<br>The file will have its original line endings in your working directory<br></code></pre></td></tr></table></figure>
 <p>报错提示:<code>The file will have its original line endings in your working directory</code></p>
@@ -267,9 +267,8 @@
 </ul>
 <h4 id="git-status-查看状态-1"><a href="#git-status-查看状态-1" class="headerlink" title="git status - 查看状态"></a><code>git status - 查看状态</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br><br>No commits yet<br><br>Changes to be committed:<br>  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)<br>        new file:   text1.txt<br></code></pre></td></tr></table></figure>
 <p>此时的提示信息更新为 ：<code>git rm --cached &lt;file&gt;...</code> ，提示我们使用<code>rm</code>来将文件从暂存区撤回<br><a href="#1">git status - 工作区状态</a></p>
-<h1 id="2"><code><font color='dodgerblue'>git commit - 提交版本库</font></code></h1>
-
-<p>使用<code>git commit -m &quot;info&quot;</code>将暂存区的文件提交到仓库中 ：</p>
+<hr>
+<h1 id="git-commit-提交版本库"><a href="#git-commit-提交版本库" class="headerlink" title="git commit - 提交版本库"></a><code><font color='dodgerblue'>git commit - 提交版本库</font></code></h1><p>使用<code>git commit -m &quot;info&quot;</code>将暂存区的文件提交到仓库中 ：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git commit -m &quot;the first commit. add text1.txt to the repository&quot;<br>[master (root-commit) 21dced3] the first commit. add text1.txt to the repository<br> 1 file changed, 1 insertion(+)<br> create mode 100644 text1.txt<br></code></pre></td></tr></table></figure>
 <p><code>-m</code>后的信息为此次<code>commit</code>的信息</p>
 <p>此时再次检查工作区的状态,可以看见干净的工作树</p>
@@ -278,10 +277,8 @@
 
 
 
-
-<h1 id="4"><code><font color='dodgerblue'>git log - 日志信息</font></code></h1>
-
-<p>使用<code>git log</code>获得历史提交记录 ：</p>
+<hr>
+<h1 id="git-log-日志信息"><a href="#git-log-日志信息" class="headerlink" title="git log - 日志信息"></a><code><font color='dodgerblue'>git log - 日志信息</font></code></h1><p>使用<code>git log</code>获得历史提交记录 ：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git log<br>commit 21dced3ee6053a17e148ef75cd2d35863155f4a9 (HEAD -&gt; master)<br>Author: MarkLilyC &lt;2667602812@qq.com&gt;<br>Date:   Sun Jul 11 16:50:18 2021 +0800<br><br>    the first commit. add text1.txt to the repository<br></code></pre></td></tr></table></figure>
 <p>可见我们设置的提交信息被打印了出来</p>
 <h3 id="简化日志信息"><a href="#简化日志信息" class="headerlink" title="简化日志信息"></a>简化日志信息</h3><p>使用命令<code>git log  --pretty=onelin --abbrev-commit</code></p>
