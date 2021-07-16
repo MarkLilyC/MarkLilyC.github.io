@@ -18,7 +18,7 @@
   <meta name="author" content="CJBLUE">
   <meta name="keywords" content="">
   
-  <title>git-基本命令 - MarkLily</title>
+  <title>git-01-基本命令 - MarkLily</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="git-基本命令">
+            <span class="h2" id="subtitle" title="git-01-基本命令">
               
             </span>
 
@@ -225,22 +225,25 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">git-基本命令</h1>
+            <h1 style="display: none">git-01-基本命令</h1>
             
             <div class="markdown-body">
               <h1 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h1><p><code>windows</code>系统进入<code>git bash</code> 后有大量的命令来解放鼠标操作</p>
 <p>以下将介绍部分常用命令</p>
-<h3 id="我们在随意位置打开git-bash"><a href="#我们在随意位置打开git-bash" class="headerlink" title="我们在随意位置打开git bash"></a>我们在随意位置打开<code>git bash</code></h3><h3 id="查看当前位置"><a href="#查看当前位置" class="headerlink" title="查看当前位置"></a>查看当前位置</h3><p>使用<code>pwd</code>查看当前窗口处在位置 :</p>
+<h3 id="我们在随意位置打开git-bash"><a href="#我们在随意位置打开git-bash" class="headerlink" title="我们在随意位置打开git bash"></a>我们在随意位置打开<code>git bash</code></h3><hr>
+<h3 id="pwd–查看当前位置"><a href="#pwd–查看当前位置" class="headerlink" title="pwd–查看当前位置"></a><code>pwd</code>–查看当前位置</h3><p>使用<code>pwd</code>查看当前窗口处在位置 :</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder<br>$ pwd<br>/a/testfolder<br></code></pre></td></tr></table></figure>
 <p><code>git</code>显示我当前的位置为<code>/a/testfolder</code> 即表明我当前处于<code>a</code>盘内的<code>testfolder</code>文件夹内</p>
 <p>我们也可以直观通过<code>26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder</code>最后的文件夹位置查看</p>
 <ul>
 <li>以下示例, 我们皆通过此行信息判定当前位置, 不再刻意使用<code>pwd</code></li>
 </ul>
-<h3 id="查看当前位置有哪些文件-夹"><a href="#查看当前位置有哪些文件-夹" class="headerlink" title="查看当前位置有哪些文件(夹)"></a>查看当前位置有哪些文件(夹)</h3><p>使用<code>ls</code>查看当前位置所有的文件(夹) :</p>
+<hr>
+<h3 id="ls–查看文件-夹"><a href="#ls–查看文件-夹" class="headerlink" title="ls–查看文件(夹)"></a><code>ls</code>–查看文件(夹)</h3><p>使用<code>ls</code>查看当前位置所有的文件(夹) :</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder<br>$ ls<br>folder1/  folder2/  git-分支合并.md  git-工作流程.md  git-文件操作.md<br></code></pre></td></tr></table></figure>
 <p>可见当前<code>/a/testfolder</code>文件夹内有两个文件夹<code>folder1/</code>与<code>folder2/</code>, 以及三个文件<code>git-分支合并.md</code>等</p>
-<h3 id="进入文件夹"><a href="#进入文件夹" class="headerlink" title="进入文件夹"></a>进入文件夹</h3><h4 id="单次进入"><a href="#单次进入" class="headerlink" title="单次进入"></a>单次进入</h4><p>使用<code>cd &lt;foldername&gt;</code>进入特定的文件夹内 :</p>
+<hr>
+<h3 id="cd–进入文件夹"><a href="#cd–进入文件夹" class="headerlink" title="cd–进入文件夹"></a><code>cd</code>–进入文件夹</h3><h4 id="单次进入"><a href="#单次进入" class="headerlink" title="单次进入"></a>单次进入</h4><p>使用<code>cd &lt;foldername&gt;</code>进入特定的文件夹内 :</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder<br>$ cd folder1<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder/folder1<br>$<br></code></pre></td></tr></table></figure>
 <p>一般在使用<code>cd</code>进入文件夹前都使用<code>ls</code>命令确定当前位置存在哪些文件夹</p>
 <p class="note note-info">在``git bash``内的复制粘贴为``crtl + insert``与``shift + insert``</p>
@@ -346,12 +349,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2021/07/12/git-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">git-基本命令</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/07/12/git/git-01-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/">
-                        <span class="hidden-mobile">git-01-基本命令</span>
+                      <a href="/2021/07/10/Python/basic/%E5%87%BD%E6%95%B0/">
+                        <span class="hidden-mobile">python--函数</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
