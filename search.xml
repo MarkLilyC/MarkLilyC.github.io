@@ -1,75 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>git--初始化本地仓库</title>
-    <url>/2021/07/11/git/git-02-%E5%88%9D%E5%A7%8B%E5%8C%96%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/</url>
-    <content><![CDATA[<p>创建一个本地文件夹用以初始化本地仓库， 进行本地数据的管理</p>
-<span id="more"></span>
-
-<p>在<code>c</code>盘创建一个<code>Git</code>文件夹,但此文件夹不是必要的<br>在<code>Git</code>文件夹内创建一个用于学习git的文件夹<code>gitlearn</code> </p>
-<h1 id="0"><code><font color='dodgerblue'>git init-初始化仓库</font></code></h1>
-
-<p>使用命令<code>git init</code>初始化仓库</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git init<br></code></pre></td></tr></table></figure>
-<p>随后便可以看见初始化成功的确认信息</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git init<br>Initialized empty Git repository in A:/Git/gitlearn/.git/<br></code></pre></td></tr></table></figure>
-<h5 id="创建好第一个仓库后-我们简单进行一些本地的数据管理演示"><a href="#创建好第一个仓库后-我们简单进行一些本地的数据管理演示" class="headerlink" title="创建好第一个仓库后, 我们简单进行一些本地的数据管理演示"></a>创建好第一个仓库后, 我们简单进行一些本地的数据管理演示</h5><hr>
-<h1 id="git-status-工作区状态"><a href="#git-status-工作区状态" class="headerlink" title="git status - 工作区状态"></a><h1 id="1"><code><font color='dodgerblue'>git status - 工作区状态</font></code></h1></h1><h2 id="status-工作区状态"><a href="#status-工作区状态" class="headerlink" title="status - 工作区状态"></a><code>status - 工作区状态</code></h2><p>我们在本地对文件进行修改后, <code>git</code>会检测到这些修改, 并提供相应的后续处理建议</p>
-<p>以上操作记录即操作建议, 构成了工作区状态–<code>status</code></p>
-<h2 id="git-status-查看状态"><a href="#git-status-查看状态" class="headerlink" title="git status - 查看状态"></a><code>git status - 查看状态</code></h2><p>使用 <code><font color='dodgerblue'>git status</font></code> 查看当前仓库信息</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br><br>No commits yet<br><br>nothing to commit (create/copy files and use &quot;git add&quot; to track)<br></code></pre></td></tr></table></figure>
-
-<p>可见此时仓库是空的,当前<code>branch</code>为<code>master</code>, 没有任何<code>commit</code></p>
-<h2 id="status-更新"><a href="#status-更新" class="headerlink" title="status - 更新"></a><code>status - 更新</code></h2><h3 id="新建文件"><a href="#新建文件" class="headerlink" title="新建文件"></a><code>新建文件</code></h3><p>我们尝试向仓库添加一个文本文件<code>text.txt</code> ：</p>
-<ul>
-<li>使用 <code>touch filename</code>创建一个文件</li>
-<li>使用 <code>ls</code>查看当前路径下的所有文件<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-JCSGJPO MINGW64 /a/Git/gitlearn (master)<br>$ touch test.txt<br><br>26676@DESKTOP-JCSGJPO MINGW64 /a/Git/gitlearn (master)<br>$ ls<br>test.txt  <br></code></pre></td></tr></table></figure></li>
-</ul>
-<p class="note note-info">此处, 我们也可在文件夹内"新建文件夹"</p>
-
-<h3 id="查看新日志"><a href="#查看新日志" class="headerlink" title="查看新日志"></a><code>查看新日志</code></h3><p>我们再次使用<code>git status</code>查看信息,可得 ：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br><br>No commits yet<br><br>Untracked files:<br>  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)<br>        text1.txt<br><br>nothing added to commit but untracked files present (use &quot;git add&quot; to track)<br><br></code></pre></td></tr></table></figure>
-<ul>
-<li>显示我们新建了一个<code>text1.txt</code>文件,但是该文件未在<code>git</code>的追踪目录内</li>
-<li>如果我们不添加和提交此文件,<code>git</code>便不会跟踪此文件</li>
-</ul>
-<hr>
-<h1 id="git-add-提交暂存区"><a href="#git-add-提交暂存区" class="headerlink" title="git add - 提交暂存区"></a><h1 id="2"><code><font color='dodgerblue'>git add - 提交暂存区</font></code></h1></h1><p>对于我们新建的文件<code>test.txt</code>, 我们想让<code>git</code>追踪其版本更迭, 此时我们应如上面<code>git</code>建议所 ：使用<code>git add</code>命令将其提交到暂存区</p>
-<h4 id="git-add-提交暂存区-1"><a href="#git-add-提交暂存区-1" class="headerlink" title="git add - 提交暂存区"></a><code>git add - 提交暂存区</code></h4><p>使用<code>git add &lt;name&gt;</code>命令将该文件添加到<code>staging</code>区域(即暂存区) ， 可得 ：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git add text1.txt<br>warning: LF will be replaced by CRLF in text1.txt.<br>The file will have its original line endings in your working directory<br></code></pre></td></tr></table></figure>
-<p>报错提示:<code>The file will have its original line endings in your working directory</code></p>
-<ul>
-<li>是因为<code>git</code>默认将文本中的回车换行统一为<code>CRLF</code>,不影响文本的实际使用</li>
-</ul>
-<h4 id="git-status-查看状态-1"><a href="#git-status-查看状态-1" class="headerlink" title="git status - 查看状态"></a><code>git status - 查看状态</code></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br><br>No commits yet<br><br>Changes to be committed:<br>  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)<br>        new file:   text1.txt<br></code></pre></td></tr></table></figure>
-<p>此时的提示信息更新为 ：<code>git rm --cached &lt;file&gt;...</code> ，提示我们使用<code>rm</code>来将文件从暂存区撤回<br><a href="#1">git status - 工作区状态</a></p>
-<h1 id="2"><code><font color='dodgerblue'>git commit - 提交版本库</font></code></h1>
-
-<p>使用<code>git commit -m &quot;info&quot;</code>将暂存区的文件提交到仓库中 ：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git commit -m &quot;the first commit. add text1.txt to the repository&quot;<br>[master (root-commit) 21dced3] the first commit. add text1.txt to the repository<br> 1 file changed, 1 insertion(+)<br> create mode 100644 text1.txt<br></code></pre></td></tr></table></figure>
-<p><code>-m</code>后的信息为此次<code>commit</code>的信息</p>
-<p>此时再次检查工作区的状态,可以看见干净的工作树</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br>nothing to commit, working tree clean<br></code></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="4"><code><font color='dodgerblue'>git log - 日志信息</font></code></h1>
-
-<p>使用<code>git log</code>获得历史提交记录 ：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git log<br>commit 21dced3ee6053a17e148ef75cd2d35863155f4a9 (HEAD -&gt; master)<br>Author: MarkLilyC &lt;2667602812@qq.com&gt;<br>Date:   Sun Jul 11 16:50:18 2021 +0800<br><br>    the first commit. add text1.txt to the repository<br></code></pre></td></tr></table></figure>
-<p>可见我们设置的提交信息被打印了出来</p>
-<h3 id="简化日志信息"><a href="#简化日志信息" class="headerlink" title="简化日志信息"></a>简化日志信息</h3><p>使用命令<code>git log  --pretty=onelin --abbrev-commit</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git log --pretty=oneline --abbrev-commit<br>8244163 (HEAD -&gt; master, tag: v2.0) commit to test recall from commit<br>abfb3b5 commit this testfile to comiit hist<br>3699296 aa<br>1dd8abb aa<br>543a126 aa<br>7abf4b6 add a new line by vim<br>00e7919 add a test.txt to repo<br>40442a5 AA<br>85f2fbb ADD T2.TXT<br>bd8bfc5 add a line id = 3<br>d5fe445 add a line id = 2<br>fb84050 add a line id = 1<br>2e7ebbb add t.txt to the repo<br>440e71c remove a file<br>1e71bf1 rename<br>8377709 rename<br>8b0aa8b aa<br>199f71f (tag: v1.0) AA<br>0bbb931 aa<br>d219e28 aa<br>08926e9 aa<br>a638d98 aa<br>9ee99cc aa<br><br></code></pre></td></tr></table></figure>
-
-<p>按下<code>q</code>退出</p>
-<h4 id="以上便是使用git-init进行初始化的步骤-以及一些简单的命令操作"><a href="#以上便是使用git-init进行初始化的步骤-以及一些简单的命令操作" class="headerlink" title="以上便是使用git init进行初始化的步骤, 以及一些简单的命令操作"></a>以上便是使用<code>git init</code>进行初始化的步骤, 以及一些简单的命令操作</h4>]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>git-01-基本命令</title>
     <url>/2021/07/12/git/git-01-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<p><code>windows</code>系统进入<code>git bash</code> 后有大量的命令来解放鼠标操作</p>
@@ -165,6 +96,77 @@
       <tags>
         <tag>Git</tag>
         <tag>常用命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git--初始化本地仓库</title>
+    <url>/2021/07/11/git/git-02-%E5%88%9D%E5%A7%8B%E5%8C%96%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/</url>
+    <content><![CDATA[<p>创建一个本地文件夹用以初始化本地仓库， 进行本地数据的管理</p>
+<span id="more"></span>
+
+<p>在<code>c</code>盘创建一个<code>Git</code>文件夹,但此文件夹不是必要的<br>在<code>Git</code>文件夹内创建一个用于学习git的文件夹<code>gitlearn</code> </p>
+<h1 id="0"><code><font color='dodgerblue'>git init-初始化仓库</font></code></h1>
+
+<p>使用命令<code>git init</code>初始化仓库</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git init<br></code></pre></td></tr></table></figure>
+<p>随后便可以看见初始化成功的确认信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git init<br>Initialized empty Git repository in A:/Git/gitlearn/.git/<br></code></pre></td></tr></table></figure>
+<h5 id="创建好第一个仓库后-我们简单进行一些本地的数据管理演示"><a href="#创建好第一个仓库后-我们简单进行一些本地的数据管理演示" class="headerlink" title="创建好第一个仓库后, 我们简单进行一些本地的数据管理演示"></a>创建好第一个仓库后, 我们简单进行一些本地的数据管理演示</h5><hr>
+<h1 id="git-status-工作区状态"><a href="#git-status-工作区状态" class="headerlink" title="git status - 工作区状态"></a><h1 id="1"><code><font color='dodgerblue'>git status - 工作区状态</font></code></h1></h1><h2 id="status-工作区状态"><a href="#status-工作区状态" class="headerlink" title="status - 工作区状态"></a><code>status - 工作区状态</code></h2><p>我们在本地对文件进行修改后, <code>git</code>会检测到这些修改, 并提供相应的后续处理建议</p>
+<p>以上操作记录即操作建议, 构成了工作区状态–<code>status</code></p>
+<h2 id="git-status-查看状态"><a href="#git-status-查看状态" class="headerlink" title="git status - 查看状态"></a><code>git status - 查看状态</code></h2><p>使用 <code><font color='dodgerblue'>git status</font></code> 查看当前仓库信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br><br>No commits yet<br><br>nothing to commit (create/copy files and use &quot;git add&quot; to track)<br></code></pre></td></tr></table></figure>
+
+<p>可见此时仓库是空的,当前<code>branch</code>为<code>master</code>, 没有任何<code>commit</code></p>
+<h2 id="status-更新"><a href="#status-更新" class="headerlink" title="status - 更新"></a><code>status - 更新</code></h2><h3 id="新建文件"><a href="#新建文件" class="headerlink" title="新建文件"></a><code>新建文件</code></h3><p>我们尝试向仓库添加一个文本文件<code>text.txt</code> ：</p>
+<ul>
+<li>使用 <code>touch filename</code>创建一个文件</li>
+<li>使用 <code>ls</code>查看当前路径下的所有文件<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-JCSGJPO MINGW64 /a/Git/gitlearn (master)<br>$ touch test.txt<br><br>26676@DESKTOP-JCSGJPO MINGW64 /a/Git/gitlearn (master)<br>$ ls<br>test.txt  <br></code></pre></td></tr></table></figure></li>
+</ul>
+<p class="note note-info">此处, 我们也可在文件夹内"新建文件夹"</p>
+
+<h3 id="查看新状态"><a href="#查看新状态" class="headerlink" title="查看新状态"></a><code>查看新状态</code></h3><p>我们再次使用<code>git status</code>查看信息,可得 ：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br><br>No commits yet<br><br>Untracked files:<br>  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)<br>        text1.txt<br><br>nothing added to commit but untracked files present (use &quot;git add&quot; to track)<br><br></code></pre></td></tr></table></figure>
+<ul>
+<li>显示我们新建了一个<code>text1.txt</code>文件,但是该文件未在<code>git</code>的追踪目录内</li>
+<li>如果我们不添加和提交此文件,<code>git</code>便不会跟踪此文件</li>
+</ul>
+<h1 id="git-add-提交暂存区"><a href="#git-add-提交暂存区" class="headerlink" title="git add - 提交暂存区"></a><h1 id="2"><code><font color='dodgerblue'>git add - 提交暂存区</font></code></h1></h1><p>对于我们新建的文件<code>test.txt</code>, 我们想让<code>git</code>追踪其版本更迭, 此时我们应如上面<code>git</code>建议所 ：使用<code>git add</code>命令将其提交到暂存区</p>
+<h4 id="git-add-提交暂存区-1"><a href="#git-add-提交暂存区-1" class="headerlink" title="git add - 提交暂存区"></a><code>git add - 提交暂存区</code></h4><p>使用<code>git add &lt;name&gt;</code>命令将该文件添加到<code>staging</code>区域(即暂存区) ， 可得 ：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git add text1.txt<br>warning: LF will be replaced by CRLF in text1.txt.<br>The file will have its original line endings in your working directory<br></code></pre></td></tr></table></figure>
+<p>报错提示:<code>The file will have its original line endings in your working directory</code></p>
+<ul>
+<li>是因为<code>git</code>默认将文本中的回车换行统一为<code>CRLF</code>,不影响文本的实际使用</li>
+</ul>
+<h4 id="git-status-查看状态-1"><a href="#git-status-查看状态-1" class="headerlink" title="git status - 查看状态"></a><code>git status - 查看状态</code></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br><br>No commits yet<br><br>Changes to be committed:<br>  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)<br>        new file:   text1.txt<br></code></pre></td></tr></table></figure>
+<p>此时的提示信息更新为 ：<code>git rm --cached &lt;file&gt;...</code> ，提示我们使用<code>rm</code>来将文件从暂存区撤回<br><a href="#1">git status - 工作区状态</a></p>
+<h1 id="2"><code><font color='dodgerblue'>git commit - 提交版本库</font></code></h1>
+
+<p>使用<code>git commit -m &quot;info&quot;</code>将暂存区的文件提交到仓库中 ：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git commit -m &quot;the first commit. add text1.txt to the repository&quot;<br>[master (root-commit) 21dced3] the first commit. add text1.txt to the repository<br> 1 file changed, 1 insertion(+)<br> create mode 100644 text1.txt<br></code></pre></td></tr></table></figure>
+<p><code>-m</code>后的信息为此次<code>commit</code>的信息</p>
+<p>此时再次检查工作区的状态,可以看见干净的工作树</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br>nothing to commit, working tree clean<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="4"><code><font color='dodgerblue'>git log - 日志信息</font></code></h1>
+
+<p>使用<code>git log</code>获得历史提交记录 ：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git log<br>commit 21dced3ee6053a17e148ef75cd2d35863155f4a9 (HEAD -&gt; master)<br>Author: MarkLilyC &lt;2667602812@qq.com&gt;<br>Date:   Sun Jul 11 16:50:18 2021 +0800<br><br>    the first commit. add text1.txt to the repository<br></code></pre></td></tr></table></figure>
+<p>可见我们设置的提交信息被打印了出来</p>
+<h3 id="简化日志信息"><a href="#简化日志信息" class="headerlink" title="简化日志信息"></a>简化日志信息</h3><p>使用命令<code>git log  --pretty=onelin --abbrev-commit</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git log --pretty=oneline --abbrev-commit<br>8244163 (HEAD -&gt; master, tag: v2.0) commit to test recall from commit<br>abfb3b5 commit this testfile to comiit hist<br>3699296 aa<br>1dd8abb aa<br>543a126 aa<br>7abf4b6 add a new line by vim<br>00e7919 add a test.txt to repo<br>40442a5 AA<br>85f2fbb ADD T2.TXT<br>bd8bfc5 add a line id = 3<br>d5fe445 add a line id = 2<br>fb84050 add a line id = 1<br>2e7ebbb add t.txt to the repo<br>440e71c remove a file<br>1e71bf1 rename<br>8377709 rename<br>8b0aa8b aa<br>199f71f (tag: v1.0) AA<br>0bbb931 aa<br>d219e28 aa<br>08926e9 aa<br>a638d98 aa<br>9ee99cc aa<br><br></code></pre></td></tr></table></figure>
+
+<p>按下<code>q</code>退出</p>
+<h4 id="以上便是使用git-init进行初始化的步骤-以及一些简单的命令操作"><a href="#以上便是使用git-init进行初始化的步骤-以及一些简单的命令操作" class="headerlink" title="以上便是使用git init进行初始化的步骤, 以及一些简单的命令操作"></a>以上便是使用<code>git init</code>进行初始化的步骤, 以及一些简单的命令操作</h4>]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -275,34 +277,6 @@ turns out<figure class="highlight python"><table><tr><td class="code"><pre><code
       </tags>
   </entry>
   <entry>
-    <title>python--map函数</title>
-    <url>/2021/07/07/Python/advance/map%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="map函数"><a href="#map函数" class="headerlink" title="map函数"></a>map函数</h1><ul>
-<li>python内置函数</li>
-<li>会根据给定函数,对指定序列做出映射<span id="more"></span>
-<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><h3 id="map-function-iterable"><a href="#map-function-iterable" class="headerlink" title="map(function, iterable...)"></a><code>map(function, iterable...)</code></h3></li>
-<li><code>iterable</code> 作为映射中原数据的来源</li>
-<li><code>function</code> 用于对<code>iterable</code>中的元素进行转换  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">&gt;&gt; <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">squ</span>(<span class="hljs-params">x</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> x * x<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>mapResult = <span class="hljs-built_in">map</span>(squ, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])<br></code></pre></td></tr></table></figure></li>
-<li><code>python 2.</code> 返回列表</li>
-<li><code>python 3.</code> 返回迭代器  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(mapResult.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">map</span>&#x27;&gt;</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">for</span> <span class="hljs-title">i</span> <span class="hljs-title">in</span> <span class="hljs-title">mapResult</span>:</span><br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(i)<br>...<br><span class="hljs-number">1</span><br><span class="hljs-number">4</span><br><span class="hljs-number">9</span><br><span class="hljs-number">16</span><br><span class="hljs-number">25</span><br></code></pre></td></tr></table></figure></li>
-<li>可通过<code>list(map())</code>的显示转换来消除版本之间的差异  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">squ</span>(<span class="hljs-params">x</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> x * x<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>list1 = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(squ, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]))<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(list1)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>]<br></code></pre></td></tr></table></figure>
-<h3 id="lambda"><a href="#lambda" class="headerlink" title="lambda"></a><code>lambda</code></h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-keyword">lambda</span> x : x * x, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])))<br>[<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>]<br></code></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><h3 id="map完成数据类型转换"><a href="#map完成数据类型转换" class="headerlink" title="map完成数据类型转换"></a><code>map</code>完成数据类型转换</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">str</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])))<br>[<span class="hljs-string">&#x27;1&#x27;</span>, <span class="hljs-string">&#x27;2&#x27;</span>, <span class="hljs-string">&#x27;3&#x27;</span>, <span class="hljs-string">&#x27;4&#x27;</span>, <span class="hljs-string">&#x27;5&#x27;</span>]<br></code></pre></td></tr></table></figure>
-<h3 id="map元组转列表"><a href="#map元组转列表" class="headerlink" title="map元组转列表"></a><code>map</code>元组转列表</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>list1 = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>,(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)))<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(list1)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
-<ul>
-<li>原理是:元组作为迭代器可作为<code>map()</code>函数参数传入,当元组内部元素数据类型与<code>function</code>转出数据类型一致时,再将<code>map</code>返回迭代器转为列表</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>advance</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Numpy100--Numpy100</title>
     <url>/2021/07/07/numpy/numpy100/</url>
     <content><![CDATA[<h1 id="github上的开源项目"><a href="#github上的开源项目" class="headerlink" title="github上的开源项目"></a>github上的开源项目</h1><h2 id="2021-7-4-17：06"><a href="#2021-7-4-17：06" class="headerlink" title="2021.7.4 17：06"></a>2021.7.4 17：06</h2><span id="more"></span>
@@ -398,6 +372,60 @@ turns out<figure class="highlight python"><table><tr><td class="code"><pre><code
       <tags>
         <tag>Python</tag>
         <tag>Numpy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python--map函数</title>
+    <url>/2021/07/07/Python/advance/map%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="map函数"><a href="#map函数" class="headerlink" title="map函数"></a>map函数</h1><ul>
+<li>python内置函数</li>
+<li>会根据给定函数,对指定序列做出映射<span id="more"></span>
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><h3 id="map-function-iterable"><a href="#map-function-iterable" class="headerlink" title="map(function, iterable...)"></a><code>map(function, iterable...)</code></h3></li>
+<li><code>iterable</code> 作为映射中原数据的来源</li>
+<li><code>function</code> 用于对<code>iterable</code>中的元素进行转换  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">&gt;&gt; <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">squ</span>(<span class="hljs-params">x</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> x * x<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>mapResult = <span class="hljs-built_in">map</span>(squ, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])<br></code></pre></td></tr></table></figure></li>
+<li><code>python 2.</code> 返回列表</li>
+<li><code>python 3.</code> 返回迭代器  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(mapResult.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">map</span>&#x27;&gt;</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">for</span> <span class="hljs-title">i</span> <span class="hljs-title">in</span> <span class="hljs-title">mapResult</span>:</span><br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(i)<br>...<br><span class="hljs-number">1</span><br><span class="hljs-number">4</span><br><span class="hljs-number">9</span><br><span class="hljs-number">16</span><br><span class="hljs-number">25</span><br></code></pre></td></tr></table></figure></li>
+<li>可通过<code>list(map())</code>的显示转换来消除版本之间的差异  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">squ</span>(<span class="hljs-params">x</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> x * x<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>list1 = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(squ, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]))<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(list1)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>]<br></code></pre></td></tr></table></figure>
+<h3 id="lambda"><a href="#lambda" class="headerlink" title="lambda"></a><code>lambda</code></h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-keyword">lambda</span> x : x * x, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])))<br>[<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>]<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><h3 id="map完成数据类型转换"><a href="#map完成数据类型转换" class="headerlink" title="map完成数据类型转换"></a><code>map</code>完成数据类型转换</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">str</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])))<br>[<span class="hljs-string">&#x27;1&#x27;</span>, <span class="hljs-string">&#x27;2&#x27;</span>, <span class="hljs-string">&#x27;3&#x27;</span>, <span class="hljs-string">&#x27;4&#x27;</span>, <span class="hljs-string">&#x27;5&#x27;</span>]<br></code></pre></td></tr></table></figure>
+<h3 id="map元组转列表"><a href="#map元组转列表" class="headerlink" title="map元组转列表"></a><code>map</code>元组转列表</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>list1 = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>,(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)))<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(list1)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
+<ul>
+<li>原理是:元组作为迭代器可作为<code>map()</code>函数参数传入,当元组内部元素数据类型与<code>function</code>转出数据类型一致时,再将<code>map</code>返回迭代器转为列表</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>advance</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python--多线程</title>
+    <url>/2021/07/07/Python/advance/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><p>python多线程并非真正意义上的多线程</p>
+<ul>
+<li>每个进程运行时都需要等到<code>GIL</code>释放,然后得到<code>GIL</code>后上锁</li>
+<li>因此,同一时间只有一个<code>python</code>线程在运行<span id="more"></span>
+<h2 id="创建线程-threading-Thread"><a href="#创建线程-threading-Thread" class="headerlink" title="创建线程 threading.Thread"></a>创建线程 <code>threading.Thread</code></h2>使用<code>threading</code>,创建新的<code>threading.Thread</code>,为其分配要执行的函数来启动新的执行线程<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> threading<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">test</span>():</span><br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Running...&quot;</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>test_thread = threading.Thread(target=test)<br></code></pre></td></tr></table></figure></li>
+<li><code>target</code> 传入函数或可调用对象</li>
+<li>在<code>Thread</code>调用<code>start()</code>方法前,线程不会开始</li>
+</ul>
+<h2 id="开始线程-Thread-start"><a href="#开始线程-Thread-start" class="headerlink" title="开始线程 Thread.start()"></a>开始线程 <code>Thread.start()</code></h2><p><code>Thread.start()</code>开始线程</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>test_thread.start()<br>Running...<br></code></pre></td></tr></table></figure>
+<ul>
+<li>当一个线程运行结束,再次调用<code>start()</code>方法,则会报错:  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>test_thread.start()<br>Running...<br><span class="hljs-meta">&gt;&gt;&gt; </span>test_thread.start()<br>Traceback (most recent call last):<br>File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>File <span class="hljs-string">&quot;D:\Python37\lib\threading.py&quot;</span>, line <span class="hljs-number">848</span>, <span class="hljs-keyword">in</span> start<br>    <span class="hljs-keyword">raise</span> RuntimeError(<span class="hljs-string">&quot;threads can only be started once&quot;</span>)<br>RuntimeError: threads can only be started once<br></code></pre></td></tr></table></figure></li>
+<li>若想将线程设置为守护线程持续运行,则需设置<code>daemon=True</code></li>
+</ul>
+<h2 id="加入线程-Thread-join"><a href="#加入线程-Thread-join" class="headerlink" title="加入线程 Thread.join()"></a>加入线程 <code>Thread.join()</code></h2>]]></content>
+      <categories>
+        <category>Python</category>
+        <category>advance</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -521,32 +549,6 @@ turns out<figure class="highlight python"><table><tr><td class="code"><pre><code
 </ul>
 <h3 id="next-函数"><a href="#next-函数" class="headerlink" title=".next()函数"></a><code>.next()</code>函数</h3><p>用于从生成器中获取值,并提供迭代结束的默认值</p>
 ]]></content>
-      <categories>
-        <category>Python</category>
-        <category>advance</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python--多线程</title>
-    <url>/2021/07/07/Python/advance/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><p>python多线程并非真正意义上的多线程</p>
-<ul>
-<li>每个进程运行时都需要等到<code>GIL</code>释放,然后得到<code>GIL</code>后上锁</li>
-<li>因此,同一时间只有一个<code>python</code>线程在运行<span id="more"></span>
-<h2 id="创建线程-threading-Thread"><a href="#创建线程-threading-Thread" class="headerlink" title="创建线程 threading.Thread"></a>创建线程 <code>threading.Thread</code></h2>使用<code>threading</code>,创建新的<code>threading.Thread</code>,为其分配要执行的函数来启动新的执行线程<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> threading<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">test</span>():</span><br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Running...&quot;</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>test_thread = threading.Thread(target=test)<br></code></pre></td></tr></table></figure></li>
-<li><code>target</code> 传入函数或可调用对象</li>
-<li>在<code>Thread</code>调用<code>start()</code>方法前,线程不会开始</li>
-</ul>
-<h2 id="开始线程-Thread-start"><a href="#开始线程-Thread-start" class="headerlink" title="开始线程 Thread.start()"></a>开始线程 <code>Thread.start()</code></h2><p><code>Thread.start()</code>开始线程</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>test_thread.start()<br>Running...<br></code></pre></td></tr></table></figure>
-<ul>
-<li>当一个线程运行结束,再次调用<code>start()</code>方法,则会报错:  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>test_thread.start()<br>Running...<br><span class="hljs-meta">&gt;&gt;&gt; </span>test_thread.start()<br>Traceback (most recent call last):<br>File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>File <span class="hljs-string">&quot;D:\Python37\lib\threading.py&quot;</span>, line <span class="hljs-number">848</span>, <span class="hljs-keyword">in</span> start<br>    <span class="hljs-keyword">raise</span> RuntimeError(<span class="hljs-string">&quot;threads can only be started once&quot;</span>)<br>RuntimeError: threads can only be started once<br></code></pre></td></tr></table></figure></li>
-<li>若想将线程设置为守护线程持续运行,则需设置<code>daemon=True</code></li>
-</ul>
-<h2 id="加入线程-Thread-join"><a href="#加入线程-Thread-join" class="headerlink" title="加入线程 Thread.join()"></a>加入线程 <code>Thread.join()</code></h2>]]></content>
       <categories>
         <category>Python</category>
         <category>advance</category>
@@ -819,75 +821,6 @@ turns out<figure class="highlight python"><table><tr><td class="code"><pre><code
       </tags>
   </entry>
   <entry>
-    <title>python--元组</title>
-    <url>/2021/07/07/Python/basic/%E5%85%83%E7%BB%84/</url>
-    <content><![CDATA[<h1 id="列表与元组"><a href="#列表与元组" class="headerlink" title="列表与元组"></a>列表与元组</h1><ul>
-<li>当元素类型不一时使用元组,当类型一样则使用列表 <sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="参考资料1
-">[1]</span></a></sup></li>
-<li>元组遍历更快</li>
-<li>使用元组元素(不可变)可作为字典的键值,而列表不可</li>
-<li>元组保证了数据的安全</li>
-</ul>
-<span id="more"></span>
-<h2 id="1-列表"><a href="#1-列表" class="headerlink" title="1 列表"></a>1 列表</h2><p>略</p>
-<h2 id="2-元组-tuple"><a href="#2-元组-tuple" class="headerlink" title="2 元组-tuple"></a>2 元组-<code>tuple</code></h2><p>元组类似于列表,但区别在于元组中的元素是不可变的</p>
-<h3 id="2-1-创建一个元组"><a href="#2-1-创建一个元组" class="headerlink" title="2.1 创建一个元组"></a>2.1 创建一个元组</h3><p><code>1.</code> 使用<code>()</code>创建一个元组,使用<code>,</code>间隔元素<br><code>2.</code> 类似于列表,元组中的元素可以是任何数据类型</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuple1 = (<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(tuple1, tuple1.__class__)<br>(<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]) &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">tuple</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>因为元组不能改变,所以创建伊始就应该指定正确的元素</p>
-</blockquote>
-<p><code>3.</code> 创建元组时只指明一个元素<code>(dtype A)</code>,则该元组(你意图创建的)会被视为<code>A</code>的对象</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># case1</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>a = (<span class="hljs-string">&#x27;aa&#x27;</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">str</span>&#x27;&gt;</span><br><span class="hljs-class"># <span class="hljs-title">case2</span></span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">b</span> = (<span class="hljs-params">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]</span>)</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">print</span>(<span class="hljs-params">b.__class__</span>)</span><br><span class="hljs-class">&lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">list</span>&#x27;&gt;</span><br><span class="hljs-class"># <span class="hljs-title">case3</span></span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">c</span> = (<span class="hljs-params"><span class="hljs-number">1</span></span>)</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">print</span>(<span class="hljs-params">c.__class__</span>)</span><br><span class="hljs-class">&lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">int</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
-<p><code>case1-3</code>中意图创建元组<code>a b c</code>,但创建时指指定了一个内部元素<code>param(dtype A)</code>,因此该元组被视为<code>A</code>类的一个对象</p>
-<h3 id="2-2-访问元组元素"><a href="#2-2-访问元组元素" class="headerlink" title="2.2 访问元组元素"></a>2.2 访问元组元素</h3><h4 id="2-2-1-索引-index"><a href="#2-2-1-索引-index" class="headerlink" title="2.2.1 索引-index"></a>2.2.1 索引-index</h4><p><code>[index:int]</code>使用索引操作符来访问元组中的元素<br><code>1.</code> 正索引 : <code>0-len(tuple)-1</code></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuple1 = (<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(tuple1[<span class="hljs-number">2</span>])<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
-<p><code>2.</code> 负索引</p>
-<h4 id="2-2-2-切片"><a href="#2-2-2-切片" class="headerlink" title="2.2.2 切片"></a>2.2.2 切片</h4><p><code>:</code>使用切片操作符</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuple1 = (<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(tuple1[<span class="hljs-number">1</span>:])<br>(<span class="hljs-number">1</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])<br></code></pre></td></tr></table></figure>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p><code>1.</code> <code>enumerate()</code>: 将元组内所有对象及其索引枚举,以元组的形式返回</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">enumerate</span>(tuple1).__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">enumerate</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
-<p><code>2.</code> <code>tuple()</code>: 将序列（元组，字符串，字典）转换为元组</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>list1 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-string">&#x27;aa&#x27;</span>,(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)]<br><span class="hljs-meta">&gt;&gt;&gt; </span>tp1 = <span class="hljs-built_in">tuple</span>(list1)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(list1.__class__, tp1.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">list</span>&#x27;&gt; &lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">tuple</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
-<p><code>3.</code> <code>sorted</code>: 返回一个排序元组</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuplle1 = (<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">0</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">sorted</span>(tuplle1))<br>[<span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>参考资料1
-<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
-      <categories>
-        <category>Python</category>
-        <category>basic</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python--函数</title>
-    <url>/2021/07/10/Python/basic/%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="函数-1"><a href="#函数-1" class="headerlink" title="函数"></a>函数</h2><p>–</p>
-<h2 id="函数参数"><a href="#函数参数" class="headerlink" title="函数参数"></a>函数参数</h2><hr>
-<h3 id="参数类型"><a href="#参数类型" class="headerlink" title="参数类型"></a>参数类型</h3><span id="more"></span>
-<h4 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h4><ul>
-<li>定义函数时设置默认值,则调用函数时不需要指定参数值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func</span>(<span class="hljs-params">a = <span class="hljs-number">1</span>, b = <span class="hljs-number">4</span></span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> a * b<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func())<br><span class="hljs-number">4</span><br></code></pre></td></tr></table></figure></li>
-<li>定义函数时设置默认值,调用函数指定他值,则他值覆盖默认值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func</span>(<span class="hljs-params">a = <span class="hljs-number">1</span>, b = <span class="hljs-number">4</span></span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> a * b<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func())<br><span class="hljs-number">4</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func(<span class="hljs-number">2</span>, <span class="hljs-number">5</span>))<br><span class="hljs-number">10</span><br></code></pre></td></tr></table></figure>
-<h4 id="关键字参数-参数关键字"><a href="#关键字参数-参数关键字" class="headerlink" title="关键字参数(参数关键字)"></a>关键字参数(参数关键字)</h4></li>
-<li>调用函数传入参数时,若不指定各传入值对应参数名,则传入值会按照默认顺序(函数定义式中的参数顺序)进行参数赋值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func2</span>(<span class="hljs-params">a, b, c, d</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span>(a * <span class="hljs-number">1000</span> + b * <span class="hljs-number">100</span> + c * <span class="hljs-number">10</span> + d)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>))<br><span class="hljs-number">1234</span><br></code></pre></td></tr></table></figure></li>
-<li>调用函数传入参数时,指定参数关键字则不用在意参数传入顺序<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func2</span>(<span class="hljs-params">a, b, c, d</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span>(a * <span class="hljs-number">1000</span> + b * <span class="hljs-number">100</span> + c * <span class="hljs-number">10</span> + d)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>))<br><span class="hljs-number">1234</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(d=<span class="hljs-number">4</span>, a=<span class="hljs-number">1</span>, c=<span class="hljs-number">3</span>, b=<span class="hljs-number">2</span>))<br><span class="hljs-number">1234</span><br></code></pre></td></tr></table></figure>
-<h4 id="任意参数"><a href="#任意参数" class="headerlink" title="任意参数"></a>任意参数</h4><code>1.</code> 在任意参数前添加<code>*</code>标定此参数为任意参数</li>
-<li>它将非关键字的参数作为元组传入函数内部<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func2</span>(<span class="hljs-params">a, b, c, d</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span>(a * <span class="hljs-number">1000</span> + b * <span class="hljs-number">100</span> + c * <span class="hljs-number">10</span> + d)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>))<br><span class="hljs-number">1234</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(d=<span class="hljs-number">4</span>, a=<span class="hljs-number">1</span>, c=<span class="hljs-number">3</span>, b=<span class="hljs-number">2</span>))<br><span class="hljs-number">1234</span><br></code></pre></td></tr></table></figure>
-<code>2.</code> <code>**kwargs</code> 用以传递任意关键字参数<code>(kew = ars)</code></li>
-<li>将带传入参数及其关键字以<code>&#39;&#39;键值对&#39;&#39;</code>形式传入</li>
-<li>传入参数及其关键字被转换为<code>dict</code>传入函数内部,通过关键字定位参数值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func4</span>(<span class="hljs-params">**kwargs</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(kwargs.__class__)<br><span class="hljs-meta">... </span>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> kwargs:<br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;this is &#x27;</span> + <span class="hljs-built_in">str</span>(i) + <span class="hljs-string">&#x27; and its arg = &#x27;</span> +<span class="hljs-built_in">str</span>(kwargs[i]))<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>func4(name = <span class="hljs-string">&#x27;markilily&#x27;</span>,age = <span class="hljs-number">120</span>)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">dict</span>&#x27;&gt;</span><br><span class="hljs-class"><span class="hljs-title">this</span> <span class="hljs-title">is</span> <span class="hljs-title">name</span> <span class="hljs-title">and</span> <span class="hljs-title">its</span> <span class="hljs-title">arg</span> = <span class="hljs-title">markilily</span></span><br><span class="hljs-class"><span class="hljs-title">this</span> <span class="hljs-title">is</span> <span class="hljs-title">age</span> <span class="hljs-title">and</span> <span class="hljs-title">its</span> <span class="hljs-title">arg</span> = 120</span><br></code></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>basic</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>python--命名空间</title>
     <url>/2021/07/07/Python/basic/%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/</url>
     <content><![CDATA[<h1 id="命名空间及作用域"><a href="#命名空间及作用域" class="headerlink" title="命名空间及作用域"></a>命名空间及作用域</h1><h2 id="1-命名空间"><a href="#1-命名空间" class="headerlink" title="1.命名空间"></a>1.命名空间</h2><h3 id="1-1-命名空间（Namespace）"><a href="#1-1-命名空间（Namespace）" class="headerlink" title="1.1 命名空间（Namespace）"></a>1.1 命名空间（Namespace）</h3><p><code>1.</code> 是从名称到对象的映射，一般通过字典实现<br><code>2.</code> 类似于<code>c++</code></p>
@@ -992,46 +925,66 @@ python内置此方法的输出为元素长度:<figure class="highlight python"><
       </tags>
   </entry>
   <entry>
-    <title>python--类</title>
-    <url>/2021/07/07/Python/basic/%E7%B1%BB/</url>
-    <content><![CDATA[<h1 id="类–CLASS"><a href="#类–CLASS" class="headerlink" title="类–CLASS"></a>类–CLASS</h1><h2 id="python中的类与对象"><a href="#python中的类与对象" class="headerlink" title="python中的类与对象"></a>python中的类与对象</h2><p>类可以说是具有同类型属性（性质 方法 属性）的对象的属性集合</p>
-<ul>
-<li>类中包含的就是该类对象共有的属性（性质 方法 属性）<span id="more"></span>
-对象则是包含了类中具体属性（性质 方法 属性）的实体</li>
-<li>对象则是具体指明 实现了类中各类属性的实体</li>
-</ul>
-<h3 id="新建一个类"><a href="#新建一个类" class="headerlink" title="新建一个类"></a>新建一个类</h3><p><code>class</code>关键字新建一个类:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">stu</span>:</span><br><span class="hljs-meta">... </span>    name = <span class="hljs-string">&#x27;aa&#x27;</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">display</span>():</span><br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;im aa&#x27;</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(stu.name)<br>aa<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(stu.display)<br>&lt;function stu.display at <span class="hljs-number">0x00000279CBA24798</span>&gt;<br></code></pre></td></tr></table></figure>
-<h3 id="新建一个类的实例对象"><a href="#新建一个类的实例对象" class="headerlink" title="新建一个类的实例对象"></a>新建一个类的实例对象</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>cj = stu()<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(cj.name)<br>aa<br><span class="hljs-meta">&gt;&gt;&gt; </span>cj.display<br>&lt;bound method stu.display of &lt;__main__.stu <span class="hljs-built_in">object</span> at <span class="hljs-number">0x00000279CBA36CC8</span>&gt;&gt;<br></code></pre></td></tr></table></figure>
-<h3 id="类属性"><a href="#类属性" class="headerlink" title="类属性"></a>类属性</h3><p>除了自定义的属性 方法,python提供一系列的内置属性</p>
-<ul>
-<li><code>__dict__</code>: 包含命名空间的字典</li>
-<li><code>__doc__</code>: 类的说明文档</li>
-<li><code>__name__</code>：类的名称</li>
-<li><code>__module__</code>: 定义类的所在模块</li>
-<li><code>__bases__</code>: 包含基础类的元组<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">stu</span>:</span><br><span class="hljs-meta">... </span>    <span class="hljs-string">&#x27;this is test line&#x27;</span><br><span class="hljs-meta">... </span>    name = <span class="hljs-string">&#x27;cj&#x27;</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">dis</span>():</span><br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;display&#x27;</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>s = stu()<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(s.__doc__)<br>this <span class="hljs-keyword">is</span> test line<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(s.__dict__)<br>&#123;&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(s.__module__)<br>__main__<br></code></pre></td></tr></table></figure>
-<h3 id="类构造方法"><a href="#类构造方法" class="headerlink" title="类构造方法"></a>类构造方法</h3><code>__init__()</code>方法用于对象被初始创建时调用,用于初始化生成类的具体属性</li>
-<li>不同于<code>java</code>,<code>python</code>类的属性直接在<code>init</code>函数内声明,不需要额外声明<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">stu</span>:</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, init_name, init_age</span>):</span><br><span class="hljs-meta">... </span>            self.name = init_name<br><span class="hljs-meta">... </span>            self.age = init_age<br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">introducing</span>(<span class="hljs-params">self</span>):</span><br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;my name is &quot;</span> + self.name + <span class="hljs-string">&#x27; and im &#x27;</span> + <span class="hljs-built_in">str</span>(self.age) + <span class="hljs-string">&#x27; old.&#x27;</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>s = stu(<span class="hljs-string">&#x27;marklily&#x27;</span>, <span class="hljs-number">18</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span>s.introducing()<br>my name <span class="hljs-keyword">is</span> marklily <span class="hljs-keyword">and</span> im <span class="hljs-number">18</span> old.<br></code></pre></td></tr></table></figure>
-<h3 id="删除类的属性"><a href="#删除类的属性" class="headerlink" title="删除类的属性"></a>删除类的属性</h3><code>del</code>用于删除对象的某个属性:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>s.__dict__<br>&#123;<span class="hljs-string">&#x27;name&#x27;</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>, <span class="hljs-string">&#x27;age&#x27;</span>: <span class="hljs-number">18</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">del</span> s.age<br><span class="hljs-meta">&gt;&gt;&gt; </span>s.__dict__<br>&#123;<span class="hljs-string">&#x27;name&#x27;</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>&#125;<br></code></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>继承中有<code>子类</code>与<code>父类</code>,甚至<code>祖父类</code>.子类继承父类中的所有属性 方法,并且可以添加新函数 属性</p>
-<h3 id="继承中的添加"><a href="#继承中的添加" class="headerlink" title="继承中的添加"></a>继承中的添加</h3><ul>
-<li><p>子类继承父类中的所有方法,包括构造方法</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 创建父类</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ParentClass</span>:</span><br>    familyName = <span class="hljs-string">&#x27;c&#x27;</span><br>    familyLocation = <span class="hljs-string">&#x27;sc&#x27;</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, name, age</span>):</span><br>        self.name = name<br>        self.age = age<br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">introducing</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Name: &#x27;</span> + self.name + <span class="hljs-string">&#x27;Age: &#x27;</span> + <span class="hljs-built_in">str</span>(self.age))<br><span class="hljs-comment"># 创建一个父类对象 并检验相关属性</span><br>parent = ParentClass(<span class="hljs-string">&#x27;markc&#x27;</span>, <span class="hljs-number">22</span>)<br><span class="hljs-built_in">print</span>(parent.familyName + parent.familyLocation)<br>parent.introducing()<br><span class="hljs-comment"># 创建子类 继承父类</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ChildClass</span>(<span class="hljs-params">ParentClass</span>):</span><br>    <span class="hljs-keyword">pass</span><br>child = ChildClass(<span class="hljs-string">&#x27;axlc&#x27;</span>, <span class="hljs-number">2</span>)<br><span class="hljs-built_in">print</span>(child.familyName + child.familyLocation)<br>child.introducing()<br></code></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">csc<br>Name: markcAge: <span class="hljs-number">22</span><br>csc<br>Name: axlcAge: <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure></li>
-<li><p>子类添加新函数 新属性</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ChildClass</span>(<span class="hljs-params">ParentClass</span>):</span><br>    newFamilyJob = <span class="hljs-string">&#x27;IT&#x27;</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">newJob</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;new job is &#x27;</span> + <span class="hljs-string">&#x27;IT&#x27;</span>)<br>child = ChildClass(<span class="hljs-string">&#x27;axlc&#x27;</span>, <span class="hljs-number">2</span>)<br><span class="hljs-built_in">print</span>(child.newFamilyJob)<br>child.newJob()<br></code></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">IT<br>new job <span class="hljs-keyword">is</span> IT<br></code></pre></td></tr></table></figure>
-<h3 id="继承中的覆写"><a href="#继承中的覆写" class="headerlink" title="继承中的覆写"></a>继承中的覆写</h3><p>子类在继承父类方法时间,可对方法做出重写</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ParentClass</span>:</span><br>    familyName = <span class="hljs-string">&#x27;c&#x27;</span><br>    familyLocation = <span class="hljs-string">&#x27;sc&#x27;</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, name, age</span>):</span><br>        self.name = name<br>        self.age = age<br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">introducing</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Name: &#x27;</span> + self.name + <span class="hljs-string">&#x27;Age: &#x27;</span> + <span class="hljs-built_in">str</span>(self.age))<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ChildClass</span>(<span class="hljs-params">ParentClass</span>):</span><br>    newFamilyJob = <span class="hljs-string">&#x27;IT&#x27;</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, name, age, coupledNum</span>):</span><br>        self.name = name<br>        self.age = age<br>        self.coupledNum = coupledNum<br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">newJob</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;new job is &#x27;</span> + <span class="hljs-string">&#x27;IT&#x27;</span>)<br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">introducing</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Name: &#x27;</span> + self.name + <span class="hljs-string">&#x27;Age: &#x27;</span> + <span class="hljs-built_in">str</span>(self.age) + <span class="hljs-string">&#x27;and i only got &#x27;</span> + <span class="hljs-built_in">str</span>(self.coupledNum))<br>child = ChildClass(<span class="hljs-string">&#x27;axlc&#x27;</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>)<br><span class="hljs-built_in">print</span>(child.newFamilyJob)<br>child.newJob()<br>child.introducing()<br></code></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">csc<br>Name: markcAge: <span class="hljs-number">22</span><br>IT<br>new job <span class="hljs-keyword">is</span> IT<br>Name: axlcAge: 2<span class="hljs-keyword">and</span> i only got <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
-<p>子类中对构造函数做出了重写,新加入了<code>coupledNum</code>属性,对<code>introducing</code>方法也做出了重写</p>
-<h2 id="多重继承"><a href="#多重继承" class="headerlink" title="多重继承"></a>多重继承</h2><p>当一个子类有多个父类时,多个父类均被继承</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span>:</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">disA</span>(<span class="hljs-params">self</span>):</span><br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;A&#x27;</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span>:</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">disB</span>(<span class="hljs-params">self</span>):</span><br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;B&#x27;</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span>:</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">disC</span>(<span class="hljs-params">self</span>):</span><br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;C&#x27;</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">son</span>(<span class="hljs-params">A,B,C</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">disSon</span>(<span class="hljs-params">self</span>):</span><br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;son&#x27;</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>son = son()<br><span class="hljs-meta">&gt;&gt;&gt; </span>son.disA()<br>A<br><span class="hljs-meta">&gt;&gt;&gt; </span>son.disB()<br>B<br><span class="hljs-meta">&gt;&gt;&gt; </span>son.disC()<br>C<br><span class="hljs-meta">&gt;&gt;&gt; </span>son.disSon()<br>son<br></code></pre></td></tr></table></figure>
-<h2 id="多级继承"><a href="#多级继承" class="headerlink" title="多级继承"></a>多级继承</h2><p>基因代代相传,孝景帝之子中山靖王之后<code>刘玄德</code>也可以用的</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span>:</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">disA</span>(<span class="hljs-params">self</span>):</span><br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;A&#x27;</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">D</span>(<span class="hljs-params">A</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">disD</span>(<span class="hljs-params">self</span>):</span><br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;D&#x27;</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">E</span>(<span class="hljs-params">D</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">disE</span>(<span class="hljs-params">self</span>):</span><br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;E&#x27;</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>e = E()<br><span class="hljs-meta">&gt;&gt;&gt; </span>e.disA()<br>A<br><span class="hljs-meta">&gt;&gt;&gt; </span>e.disD()<br>D<br><span class="hljs-meta">&gt;&gt;&gt; </span>e.disE()<br>E<br></code></pre></td></tr></table></figure></li>
+    <title>python--函数</title>
+    <url>/2021/07/10/Python/basic/%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="函数-1"><a href="#函数-1" class="headerlink" title="函数"></a>函数</h2><p>–</p>
+<h2 id="函数参数"><a href="#函数参数" class="headerlink" title="函数参数"></a>函数参数</h2><hr>
+<h3 id="参数类型"><a href="#参数类型" class="headerlink" title="参数类型"></a>参数类型</h3><span id="more"></span>
+<h4 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h4><ul>
+<li>定义函数时设置默认值,则调用函数时不需要指定参数值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func</span>(<span class="hljs-params">a = <span class="hljs-number">1</span>, b = <span class="hljs-number">4</span></span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> a * b<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func())<br><span class="hljs-number">4</span><br></code></pre></td></tr></table></figure></li>
+<li>定义函数时设置默认值,调用函数指定他值,则他值覆盖默认值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func</span>(<span class="hljs-params">a = <span class="hljs-number">1</span>, b = <span class="hljs-number">4</span></span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> a * b<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func())<br><span class="hljs-number">4</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func(<span class="hljs-number">2</span>, <span class="hljs-number">5</span>))<br><span class="hljs-number">10</span><br></code></pre></td></tr></table></figure>
+<h4 id="关键字参数-参数关键字"><a href="#关键字参数-参数关键字" class="headerlink" title="关键字参数(参数关键字)"></a>关键字参数(参数关键字)</h4></li>
+<li>调用函数传入参数时,若不指定各传入值对应参数名,则传入值会按照默认顺序(函数定义式中的参数顺序)进行参数赋值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func2</span>(<span class="hljs-params">a, b, c, d</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span>(a * <span class="hljs-number">1000</span> + b * <span class="hljs-number">100</span> + c * <span class="hljs-number">10</span> + d)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>))<br><span class="hljs-number">1234</span><br></code></pre></td></tr></table></figure></li>
+<li>调用函数传入参数时,指定参数关键字则不用在意参数传入顺序<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func2</span>(<span class="hljs-params">a, b, c, d</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span>(a * <span class="hljs-number">1000</span> + b * <span class="hljs-number">100</span> + c * <span class="hljs-number">10</span> + d)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>))<br><span class="hljs-number">1234</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(d=<span class="hljs-number">4</span>, a=<span class="hljs-number">1</span>, c=<span class="hljs-number">3</span>, b=<span class="hljs-number">2</span>))<br><span class="hljs-number">1234</span><br></code></pre></td></tr></table></figure>
+<h4 id="任意参数"><a href="#任意参数" class="headerlink" title="任意参数"></a>任意参数</h4><code>1.</code> 在任意参数前添加<code>*</code>标定此参数为任意参数</li>
+<li>它将非关键字的参数作为元组传入函数内部<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func2</span>(<span class="hljs-params">a, b, c, d</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span>(a * <span class="hljs-number">1000</span> + b * <span class="hljs-number">100</span> + c * <span class="hljs-number">10</span> + d)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>))<br><span class="hljs-number">1234</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(d=<span class="hljs-number">4</span>, a=<span class="hljs-number">1</span>, c=<span class="hljs-number">3</span>, b=<span class="hljs-number">2</span>))<br><span class="hljs-number">1234</span><br></code></pre></td></tr></table></figure>
+<code>2.</code> <code>**kwargs</code> 用以传递任意关键字参数<code>(kew = ars)</code></li>
+<li>将带传入参数及其关键字以<code>&#39;&#39;键值对&#39;&#39;</code>形式传入</li>
+<li>传入参数及其关键字被转换为<code>dict</code>传入函数内部,通过关键字定位参数值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func4</span>(<span class="hljs-params">**kwargs</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(kwargs.__class__)<br><span class="hljs-meta">... </span>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> kwargs:<br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;this is &#x27;</span> + <span class="hljs-built_in">str</span>(i) + <span class="hljs-string">&#x27; and its arg = &#x27;</span> +<span class="hljs-built_in">str</span>(kwargs[i]))<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>func4(name = <span class="hljs-string">&#x27;markilily&#x27;</span>,age = <span class="hljs-number">120</span>)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">dict</span>&#x27;&gt;</span><br><span class="hljs-class"><span class="hljs-title">this</span> <span class="hljs-title">is</span> <span class="hljs-title">name</span> <span class="hljs-title">and</span> <span class="hljs-title">its</span> <span class="hljs-title">arg</span> = <span class="hljs-title">markilily</span></span><br><span class="hljs-class"><span class="hljs-title">this</span> <span class="hljs-title">is</span> <span class="hljs-title">age</span> <span class="hljs-title">and</span> <span class="hljs-title">its</span> <span class="hljs-title">arg</span> = 120</span><br></code></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
+      <categories>
+        <category>Python</category>
+        <category>basic</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python--元组</title>
+    <url>/2021/07/07/Python/basic/%E5%85%83%E7%BB%84/</url>
+    <content><![CDATA[<h1 id="列表与元组"><a href="#列表与元组" class="headerlink" title="列表与元组"></a>列表与元组</h1><ul>
+<li>当元素类型不一时使用元组,当类型一样则使用列表 <sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="参考资料1
+">[1]</span></a></sup></li>
+<li>元组遍历更快</li>
+<li>使用元组元素(不可变)可作为字典的键值,而列表不可</li>
+<li>元组保证了数据的安全</li>
+</ul>
+<span id="more"></span>
+<h2 id="1-列表"><a href="#1-列表" class="headerlink" title="1 列表"></a>1 列表</h2><p>略</p>
+<h2 id="2-元组-tuple"><a href="#2-元组-tuple" class="headerlink" title="2 元组-tuple"></a>2 元组-<code>tuple</code></h2><p>元组类似于列表,但区别在于元组中的元素是不可变的</p>
+<h3 id="2-1-创建一个元组"><a href="#2-1-创建一个元组" class="headerlink" title="2.1 创建一个元组"></a>2.1 创建一个元组</h3><p><code>1.</code> 使用<code>()</code>创建一个元组,使用<code>,</code>间隔元素<br><code>2.</code> 类似于列表,元组中的元素可以是任何数据类型</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuple1 = (<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(tuple1, tuple1.__class__)<br>(<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]) &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">tuple</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>因为元组不能改变,所以创建伊始就应该指定正确的元素</p>
+</blockquote>
+<p><code>3.</code> 创建元组时只指明一个元素<code>(dtype A)</code>,则该元组(你意图创建的)会被视为<code>A</code>的对象</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># case1</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>a = (<span class="hljs-string">&#x27;aa&#x27;</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">str</span>&#x27;&gt;</span><br><span class="hljs-class"># <span class="hljs-title">case2</span></span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">b</span> = (<span class="hljs-params">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]</span>)</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">print</span>(<span class="hljs-params">b.__class__</span>)</span><br><span class="hljs-class">&lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">list</span>&#x27;&gt;</span><br><span class="hljs-class"># <span class="hljs-title">case3</span></span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">c</span> = (<span class="hljs-params"><span class="hljs-number">1</span></span>)</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">print</span>(<span class="hljs-params">c.__class__</span>)</span><br><span class="hljs-class">&lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">int</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
+<p><code>case1-3</code>中意图创建元组<code>a b c</code>,但创建时指指定了一个内部元素<code>param(dtype A)</code>,因此该元组被视为<code>A</code>类的一个对象</p>
+<h3 id="2-2-访问元组元素"><a href="#2-2-访问元组元素" class="headerlink" title="2.2 访问元组元素"></a>2.2 访问元组元素</h3><h4 id="2-2-1-索引-index"><a href="#2-2-1-索引-index" class="headerlink" title="2.2.1 索引-index"></a>2.2.1 索引-index</h4><p><code>[index:int]</code>使用索引操作符来访问元组中的元素<br><code>1.</code> 正索引 : <code>0-len(tuple)-1</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuple1 = (<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(tuple1[<span class="hljs-number">2</span>])<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
+<p><code>2.</code> 负索引</p>
+<h4 id="2-2-2-切片"><a href="#2-2-2-切片" class="headerlink" title="2.2.2 切片"></a>2.2.2 切片</h4><p><code>:</code>使用切片操作符</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuple1 = (<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(tuple1[<span class="hljs-number">1</span>:])<br>(<span class="hljs-number">1</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])<br></code></pre></td></tr></table></figure>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p><code>1.</code> <code>enumerate()</code>: 将元组内所有对象及其索引枚举,以元组的形式返回</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">enumerate</span>(tuple1).__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">enumerate</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
+<p><code>2.</code> <code>tuple()</code>: 将序列（元组，字符串，字典）转换为元组</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>list1 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-string">&#x27;aa&#x27;</span>,(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)]<br><span class="hljs-meta">&gt;&gt;&gt; </span>tp1 = <span class="hljs-built_in">tuple</span>(list1)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(list1.__class__, tp1.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">list</span>&#x27;&gt; &lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">tuple</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
+<p><code>3.</code> <code>sorted</code>: 返回一个排序元组</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuplle1 = (<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">0</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">sorted</span>(tuplle1))<br>[<span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>参考资料1
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
       <categories>
         <category>Python</category>
         <category>basic</category>
@@ -1087,6 +1040,55 @@ python内置此方法的输出为元素长度:<figure class="highlight python"><
 <li>递归函数内部会调用函数本身</li>
 <li>某次调用递归函数时,内部调用本身时会指定参数</li>
 <li>在递归函数中,应有一个结束参数信号,在每次递归中,参数不断靠近该信号<h2 id="递归次数限制"><a href="#递归次数限制" class="headerlink" title="递归次数限制"></a>递归次数限制</h2><code>python</code>递归次数限制为<code>3000</code>次,超出此次数则会触发<code>RecursionError</code><h2 id="移除递归次数限制"><a href="#移除递归次数限制" class="headerlink" title="移除递归次数限制"></a>移除递归次数限制</h2><code>sys.setrecursionlimit(5000)</code> 设置次数限制为我们所需要的次数</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>basic</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python--类</title>
+    <url>/2021/07/07/Python/basic/%E7%B1%BB/</url>
+    <content><![CDATA[<h1 id="类–CLASS"><a href="#类–CLASS" class="headerlink" title="类–CLASS"></a>类–CLASS</h1><h2 id="python中的类与对象"><a href="#python中的类与对象" class="headerlink" title="python中的类与对象"></a>python中的类与对象</h2><p>类可以说是具有同类型属性（性质 方法 属性）的对象的属性集合</p>
+<ul>
+<li>类中包含的就是该类对象共有的属性（性质 方法 属性）<span id="more"></span>
+对象则是包含了类中具体属性（性质 方法 属性）的实体</li>
+<li>对象则是具体指明 实现了类中各类属性的实体</li>
+</ul>
+<h3 id="新建一个类"><a href="#新建一个类" class="headerlink" title="新建一个类"></a>新建一个类</h3><p><code>class</code>关键字新建一个类:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">stu</span>:</span><br><span class="hljs-meta">... </span>    name = <span class="hljs-string">&#x27;aa&#x27;</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">display</span>():</span><br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;im aa&#x27;</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(stu.name)<br>aa<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(stu.display)<br>&lt;function stu.display at <span class="hljs-number">0x00000279CBA24798</span>&gt;<br></code></pre></td></tr></table></figure>
+<h3 id="新建一个类的实例对象"><a href="#新建一个类的实例对象" class="headerlink" title="新建一个类的实例对象"></a>新建一个类的实例对象</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>cj = stu()<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(cj.name)<br>aa<br><span class="hljs-meta">&gt;&gt;&gt; </span>cj.display<br>&lt;bound method stu.display of &lt;__main__.stu <span class="hljs-built_in">object</span> at <span class="hljs-number">0x00000279CBA36CC8</span>&gt;&gt;<br></code></pre></td></tr></table></figure>
+<h3 id="类属性"><a href="#类属性" class="headerlink" title="类属性"></a>类属性</h3><p>除了自定义的属性 方法,python提供一系列的内置属性</p>
+<ul>
+<li><code>__dict__</code>: 包含命名空间的字典</li>
+<li><code>__doc__</code>: 类的说明文档</li>
+<li><code>__name__</code>：类的名称</li>
+<li><code>__module__</code>: 定义类的所在模块</li>
+<li><code>__bases__</code>: 包含基础类的元组<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">stu</span>:</span><br><span class="hljs-meta">... </span>    <span class="hljs-string">&#x27;this is test line&#x27;</span><br><span class="hljs-meta">... </span>    name = <span class="hljs-string">&#x27;cj&#x27;</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">dis</span>():</span><br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;display&#x27;</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>s = stu()<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(s.__doc__)<br>this <span class="hljs-keyword">is</span> test line<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(s.__dict__)<br>&#123;&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(s.__module__)<br>__main__<br></code></pre></td></tr></table></figure>
+<h3 id="类构造方法"><a href="#类构造方法" class="headerlink" title="类构造方法"></a>类构造方法</h3><code>__init__()</code>方法用于对象被初始创建时调用,用于初始化生成类的具体属性</li>
+<li>不同于<code>java</code>,<code>python</code>类的属性直接在<code>init</code>函数内声明,不需要额外声明<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">stu</span>:</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, init_name, init_age</span>):</span><br><span class="hljs-meta">... </span>            self.name = init_name<br><span class="hljs-meta">... </span>            self.age = init_age<br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">introducing</span>(<span class="hljs-params">self</span>):</span><br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;my name is &quot;</span> + self.name + <span class="hljs-string">&#x27; and im &#x27;</span> + <span class="hljs-built_in">str</span>(self.age) + <span class="hljs-string">&#x27; old.&#x27;</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>s = stu(<span class="hljs-string">&#x27;marklily&#x27;</span>, <span class="hljs-number">18</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span>s.introducing()<br>my name <span class="hljs-keyword">is</span> marklily <span class="hljs-keyword">and</span> im <span class="hljs-number">18</span> old.<br></code></pre></td></tr></table></figure>
+<h3 id="删除类的属性"><a href="#删除类的属性" class="headerlink" title="删除类的属性"></a>删除类的属性</h3><code>del</code>用于删除对象的某个属性:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>s.__dict__<br>&#123;<span class="hljs-string">&#x27;name&#x27;</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>, <span class="hljs-string">&#x27;age&#x27;</span>: <span class="hljs-number">18</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">del</span> s.age<br><span class="hljs-meta">&gt;&gt;&gt; </span>s.__dict__<br>&#123;<span class="hljs-string">&#x27;name&#x27;</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>继承中有<code>子类</code>与<code>父类</code>,甚至<code>祖父类</code>.子类继承父类中的所有属性 方法,并且可以添加新函数 属性</p>
+<h3 id="继承中的添加"><a href="#继承中的添加" class="headerlink" title="继承中的添加"></a>继承中的添加</h3><ul>
+<li><p>子类继承父类中的所有方法,包括构造方法</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 创建父类</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ParentClass</span>:</span><br>    familyName = <span class="hljs-string">&#x27;c&#x27;</span><br>    familyLocation = <span class="hljs-string">&#x27;sc&#x27;</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, name, age</span>):</span><br>        self.name = name<br>        self.age = age<br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">introducing</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Name: &#x27;</span> + self.name + <span class="hljs-string">&#x27;Age: &#x27;</span> + <span class="hljs-built_in">str</span>(self.age))<br><span class="hljs-comment"># 创建一个父类对象 并检验相关属性</span><br>parent = ParentClass(<span class="hljs-string">&#x27;markc&#x27;</span>, <span class="hljs-number">22</span>)<br><span class="hljs-built_in">print</span>(parent.familyName + parent.familyLocation)<br>parent.introducing()<br><span class="hljs-comment"># 创建子类 继承父类</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ChildClass</span>(<span class="hljs-params">ParentClass</span>):</span><br>    <span class="hljs-keyword">pass</span><br>child = ChildClass(<span class="hljs-string">&#x27;axlc&#x27;</span>, <span class="hljs-number">2</span>)<br><span class="hljs-built_in">print</span>(child.familyName + child.familyLocation)<br>child.introducing()<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">csc<br>Name: markcAge: <span class="hljs-number">22</span><br>csc<br>Name: axlcAge: <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure></li>
+<li><p>子类添加新函数 新属性</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ChildClass</span>(<span class="hljs-params">ParentClass</span>):</span><br>    newFamilyJob = <span class="hljs-string">&#x27;IT&#x27;</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">newJob</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;new job is &#x27;</span> + <span class="hljs-string">&#x27;IT&#x27;</span>)<br>child = ChildClass(<span class="hljs-string">&#x27;axlc&#x27;</span>, <span class="hljs-number">2</span>)<br><span class="hljs-built_in">print</span>(child.newFamilyJob)<br>child.newJob()<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">IT<br>new job <span class="hljs-keyword">is</span> IT<br></code></pre></td></tr></table></figure>
+<h3 id="继承中的覆写"><a href="#继承中的覆写" class="headerlink" title="继承中的覆写"></a>继承中的覆写</h3><p>子类在继承父类方法时间,可对方法做出重写</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ParentClass</span>:</span><br>    familyName = <span class="hljs-string">&#x27;c&#x27;</span><br>    familyLocation = <span class="hljs-string">&#x27;sc&#x27;</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, name, age</span>):</span><br>        self.name = name<br>        self.age = age<br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">introducing</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Name: &#x27;</span> + self.name + <span class="hljs-string">&#x27;Age: &#x27;</span> + <span class="hljs-built_in">str</span>(self.age))<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ChildClass</span>(<span class="hljs-params">ParentClass</span>):</span><br>    newFamilyJob = <span class="hljs-string">&#x27;IT&#x27;</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, name, age, coupledNum</span>):</span><br>        self.name = name<br>        self.age = age<br>        self.coupledNum = coupledNum<br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">newJob</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;new job is &#x27;</span> + <span class="hljs-string">&#x27;IT&#x27;</span>)<br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">introducing</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Name: &#x27;</span> + self.name + <span class="hljs-string">&#x27;Age: &#x27;</span> + <span class="hljs-built_in">str</span>(self.age) + <span class="hljs-string">&#x27;and i only got &#x27;</span> + <span class="hljs-built_in">str</span>(self.coupledNum))<br>child = ChildClass(<span class="hljs-string">&#x27;axlc&#x27;</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>)<br><span class="hljs-built_in">print</span>(child.newFamilyJob)<br>child.newJob()<br>child.introducing()<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">csc<br>Name: markcAge: <span class="hljs-number">22</span><br>IT<br>new job <span class="hljs-keyword">is</span> IT<br>Name: axlcAge: 2<span class="hljs-keyword">and</span> i only got <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+<p>子类中对构造函数做出了重写,新加入了<code>coupledNum</code>属性,对<code>introducing</code>方法也做出了重写</p>
+<h2 id="多重继承"><a href="#多重继承" class="headerlink" title="多重继承"></a>多重继承</h2><p>当一个子类有多个父类时,多个父类均被继承</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span>:</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">disA</span>(<span class="hljs-params">self</span>):</span><br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;A&#x27;</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span>:</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">disB</span>(<span class="hljs-params">self</span>):</span><br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;B&#x27;</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span>:</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">disC</span>(<span class="hljs-params">self</span>):</span><br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;C&#x27;</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">son</span>(<span class="hljs-params">A,B,C</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">disSon</span>(<span class="hljs-params">self</span>):</span><br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;son&#x27;</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>son = son()<br><span class="hljs-meta">&gt;&gt;&gt; </span>son.disA()<br>A<br><span class="hljs-meta">&gt;&gt;&gt; </span>son.disB()<br>B<br><span class="hljs-meta">&gt;&gt;&gt; </span>son.disC()<br>C<br><span class="hljs-meta">&gt;&gt;&gt; </span>son.disSon()<br>son<br></code></pre></td></tr></table></figure>
+<h2 id="多级继承"><a href="#多级继承" class="headerlink" title="多级继承"></a>多级继承</h2><p>基因代代相传,孝景帝之子中山靖王之后<code>刘玄德</code>也可以用的</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span>:</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">disA</span>(<span class="hljs-params">self</span>):</span><br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;A&#x27;</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">D</span>(<span class="hljs-params">A</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">disD</span>(<span class="hljs-params">self</span>):</span><br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;D&#x27;</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">E</span>(<span class="hljs-params">D</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">disE</span>(<span class="hljs-params">self</span>):</span><br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;E&#x27;</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>e = E()<br><span class="hljs-meta">&gt;&gt;&gt; </span>e.disA()<br>A<br><span class="hljs-meta">&gt;&gt;&gt; </span>e.disD()<br>D<br><span class="hljs-meta">&gt;&gt;&gt; </span>e.disE()<br>E<br></code></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
       <categories>

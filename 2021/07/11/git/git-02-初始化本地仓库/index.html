@@ -252,13 +252,12 @@
 </ul>
 <p class="note note-info">此处, 我们也可在文件夹内"新建文件夹"</p>
 
-<h3 id="查看新日志"><a href="#查看新日志" class="headerlink" title="查看新日志"></a><code>查看新日志</code></h3><p>我们再次使用<code>git status</code>查看信息,可得 ：</p>
+<h3 id="查看新状态"><a href="#查看新状态" class="headerlink" title="查看新状态"></a><code>查看新状态</code></h3><p>我们再次使用<code>git status</code>查看信息,可得 ：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br><br>No commits yet<br><br>Untracked files:<br>  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)<br>        text1.txt<br><br>nothing added to commit but untracked files present (use &quot;git add&quot; to track)<br><br></code></pre></td></tr></table></figure>
 <ul>
 <li>显示我们新建了一个<code>text1.txt</code>文件,但是该文件未在<code>git</code>的追踪目录内</li>
 <li>如果我们不添加和提交此文件,<code>git</code>便不会跟踪此文件</li>
 </ul>
-<hr>
 <h1 id="git-add-提交暂存区"><a href="#git-add-提交暂存区" class="headerlink" title="git add - 提交暂存区"></a><h1 id="2"><code><font color='dodgerblue'>git add - 提交暂存区</font></code></h1></h1><p>对于我们新建的文件<code>test.txt</code>, 我们想让<code>git</code>追踪其版本更迭, 此时我们应如上面<code>git</code>建议所 ：使用<code>git add</code>命令将其提交到暂存区</p>
 <h4 id="git-add-提交暂存区-1"><a href="#git-add-提交暂存区-1" class="headerlink" title="git add - 提交暂存区"></a><code>git add - 提交暂存区</code></h4><p>使用<code>git add &lt;name&gt;</code>命令将该文件添加到<code>staging</code>区域(即暂存区) ， 可得 ：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git add text1.txt<br>warning: LF will be replaced by CRLF in text1.txt.<br>The file will have its original line endings in your working directory<br></code></pre></td></tr></table></figure>
@@ -276,7 +275,10 @@
 <p>此时再次检查工作区的状态,可以看见干净的工作树</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br>nothing to commit, working tree clean<br></code></pre></td></tr></table></figure>
 
-<hr>
+
+
+
+
 <h1 id="4"><code><font color='dodgerblue'>git log - 日志信息</font></code></h1>
 
 <p>使用<code>git log</code>获得历史提交记录 ：</p>
