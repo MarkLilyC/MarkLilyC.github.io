@@ -1,184 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>git-基本命令</title>
-    <url>/2021/07/12/git-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<h1 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h1><p><code>windows</code>系统进入<code>git bash</code> 后有大量的命令来解放鼠标操作</p>
-<p>以下将介绍部分常用命令</p>
-<h3 id="我们在随意位置打开git-bash"><a href="#我们在随意位置打开git-bash" class="headerlink" title="我们在随意位置打开git bash"></a>我们在随意位置打开<code>git bash</code></h3><h3 id="查看当前位置"><a href="#查看当前位置" class="headerlink" title="查看当前位置"></a>查看当前位置</h3><p>使用<code>pwd</code>查看当前窗口处在位置 :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder<br>$ pwd<br>/a/testfolder<br></code></pre></td></tr></table></figure>
-<p><code>git</code>显示我当前的位置为<code>/a/testfolder</code> 即表明我当前处于<code>a</code>盘内的<code>testfolder</code>文件夹内</p>
-<p>我们也可以直观通过<code>26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder</code>最后的文件夹位置查看</p>
-<ul>
-<li>以下示例, 我们皆通过此行信息判定当前位置, 不再刻意使用<code>pwd</code></li>
-</ul>
-<h3 id="查看当前位置有哪些文件-夹"><a href="#查看当前位置有哪些文件-夹" class="headerlink" title="查看当前位置有哪些文件(夹)"></a>查看当前位置有哪些文件(夹)</h3><p>使用<code>ls</code>查看当前位置所有的文件(夹) :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder<br>$ ls<br>folder1/  folder2/  git-分支合并.md  git-工作流程.md  git-文件操作.md<br></code></pre></td></tr></table></figure>
-<p>可见当前<code>/a/testfolder</code>文件夹内有两个文件夹<code>folder1/</code>与<code>folder2/</code>, 以及三个文件<code>git-分支合并.md</code>等</p>
-<h3 id="进入文件夹"><a href="#进入文件夹" class="headerlink" title="进入文件夹"></a>进入文件夹</h3><h4 id="单次进入"><a href="#单次进入" class="headerlink" title="单次进入"></a>单次进入</h4><p>使用<code>cd &lt;foldername&gt;</code>进入特定的文件夹内 :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder<br>$ cd folder1<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder/folder1<br>$<br></code></pre></td></tr></table></figure>
-<p>一般在使用<code>cd</code>进入文件夹前都使用<code>ls</code>命令确定当前位置存在哪些文件夹</p>
-<p class="note note-info">在``git bash``内的复制粘贴为``crtl + insert``与``shift + insert``</p>
-
-<p>在<code>ls</code>结果中复制粘贴想使用的路径, 再进行后续操作</p>
-<h4 id="多次进入"><a href="#多次进入" class="headerlink" title="多次进入"></a>多次进入</h4><p>我们也可以直接在<code>cd</code>后使用我们想要去的最终路径</p>
-<p>我们随意复制一个其他位置的路径, 如 : <code>/e/pics/beatles</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder/folder1<br>$ cd /e/pics/beatles<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /e/pics/beatles<br>$<br></code></pre></td></tr></table></figure>
-<p>可以发现<code>cd</code>命令可以直接定位到目标路径, 不论该路径是否与我们当前位置有从属关系</p>
-<h3 id="退出文件夹"><a href="#退出文件夹" class="headerlink" title="退出文件夹"></a>退出文件夹</h3><h4 id="使用cd-退出当前文件夹-返回上一级"><a href="#使用cd-退出当前文件夹-返回上一级" class="headerlink" title="使用cd ../退出当前文件夹, 返回上一级"></a>使用<code>cd ../</code>退出当前文件夹, 返回上一级</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder/folder1<br>$ cd ../<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder<br>$<br></code></pre></td></tr></table></figure>
-<p>如上代码, 我们使用<code>cd ../</code> 从 <code>/a/testfolder/folder1</code> 回退到了 <code>/a/testfolder</code></p>
-<h4 id="组合使用-回退多重文件夹"><a href="#组合使用-回退多重文件夹" class="headerlink" title="组合使用../ 回退多重文件夹"></a>组合使用<code>../</code> 回退多重文件夹</h4><p>为方便演示, 我们再次进入 <code>/a/testfolder/folder1</code> :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder<br>$ cd folder1<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder/folder1<br>$<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>对于前面使用过的代码, 比如此处的<code>cd folder1</code>, 我们可以使用键盘<code>↑ ↓</code> 来浏览我们使用过的命令, 再回车进行使用</li>
-<li>对于不小心输入错误的命令, 我们可以使用<code>crtl + c</code>来撤销此次命令, 开始下一次的命令输入  <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder<br>$ cd folder1\<br>&gt; ^C<br></code></pre></td></tr></table></figure>
-  如上, 在输入<code>folder1</code>后不小心输入<code>\</code> 并按下了回车, 此时我们使用<code>crtl + c</code>便失效了此次命令输入, 直接进行下次输入</li>
-</ul>
-<p>接下来我们正式使用多个 <code>../</code> 组合完成多级文件夹的回退</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder/folder1<br>$ cd ../../../../<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /<br>$ pwd<br>/<br></code></pre></td></tr></table></figure>
-<p>如上, 我们使用四个 <code>../</code> 组合完成了四次的回退, 最终回到了不属于任何特定盘的位置</p>
-<p>此时使用<code>pwd</code>, <code>git</code>告诉我们此时处于<code>/</code>这么一个位置, 我们可以把这个位置想象成所有文件的终根目录,从这里我们可以直接进入任何盘</p>
-<h4 id="创建文件夹"><a href="#创建文件夹" class="headerlink" title="创建文件夹"></a>创建文件夹</h4><p>为了方便演示, 我们回到 <code>/a/testfolder</code> 文件夹下</p>
-<p>查看当前位置的文件(夹) :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder<br>$ ls<br>folder1/  folder2/  git-分支合并.md  git-工作流程.md  git-文件操作.md<br></code></pre></td></tr></table></figure>
-<p>我们想要创建一个<code>folder3</code>, 则使用<code>mkdir &lt;name&gt;</code> :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder<br>$ mkdir folder3<br></code></pre></td></tr></table></figure>
-<p>查看当前文件:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder<br>$ ls<br>folder1/  folder2/  folder3/  git-分支合并.md  git-工作流程.md  git-文件操作.md<br></code></pre></td></tr></table></figure>
-<p>可见<code>folder3</code> 被成功创建</p>
-<h4 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h4><p>我们<code>cd folder3</code> 进入刚才创建的<code>folder3</code>, 并查看当前文件夹内有哪些文件(夹) : </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder<br>$ cd folder3<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder/folder3<br>$ ls<br><br></code></pre></td></tr></table></figure>
-<p>可见当前文件夹内无任何文件(夹)</p>
-<p>我们使用<code>touch &lt;name&gt;</code> 创建一个文件 :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder/folder3<br>$ touch test.txt<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder/folder3<br>$ ls<br>test.txt<br></code></pre></td></tr></table></figure>
-<p>可见<code>test.txt</code> 被成功创建</p>
-<h4 id="vim编辑器对文件进行简单编辑"><a href="#vim编辑器对文件进行简单编辑" class="headerlink" title="vim编辑器对文件进行简单编辑"></a><code>vim</code>编辑器对文件进行简单编辑</h4><p>我们可以使用<code>vim</code>编辑器, 对刚才建立的<code>test.txt</code> 文件进行简单编辑 :</p>
-<p>使用<code>vim &lt;name&gt;</code>命令来使用<code>vim</code>打开目标文件 : </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder/folder3<br>$ vim test.txt<br></code></pre></td></tr></table></figure>
-<p>回车后, 出现如下内容 :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git"><br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>test.txt [unix] (20:46 12/07/2021)                                     0,0-1 All<br>&quot;test.txt&quot; 0L, 0B<br></code></pre></td></tr></table></figure>
-<ul>
-<li>每行前的<code>~</code>表明这是独立一行, 第一行无此符合</li>
-<li>倒数第二行显示了一些此文件的基本信息, 如创建时间</li>
-<li>尾行显示了此文件名 行数 大小</li>
-</ul>
-<p>我们按下键盘<code>insert</code>键进入<code>insert</code>模式(即编辑模式), 此时最后一行变为 :<br><code>-- INSERT -- </code></p>
-<ul>
-<li>也只有在<code>insert</code>模式下我们才能做出修改</li>
-</ul>
-<p>我们可以在光标闪烁处键入内容 :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">this is a test line<br></code></pre></td></tr></table></figure>
-
-<p><code>vim</code>的退出 :</p>
-<ul>
-<li>输入完毕后, 我们按下(或按住)<code>esc</code>键, 此时屏幕进入闪烁状态, 且尾行的<code>insert</code>消失, 表明我们退出了编辑模式</li>
-<li>此时我们输入一个<code>:</code>, 即同时按下<code>shitf + ;</code>键, 此时可以观察到尾行出现了我们刚才输入的<code>:</code>, 且窗口停止闪烁  (此时若你是一直按着<code>esc</code>, 那么我们可以松开<code>esc</code>了)</li>
-<li>输入<code>wq</code>, 尾行变成了<code>:wq</code> </li>
-<li>最后按下回车键, 完成对文件的保存退出</li>
-</ul>
-<p>我们完成测试编辑后, 使用<code>vim</code> 或者记事本等编辑器打开该文件, 可见刚才的修改生效 :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">this is a test line<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>test.txt [unix] (20:58 12/07/2021)                                      1,18 All<br>&quot;test.txt&quot; [unix] 1L, 21B<br></code></pre></td></tr></table></figure>
-<p><code>vim</code>尾行显示了修改后的文件大小</p>
-<h4 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h4><p>使用<code>rm &lt;name&gt;</code> 删除文件 : </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder/folder3<br>$ rm test.txt<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder/folder3<br>$ ls<br><br></code></pre></td></tr></table></figure>
-<p>可见<code>test.txt</code>被成功删除</p>
-]]></content>
-      <categories>
-        <category>Git</category>
-        <category>常用命令</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>常用命令</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>git-01-基本命令</title>
     <url>/2021/07/12/git/git-01-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<h1 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h1><p><code>windows</code>系统进入<code>git bash</code> 后有大量的命令来解放鼠标操作</p>
+    <content><![CDATA[<p><code>windows</code>系统进入<code>git bash</code> 后有大量的命令来解放鼠标操作</p>
 <p>以下将介绍部分常用命令</p>
-<h3 id="我们在随意位置打开git-bash"><a href="#我们在随意位置打开git-bash" class="headerlink" title="我们在随意位置打开git bash"></a>我们在随意位置打开<code>git bash</code></h3><hr>
-<h3 id="pwd–查看当前位置"><a href="#pwd–查看当前位置" class="headerlink" title="pwd–查看当前位置"></a><code>pwd</code>–查看当前位置</h3><p>使用<code>pwd</code>查看当前窗口处在位置 :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder<br>$ pwd<br>/a/testfolder<br></code></pre></td></tr></table></figure>
-<p><code>git</code>显示我当前的位置为<code>/a/testfolder</code> 即表明我当前处于<code>a</code>盘内的<code>testfolder</code>文件夹内</p>
+<span id="more"></span>
+
+<h3 id="我们在随意位置打开-git-bash"><a href="#我们在随意位置打开-git-bash" class="headerlink" title="我们在随意位置打开 git bash"></a>我们在随意位置打开 <code><font color='dodgerblue'>git bash</font></code></h3><hr>
+<h3 id="pwd–查看当前位置"><a href="#pwd–查看当前位置" class="headerlink" title="pwd–查看当前位置"></a><code><font color='dodgerblue'>pwd</font></code>–查看当前位置</h3><p>使用 <code><font color='OrangeRed'>pwd</font></code> 查看当前窗口处在位置 :</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder<br>$ <span class="hljs-built_in">pwd</span><br>/a/testfolder<br></code></pre></td></tr></table></figure>
+<p><code><font color='deeppink'>git</font></code> 显示我当前的位置为 <code><font color='deeppink'>`/a/testfolder</font></code>  即表明我当前处于 <code><font color='deeppink'>a</font></code> 盘内 <code><font color='deeppink'>testfolder</font></code> 文件夹内</p>
 <p>我们也可以直观通过<code>26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder</code>最后的文件夹位置查看</p>
 <ul>
 <li>以下示例, 我们皆通过此行信息判定当前位置, 不再刻意使用<code>pwd</code></li>
 </ul>
 <hr>
-<h3 id="ls–查看文件-夹"><a href="#ls–查看文件-夹" class="headerlink" title="ls–查看文件(夹)"></a><code>ls</code>–查看文件(夹)</h3><p>使用<code>ls</code>查看当前位置所有的文件(夹) :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder<br>$ ls<br>folder1/  folder2/  git-分支合并.md  git-工作流程.md  git-文件操作.md<br></code></pre></td></tr></table></figure>
-<p>可见当前<code>/a/testfolder</code>文件夹内有两个文件夹<code>folder1/</code>与<code>folder2/</code>, 以及三个文件<code>git-分支合并.md</code>等</p>
+<h3 id="ls–查看文件-夹"><a href="#ls–查看文件-夹" class="headerlink" title="ls–查看文件(夹)"></a><code><font color='dodgerblue'>ls</font></code>–查看文件(夹)</h3><p>使用 <code><font color='OrangeRed'>ls</font></code> 查看当前位置所有的文件(夹) :</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder<br>$ ls<br>folder1/  folder2/  git-分支合并.md  git-工作流程.md  git-文件操作.md<br></code></pre></td></tr></table></figure>
+<p>可见当前 <code><font color='deeppink'>/a/testfolder</font></code> 文件夹内有两个文件夹 <code><font color='deeppink'>folder1/</font></code> 与 <code><font color='deeppink'>folder2</font></code> , 以及三个文件 <code><font color='deeppink'>git-分支合并.md</font></code> 等</p>
 <hr>
-<h3 id="cd–进入文件夹"><a href="#cd–进入文件夹" class="headerlink" title="cd–进入文件夹"></a><code>cd</code>–进入文件夹</h3><h4 id="单次进入"><a href="#单次进入" class="headerlink" title="单次进入"></a>单次进入</h4><p>使用<code>cd &lt;foldername&gt;</code>进入特定的文件夹内 :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder<br>$ cd folder1<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder/folder1<br>$<br></code></pre></td></tr></table></figure>
-<p>一般在使用<code>cd</code>进入文件夹前都使用<code>ls</code>命令确定当前位置存在哪些文件夹</p>
-<p class="note note-info">在``git bash``内的复制粘贴为``crtl + insert``与``shift + insert``</p>
+<h3 id="cd–进入文件夹"><a href="#cd–进入文件夹" class="headerlink" title="cd–进入文件夹"></a><code><font color='dodgerblue'>cd</font></code>–进入文件夹</h3><h4 id="单次进入"><a href="#单次进入" class="headerlink" title="单次进入"></a>单次进入</h4><p>使用 <code><font color='OrangeRed'>cd &lt;foldernam&gt;</font></code> 进入目标文件夹</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder<br>$ <span class="hljs-built_in">cd</span> folder1<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder/folder1<br>$<br></code></pre></td></tr></table></figure>
+<p>一般为确认当前位置存在哪些文件夹, 我们先使用 <code><font color='orangered'>ls</font></code> 查看当前位置存在的文件夹</p>
+<p class="note note-info">在git bash内的复制粘贴为 <code><font color='mediumspringgreen'>crtl + insert</font></code> 与 <code><font color='mediumspringgreen'>shift + insert</font></code> </p>
 
-<p>在<code>ls</code>结果中复制粘贴想使用的路径, 再进行后续操作</p>
-<h4 id="多次进入"><a href="#多次进入" class="headerlink" title="多次进入"></a>多次进入</h4><p>我们也可以直接在<code>cd</code>后使用我们想要去的最终路径</p>
-<p>我们随意复制一个其他位置的路径, 如 : <code>/e/pics/beatles</code></p>
+<p>在 <code><font color='orangered'>ls</font></code> 结果中复制粘贴想使用的路径, 再进行后续操作</p>
+<h4 id="多次进入"><a href="#多次进入" class="headerlink" title="多次进入"></a>多次进入</h4><p>我们也可以直接在 <code><font color='OrangeRed'>cd</font></code> 后使用我们想要去的最终路径</p>
+<p>我们随意复制一个其他位置的路径, 如 : <code><font color='deeppink'>/e/pics/beatles</font></code></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder/folder1<br>$ cd /e/pics/beatles<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /e/pics/beatles<br>$<br></code></pre></td></tr></table></figure>
-<p>可以发现<code>cd</code>命令可以直接定位到目标路径, 不论该路径是否与我们当前位置有从属关系</p>
-<h3 id="退出文件夹"><a href="#退出文件夹" class="headerlink" title="退出文件夹"></a>退出文件夹</h3><h4 id="使用cd-退出当前文件夹-返回上一级"><a href="#使用cd-退出当前文件夹-返回上一级" class="headerlink" title="使用cd ../退出当前文件夹, 返回上一级"></a>使用<code>cd ../</code>退出当前文件夹, 返回上一级</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder/folder1<br>$ cd ../<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder<br>$<br></code></pre></td></tr></table></figure>
+<p>可以发现 <code><font color='OrangeRed'>cd</font></code> 命令可以直接定位到目标路径, 不论该路径是否与我们当前位置有从属关系</p>
+<h3 id="cd-退出文件夹"><a href="#cd-退出文件夹" class="headerlink" title="cd ../退出文件夹"></a><code><font color='dodgerblue'>cd ../</font></code>退出文件夹</h3><h4 id="使用cd-退出当前文件夹-返回上一级"><a href="#使用cd-退出当前文件夹-返回上一级" class="headerlink" title="使用cd ../退出当前文件夹, 返回上一级"></a>使用<code><font color='dodgerblue'>cd ../</font></code>退出当前文件夹, 返回上一级</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder/folder1<br>$ cd ../<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder<br>$<br></code></pre></td></tr></table></figure>
 <p>如上代码, 我们使用<code>cd ../</code> 从 <code>/a/testfolder/folder1</code> 回退到了 <code>/a/testfolder</code></p>
-<h4 id="组合使用-回退多重文件夹"><a href="#组合使用-回退多重文件夹" class="headerlink" title="组合使用../ 回退多重文件夹"></a>组合使用<code>../</code> 回退多重文件夹</h4><p>为方便演示, 我们再次进入 <code>/a/testfolder/folder1</code> :</p>
+<h4 id="组合使用cd-回退多重文件夹"><a href="#组合使用cd-回退多重文件夹" class="headerlink" title="组合使用cd ../回退多重文件夹"></a>组合使用<code><font color='dodgerblue'>cd ../</font></code>回退多重文件夹</h4><p>为方便演示, 我们再次进入 <code><font color='deeppink'>/a/testfolder/folder1</font></code> :</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder<br>$ cd folder1<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder/folder1<br>$<br></code></pre></td></tr></table></figure>
 
 <ul>
-<li>对于前面使用过的代码, 比如此处的<code>cd folder1</code>, 我们可以使用键盘<code>↑ ↓</code> 来浏览我们使用过的命令, 再回车进行使用</li>
-<li>对于不小心输入错误的命令, 我们可以使用<code>crtl + c</code>来撤销此次命令, 开始下一次的命令输入  <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder<br>$ cd folder1\<br>&gt; ^C<br></code></pre></td></tr></table></figure>
-  如上, 在输入<code>folder1</code>后不小心输入<code>\</code> 并按下了回车, 此时我们使用<code>crtl + c</code>便失效了此次命令输入, 直接进行下次输入</li>
+<li>对于前面使用过的代码, 比如此处的 <code><font color='OrangeRed'>`cd folder1</font></code> , 我们可以使用键盘 <code><font color='deeppink'>↑ ↓</font></code>  来浏览我们使用过的命令, 再回车进行使用</li>
+<li>对于不小心输入错误的命令, 我们可以使用 <code><font color='deeppink'>crtl + c</font></code> 来撤销此次命令, 开始下一次的命令输入  <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder<br>$ cd folder1\<br>&gt; ^C<br></code></pre></td></tr></table></figure>
+  如上, 在输入 <code><font color='deeppink'>folder1</font></code> 后不小心输入<code>\</code> 并按下了回车, 此时我们使用 <code><font color='deeppink'>crtl + c</font></code> 便失效了此次命令输入, 直接进行下次输入</li>
 </ul>
-<p>接下来我们正式使用多个 <code>../</code> 组合完成多级文件夹的回退</p>
+<p>接下来我们正式使用多个 <code><font color='OrangeRed'>../</font></code> 组合完成多级文件夹的回退</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder/folder1<br>$ cd ../../../../<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /<br>$ pwd<br>/<br></code></pre></td></tr></table></figure>
-<p>如上, 我们使用四个 <code>../</code> 组合完成了四次的回退, 最终回到了不属于任何特定盘的位置</p>
-<p>此时使用<code>pwd</code>, <code>git</code>告诉我们此时处于<code>/</code>这么一个位置, 我们可以把这个位置想象成所有文件的终根目录,从这里我们可以直接进入任何盘</p>
-<h4 id="创建文件夹"><a href="#创建文件夹" class="headerlink" title="创建文件夹"></a>创建文件夹</h4><p>为了方便演示, 我们回到 <code>/a/testfolder</code> 文件夹下</p>
+<p>如上, 我们使用四个 <code><font color='OrangeRed'>../</font></code> 组合完成了四次的回退, 最终回到了不属于任何特定盘的位置</p>
+<p>此时使用 <code><font color='OrangeRed'>pwd</font></code> , <code><font color='OrangeRed'>git</font></code> 告诉我们此时处于 <code><font color='deeppink'>/</font></code> 这么一个位置, 我们可以把这个位置想象成所有文件的终根目录,从这里我们可以直接进入任何盘</p>
+<h4 id="mkdir创建文件夹"><a href="#mkdir创建文件夹" class="headerlink" title="mkdir创建文件夹"></a><code><font color='dodgerblue'>mkdir</font></code>创建文件夹</h4><p>为了方便演示, 我们回到 <code><font color='deeppink'>/a/testfolder</font></code> 文件夹下</p>
 <p>查看当前位置的文件(夹) :</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder<br>$ ls<br>folder1/  folder2/  git-分支合并.md  git-工作流程.md  git-文件操作.md<br></code></pre></td></tr></table></figure>
-<p>我们想要创建一个<code>folder3</code>, 则使用<code>mkdir &lt;name&gt;</code> :</p>
+<p>我们想要创建一个 <code><font color='deeppink'>folder3</font></code> , 则使用 <code><font color='OrangeRed'>mkdir &lt;foldername&gt;</font></code> :</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder<br>$ mkdir folder3<br></code></pre></td></tr></table></figure>
 <p>查看当前文件:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder<br>$ ls<br>folder1/  folder2/  folder3/  git-分支合并.md  git-工作流程.md  git-文件操作.md<br></code></pre></td></tr></table></figure>
-<p>可见<code>folder3</code> 被成功创建</p>
-<h4 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h4><p>我们<code>cd folder3</code> 进入刚才创建的<code>folder3</code>, 并查看当前文件夹内有哪些文件(夹) : </p>
+<p>可见 <code><font color='deeppink'>folder3</font></code> 被成功创建</p>
+<h4 id="touch创建文件"><a href="#touch创建文件" class="headerlink" title="touch创建文件"></a><code><font color='dodgerblue'>touch</font></code>创建文件</h4><p>我们 <code><font color='OrangeRed'>cd folder3</font></code> 进入刚才创建的 <code><font color='deeppink'>folder3</font></code> , 并查看当前文件夹内有哪些文件(夹) : </p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder<br>$ cd folder3<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder/folder3<br>$ ls<br><br></code></pre></td></tr></table></figure>
 <p>可见当前文件夹内无任何文件(夹)</p>
-<p>我们使用<code>touch &lt;name&gt;</code> 创建一个文件 :</p>
+<p>我们使用 <code><font color='OrangeRed'>touch &lt;filename&gt;</font></code> 创建一个文件 :</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder/folder3<br>$ touch test.txt<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder/folder3<br>$ ls<br>test.txt<br></code></pre></td></tr></table></figure>
-<p>可见<code>test.txt</code> 被成功创建</p>
-<h4 id="vim编辑器对文件进行简单编辑"><a href="#vim编辑器对文件进行简单编辑" class="headerlink" title="vim编辑器对文件进行简单编辑"></a><code>vim</code>编辑器对文件进行简单编辑</h4><p>我们可以使用<code>vim</code>编辑器, 对刚才建立的<code>test.txt</code> 文件进行简单编辑 :</p>
-<p>使用<code>vim &lt;name&gt;</code>命令来使用<code>vim</code>打开目标文件 : </p>
+<p>可见 <code><font color='deeppink'>test.txt</font></code> 被成功创建</p>
+<h4 id="vim编辑器对文件进行简单编辑"><a href="#vim编辑器对文件进行简单编辑" class="headerlink" title="vim编辑器对文件进行简单编辑"></a><code><font color='dodgerblue'>vim</font></code>编辑器对文件进行简单编辑</h4><p>我们可以使用 <code><font color='OrangeRed'>vim</font></code> 编辑器, 对刚才建立的 <code><font color='deeppink'>test.txt</font></code> 文件进行简单编辑 :</p>
+<p>使用 <code><font color='OrangeRed'>vim &lt;filename&gt;</font></code> 命令来使用 <code><font color='OrangeRed'>vim</font></code> 打开目标文件 : </p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder/folder3<br>$ vim test.txt<br></code></pre></td></tr></table></figure>
 <p>回车后, 出现如下内容 :</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git"><br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>test.txt [unix] (20:46 12/07/2021)                                     0,0-1 All<br>&quot;test.txt&quot; 0L, 0B<br></code></pre></td></tr></table></figure>
 <ul>
-<li>每行前的<code>~</code>表明这是独立一行, 第一行无此符合</li>
+<li>每行前的 <code><font color='deeppink'>~</font></code> 表明这是独立一行, 第一行无此符号</li>
 <li>倒数第二行显示了一些此文件的基本信息, 如创建时间</li>
 <li>尾行显示了此文件名 行数 大小</li>
 </ul>
-<p>我们按下键盘<code>insert</code>键进入<code>insert</code>模式(即编辑模式), 此时最后一行变为 :<br><code>-- INSERT -- </code></p>
+<p>我们按下键盘 <code><font color='deeppink'>insert</font></code> 键进入 <code><font color='deeppink'>insert</font></code> 模式(即编辑模式), 此时最后一行变为 :<br><code>-- INSERT -- </code></p>
 <ul>
-<li>也只有在<code>insert</code>模式下我们才能做出修改</li>
+<li>也只有在 <code><font color='deeppink'>insert</font></code> 模式下我们才能做出修改</li>
 </ul>
 <p>我们可以在光标闪烁处键入内容 :</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">this is a test line<br></code></pre></td></tr></table></figure>
 
-<p><code>vim</code>的退出 :</p>
+<p><code><font color='OrangeRed'>vim</font></code> 的退出 :</p>
 <ul>
-<li>输入完毕后, 我们按下(或按住)<code>esc</code>键, 此时屏幕进入闪烁状态, 且尾行的<code>insert</code>消失, 表明我们退出了编辑模式</li>
-<li>此时我们输入一个<code>:</code>, 即同时按下<code>shitf + ;</code>键, 此时可以观察到尾行出现了我们刚才输入的<code>:</code>, 且窗口停止闪烁  (此时若你是一直按着<code>esc</code>, 那么我们可以松开<code>esc</code>了)</li>
-<li>输入<code>wq</code>, 尾行变成了<code>:wq</code> </li>
+<li>输入完毕后, 我们按下(或按住) <code><font color='deeppink'>esc</font></code> 键, 此时屏幕进入闪烁状态, 且尾行的 <code><font color='deeppink'>insert</font></code> 消失, 表明我们退出了编辑模式</li>
+<li>此时我们输入一个 <code><font color='deeppink'>:</font></code> , 即同时按下 <code><font color='deeppink'>shift + ;</font></code> 键, 此时可以观察到尾行出现了我们刚才输入的  <code><font color='deeppink'>:</font></code> , 且窗口停止闪烁  (此时若你是一直按着 <code><font color='deeppink'>esc</font></code> , 那么我们可以松开 <code><font color='deeppink'>esc</font></code> 键了)</li>
+<li>输入 <code><font color='deeppink'>wq</font></code> , 尾行变成了 <code><font color='deeppink'>:wq</font></code> </li>
 <li>最后按下回车键, 完成对文件的保存退出</li>
 </ul>
-<p>我们完成测试编辑后, 使用<code>vim</code> 或者记事本等编辑器打开该文件, 可见刚才的修改生效 :</p>
+<p>我们完成测试编辑后, 使用 <code><font color='OrangeRed'>vim</font></code> 或者记事本等编辑器打开该文件, 可见刚才的修改生效 :</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">this is a test line<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>test.txt [unix] (20:58 12/07/2021)                                      1,18 All<br>&quot;test.txt&quot; [unix] 1L, 21B<br></code></pre></td></tr></table></figure>
-<p><code>vim</code>尾行显示了修改后的文件大小</p>
-<h4 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h4><p>使用<code>rm &lt;name&gt;</code> 删除文件 : </p>
+<p><code><font color='OrangeRed'>vim</font></code> 尾行显示了修改后的文件大小</p>
+<h4 id="rm删除文件"><a href="#rm删除文件" class="headerlink" title="rm删除文件"></a><code><font color='dodgerblue'>rm</font></code>删除文件</h4><p>使用 <code><font color='OrangeRed'>vim &lt;filename&gt;</font></code> 删除文件 : </p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder/folder3<br>$ rm test.txt<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/testfolder/folder3<br>$ ls<br><br></code></pre></td></tr></table></figure>
-<p>可见<code>test.txt</code>被成功删除</p>
+<p>可见 <code><font color='deeppink'>test.txt</font></code> 被成功删除</p>
 ]]></content>
       <categories>
         <category>Git</category>
@@ -297,6 +206,56 @@ turns out<figure class="highlight python"><table><tr><td class="code"><pre><code
       </tags>
   </entry>
   <entry>
+    <title>python--装饰器</title>
+    <url>/2021/07/07/Python/advance/python%E8%A3%85%E9%A5%B0%E5%99%A8/</url>
+    <content><![CDATA[<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><p>Python装饰器能够动态地改变函数 方法 类的功能,而不用子类重写或修改函数源代码的方式   </p>
+<span id="more"></span>
+<h2 id="装饰器函数"><a href="#装饰器函数" class="headerlink" title="装饰器函数"></a>装饰器函数</h2><h3 id="装饰器函数基础"><a href="#装饰器函数基础" class="headerlink" title="装饰器函数基础"></a>装饰器函数基础</h3><p><code>装饰器</code> 增强了其他函数的功能</p>
+<ul>
+<li>任何将函数作为传入参数并返回一个增强函数的函数都可以视为一个装饰器函数<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 定义装饰器函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">decoratorFunc</span>(<span class="hljs-params">f</span>):</span><br>    <span class="hljs-keyword">return</span> f<br><span class="hljs-comment"># 语法糖 进行函数装饰</span><br><span class="hljs-meta">@decoratorFunc</span><br><span class="hljs-comment"># 定义待装饰函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">toBeEnforce</span>():</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;this function has been enforced&#x27;</span>)<br><span class="hljs-comment"># 调用增强后的函数</span><br>toBeEnforce()<br></code></pre></td></tr></table></figure>
+<h3 id="装饰器函数语法糖"><a href="#装饰器函数语法糖" class="headerlink" title="装饰器函数语法糖"></a>装饰器函数语法糖</h3></li>
+<li><code>@decoratorFunction</code>作为语法糖:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@decoratorFunc</span><br></code></pre></td></tr></table></figure>
+等效于:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">my_function = super_secret_function(my_function)<br></code></pre></td></tr></table></figure>
+以上代码等效于<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 定义装饰器函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">decoratorFunc</span>(<span class="hljs-params">f</span>):</span><br>    <span class="hljs-keyword">return</span> f<br><span class="hljs-comment"># 定义待装饰函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">toBeEnforce</span>():</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;this function has been enforced&#x27;</span>)<br><span class="hljs-comment"># 进行装饰</span><br>toBeEnforce = decoratorFunc(toBeEnforce)<br><span class="hljs-comment"># 调用装饰后的函数</span><br>toBeEnforce()<br></code></pre></td></tr></table></figure></li>
+<li>当然,此案例没有函数装饰作用<h3 id="装饰器函数理解"><a href="#装饰器函数理解" class="headerlink" title="装饰器函数理解"></a>装饰器函数理解</h3></li>
+<li>假设我们现有一个函数用于计算函数的<code>sin cos</code>值的函数:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">calSinCos</span>(<span class="hljs-params">alpha</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> [math.sin(alpha), math.cos(alpha)]<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>calSinCos(<span class="hljs-number">0.5</span>)<br>[<span class="hljs-number">0.479425538604203</span>, <span class="hljs-number">0.8775825618903728</span>]<br></code></pre></td></tr></table></figure></li>
+<li>现需要这个函数输出这个角度半角的<code>sin cos</code>的值<ul>
+<li>solution1: ``calSinCos(aplha/2)  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>calSinCos(<span class="hljs-number">0.5</span>/<span class="hljs-number">2</span>)<br>[<span class="hljs-number">0.24740395925452294</span>, <span class="hljs-number">0.9689124217106447</span>]<br></code></pre></td></tr></table></figure></li>
+<li>solution2: 使用装饰器,使这个函数同时返回我们需要的两个值:  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">decoratorCal</span>(<span class="hljs-params">f</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">inner_function</span>(<span class="hljs-params">*args, **kwargs</span>):</span><br><span class="hljs-meta">... </span>            temp_list_sin = []<br><span class="hljs-meta">... </span>            temp_list_cos = []<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> args:<br><span class="hljs-meta">... </span>                    temp_list_sin.append(math.sin(i))<br><span class="hljs-meta">... </span>                    temp_list_cos.append(math.cos(i))<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">return</span> f(*args, **kwargs), temp_list_sin, temp_list_cos<br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> inner_function<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>@decoratorCal<br><span class="hljs-meta">... </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">cal</span>(<span class="hljs-params">a</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> [math.sin(a), math.cos(a)]<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(cal(<span class="hljs-number">0.3</span>))<br>([<span class="hljs-number">0.29552020666133955</span>, <span class="hljs-number">0.955336489125606</span>], [<span class="hljs-number">0.29552020666133955</span>], [<span class="hljs-number">0.955336489125606</span>])  <br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>装饰器函数工作流程:<ul>
+<li>调用待增强函数<code>cal(0.3)</code>时,同时调用装饰器函数<code>decoratorCal</code></li>
+<li><code>decoratorCal</code>内部定义了我们真正寄希望完成预期功能的函数<code>inner_function</code></li>
+<li><code>return inner_function</code>时便开始执行<code>inner_function</code>内代码,首先是完成基于原<code>cal(0.3)</code>的新加功能,最后<code>return f(*args, **kwargs)</code><ul>
+<li>当然也可以<code>return</code> 其他想要的数据</li>
+<li>不一定要返回原函数</li>
+</ul>
+</li>
+<li><code>return f(*args, **kwargs)</code>便开始执行<code>cal(0.3)</code>原函数的功能</li>
+<li>最后得到所有的返回值</li>
+</ul>
+</li>
+<li>从流程上看,<code>cal</code>原函数作为参数,真正运行的是<code>inner_function</code>,<code>inner_function</code>运行后返回<code>cal</code>,<code>cal</code>再运行本身的功能</li>
+<li>之所以<code>decoratorCal</code>必须返回一个函数<code>inner_function</code>,是为了借<code>return</code>来执行<code>inner_function</code>内部我们新加功能的代码</li>
+</ul>
+<hr>
+<ul>
+<li>装饰器更像是一种语法逻辑的产物</li>
+</ul>
+<hr>
+<h2 id="装饰器类"><a href="#装饰器类" class="headerlink" title="装饰器类"></a>装饰器类</h2><p>将装饰器封装为类,</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 定义装饰器类</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Decorator</span>(<span class="hljs-params"><span class="hljs-built_in">object</span></span>):</span><br>    <span class="hljs-comment"># 初始化,将待装饰方法赋值给装饰器类,作为其属性(对象方法)</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, func</span>):</span><br>        self.func = func<br>    <br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__call__</span>(<span class="hljs-params">self, *args, **kwargs</span>):</span><br>        <span class="hljs-comment"># 调用此方法</span><br>        res = self.func(*args, **kwargs)<br>        <br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">testfunc</span>():</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Inside the function.&#x27;</span>)<br><br>testfunc = Decorator(testfunc)<br><br>testfunc()<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>advance</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Numpy100--Numpy100</title>
     <url>/2021/07/07/numpy/numpy100/</url>
     <content><![CDATA[<h1 id="github上的开源项目"><a href="#github上的开源项目" class="headerlink" title="github上的开源项目"></a>github上的开源项目</h1><h2 id="2021-7-4-17：06"><a href="#2021-7-4-17：06" class="headerlink" title="2021.7.4 17：06"></a>2021.7.4 17：06</h2><span id="more"></span>
@@ -395,84 +354,6 @@ turns out<figure class="highlight python"><table><tr><td class="code"><pre><code
       </tags>
   </entry>
   <entry>
-    <title>python--map函数</title>
-    <url>/2021/07/07/Python/advance/map%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="map函数"><a href="#map函数" class="headerlink" title="map函数"></a>map函数</h1><ul>
-<li>python内置函数</li>
-<li>会根据给定函数,对指定序列做出映射<span id="more"></span>
-<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><h3 id="map-function-iterable"><a href="#map-function-iterable" class="headerlink" title="map(function, iterable...)"></a><code>map(function, iterable...)</code></h3></li>
-<li><code>iterable</code> 作为映射中原数据的来源</li>
-<li><code>function</code> 用于对<code>iterable</code>中的元素进行转换  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">&gt;&gt; <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">squ</span>(<span class="hljs-params">x</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> x * x<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>mapResult = <span class="hljs-built_in">map</span>(squ, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])<br></code></pre></td></tr></table></figure></li>
-<li><code>python 2.</code> 返回列表</li>
-<li><code>python 3.</code> 返回迭代器  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(mapResult.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">map</span>&#x27;&gt;</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">for</span> <span class="hljs-title">i</span> <span class="hljs-title">in</span> <span class="hljs-title">mapResult</span>:</span><br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(i)<br>...<br><span class="hljs-number">1</span><br><span class="hljs-number">4</span><br><span class="hljs-number">9</span><br><span class="hljs-number">16</span><br><span class="hljs-number">25</span><br></code></pre></td></tr></table></figure></li>
-<li>可通过<code>list(map())</code>的显示转换来消除版本之间的差异  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">squ</span>(<span class="hljs-params">x</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> x * x<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>list1 = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(squ, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]))<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(list1)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>]<br></code></pre></td></tr></table></figure>
-<h3 id="lambda"><a href="#lambda" class="headerlink" title="lambda"></a><code>lambda</code></h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-keyword">lambda</span> x : x * x, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])))<br>[<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>]<br></code></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><h3 id="map完成数据类型转换"><a href="#map完成数据类型转换" class="headerlink" title="map完成数据类型转换"></a><code>map</code>完成数据类型转换</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">str</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])))<br>[<span class="hljs-string">&#x27;1&#x27;</span>, <span class="hljs-string">&#x27;2&#x27;</span>, <span class="hljs-string">&#x27;3&#x27;</span>, <span class="hljs-string">&#x27;4&#x27;</span>, <span class="hljs-string">&#x27;5&#x27;</span>]<br></code></pre></td></tr></table></figure>
-<h3 id="map元组转列表"><a href="#map元组转列表" class="headerlink" title="map元组转列表"></a><code>map</code>元组转列表</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>list1 = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>,(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)))<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(list1)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
-<ul>
-<li>原理是:元组作为迭代器可作为<code>map()</code>函数参数传入,当元组内部元素数据类型与<code>function</code>转出数据类型一致时,再将<code>map</code>返回迭代器转为列表</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>advance</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python--装饰器</title>
-    <url>/2021/07/07/Python/advance/python%E8%A3%85%E9%A5%B0%E5%99%A8/</url>
-    <content><![CDATA[<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><p>Python装饰器能够动态地改变函数 方法 类的功能,而不用子类重写或修改函数源代码的方式   </p>
-<span id="more"></span>
-<h2 id="装饰器函数"><a href="#装饰器函数" class="headerlink" title="装饰器函数"></a>装饰器函数</h2><h3 id="装饰器函数基础"><a href="#装饰器函数基础" class="headerlink" title="装饰器函数基础"></a>装饰器函数基础</h3><p><code>装饰器</code> 增强了其他函数的功能</p>
-<ul>
-<li>任何将函数作为传入参数并返回一个增强函数的函数都可以视为一个装饰器函数<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 定义装饰器函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">decoratorFunc</span>(<span class="hljs-params">f</span>):</span><br>    <span class="hljs-keyword">return</span> f<br><span class="hljs-comment"># 语法糖 进行函数装饰</span><br><span class="hljs-meta">@decoratorFunc</span><br><span class="hljs-comment"># 定义待装饰函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">toBeEnforce</span>():</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;this function has been enforced&#x27;</span>)<br><span class="hljs-comment"># 调用增强后的函数</span><br>toBeEnforce()<br></code></pre></td></tr></table></figure>
-<h3 id="装饰器函数语法糖"><a href="#装饰器函数语法糖" class="headerlink" title="装饰器函数语法糖"></a>装饰器函数语法糖</h3></li>
-<li><code>@decoratorFunction</code>作为语法糖:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@decoratorFunc</span><br></code></pre></td></tr></table></figure>
-等效于:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">my_function = super_secret_function(my_function)<br></code></pre></td></tr></table></figure>
-以上代码等效于<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 定义装饰器函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">decoratorFunc</span>(<span class="hljs-params">f</span>):</span><br>    <span class="hljs-keyword">return</span> f<br><span class="hljs-comment"># 定义待装饰函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">toBeEnforce</span>():</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;this function has been enforced&#x27;</span>)<br><span class="hljs-comment"># 进行装饰</span><br>toBeEnforce = decoratorFunc(toBeEnforce)<br><span class="hljs-comment"># 调用装饰后的函数</span><br>toBeEnforce()<br></code></pre></td></tr></table></figure></li>
-<li>当然,此案例没有函数装饰作用<h3 id="装饰器函数理解"><a href="#装饰器函数理解" class="headerlink" title="装饰器函数理解"></a>装饰器函数理解</h3></li>
-<li>假设我们现有一个函数用于计算函数的<code>sin cos</code>值的函数:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">calSinCos</span>(<span class="hljs-params">alpha</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> [math.sin(alpha), math.cos(alpha)]<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>calSinCos(<span class="hljs-number">0.5</span>)<br>[<span class="hljs-number">0.479425538604203</span>, <span class="hljs-number">0.8775825618903728</span>]<br></code></pre></td></tr></table></figure></li>
-<li>现需要这个函数输出这个角度半角的<code>sin cos</code>的值<ul>
-<li>solution1: ``calSinCos(aplha/2)  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>calSinCos(<span class="hljs-number">0.5</span>/<span class="hljs-number">2</span>)<br>[<span class="hljs-number">0.24740395925452294</span>, <span class="hljs-number">0.9689124217106447</span>]<br></code></pre></td></tr></table></figure></li>
-<li>solution2: 使用装饰器,使这个函数同时返回我们需要的两个值:  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">decoratorCal</span>(<span class="hljs-params">f</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">inner_function</span>(<span class="hljs-params">*args, **kwargs</span>):</span><br><span class="hljs-meta">... </span>            temp_list_sin = []<br><span class="hljs-meta">... </span>            temp_list_cos = []<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> args:<br><span class="hljs-meta">... </span>                    temp_list_sin.append(math.sin(i))<br><span class="hljs-meta">... </span>                    temp_list_cos.append(math.cos(i))<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">return</span> f(*args, **kwargs), temp_list_sin, temp_list_cos<br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> inner_function<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>@decoratorCal<br><span class="hljs-meta">... </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">cal</span>(<span class="hljs-params">a</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> [math.sin(a), math.cos(a)]<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(cal(<span class="hljs-number">0.3</span>))<br>([<span class="hljs-number">0.29552020666133955</span>, <span class="hljs-number">0.955336489125606</span>], [<span class="hljs-number">0.29552020666133955</span>], [<span class="hljs-number">0.955336489125606</span>])  <br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>装饰器函数工作流程:<ul>
-<li>调用待增强函数<code>cal(0.3)</code>时,同时调用装饰器函数<code>decoratorCal</code></li>
-<li><code>decoratorCal</code>内部定义了我们真正寄希望完成预期功能的函数<code>inner_function</code></li>
-<li><code>return inner_function</code>时便开始执行<code>inner_function</code>内代码,首先是完成基于原<code>cal(0.3)</code>的新加功能,最后<code>return f(*args, **kwargs)</code><ul>
-<li>当然也可以<code>return</code> 其他想要的数据</li>
-<li>不一定要返回原函数</li>
-</ul>
-</li>
-<li><code>return f(*args, **kwargs)</code>便开始执行<code>cal(0.3)</code>原函数的功能</li>
-<li>最后得到所有的返回值</li>
-</ul>
-</li>
-<li>从流程上看,<code>cal</code>原函数作为参数,真正运行的是<code>inner_function</code>,<code>inner_function</code>运行后返回<code>cal</code>,<code>cal</code>再运行本身的功能</li>
-<li>之所以<code>decoratorCal</code>必须返回一个函数<code>inner_function</code>,是为了借<code>return</code>来执行<code>inner_function</code>内部我们新加功能的代码</li>
-</ul>
-<hr>
-<ul>
-<li>装饰器更像是一种语法逻辑的产物</li>
-</ul>
-<hr>
-<h2 id="装饰器类"><a href="#装饰器类" class="headerlink" title="装饰器类"></a>装饰器类</h2><p>将装饰器封装为类,</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 定义装饰器类</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Decorator</span>(<span class="hljs-params"><span class="hljs-built_in">object</span></span>):</span><br>    <span class="hljs-comment"># 初始化,将待装饰方法赋值给装饰器类,作为其属性(对象方法)</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, func</span>):</span><br>        self.func = func<br>    <br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__call__</span>(<span class="hljs-params">self, *args, **kwargs</span>):</span><br>        <span class="hljs-comment"># 调用此方法</span><br>        res = self.func(*args, **kwargs)<br>        <br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">testfunc</span>():</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Inside the function.&#x27;</span>)<br><br>testfunc = Decorator(testfunc)<br><br>testfunc()<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>advance</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>python--列表推导式</title>
     <url>/2021/07/07/Python/advance/%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC%E5%BC%8F/</url>
     <content><![CDATA[<h1 id="列表推导式"><a href="#列表推导式" class="headerlink" title="列表推导式"></a>列表推导式</h1><h2 id="列表推导式基础"><a href="#列表推导式基础" class="headerlink" title="列表推导式基础"></a>列表推导式基础</h2><ul>
@@ -542,6 +423,34 @@ turns out<figure class="highlight python"><table><tr><td class="code"><pre><code
 </li>
 </ul>
 <h3 id="next-函数"><a href="#next-函数" class="headerlink" title=".next()函数"></a><code>.next()</code>函数</h3><p>用于从生成器中获取值,并提供迭代结束的默认值</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>advance</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python--map函数</title>
+    <url>/2021/07/07/Python/advance/map%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="map函数"><a href="#map函数" class="headerlink" title="map函数"></a>map函数</h1><ul>
+<li>python内置函数</li>
+<li>会根据给定函数,对指定序列做出映射<span id="more"></span>
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><h3 id="map-function-iterable"><a href="#map-function-iterable" class="headerlink" title="map(function, iterable...)"></a><code>map(function, iterable...)</code></h3></li>
+<li><code>iterable</code> 作为映射中原数据的来源</li>
+<li><code>function</code> 用于对<code>iterable</code>中的元素进行转换  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">&gt;&gt; <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">squ</span>(<span class="hljs-params">x</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> x * x<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>mapResult = <span class="hljs-built_in">map</span>(squ, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])<br></code></pre></td></tr></table></figure></li>
+<li><code>python 2.</code> 返回列表</li>
+<li><code>python 3.</code> 返回迭代器  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(mapResult.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">map</span>&#x27;&gt;</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">for</span> <span class="hljs-title">i</span> <span class="hljs-title">in</span> <span class="hljs-title">mapResult</span>:</span><br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(i)<br>...<br><span class="hljs-number">1</span><br><span class="hljs-number">4</span><br><span class="hljs-number">9</span><br><span class="hljs-number">16</span><br><span class="hljs-number">25</span><br></code></pre></td></tr></table></figure></li>
+<li>可通过<code>list(map())</code>的显示转换来消除版本之间的差异  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">squ</span>(<span class="hljs-params">x</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> x * x<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>list1 = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(squ, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]))<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(list1)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>]<br></code></pre></td></tr></table></figure>
+<h3 id="lambda"><a href="#lambda" class="headerlink" title="lambda"></a><code>lambda</code></h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-keyword">lambda</span> x : x * x, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])))<br>[<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>]<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><h3 id="map完成数据类型转换"><a href="#map完成数据类型转换" class="headerlink" title="map完成数据类型转换"></a><code>map</code>完成数据类型转换</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">str</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])))<br>[<span class="hljs-string">&#x27;1&#x27;</span>, <span class="hljs-string">&#x27;2&#x27;</span>, <span class="hljs-string">&#x27;3&#x27;</span>, <span class="hljs-string">&#x27;4&#x27;</span>, <span class="hljs-string">&#x27;5&#x27;</span>]<br></code></pre></td></tr></table></figure>
+<h3 id="map元组转列表"><a href="#map元组转列表" class="headerlink" title="map元组转列表"></a><code>map</code>元组转列表</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>list1 = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>,(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)))<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(list1)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
+<ul>
+<li>原理是:元组作为迭代器可作为<code>map()</code>函数参数传入,当元组内部元素数据类型与<code>function</code>转出数据类型一致时,再将<code>map</code>返回迭代器转为列表</li>
+</ul>
 ]]></content>
       <categories>
         <category>Python</category>
@@ -841,6 +750,68 @@ turns out<figure class="highlight python"><table><tr><td class="code"><pre><code
       </tags>
   </entry>
   <entry>
+    <title>python--命名空间</title>
+    <url>/2021/07/07/Python/basic/%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/</url>
+    <content><![CDATA[<h1 id="命名空间及作用域"><a href="#命名空间及作用域" class="headerlink" title="命名空间及作用域"></a>命名空间及作用域</h1><h2 id="1-命名空间"><a href="#1-命名空间" class="headerlink" title="1.命名空间"></a>1.命名空间</h2><h3 id="1-1-命名空间（Namespace）"><a href="#1-1-命名空间（Namespace）" class="headerlink" title="1.1 命名空间（Namespace）"></a>1.1 命名空间（Namespace）</h3><p><code>1.</code> 是从名称到对象的映射，一般通过字典实现<br><code>2.</code> 类似于<code>c++</code></p>
+<span id="more"></span>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std<br></code></pre></td></tr></table></figure>
+<h3 id="1-2-命名空间主要为了避免对象名称冲突"><a href="#1-2-命名空间主要为了避免对象名称冲突" class="headerlink" title="1.2 命名空间主要为了避免对象名称冲突"></a>1.2 命名空间主要为了避免对象名称冲突</h3><p><code>1. </code> 各个命名空间之间相互独立<br><code>2. </code> 命名空间内部不能有同名称对象<br><code>3. </code> 各个命名空间之间可以有相同名称对象</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><code class="hljs markdown"><span class="hljs-section"># 如计算机内部文件夹之间的关系：</span><br><span class="hljs-bullet">    *</span> 单个文件夹内部不能有同名称元素<br><span class="hljs-bullet">    *</span> 不同文件夹之间可以同名称元素<br></code></pre></td></tr></table></figure>
+<h3 id="1-3-python一般有三种命名空间：内置-built-in-局部-本地-local-全局-global"><a href="#1-3-python一般有三种命名空间：内置-built-in-局部-本地-local-全局-global" class="headerlink" title="1.3 python一般有三种命名空间：内置-built in 局部(本地)-local 全局-global"></a>1.3 python一般有三种命名空间：<code>内置-built in</code> <code>局部(本地)-local</code> <code>全局-global</code></h3><h4 id="1-3-1-局部"><a href="#1-3-1-局部" class="headerlink" title="1.3.1 局部"></a>1.3.1 局部</h4><p><code>1.</code> 局部空间包含:函数中定义的名称,记录了函数的变量,包括函数的参数与局部变量</p>
+<ul>
+<li>此局部指的是此作用域,及其内部包含的对象 名称</li>
+</ul>
+<p><code>2.</code> <code>locals()</code>:返回当前位置的全部局部变量</p>
+<ul>
+<li>当前位置指的是当前<code>locals()</code>函数被调用的位置</li>
+<li>全局内使用<code>locals()</code>:所有有实例的函数 方法 lambda函式以及实现了__call__的,都会返回true<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">locals</span>())<br>&#123;<span class="hljs-string">&#x27;__name__&#x27;</span>: <span class="hljs-string">&#x27;__main__&#x27;</span>, <span class="hljs-string">&#x27;__doc__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__package__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__loader__&#x27;</span>: &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">_frozen_importlib</span>.<span class="hljs-title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="hljs-title">__spec__</span>&#x27;:</span> <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="hljs-string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="hljs-string">&#x27;builtins&#x27;</span> (built-<span class="hljs-keyword">in</span>)&gt;, <span class="hljs-string">&#x27;len&#x27;</span>: &lt;function <span class="hljs-built_in">len</span> at <span class="hljs-number">0x00000186888145E8</span>&gt;&#125;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>此时的局部空间等于全局空间</p>
+</blockquote>
+</li>
+<li>函数内部使用<code>locals()</code>:返回此函数空间内的所有名称及对象<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">len</span>(<span class="hljs-params">param</span>):</span><br><span class="hljs-meta">... </span>    in_param = <span class="hljs-number">2</span><br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(<span class="hljs-built_in">locals</span>())<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">len</span>(<span class="hljs-number">4</span>)<br>&#123;<span class="hljs-string">&#x27;param&#x27;</span>: <span class="hljs-number">4</span>, <span class="hljs-string">&#x27;in_param&#x27;</span>: <span class="hljs-number">2</span>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>循环内使用<code>locals()</code>:  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>]:<br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(<span class="hljs-built_in">locals</span>())<br>...<br>&#123;<span class="hljs-string">&#x27;__name__&#x27;</span>: <span class="hljs-string">&#x27;__main__&#x27;</span>, <span class="hljs-string">&#x27;__doc__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__package__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__loader__&#x27;</span>: &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">_frozen_importlib</span>.<span class="hljs-title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="hljs-title">__spec__</span>&#x27;:</span> <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="hljs-string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="hljs-string">&#x27;builtins&#x27;</span> (built-<span class="hljs-keyword">in</span>)&gt;, <span class="hljs-string">&#x27;i&#x27;</span>: <span class="hljs-number">1</span>&#125;<br>&#123;<span class="hljs-string">&#x27;__name__&#x27;</span>: <span class="hljs-string">&#x27;__main__&#x27;</span>, <span class="hljs-string">&#x27;__doc__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__package__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__loader__&#x27;</span>: &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">_frozen_importlib</span>.<span class="hljs-title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="hljs-title">__spec__</span>&#x27;:</span> <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="hljs-string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="hljs-string">&#x27;builtins&#x27;</span> (built-<span class="hljs-keyword">in</span>)&gt;, <span class="hljs-string">&#x27;i&#x27;</span>: <span class="hljs-number">2</span>&#125;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>证明for循环不算一个单独的作用域</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="1-3-2-全局"><a href="#1-3-2-全局" class="headerlink" title="1.3.2 全局"></a>1.3.2 全局</h4><p><code>1.</code> 全局空间包含:模块中定义的名称,记录了模块的变量,包括函数 类 导入模块</p>
+<ul>
+<li>可理解为此<code>.py</code>文件所代表的空间</li>
+</ul>
+<p><code>2.</code> <code>globals()</code>:返回当前全局空间内的名称及对象</p>
+<ul>
+<li>全局内使用<code>globals()</code>:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">globals</span>())<br>&#123;<span class="hljs-string">&#x27;__name__&#x27;</span>: <span class="hljs-string">&#x27;__main__&#x27;</span>, <span class="hljs-string">&#x27;__doc__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__package__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__loader__&#x27;</span>: &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">_frozen_importlib</span>.<span class="hljs-title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="hljs-title">__spec__</span>&#x27;:</span> <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="hljs-string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="hljs-string">&#x27;builtins&#x27;</span> (built-<span class="hljs-keyword">in</span>)&gt;, <span class="hljs-string">&#x27;i&#x27;</span>: <span class="hljs-number">2</span>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>全局命名空间里包括了整个模块内的命名名称，比如变量 x y 函数名,而且还包括了一些内置的变量命名，比如 <code>__name__</code> <code>__file__</code>等等。</li>
+<li>全局空间与全局使用局部空间相同:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">if</span> <span class="hljs-built_in">locals</span>() == <span class="hljs-built_in">globals</span>():<br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;yes&#x27;</span>)<br><span class="hljs-meta">... </span><span class="hljs-keyword">else</span>:<br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;no&#x27;</span>)<br>...<br>yes<br></code></pre></td></tr></table></figure>
+<h4 id="1-3-3-内置"><a href="#1-3-3-内置" class="headerlink" title="1.3.3 内置"></a>1.3.3 内置</h4><code>1.</code> 内置空间包含:python语言的内置名称,如函数名abs char等<h3 id="1-4-各空间关系"><a href="#1-4-各空间关系" class="headerlink" title="1.4 各空间关系"></a>1.4 各空间关系</h3><code>1. </code>命名空间使用顺序:局部-&gt;全局-&gt;内置</li>
+<li>这样可以完成对<code>全局</code> <code>内置</code>函数的’’改写’’:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">len</span>(<span class="hljs-params">param</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(param)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">len</span>([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>])<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]<br></code></pre></td></tr></table></figure>
+
+python内置此方法的输出为元素长度:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">len</span>([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]))<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]<br></code></pre></td></tr></table></figure></li>
+<li>当无法找到此名称的对象时,则抛出异常<h3 id="命名空间的生命周期"><a href="#命名空间的生命周期" class="headerlink" title="命名空间的生命周期"></a>命名空间的生命周期</h3>命名空间的声明周期却决与该变量的作用域,对象执行完成,则该命名空间的生命周期结束<h2 id="2-作用域"><a href="#2-作用域" class="headerlink" title="2. 作用域"></a>2. 作用域</h2><h3 id="2-1-作用域"><a href="#2-1-作用域" class="headerlink" title="2.1 作用域"></a>2.1 作用域</h3><code>1.</code> 作用域:访问某变量 对象的区域</li>
+<li>每个对象都存在特定的作用域中 作用时段中</li>
+<li>当前程序未执行到该作用域,则某些只存在于该作用域的对象则不能被访问</li>
+<li>或者说,只有被赋值且未该赋值区域未完成其全部功能时,该对象才能被访问<blockquote>
+<p>简单来说就是:该对象在未赋值时,不能被访问;使用结束跳出该域后也不能访问</p>
+</blockquote>
+<h3 id="2-2-作用域分类"><a href="#2-2-作用域分类" class="headerlink" title="2.2 作用域分类"></a>2.2 作用域分类</h3><h4 id="2-2-1-L-local-局部作用域"><a href="#2-2-1-L-local-局部作用域" class="headerlink" title="2.2.1 L-local 局部作用域"></a>2.2.1 <code>L-local</code> 局部作用域</h4><h4 id="2-2-2-E-encloing-scope-闭包函数作用域-嵌套函数-A-B-var-c-中var-c所在作用域"><a href="#2-2-2-E-encloing-scope-闭包函数作用域-嵌套函数-A-B-var-c-中var-c所在作用域" class="headerlink" title="2.2.2  E-encloing scope 闭包函数作用域,嵌套函数(A(B(var c)))中var c所在作用域"></a>2.2.2  <code>E-encloing scope</code> 闭包函数作用域,嵌套函数<code>(A(B(var c)))</code>中<code>var c</code>所在作用域</h4><h4 id="2-2-3-G-global"><a href="#2-2-3-G-global" class="headerlink" title="2.2.3  G=global"></a>2.2.3  <code>G=global</code></h4><h4 id="2-2-4-B-built-in"><a href="#2-2-4-B-built-in" class="headerlink" title="2.2.4  B-built in"></a>2.2.4  <code>B-built in</code></h4><code>1.</code> 内置作用域的实现是通过<code>builtin</code>标准模块实现  <blockquote>
+<p>但是此变量名本身并未放入内置作用域,需要导入模块才能使用<br><code>2.</code> <code>builtin</code></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> builtins<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">dir</span>(builtins)<br></code></pre></td></tr></table></figure>
+<h3 id="2-3-规则"><a href="#2-3-规则" class="headerlink" title="2.3 规则"></a>2.3 规则</h3><code>1.</code> 当在函数中引用一个变量的时候，以上的作用域顺序也是 Python 搜索的一个顺序 <code>L-&gt;E-G-B</code>，首先尝试局部作用域，没找到的话，继续搜索闭包函数作用域，然后再是全局作用域和内置作用域。<br><code>2.</code> Python 中只有模块（module），类（class）以及函数（def、lambda）才会引入新的作用域</li>
+<li>其它的代码块（如 if/elif/else/、try/except、for/while等）是不会引入新的作用域的，也就是说这些语句内定义的变量，外部也可以访问(如<code>1.3.1.2</code>) 如:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">if</span> <span class="hljs-literal">True</span>:<br><span class="hljs-meta">... </span>    testStr = <span class="hljs-string">&#x27;this is a testline to test if this is a new region&#x27;</span><br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(testStr)<br>this <span class="hljs-keyword">is</span> a testline to test <span class="hljs-keyword">if</span> this <span class="hljs-keyword">is</span> a new region<br></code></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>basic</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python--元组</title>
     <url>/2021/07/07/Python/basic/%E5%85%83%E7%BB%84/</url>
     <content><![CDATA[<h1 id="列表与元组"><a href="#列表与元组" class="headerlink" title="列表与元组"></a>列表与元组</h1><ul>
@@ -899,68 +870,6 @@ turns out<figure class="highlight python"><table><tr><td class="code"><pre><code
 <code>2.</code> <code>**kwargs</code> 用以传递任意关键字参数<code>(kew = ars)</code></li>
 <li>将带传入参数及其关键字以<code>&#39;&#39;键值对&#39;&#39;</code>形式传入</li>
 <li>传入参数及其关键字被转换为<code>dict</code>传入函数内部,通过关键字定位参数值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func4</span>(<span class="hljs-params">**kwargs</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(kwargs.__class__)<br><span class="hljs-meta">... </span>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> kwargs:<br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;this is &#x27;</span> + <span class="hljs-built_in">str</span>(i) + <span class="hljs-string">&#x27; and its arg = &#x27;</span> +<span class="hljs-built_in">str</span>(kwargs[i]))<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>func4(name = <span class="hljs-string">&#x27;markilily&#x27;</span>,age = <span class="hljs-number">120</span>)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">dict</span>&#x27;&gt;</span><br><span class="hljs-class"><span class="hljs-title">this</span> <span class="hljs-title">is</span> <span class="hljs-title">name</span> <span class="hljs-title">and</span> <span class="hljs-title">its</span> <span class="hljs-title">arg</span> = <span class="hljs-title">markilily</span></span><br><span class="hljs-class"><span class="hljs-title">this</span> <span class="hljs-title">is</span> <span class="hljs-title">age</span> <span class="hljs-title">and</span> <span class="hljs-title">its</span> <span class="hljs-title">arg</span> = 120</span><br></code></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>basic</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python--命名空间</title>
-    <url>/2021/07/07/Python/basic/%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/</url>
-    <content><![CDATA[<h1 id="命名空间及作用域"><a href="#命名空间及作用域" class="headerlink" title="命名空间及作用域"></a>命名空间及作用域</h1><h2 id="1-命名空间"><a href="#1-命名空间" class="headerlink" title="1.命名空间"></a>1.命名空间</h2><h3 id="1-1-命名空间（Namespace）"><a href="#1-1-命名空间（Namespace）" class="headerlink" title="1.1 命名空间（Namespace）"></a>1.1 命名空间（Namespace）</h3><p><code>1.</code> 是从名称到对象的映射，一般通过字典实现<br><code>2.</code> 类似于<code>c++</code></p>
-<span id="more"></span>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std<br></code></pre></td></tr></table></figure>
-<h3 id="1-2-命名空间主要为了避免对象名称冲突"><a href="#1-2-命名空间主要为了避免对象名称冲突" class="headerlink" title="1.2 命名空间主要为了避免对象名称冲突"></a>1.2 命名空间主要为了避免对象名称冲突</h3><p><code>1. </code> 各个命名空间之间相互独立<br><code>2. </code> 命名空间内部不能有同名称对象<br><code>3. </code> 各个命名空间之间可以有相同名称对象</p>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><code class="hljs markdown"><span class="hljs-section"># 如计算机内部文件夹之间的关系：</span><br><span class="hljs-bullet">    *</span> 单个文件夹内部不能有同名称元素<br><span class="hljs-bullet">    *</span> 不同文件夹之间可以同名称元素<br></code></pre></td></tr></table></figure>
-<h3 id="1-3-python一般有三种命名空间：内置-built-in-局部-本地-local-全局-global"><a href="#1-3-python一般有三种命名空间：内置-built-in-局部-本地-local-全局-global" class="headerlink" title="1.3 python一般有三种命名空间：内置-built in 局部(本地)-local 全局-global"></a>1.3 python一般有三种命名空间：<code>内置-built in</code> <code>局部(本地)-local</code> <code>全局-global</code></h3><h4 id="1-3-1-局部"><a href="#1-3-1-局部" class="headerlink" title="1.3.1 局部"></a>1.3.1 局部</h4><p><code>1.</code> 局部空间包含:函数中定义的名称,记录了函数的变量,包括函数的参数与局部变量</p>
-<ul>
-<li>此局部指的是此作用域,及其内部包含的对象 名称</li>
-</ul>
-<p><code>2.</code> <code>locals()</code>:返回当前位置的全部局部变量</p>
-<ul>
-<li>当前位置指的是当前<code>locals()</code>函数被调用的位置</li>
-<li>全局内使用<code>locals()</code>:所有有实例的函数 方法 lambda函式以及实现了__call__的,都会返回true<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">locals</span>())<br>&#123;<span class="hljs-string">&#x27;__name__&#x27;</span>: <span class="hljs-string">&#x27;__main__&#x27;</span>, <span class="hljs-string">&#x27;__doc__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__package__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__loader__&#x27;</span>: &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">_frozen_importlib</span>.<span class="hljs-title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="hljs-title">__spec__</span>&#x27;:</span> <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="hljs-string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="hljs-string">&#x27;builtins&#x27;</span> (built-<span class="hljs-keyword">in</span>)&gt;, <span class="hljs-string">&#x27;len&#x27;</span>: &lt;function <span class="hljs-built_in">len</span> at <span class="hljs-number">0x00000186888145E8</span>&gt;&#125;<br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>此时的局部空间等于全局空间</p>
-</blockquote>
-</li>
-<li>函数内部使用<code>locals()</code>:返回此函数空间内的所有名称及对象<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">len</span>(<span class="hljs-params">param</span>):</span><br><span class="hljs-meta">... </span>    in_param = <span class="hljs-number">2</span><br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(<span class="hljs-built_in">locals</span>())<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">len</span>(<span class="hljs-number">4</span>)<br>&#123;<span class="hljs-string">&#x27;param&#x27;</span>: <span class="hljs-number">4</span>, <span class="hljs-string">&#x27;in_param&#x27;</span>: <span class="hljs-number">2</span>&#125;<br></code></pre></td></tr></table></figure></li>
-<li>循环内使用<code>locals()</code>:  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>]:<br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(<span class="hljs-built_in">locals</span>())<br>...<br>&#123;<span class="hljs-string">&#x27;__name__&#x27;</span>: <span class="hljs-string">&#x27;__main__&#x27;</span>, <span class="hljs-string">&#x27;__doc__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__package__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__loader__&#x27;</span>: &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">_frozen_importlib</span>.<span class="hljs-title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="hljs-title">__spec__</span>&#x27;:</span> <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="hljs-string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="hljs-string">&#x27;builtins&#x27;</span> (built-<span class="hljs-keyword">in</span>)&gt;, <span class="hljs-string">&#x27;i&#x27;</span>: <span class="hljs-number">1</span>&#125;<br>&#123;<span class="hljs-string">&#x27;__name__&#x27;</span>: <span class="hljs-string">&#x27;__main__&#x27;</span>, <span class="hljs-string">&#x27;__doc__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__package__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__loader__&#x27;</span>: &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">_frozen_importlib</span>.<span class="hljs-title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="hljs-title">__spec__</span>&#x27;:</span> <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="hljs-string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="hljs-string">&#x27;builtins&#x27;</span> (built-<span class="hljs-keyword">in</span>)&gt;, <span class="hljs-string">&#x27;i&#x27;</span>: <span class="hljs-number">2</span>&#125;<br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>证明for循环不算一个单独的作用域</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="1-3-2-全局"><a href="#1-3-2-全局" class="headerlink" title="1.3.2 全局"></a>1.3.2 全局</h4><p><code>1.</code> 全局空间包含:模块中定义的名称,记录了模块的变量,包括函数 类 导入模块</p>
-<ul>
-<li>可理解为此<code>.py</code>文件所代表的空间</li>
-</ul>
-<p><code>2.</code> <code>globals()</code>:返回当前全局空间内的名称及对象</p>
-<ul>
-<li>全局内使用<code>globals()</code>:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">globals</span>())<br>&#123;<span class="hljs-string">&#x27;__name__&#x27;</span>: <span class="hljs-string">&#x27;__main__&#x27;</span>, <span class="hljs-string">&#x27;__doc__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__package__&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__loader__&#x27;</span>: &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">_frozen_importlib</span>.<span class="hljs-title">BuiltinImporter</span>&#x27;&gt;, &#x27;<span class="hljs-title">__spec__</span>&#x27;:</span> <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="hljs-string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="hljs-string">&#x27;builtins&#x27;</span> (built-<span class="hljs-keyword">in</span>)&gt;, <span class="hljs-string">&#x27;i&#x27;</span>: <span class="hljs-number">2</span>&#125;<br></code></pre></td></tr></table></figure></li>
-<li>全局命名空间里包括了整个模块内的命名名称，比如变量 x y 函数名,而且还包括了一些内置的变量命名，比如 <code>__name__</code> <code>__file__</code>等等。</li>
-<li>全局空间与全局使用局部空间相同:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">if</span> <span class="hljs-built_in">locals</span>() == <span class="hljs-built_in">globals</span>():<br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;yes&#x27;</span>)<br><span class="hljs-meta">... </span><span class="hljs-keyword">else</span>:<br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;no&#x27;</span>)<br>...<br>yes<br></code></pre></td></tr></table></figure>
-<h4 id="1-3-3-内置"><a href="#1-3-3-内置" class="headerlink" title="1.3.3 内置"></a>1.3.3 内置</h4><code>1.</code> 内置空间包含:python语言的内置名称,如函数名abs char等<h3 id="1-4-各空间关系"><a href="#1-4-各空间关系" class="headerlink" title="1.4 各空间关系"></a>1.4 各空间关系</h3><code>1. </code>命名空间使用顺序:局部-&gt;全局-&gt;内置</li>
-<li>这样可以完成对<code>全局</code> <code>内置</code>函数的’’改写’’:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">len</span>(<span class="hljs-params">param</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(param)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">len</span>([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>])<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]<br></code></pre></td></tr></table></figure>
-
-python内置此方法的输出为元素长度:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">len</span>([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]))<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]<br></code></pre></td></tr></table></figure></li>
-<li>当无法找到此名称的对象时,则抛出异常<h3 id="命名空间的生命周期"><a href="#命名空间的生命周期" class="headerlink" title="命名空间的生命周期"></a>命名空间的生命周期</h3>命名空间的声明周期却决与该变量的作用域,对象执行完成,则该命名空间的生命周期结束<h2 id="2-作用域"><a href="#2-作用域" class="headerlink" title="2. 作用域"></a>2. 作用域</h2><h3 id="2-1-作用域"><a href="#2-1-作用域" class="headerlink" title="2.1 作用域"></a>2.1 作用域</h3><code>1.</code> 作用域:访问某变量 对象的区域</li>
-<li>每个对象都存在特定的作用域中 作用时段中</li>
-<li>当前程序未执行到该作用域,则某些只存在于该作用域的对象则不能被访问</li>
-<li>或者说,只有被赋值且未该赋值区域未完成其全部功能时,该对象才能被访问<blockquote>
-<p>简单来说就是:该对象在未赋值时,不能被访问;使用结束跳出该域后也不能访问</p>
-</blockquote>
-<h3 id="2-2-作用域分类"><a href="#2-2-作用域分类" class="headerlink" title="2.2 作用域分类"></a>2.2 作用域分类</h3><h4 id="2-2-1-L-local-局部作用域"><a href="#2-2-1-L-local-局部作用域" class="headerlink" title="2.2.1 L-local 局部作用域"></a>2.2.1 <code>L-local</code> 局部作用域</h4><h4 id="2-2-2-E-encloing-scope-闭包函数作用域-嵌套函数-A-B-var-c-中var-c所在作用域"><a href="#2-2-2-E-encloing-scope-闭包函数作用域-嵌套函数-A-B-var-c-中var-c所在作用域" class="headerlink" title="2.2.2  E-encloing scope 闭包函数作用域,嵌套函数(A(B(var c)))中var c所在作用域"></a>2.2.2  <code>E-encloing scope</code> 闭包函数作用域,嵌套函数<code>(A(B(var c)))</code>中<code>var c</code>所在作用域</h4><h4 id="2-2-3-G-global"><a href="#2-2-3-G-global" class="headerlink" title="2.2.3  G=global"></a>2.2.3  <code>G=global</code></h4><h4 id="2-2-4-B-built-in"><a href="#2-2-4-B-built-in" class="headerlink" title="2.2.4  B-built in"></a>2.2.4  <code>B-built in</code></h4><code>1.</code> 内置作用域的实现是通过<code>builtin</code>标准模块实现  <blockquote>
-<p>但是此变量名本身并未放入内置作用域,需要导入模块才能使用<br><code>2.</code> <code>builtin</code></p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> builtins<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">dir</span>(builtins)<br></code></pre></td></tr></table></figure>
-<h3 id="2-3-规则"><a href="#2-3-规则" class="headerlink" title="2.3 规则"></a>2.3 规则</h3><code>1.</code> 当在函数中引用一个变量的时候，以上的作用域顺序也是 Python 搜索的一个顺序 <code>L-&gt;E-G-B</code>，首先尝试局部作用域，没找到的话，继续搜索闭包函数作用域，然后再是全局作用域和内置作用域。<br><code>2.</code> Python 中只有模块（module），类（class）以及函数（def、lambda）才会引入新的作用域</li>
-<li>其它的代码块（如 if/elif/else/、try/except、for/while等）是不会引入新的作用域的，也就是说这些语句内定义的变量，外部也可以访问(如<code>1.3.1.2</code>) 如:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">if</span> <span class="hljs-literal">True</span>:<br><span class="hljs-meta">... </span>    testStr = <span class="hljs-string">&#x27;this is a testline to test if this is a new region&#x27;</span><br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(testStr)<br>this <span class="hljs-keyword">is</span> a testline to test <span class="hljs-keyword">if</span> this <span class="hljs-keyword">is</span> a new region<br></code></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
       <categories>
@@ -1051,6 +960,26 @@ python内置此方法的输出为元素长度:<figure class="highlight python"><
       </tags>
   </entry>
   <entry>
+    <title>python--递归</title>
+    <url>/2021/07/07/Python/basic/%E9%80%92%E5%BD%92/</url>
+    <content><![CDATA[<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><span id="more"></span>
+<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>计算阶乘</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">cal</span>(<span class="hljs-params">n</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">if</span> n == <span class="hljs-number">1</span>:<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">else</span>:<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">return</span> n * cal(n - <span class="hljs-number">1</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(cal(<span class="hljs-number">4</span>))<br><span class="hljs-number">24</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(cal(<span class="hljs-number">6</span>))<br><span class="hljs-number">720</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>递归函数内部会调用函数本身</li>
+<li>某次调用递归函数时,内部调用本身时会指定参数</li>
+<li>在递归函数中,应有一个结束参数信号,在每次递归中,参数不断靠近该信号<h2 id="递归次数限制"><a href="#递归次数限制" class="headerlink" title="递归次数限制"></a>递归次数限制</h2><code>python</code>递归次数限制为<code>3000</code>次,超出此次数则会触发<code>RecursionError</code><h2 id="移除递归次数限制"><a href="#移除递归次数限制" class="headerlink" title="移除递归次数限制"></a>移除递归次数限制</h2><code>sys.setrecursionlimit(5000)</code> 设置次数限制为我们所需要的次数</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>basic</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python--类</title>
     <url>/2021/07/07/Python/basic/%E7%B1%BB/</url>
     <content><![CDATA[<h1 id="类–CLASS"><a href="#类–CLASS" class="headerlink" title="类–CLASS"></a>类–CLASS</h1><h2 id="python中的类与对象"><a href="#python中的类与对象" class="headerlink" title="python中的类与对象"></a>python中的类与对象</h2><p>类可以说是具有同类型属性（性质 方法 属性）的对象的属性集合</p>
@@ -1089,26 +1018,6 @@ python内置此方法的输出为元素长度:<figure class="highlight python"><
 <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span>:</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">disA</span>(<span class="hljs-params">self</span>):</span><br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;A&#x27;</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span>:</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">disB</span>(<span class="hljs-params">self</span>):</span><br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;B&#x27;</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span>:</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">disC</span>(<span class="hljs-params">self</span>):</span><br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;C&#x27;</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">son</span>(<span class="hljs-params">A,B,C</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">disSon</span>(<span class="hljs-params">self</span>):</span><br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;son&#x27;</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>son = son()<br><span class="hljs-meta">&gt;&gt;&gt; </span>son.disA()<br>A<br><span class="hljs-meta">&gt;&gt;&gt; </span>son.disB()<br>B<br><span class="hljs-meta">&gt;&gt;&gt; </span>son.disC()<br>C<br><span class="hljs-meta">&gt;&gt;&gt; </span>son.disSon()<br>son<br></code></pre></td></tr></table></figure>
 <h2 id="多级继承"><a href="#多级继承" class="headerlink" title="多级继承"></a>多级继承</h2><p>基因代代相传,孝景帝之子中山靖王之后<code>刘玄德</code>也可以用的</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span>:</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">disA</span>(<span class="hljs-params">self</span>):</span><br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;A&#x27;</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">D</span>(<span class="hljs-params">A</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">disD</span>(<span class="hljs-params">self</span>):</span><br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;D&#x27;</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">E</span>(<span class="hljs-params">D</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">disE</span>(<span class="hljs-params">self</span>):</span><br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;E&#x27;</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>e = E()<br><span class="hljs-meta">&gt;&gt;&gt; </span>e.disA()<br>A<br><span class="hljs-meta">&gt;&gt;&gt; </span>e.disD()<br>D<br><span class="hljs-meta">&gt;&gt;&gt; </span>e.disE()<br>E<br></code></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>basic</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python--递归</title>
-    <url>/2021/07/07/Python/basic/%E9%80%92%E5%BD%92/</url>
-    <content><![CDATA[<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><span id="more"></span>
-<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>计算阶乘</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">cal</span>(<span class="hljs-params">n</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">if</span> n == <span class="hljs-number">1</span>:<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">else</span>:<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">return</span> n * cal(n - <span class="hljs-number">1</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(cal(<span class="hljs-number">4</span>))<br><span class="hljs-number">24</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(cal(<span class="hljs-number">6</span>))<br><span class="hljs-number">720</span><br></code></pre></td></tr></table></figure>
-<ul>
-<li>递归函数内部会调用函数本身</li>
-<li>某次调用递归函数时,内部调用本身时会指定参数</li>
-<li>在递归函数中,应有一个结束参数信号,在每次递归中,参数不断靠近该信号<h2 id="递归次数限制"><a href="#递归次数限制" class="headerlink" title="递归次数限制"></a>递归次数限制</h2><code>python</code>递归次数限制为<code>3000</code>次,超出此次数则会触发<code>RecursionError</code><h2 id="移除递归次数限制"><a href="#移除递归次数限制" class="headerlink" title="移除递归次数限制"></a>移除递归次数限制</h2><code>sys.setrecursionlimit(5000)</code> 设置次数限制为我们所需要的次数</li>
 </ul>
 ]]></content>
       <categories>
