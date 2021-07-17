@@ -305,57 +305,14 @@
       </tags>
   </entry>
   <entry>
-    <title>git-04-标签</title>
-    <url>/2021/07/13/git/git-04-%E6%A0%87%E7%AD%BE/</url>
-    <content><![CDATA[<p>我们每次提交<code>commit</code>都会生成对应的<code>commit id</code>方便我们进行回溯 ，同样我们也可以手动为每个版本标定标签</p>
-<span id="more"></span>
-
-
-<h1 id="git-tag-lt-name-gt-创建标签"><a href="#git-tag-lt-name-gt-创建标签" class="headerlink" title="git tag &lt;name&gt; - 创建标签"></a><code>git tag &lt;name&gt;</code> - 创建标签</h1><p><code>git tag</code>的基本语法为 ：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git tag &lt;name&gt;<br></code></pre></td></tr></table></figure>
-
-<p>此处我们假定对<code>master</code>进行版本标记 ， 进入<code>master</code>分支 ：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-JCSGJPO MINGW64 /a/git/gitlearn (master)<br>$ git checkout master<br>Switched to branch &#x27;master&#x27;<br></code></pre></td></tr></table></figure>
-
-<p>使用命令进行版本标记 ：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-JCSGJPO MINGW64 /a/git/gitlearn (master)<br>$ git tag v1.0<br></code></pre></td></tr></table></figure>
-
-
-<h1 id="git-tag-查看标签"><a href="#git-tag-查看标签" class="headerlink" title="git tag - 查看标签"></a><code>git tag</code> - 查看标签</h1><h3 id="git-tag-查看所有标签记录"><a href="#git-tag-查看所有标签记录" class="headerlink" title="git tag - 查看所有标签记录"></a><code>git tag</code> - 查看所有标签记录</h3><p>使用<code>git tag</code>查看当前分支标签记录 :</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ git tag<br>v1.0<br>v2.0<br></code></pre></td></tr></table></figure>
-
-<p>但是此记录不是按照添加时间记录, 而是按照字母排序</p>
-<h3 id="git-show-lt-tagname-gt-查看详细信息"><a href="#git-show-lt-tagname-gt-查看详细信息" class="headerlink" title="git show &lt;tagname&gt; - 查看详细信息"></a><code>git show &lt;tagname&gt;</code> - 查看详细信息</h3><p>使用<code>git show &lt;tagname&gt;</code>查看各标签详细信息 :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git show v1.0<br>commit 199f71f3a9a825671b44a0790b619c531902a271 (tag: v1.0)<br>Author: MarkLilyC &lt;2667602812@qq.com&gt;<br>Date:   Mon Jul 12 14:30:56 2021 +0800<br><br>    AA<br><br>diff --git a/test.txt b/test.txt<br>index 1b63dd4..136aecc 100644<br>--- a/test.txt<br>+++ b/test.txt<br>@@ -1,3 +1,5 @@<br> public line...<br> --------------<br> add in A<br>+--------------<br>+add in B<br></code></pre></td></tr></table></figure>
-
-<h1 id="追加标签"><a href="#追加标签" class="headerlink" title="追加标签"></a>追加标签</h1><p>每次<code>git tag &lt;name&gt;</code>都是默认添加在最新的<code>commit</code>的版本</p>
-<p>当我们某次<code>commit</code>后忘记添加标签,可以向该版本追加标签</p>
-<p><strong>我们先随意进行几次提交</strong></p>
-<h2 id="git-log-查看日志"><a href="#git-log-查看日志" class="headerlink" title="git log - 查看日志"></a><code>git log</code> - 查看日志</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git log --pretty=oneline --abbrev-commit<br>8244163 (HEAD -&gt; master, tag: v2.0) commit to test recall from commit<br>abfb3b5 commit this testfile to comiit hist<br>3699296 aa<br>1dd8abb aa<br>543a126 aa<br>7abf4b6 add a new line by vim<br>00e7919 add a test.txt to repo<br>40442a5 AA<br>85f2fbb ADD T2.TXT<br>bd8bfc5 add a line id = 3<br>d5fe445 add a line id = 2<br>fb84050 add a line id = 1<br>2e7ebbb add t.txt to the repo<br>440e71c remove a file<br>1e71bf1 rename<br>8377709 rename<br>8b0aa8b aa<br>199f71f (tag: v1.0) AA<br>0bbb931 aa<br></code></pre></td></tr></table></figure>
-
-<h2 id="追加标签-1"><a href="#追加标签-1" class="headerlink" title="追加标签"></a>追加标签</h2><p>使用<code>git tag &lt;name&gt; commit_id</code> 对指定<code>commit</code>进行标签 :</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">26676@DESKTOP-JCSGJPO MINGW64 /a/Git/gitlearn (master)<br>$ git tag v1.5 1dd8abb<br></code></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git tag<br>v1.0<br>v1.5<br>v2.0<br></code></pre></td></tr></table></figure>
-<p>可见新标签已被添加</p>
-<h1 id="删除标签"><a href="#删除标签" class="headerlink" title="删除标签"></a>删除标签</h1><p>使用<code>git tag -d &lt;name&gt;</code>删除指定标签 :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-JCSGJPO MINGW64 /a/Git/gitlearn (master)<br>$ git tag -d v1.5<br>Deleted tag &#x27;v1.5&#x27; (was 1dd8abb)<br><br>26676@DESKTOP-JCSGJPO MINGW64 /a/Git/gitlearn (master)<br>$ git tag<br>v1.0<br>v2.0<br></code></pre></td></tr></table></figure>
-<p>可见<code>v1.5</code>被成功删除</p>
-]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>git-05-撤销修改</title>
     <url>/2021/07/13/git/git-05-%E6%92%A4%E9%94%80%E4%BF%AE%E6%94%B9/</url>
-    <content><![CDATA[<p>撤销修改可大致分为：从工作区撤销 从暂存区撤销以及版本库回退</p>
+    <content><![CDATA[<p>aa<br>撤销修改可大致分为：从工作区撤销 从暂存区撤销以及版本库回退</p>
 <span id="more"></span>
 <p><a href="#删除标签">hexo 基本命令</a></p>
 
-<p><a href="../git-01-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4.md">点击这里查看这篇文章1</a><br><a href="./git-01-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4.md">点击这里查看这篇文章2</a><br><a href="/git-01-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4.md">点击这里查看这篇文章3</a><br><a href="git-01-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4.md">点击这里查看这篇文章4</a><br><a href="../git-01-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4">点击这里查看这篇文章11</a><br><a href="./git-01-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4">点击这里查看这篇文章21</a><br><a href="/git-01-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4">点击这里查看这篇文章31</a><br><a href="git-01-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4">点击这里查看这篇文章41</a><br>上一节后我们的<code>test.txt</code>文件内容为<code>this is a test txtfile</code>, 且已提交到了版本库</p>
+<p><a href="../git-01-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4.md">点击这里查看这篇文章1</a><br><a href="./git-01-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4.md">点击这里查看这篇文章2</a><br><a href="/git-01-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4.md">点击这里查看这篇文章3</a><br><a href="git-01-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4.md">点击这里查看这篇文章4</a><br><a href="../git-01-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4">点击这里查看这篇文章11</a><br><a href="./git-01-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4">点击这里查看这篇文章21</a><br><a href="/git-01-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4">点击这里查看这篇文章31</a><br><a href="git-01-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4">点击这里查看这篇文章41</a><br>[hexo 安装](#删除标签)</p>
+<p>上一节后我们的<code>test.txt</code>文件内容为<code>this is a test txtfile</code>, 且已提交到了版本库</p>
 <p>为方便演示, 我们现在再对其增加一行: <code>add a line to test recall</code></p>
 <p>最终此文件内容为 :</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">this is a test txtfile<br>add a line to test recall<br></code></pre></td></tr></table></figure>
@@ -469,6 +426,50 @@
 <p>文件内容 :</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">this is a test txtfile<br></code></pre></td></tr></table></figure>
 <p>文件也会回退到了<code>v1.0</code></p>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git-04-标签</title>
+    <url>/2021/07/13/git/git-04-%E6%A0%87%E7%AD%BE/</url>
+    <content><![CDATA[<p>我们每次提交<code>commit</code>都会生成对应的<code>commit id</code>方便我们进行回溯 ，同样我们也可以手动为每个版本标定标签</p>
+<span id="more"></span>
+
+
+<h1 id="git-tag-lt-name-gt-创建标签"><a href="#git-tag-lt-name-gt-创建标签" class="headerlink" title="git tag &lt;name&gt; - 创建标签"></a><code>git tag &lt;name&gt;</code> - 创建标签</h1><p><code>git tag</code>的基本语法为 ：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git tag &lt;name&gt;<br></code></pre></td></tr></table></figure>
+
+<p>此处我们假定对<code>master</code>进行版本标记 ， 进入<code>master</code>分支 ：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-JCSGJPO MINGW64 /a/git/gitlearn (master)<br>$ git checkout master<br>Switched to branch &#x27;master&#x27;<br></code></pre></td></tr></table></figure>
+
+<p>使用命令进行版本标记 ：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-JCSGJPO MINGW64 /a/git/gitlearn (master)<br>$ git tag v1.0<br></code></pre></td></tr></table></figure>
+
+
+<h1 id="git-tag-查看标签"><a href="#git-tag-查看标签" class="headerlink" title="git tag - 查看标签"></a><code>git tag</code> - 查看标签</h1><h3 id="git-tag-查看所有标签记录"><a href="#git-tag-查看所有标签记录" class="headerlink" title="git tag - 查看所有标签记录"></a><code>git tag</code> - 查看所有标签记录</h3><p>使用<code>git tag</code>查看当前分支标签记录 :</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ git tag<br>v1.0<br>v2.0<br></code></pre></td></tr></table></figure>
+
+<p>但是此记录不是按照添加时间记录, 而是按照字母排序</p>
+<h3 id="git-show-lt-tagname-gt-查看详细信息"><a href="#git-show-lt-tagname-gt-查看详细信息" class="headerlink" title="git show &lt;tagname&gt; - 查看详细信息"></a><code>git show &lt;tagname&gt;</code> - 查看详细信息</h3><p>使用<code>git show &lt;tagname&gt;</code>查看各标签详细信息 :</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git show v1.0<br>commit 199f71f3a9a825671b44a0790b619c531902a271 (tag: v1.0)<br>Author: MarkLilyC &lt;2667602812@qq.com&gt;<br>Date:   Mon Jul 12 14:30:56 2021 +0800<br><br>    AA<br><br>diff --git a/test.txt b/test.txt<br>index 1b63dd4..136aecc 100644<br>--- a/test.txt<br>+++ b/test.txt<br>@@ -1,3 +1,5 @@<br> public line...<br> --------------<br> add in A<br>+--------------<br>+add in B<br></code></pre></td></tr></table></figure>
+
+<h1 id="追加标签"><a href="#追加标签" class="headerlink" title="追加标签"></a>追加标签</h1><p>每次<code>git tag &lt;name&gt;</code>都是默认添加在最新的<code>commit</code>的版本</p>
+<p>当我们某次<code>commit</code>后忘记添加标签,可以向该版本追加标签</p>
+<p><strong>我们先随意进行几次提交</strong></p>
+<h2 id="git-log-查看日志"><a href="#git-log-查看日志" class="headerlink" title="git log - 查看日志"></a><code>git log</code> - 查看日志</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git log --pretty=oneline --abbrev-commit<br>8244163 (HEAD -&gt; master, tag: v2.0) commit to test recall from commit<br>abfb3b5 commit this testfile to comiit hist<br>3699296 aa<br>1dd8abb aa<br>543a126 aa<br>7abf4b6 add a new line by vim<br>00e7919 add a test.txt to repo<br>40442a5 AA<br>85f2fbb ADD T2.TXT<br>bd8bfc5 add a line id = 3<br>d5fe445 add a line id = 2<br>fb84050 add a line id = 1<br>2e7ebbb add t.txt to the repo<br>440e71c remove a file<br>1e71bf1 rename<br>8377709 rename<br>8b0aa8b aa<br>199f71f (tag: v1.0) AA<br>0bbb931 aa<br></code></pre></td></tr></table></figure>
+
+<h2 id="追加标签-1"><a href="#追加标签-1" class="headerlink" title="追加标签"></a>追加标签</h2><p>使用<code>git tag &lt;name&gt; commit_id</code> 对指定<code>commit</code>进行标签 :</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">26676@DESKTOP-JCSGJPO MINGW64 /a/Git/gitlearn (master)<br>$ git tag v1.5 1dd8abb<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git tag<br>v1.0<br>v1.5<br>v2.0<br></code></pre></td></tr></table></figure>
+<p>可见新标签已被添加</p>
+<h1 id="删除标签"><a href="#删除标签" class="headerlink" title="删除标签"></a>删除标签</h1><p>使用<code>git tag -d &lt;name&gt;</code>删除指定标签 :</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-JCSGJPO MINGW64 /a/Git/gitlearn (master)<br>$ git tag -d v1.5<br>Deleted tag &#x27;v1.5&#x27; (was 1dd8abb)<br><br>26676@DESKTOP-JCSGJPO MINGW64 /a/Git/gitlearn (master)<br>$ git tag<br>v1.0<br>v2.0<br></code></pre></td></tr></table></figure>
+<p>可见<code>v1.5</code>被成功删除</p>
 ]]></content>
       <categories>
         <category>Git</category>
@@ -905,48 +906,6 @@ turns out<figure class="highlight python"><table><tr><td class="code"><pre><code
       </tags>
   </entry>
   <entry>
-    <title>python--元组</title>
-    <url>/2021/07/07/Python/basic/%E5%85%83%E7%BB%84/</url>
-    <content><![CDATA[<h1 id="列表与元组"><a href="#列表与元组" class="headerlink" title="列表与元组"></a>列表与元组</h1><ul>
-<li>当元素类型不一时使用元组,当类型一样则使用列表 <sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="参考资料1
-">[1]</span></a></sup></li>
-<li>元组遍历更快</li>
-<li>使用元组元素(不可变)可作为字典的键值,而列表不可</li>
-<li>元组保证了数据的安全</li>
-</ul>
-<span id="more"></span>
-<h2 id="1-列表"><a href="#1-列表" class="headerlink" title="1 列表"></a>1 列表</h2><p>略</p>
-<h2 id="2-元组-tuple"><a href="#2-元组-tuple" class="headerlink" title="2 元组-tuple"></a>2 元组-<code>tuple</code></h2><p>元组类似于列表,但区别在于元组中的元素是不可变的</p>
-<h3 id="2-1-创建一个元组"><a href="#2-1-创建一个元组" class="headerlink" title="2.1 创建一个元组"></a>2.1 创建一个元组</h3><p><code>1.</code> 使用<code>()</code>创建一个元组,使用<code>,</code>间隔元素<br><code>2.</code> 类似于列表,元组中的元素可以是任何数据类型</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuple1 = (<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(tuple1, tuple1.__class__)<br>(<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]) &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">tuple</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>因为元组不能改变,所以创建伊始就应该指定正确的元素</p>
-</blockquote>
-<p><code>3.</code> 创建元组时只指明一个元素<code>(dtype A)</code>,则该元组(你意图创建的)会被视为<code>A</code>的对象</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># case1</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>a = (<span class="hljs-string">&#x27;aa&#x27;</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">str</span>&#x27;&gt;</span><br><span class="hljs-class"># <span class="hljs-title">case2</span></span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">b</span> = (<span class="hljs-params">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]</span>)</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">print</span>(<span class="hljs-params">b.__class__</span>)</span><br><span class="hljs-class">&lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">list</span>&#x27;&gt;</span><br><span class="hljs-class"># <span class="hljs-title">case3</span></span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">c</span> = (<span class="hljs-params"><span class="hljs-number">1</span></span>)</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">print</span>(<span class="hljs-params">c.__class__</span>)</span><br><span class="hljs-class">&lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">int</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
-<p><code>case1-3</code>中意图创建元组<code>a b c</code>,但创建时指指定了一个内部元素<code>param(dtype A)</code>,因此该元组被视为<code>A</code>类的一个对象</p>
-<h3 id="2-2-访问元组元素"><a href="#2-2-访问元组元素" class="headerlink" title="2.2 访问元组元素"></a>2.2 访问元组元素</h3><h4 id="2-2-1-索引-index"><a href="#2-2-1-索引-index" class="headerlink" title="2.2.1 索引-index"></a>2.2.1 索引-index</h4><p><code>[index:int]</code>使用索引操作符来访问元组中的元素<br><code>1.</code> 正索引 : <code>0-len(tuple)-1</code></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuple1 = (<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(tuple1[<span class="hljs-number">2</span>])<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
-<p><code>2.</code> 负索引</p>
-<h4 id="2-2-2-切片"><a href="#2-2-2-切片" class="headerlink" title="2.2.2 切片"></a>2.2.2 切片</h4><p><code>:</code>使用切片操作符</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuple1 = (<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(tuple1[<span class="hljs-number">1</span>:])<br>(<span class="hljs-number">1</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])<br></code></pre></td></tr></table></figure>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p><code>1.</code> <code>enumerate()</code>: 将元组内所有对象及其索引枚举,以元组的形式返回</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">enumerate</span>(tuple1).__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">enumerate</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
-<p><code>2.</code> <code>tuple()</code>: 将序列（元组，字符串，字典）转换为元组</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>list1 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-string">&#x27;aa&#x27;</span>,(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)]<br><span class="hljs-meta">&gt;&gt;&gt; </span>tp1 = <span class="hljs-built_in">tuple</span>(list1)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(list1.__class__, tp1.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">list</span>&#x27;&gt; &lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">tuple</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
-<p><code>3.</code> <code>sorted</code>: 返回一个排序元组</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuplle1 = (<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">0</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">sorted</span>(tuplle1))<br>[<span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>参考资料1
-<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
-      <categories>
-        <category>Python</category>
-        <category>basic</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Pandas--基础</title>
     <url>/2021/07/07/Python/basic/Pandas%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h1 id="2142"><a href="#2142" class="headerlink" title="2142"></a>2142</h1><h1 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h1><h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><p>pandas有两种数据结构：Series and dataframe数据框</p>
@@ -1171,23 +1130,38 @@ turns out<figure class="highlight python"><table><tr><td class="code"><pre><code
       </tags>
   </entry>
   <entry>
-    <title>python--函数</title>
-    <url>/2021/07/10/Python/basic/%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="函数-1"><a href="#函数-1" class="headerlink" title="函数"></a>函数</h2><p>–</p>
-<h2 id="函数参数"><a href="#函数参数" class="headerlink" title="函数参数"></a>函数参数</h2><hr>
-<h3 id="参数类型"><a href="#参数类型" class="headerlink" title="参数类型"></a>参数类型</h3><span id="more"></span>
-<h4 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h4><ul>
-<li>定义函数时设置默认值,则调用函数时不需要指定参数值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func</span>(<span class="hljs-params">a = <span class="hljs-number">1</span>, b = <span class="hljs-number">4</span></span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> a * b<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func())<br><span class="hljs-number">4</span><br></code></pre></td></tr></table></figure></li>
-<li>定义函数时设置默认值,调用函数指定他值,则他值覆盖默认值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func</span>(<span class="hljs-params">a = <span class="hljs-number">1</span>, b = <span class="hljs-number">4</span></span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> a * b<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func())<br><span class="hljs-number">4</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func(<span class="hljs-number">2</span>, <span class="hljs-number">5</span>))<br><span class="hljs-number">10</span><br></code></pre></td></tr></table></figure>
-<h4 id="关键字参数-参数关键字"><a href="#关键字参数-参数关键字" class="headerlink" title="关键字参数(参数关键字)"></a>关键字参数(参数关键字)</h4></li>
-<li>调用函数传入参数时,若不指定各传入值对应参数名,则传入值会按照默认顺序(函数定义式中的参数顺序)进行参数赋值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func2</span>(<span class="hljs-params">a, b, c, d</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span>(a * <span class="hljs-number">1000</span> + b * <span class="hljs-number">100</span> + c * <span class="hljs-number">10</span> + d)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>))<br><span class="hljs-number">1234</span><br></code></pre></td></tr></table></figure></li>
-<li>调用函数传入参数时,指定参数关键字则不用在意参数传入顺序<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func2</span>(<span class="hljs-params">a, b, c, d</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span>(a * <span class="hljs-number">1000</span> + b * <span class="hljs-number">100</span> + c * <span class="hljs-number">10</span> + d)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>))<br><span class="hljs-number">1234</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(d=<span class="hljs-number">4</span>, a=<span class="hljs-number">1</span>, c=<span class="hljs-number">3</span>, b=<span class="hljs-number">2</span>))<br><span class="hljs-number">1234</span><br></code></pre></td></tr></table></figure>
-<h4 id="任意参数"><a href="#任意参数" class="headerlink" title="任意参数"></a>任意参数</h4><code>1.</code> 在任意参数前添加<code>*</code>标定此参数为任意参数</li>
-<li>它将非关键字的参数作为元组传入函数内部<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func2</span>(<span class="hljs-params">a, b, c, d</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span>(a * <span class="hljs-number">1000</span> + b * <span class="hljs-number">100</span> + c * <span class="hljs-number">10</span> + d)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>))<br><span class="hljs-number">1234</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(d=<span class="hljs-number">4</span>, a=<span class="hljs-number">1</span>, c=<span class="hljs-number">3</span>, b=<span class="hljs-number">2</span>))<br><span class="hljs-number">1234</span><br></code></pre></td></tr></table></figure>
-<code>2.</code> <code>**kwargs</code> 用以传递任意关键字参数<code>(kew = ars)</code></li>
-<li>将带传入参数及其关键字以<code>&#39;&#39;键值对&#39;&#39;</code>形式传入</li>
-<li>传入参数及其关键字被转换为<code>dict</code>传入函数内部,通过关键字定位参数值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func4</span>(<span class="hljs-params">**kwargs</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(kwargs.__class__)<br><span class="hljs-meta">... </span>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> kwargs:<br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;this is &#x27;</span> + <span class="hljs-built_in">str</span>(i) + <span class="hljs-string">&#x27; and its arg = &#x27;</span> +<span class="hljs-built_in">str</span>(kwargs[i]))<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>func4(name = <span class="hljs-string">&#x27;markilily&#x27;</span>,age = <span class="hljs-number">120</span>)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">dict</span>&#x27;&gt;</span><br><span class="hljs-class"><span class="hljs-title">this</span> <span class="hljs-title">is</span> <span class="hljs-title">name</span> <span class="hljs-title">and</span> <span class="hljs-title">its</span> <span class="hljs-title">arg</span> = <span class="hljs-title">markilily</span></span><br><span class="hljs-class"><span class="hljs-title">this</span> <span class="hljs-title">is</span> <span class="hljs-title">age</span> <span class="hljs-title">and</span> <span class="hljs-title">its</span> <span class="hljs-title">arg</span> = 120</span><br></code></pre></td></tr></table></figure></li>
+    <title>Pyhont--字典</title>
+    <url>/2021/07/07/Python/basic/%E5%AD%97%E5%85%B8/</url>
+    <content><![CDATA[<h1 id="字典-Dictionary"><a href="#字典-Dictionary" class="headerlink" title="字典-Dictionary"></a>字典-Dictionary</h1><p>字典的基本性质:</p>
+<ul>
+<li>字典是python的内置数据类型</li>
+<li>字典的数据是键值对一一对应,根据键索引指定值<span id="more"></span>
+<h2 id="创建字典"><a href="#创建字典" class="headerlink" title="创建字典"></a>创建字典</h2><code>1.</code> 使用<code>&#123;&#125;</code>创建字典,声明其类型</li>
+<li>字典键是不可变数据类型,用元组或不可变集合创建</li>
+<li>字典值是可变数据类型<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>dict1 = &#123;<span class="hljs-number">1</span>:<span class="hljs-string">&#x27;value1&#x27;</span>, <span class="hljs-string">&#x27;key2&#x27;</span>:<span class="hljs-string">&#x27;value2&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(dict1))<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">dict</span>&#x27;&gt;</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">print</span>(<span class="hljs-params">dict1[<span class="hljs-number">1</span>]</span>)</span><br><span class="hljs-class"><span class="hljs-title">value1</span></span><br></code></pre></td></tr></table></figure></li>
 </ul>
+<blockquote>
+<p>键只能是不可变数据类型:元组 不可变集合<br>值都可</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>dict1 = &#123;tp1:tp1&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(dict1, dict1.__class__)<br>&#123;(<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">11</span>): (<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">11</span>)&#125; &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">dict</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
+<p><code>2.</code> 使用<code>dict()</code>初始化字典</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;Blue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">2</span>]<br><span class="hljs-string">&#x27;Pink&#x27;</span><br></code></pre></td></tr></table></figure>
+<h2 id="访问字典"><a href="#访问字典" class="headerlink" title="访问字典"></a>访问字典</h2><h3 id="键"><a href="#键" class="headerlink" title="键"></a>键</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;Blue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">2</span>]<br><span class="hljs-string">&#x27;Pink&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">3</span>]<br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>KeyError: <span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
+<p><code>[]</code>索引找不到值则报错</p>
+<h3 id="get"><a href="#get" class="headerlink" title="get()"></a><code>get()</code></h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;Blue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">2</span>]<br><span class="hljs-string">&#x27;Pink&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">1</span>]<br><span class="hljs-string">&#x27;Blue&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>d.get(<span class="hljs-number">1</span>)<br><span class="hljs-string">&#x27;Blue&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">3</span>]<br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>KeyError: <span class="hljs-number">3</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>d.get(<span class="hljs-number">3</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(d.get(<span class="hljs-number">3</span>))<br><span class="hljs-literal">None</span><br></code></pre></td></tr></table></figure>
+<p>当<code>.get()</code>方法找不到值,则返回<code>None</code></p>
+<h3 id="更新值"><a href="#更新值" class="headerlink" title="更新值"></a>更新值</h3><p>使用键定位,更新值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;Blue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">1</span>] = <span class="hljs-string">&#x27;cjblue&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(d)<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>&#125;<br></code></pre></td></tr></table></figure>
+<p>直接使用新键,则添加新值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">5</span>] = <span class="hljs-string">&#x27;marklily&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>, <span class="hljs-number">5</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h3><p><code>1.</code> <code>pop()</code> 删除并返回给定键的值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>, <span class="hljs-number">5</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>d.pop(<span class="hljs-number">2</span>)<br><span class="hljs-string">&#x27;Pink&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">5</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>&#125;<br></code></pre></td></tr></table></figure>
+<p><code>2.</code> <code>popitem()</code> 删除并返回任意一个键值对</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">5</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;pink&#x27;</span>, <span class="hljs-number">3</span>: <span class="hljs-string">&#x27;floyd&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>d.popitem()<br>(<span class="hljs-number">3</span>, <span class="hljs-string">&#x27;floyd&#x27;</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">5</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;pink&#x27;</span>&#125;<br></code></pre></td></tr></table></figure>
+<p><code>3.</code> <code>clear()</code> 删除所有元素但不删除字典本身</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d.clear()<br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;&#125;<br></code></pre></td></tr></table></figure>
+<p><code>4.</code> <code>del</code> 删除特定键值对或删除整个字典</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">5</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;pink&#x27;</span>, <span class="hljs-number">3</span>: <span class="hljs-string">&#x27;floyd&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">del</span> d[<span class="hljs-number">1</span>]<br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">5</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;pink&#x27;</span>, <span class="hljs-number">3</span>: <span class="hljs-string">&#x27;floyd&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">del</span> d<br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>NameError: name <span class="hljs-string">&#x27;d&#x27;</span> <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> defined<br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Python</category>
@@ -1260,39 +1234,66 @@ python内置此方法的输出为元素长度:<figure class="highlight python"><
       </tags>
   </entry>
   <entry>
-    <title>Pyhont--字典</title>
-    <url>/2021/07/07/Python/basic/%E5%AD%97%E5%85%B8/</url>
-    <content><![CDATA[<h1 id="字典-Dictionary"><a href="#字典-Dictionary" class="headerlink" title="字典-Dictionary"></a>字典-Dictionary</h1><p>字典的基本性质:</p>
-<ul>
-<li>字典是python的内置数据类型</li>
-<li>字典的数据是键值对一一对应,根据键索引指定值<span id="more"></span>
-<h2 id="创建字典"><a href="#创建字典" class="headerlink" title="创建字典"></a>创建字典</h2><code>1.</code> 使用<code>&#123;&#125;</code>创建字典,声明其类型</li>
-<li>字典键是不可变数据类型,用元组或不可变集合创建</li>
-<li>字典值是可变数据类型<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>dict1 = &#123;<span class="hljs-number">1</span>:<span class="hljs-string">&#x27;value1&#x27;</span>, <span class="hljs-string">&#x27;key2&#x27;</span>:<span class="hljs-string">&#x27;value2&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(dict1))<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">dict</span>&#x27;&gt;</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">print</span>(<span class="hljs-params">dict1[<span class="hljs-number">1</span>]</span>)</span><br><span class="hljs-class"><span class="hljs-title">value1</span></span><br></code></pre></td></tr></table></figure></li>
+    <title>python--函数</title>
+    <url>/2021/07/10/Python/basic/%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="函数-1"><a href="#函数-1" class="headerlink" title="函数"></a>函数</h2><p>–</p>
+<h2 id="函数参数"><a href="#函数参数" class="headerlink" title="函数参数"></a>函数参数</h2><hr>
+<h3 id="参数类型"><a href="#参数类型" class="headerlink" title="参数类型"></a>参数类型</h3><span id="more"></span>
+<h4 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h4><ul>
+<li>定义函数时设置默认值,则调用函数时不需要指定参数值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func</span>(<span class="hljs-params">a = <span class="hljs-number">1</span>, b = <span class="hljs-number">4</span></span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> a * b<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func())<br><span class="hljs-number">4</span><br></code></pre></td></tr></table></figure></li>
+<li>定义函数时设置默认值,调用函数指定他值,则他值覆盖默认值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func</span>(<span class="hljs-params">a = <span class="hljs-number">1</span>, b = <span class="hljs-number">4</span></span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> a * b<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func())<br><span class="hljs-number">4</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func(<span class="hljs-number">2</span>, <span class="hljs-number">5</span>))<br><span class="hljs-number">10</span><br></code></pre></td></tr></table></figure>
+<h4 id="关键字参数-参数关键字"><a href="#关键字参数-参数关键字" class="headerlink" title="关键字参数(参数关键字)"></a>关键字参数(参数关键字)</h4></li>
+<li>调用函数传入参数时,若不指定各传入值对应参数名,则传入值会按照默认顺序(函数定义式中的参数顺序)进行参数赋值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func2</span>(<span class="hljs-params">a, b, c, d</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span>(a * <span class="hljs-number">1000</span> + b * <span class="hljs-number">100</span> + c * <span class="hljs-number">10</span> + d)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>))<br><span class="hljs-number">1234</span><br></code></pre></td></tr></table></figure></li>
+<li>调用函数传入参数时,指定参数关键字则不用在意参数传入顺序<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func2</span>(<span class="hljs-params">a, b, c, d</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span>(a * <span class="hljs-number">1000</span> + b * <span class="hljs-number">100</span> + c * <span class="hljs-number">10</span> + d)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>))<br><span class="hljs-number">1234</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(d=<span class="hljs-number">4</span>, a=<span class="hljs-number">1</span>, c=<span class="hljs-number">3</span>, b=<span class="hljs-number">2</span>))<br><span class="hljs-number">1234</span><br></code></pre></td></tr></table></figure>
+<h4 id="任意参数"><a href="#任意参数" class="headerlink" title="任意参数"></a>任意参数</h4><code>1.</code> 在任意参数前添加<code>*</code>标定此参数为任意参数</li>
+<li>它将非关键字的参数作为元组传入函数内部<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func2</span>(<span class="hljs-params">a, b, c, d</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span>(a * <span class="hljs-number">1000</span> + b * <span class="hljs-number">100</span> + c * <span class="hljs-number">10</span> + d)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>))<br><span class="hljs-number">1234</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(d=<span class="hljs-number">4</span>, a=<span class="hljs-number">1</span>, c=<span class="hljs-number">3</span>, b=<span class="hljs-number">2</span>))<br><span class="hljs-number">1234</span><br></code></pre></td></tr></table></figure>
+<code>2.</code> <code>**kwargs</code> 用以传递任意关键字参数<code>(kew = ars)</code></li>
+<li>将带传入参数及其关键字以<code>&#39;&#39;键值对&#39;&#39;</code>形式传入</li>
+<li>传入参数及其关键字被转换为<code>dict</code>传入函数内部,通过关键字定位参数值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func4</span>(<span class="hljs-params">**kwargs</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(kwargs.__class__)<br><span class="hljs-meta">... </span>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> kwargs:<br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;this is &#x27;</span> + <span class="hljs-built_in">str</span>(i) + <span class="hljs-string">&#x27; and its arg = &#x27;</span> +<span class="hljs-built_in">str</span>(kwargs[i]))<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>func4(name = <span class="hljs-string">&#x27;markilily&#x27;</span>,age = <span class="hljs-number">120</span>)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">dict</span>&#x27;&gt;</span><br><span class="hljs-class"><span class="hljs-title">this</span> <span class="hljs-title">is</span> <span class="hljs-title">name</span> <span class="hljs-title">and</span> <span class="hljs-title">its</span> <span class="hljs-title">arg</span> = <span class="hljs-title">markilily</span></span><br><span class="hljs-class"><span class="hljs-title">this</span> <span class="hljs-title">is</span> <span class="hljs-title">age</span> <span class="hljs-title">and</span> <span class="hljs-title">its</span> <span class="hljs-title">arg</span> = 120</span><br></code></pre></td></tr></table></figure></li>
 </ul>
-<blockquote>
-<p>键只能是不可变数据类型:元组 不可变集合<br>值都可</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>dict1 = &#123;tp1:tp1&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(dict1, dict1.__class__)<br>&#123;(<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">11</span>): (<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">11</span>)&#125; &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">dict</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
-<p><code>2.</code> 使用<code>dict()</code>初始化字典</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;Blue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">2</span>]<br><span class="hljs-string">&#x27;Pink&#x27;</span><br></code></pre></td></tr></table></figure>
-<h2 id="访问字典"><a href="#访问字典" class="headerlink" title="访问字典"></a>访问字典</h2><h3 id="键"><a href="#键" class="headerlink" title="键"></a>键</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;Blue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">2</span>]<br><span class="hljs-string">&#x27;Pink&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">3</span>]<br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>KeyError: <span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
-<p><code>[]</code>索引找不到值则报错</p>
-<h3 id="get"><a href="#get" class="headerlink" title="get()"></a><code>get()</code></h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;Blue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">2</span>]<br><span class="hljs-string">&#x27;Pink&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">1</span>]<br><span class="hljs-string">&#x27;Blue&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>d.get(<span class="hljs-number">1</span>)<br><span class="hljs-string">&#x27;Blue&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">3</span>]<br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>KeyError: <span class="hljs-number">3</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>d.get(<span class="hljs-number">3</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(d.get(<span class="hljs-number">3</span>))<br><span class="hljs-literal">None</span><br></code></pre></td></tr></table></figure>
-<p>当<code>.get()</code>方法找不到值,则返回<code>None</code></p>
-<h3 id="更新值"><a href="#更新值" class="headerlink" title="更新值"></a>更新值</h3><p>使用键定位,更新值</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;Blue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">1</span>] = <span class="hljs-string">&#x27;cjblue&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(d)<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>&#125;<br></code></pre></td></tr></table></figure>
-<p>直接使用新键,则添加新值</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>d[<span class="hljs-number">5</span>] = <span class="hljs-string">&#x27;marklily&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>, <span class="hljs-number">5</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h3><p><code>1.</code> <code>pop()</code> 删除并返回给定键的值</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;Pink&#x27;</span>, <span class="hljs-number">5</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>d.pop(<span class="hljs-number">2</span>)<br><span class="hljs-string">&#x27;Pink&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">5</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>&#125;<br></code></pre></td></tr></table></figure>
-<p><code>2.</code> <code>popitem()</code> 删除并返回任意一个键值对</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">5</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;pink&#x27;</span>, <span class="hljs-number">3</span>: <span class="hljs-string">&#x27;floyd&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span>d.popitem()<br>(<span class="hljs-number">3</span>, <span class="hljs-string">&#x27;floyd&#x27;</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">5</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;pink&#x27;</span>&#125;<br></code></pre></td></tr></table></figure>
-<p><code>3.</code> <code>clear()</code> 删除所有元素但不删除字典本身</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d.clear()<br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;&#125;<br></code></pre></td></tr></table></figure>
-<p><code>4.</code> <code>del</code> 删除特定键值对或删除整个字典</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;cjblue&#x27;</span>, <span class="hljs-number">5</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;pink&#x27;</span>, <span class="hljs-number">3</span>: <span class="hljs-string">&#x27;floyd&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">del</span> d[<span class="hljs-number">1</span>]<br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>&#123;<span class="hljs-number">5</span>: <span class="hljs-string">&#x27;marklily&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;pink&#x27;</span>, <span class="hljs-number">3</span>: <span class="hljs-string">&#x27;floyd&#x27;</span>&#125;<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">del</span> d<br><span class="hljs-meta">&gt;&gt;&gt; </span>d<br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>NameError: name <span class="hljs-string">&#x27;d&#x27;</span> <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> defined<br></code></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>Python</category>
+        <category>basic</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python--元组</title>
+    <url>/2021/07/07/Python/basic/%E5%85%83%E7%BB%84/</url>
+    <content><![CDATA[<h1 id="列表与元组"><a href="#列表与元组" class="headerlink" title="列表与元组"></a>列表与元组</h1><ul>
+<li>当元素类型不一时使用元组,当类型一样则使用列表 <sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="参考资料1
+">[1]</span></a></sup></li>
+<li>元组遍历更快</li>
+<li>使用元组元素(不可变)可作为字典的键值,而列表不可</li>
+<li>元组保证了数据的安全</li>
+</ul>
+<span id="more"></span>
+<h2 id="1-列表"><a href="#1-列表" class="headerlink" title="1 列表"></a>1 列表</h2><p>略</p>
+<h2 id="2-元组-tuple"><a href="#2-元组-tuple" class="headerlink" title="2 元组-tuple"></a>2 元组-<code>tuple</code></h2><p>元组类似于列表,但区别在于元组中的元素是不可变的</p>
+<h3 id="2-1-创建一个元组"><a href="#2-1-创建一个元组" class="headerlink" title="2.1 创建一个元组"></a>2.1 创建一个元组</h3><p><code>1.</code> 使用<code>()</code>创建一个元组,使用<code>,</code>间隔元素<br><code>2.</code> 类似于列表,元组中的元素可以是任何数据类型</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuple1 = (<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(tuple1, tuple1.__class__)<br>(<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]) &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">tuple</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>因为元组不能改变,所以创建伊始就应该指定正确的元素</p>
+</blockquote>
+<p><code>3.</code> 创建元组时只指明一个元素<code>(dtype A)</code>,则该元组(你意图创建的)会被视为<code>A</code>的对象</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># case1</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>a = (<span class="hljs-string">&#x27;aa&#x27;</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">str</span>&#x27;&gt;</span><br><span class="hljs-class"># <span class="hljs-title">case2</span></span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">b</span> = (<span class="hljs-params">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]</span>)</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">print</span>(<span class="hljs-params">b.__class__</span>)</span><br><span class="hljs-class">&lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">list</span>&#x27;&gt;</span><br><span class="hljs-class"># <span class="hljs-title">case3</span></span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">c</span> = (<span class="hljs-params"><span class="hljs-number">1</span></span>)</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">print</span>(<span class="hljs-params">c.__class__</span>)</span><br><span class="hljs-class">&lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">int</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
+<p><code>case1-3</code>中意图创建元组<code>a b c</code>,但创建时指指定了一个内部元素<code>param(dtype A)</code>,因此该元组被视为<code>A</code>类的一个对象</p>
+<h3 id="2-2-访问元组元素"><a href="#2-2-访问元组元素" class="headerlink" title="2.2 访问元组元素"></a>2.2 访问元组元素</h3><h4 id="2-2-1-索引-index"><a href="#2-2-1-索引-index" class="headerlink" title="2.2.1 索引-index"></a>2.2.1 索引-index</h4><p><code>[index:int]</code>使用索引操作符来访问元组中的元素<br><code>1.</code> 正索引 : <code>0-len(tuple)-1</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuple1 = (<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(tuple1[<span class="hljs-number">2</span>])<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
+<p><code>2.</code> 负索引</p>
+<h4 id="2-2-2-切片"><a href="#2-2-2-切片" class="headerlink" title="2.2.2 切片"></a>2.2.2 切片</h4><p><code>:</code>使用切片操作符</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuple1 = (<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(tuple1[<span class="hljs-number">1</span>:])<br>(<span class="hljs-number">1</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])<br></code></pre></td></tr></table></figure>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p><code>1.</code> <code>enumerate()</code>: 将元组内所有对象及其索引枚举,以元组的形式返回</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">enumerate</span>(tuple1).__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">enumerate</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
+<p><code>2.</code> <code>tuple()</code>: 将序列（元组，字符串，字典）转换为元组</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>list1 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-string">&#x27;aa&#x27;</span>,(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)]<br><span class="hljs-meta">&gt;&gt;&gt; </span>tp1 = <span class="hljs-built_in">tuple</span>(list1)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(list1.__class__, tp1.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">list</span>&#x27;&gt; &lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">tuple</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
+<p><code>3.</code> <code>sorted</code>: 返回一个排序元组</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuplle1 = (<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">0</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">sorted</span>(tuplle1))<br>[<span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>参考资料1
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
       <categories>
         <category>Python</category>
         <category>basic</category>
@@ -1388,26 +1389,6 @@ python内置此方法的输出为元素长度:<figure class="highlight python"><
       </tags>
   </entry>
   <entry>
-    <title>python--递归</title>
-    <url>/2021/07/07/Python/basic/%E9%80%92%E5%BD%92/</url>
-    <content><![CDATA[<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><span id="more"></span>
-<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>计算阶乘</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">cal</span>(<span class="hljs-params">n</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">if</span> n == <span class="hljs-number">1</span>:<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">else</span>:<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">return</span> n * cal(n - <span class="hljs-number">1</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(cal(<span class="hljs-number">4</span>))<br><span class="hljs-number">24</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(cal(<span class="hljs-number">6</span>))<br><span class="hljs-number">720</span><br></code></pre></td></tr></table></figure>
-<ul>
-<li>递归函数内部会调用函数本身</li>
-<li>某次调用递归函数时,内部调用本身时会指定参数</li>
-<li>在递归函数中,应有一个结束参数信号,在每次递归中,参数不断靠近该信号<h2 id="递归次数限制"><a href="#递归次数限制" class="headerlink" title="递归次数限制"></a>递归次数限制</h2><code>python</code>递归次数限制为<code>3000</code>次,超出此次数则会触发<code>RecursionError</code><h2 id="移除递归次数限制"><a href="#移除递归次数限制" class="headerlink" title="移除递归次数限制"></a>移除递归次数限制</h2><code>sys.setrecursionlimit(5000)</code> 设置次数限制为我们所需要的次数</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>basic</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>python--集合</title>
     <url>/2021/07/07/Python/basic/%E9%9B%86%E5%90%88/</url>
     <content><![CDATA[<h1 id="集合-set"><a href="#集合-set" class="headerlink" title="集合-set"></a>集合-set</h1><p>集合的基本性质:<br><code>1.</code> 集合包含了不重复且无序的元素<br><code>2.</code> 集合是可变数据类型  </p>
@@ -1446,6 +1427,26 @@ python内置此方法的输出为元素长度:<figure class="highlight python"><
 <h2 id="3-不可变集合"><a href="#3-不可变集合" class="headerlink" title="3 不可变集合"></a>3 不可变集合</h2><ul>
 <li>由于集合的元素可变,所以无法作为字典的键值</li>
 <li>采用<code>frozenset()</code>可以创建不可变元素的不可变集合  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>a = <span class="hljs-built_in">frozenset</span>(&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a)<br><span class="hljs-built_in">frozenset</span>(&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125;)<br></code></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>basic</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python--递归</title>
+    <url>/2021/07/07/Python/basic/%E9%80%92%E5%BD%92/</url>
+    <content><![CDATA[<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><span id="more"></span>
+<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>计算阶乘</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">cal</span>(<span class="hljs-params">n</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">if</span> n == <span class="hljs-number">1</span>:<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">else</span>:<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">return</span> n * cal(n - <span class="hljs-number">1</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(cal(<span class="hljs-number">4</span>))<br><span class="hljs-number">24</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(cal(<span class="hljs-number">6</span>))<br><span class="hljs-number">720</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>递归函数内部会调用函数本身</li>
+<li>某次调用递归函数时,内部调用本身时会指定参数</li>
+<li>在递归函数中,应有一个结束参数信号,在每次递归中,参数不断靠近该信号<h2 id="递归次数限制"><a href="#递归次数限制" class="headerlink" title="递归次数限制"></a>递归次数限制</h2><code>python</code>递归次数限制为<code>3000</code>次,超出此次数则会触发<code>RecursionError</code><h2 id="移除递归次数限制"><a href="#移除递归次数限制" class="headerlink" title="移除递归次数限制"></a>移除递归次数限制</h2><code>sys.setrecursionlimit(5000)</code> 设置次数限制为我们所需要的次数</li>
 </ul>
 ]]></content>
       <categories>
