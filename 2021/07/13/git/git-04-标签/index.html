@@ -14,13 +14,11 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="列表推导式列表推导式基础
-result = [ &amp;lt;expression&amp;gt; for &amp;lt;element&amp;gt; in &amp;lt;iterable&amp;gt; ]
-根据现有迭代器类iterable">
+  <meta name="description" content="我们每次提交commit都会生成对应的commit id方便我们进行回溯 ，同样我们也可以手动为每个版本标定标签">
   <meta name="author" content="CJBLUE">
   <meta name="keywords" content="">
   
-  <title>python--列表推导式 - MarkLily</title>
+  <title>git--初始化本地仓库 - MarkLily</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -160,12 +158,12 @@ result = [ &amp;lt;expression&amp;gt; for &amp;lt;element&amp;gt; in &amp;lt;ite
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/fluidPics/woodstock.jpg') no-repeat center center;
+         style="background: url('/img/fluidPics/hotel.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="python--列表推导式">
+            <span class="h2" id="subtitle" title="git--初始化本地仓库">
               
             </span>
 
@@ -175,8 +173,8 @@ result = [ &amp;lt;expression&amp;gt; for &amp;lt;element&amp;gt; in &amp;lt;ite
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-07-07 15:22" pubdate>
-        2021年7月7日 下午
+      <time datetime="2021-07-13 09:53" pubdate>
+        2021年7月13日 上午
       </time>
     </span>
   
@@ -187,7 +185,7 @@ result = [ &amp;lt;expression&amp;gt; for &amp;lt;element&amp;gt; in &amp;lt;ite
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      362 字
+      515 字
     </span>
   
 
@@ -197,7 +195,7 @@ result = [ &amp;lt;expression&amp;gt; for &amp;lt;element&amp;gt; in &amp;lt;ite
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      7
        分钟
     </span>
   
@@ -227,27 +225,39 @@ result = [ &amp;lt;expression&amp;gt; for &amp;lt;element&amp;gt; in &amp;lt;ite
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">python--列表推导式</h1>
+            <h1 style="display: none">git--初始化本地仓库</h1>
             
             <div class="markdown-body">
-              <h1 id="列表推导式"><a href="#列表推导式" class="headerlink" title="列表推导式"></a>列表推导式</h1><h2 id="列表推导式基础"><a href="#列表推导式基础" class="headerlink" title="列表推导式基础"></a>列表推导式基础</h2><ul>
-<li><code>result = [ &lt;expression&gt; for &lt;element&gt; in &lt;iterable&gt; ]</code></li>
-<li>根据现有迭代器类<code>iterable</code><span id="more"></span></li>
-<li>对其中每个元素<code>element</code></li>
-<li>根据函数<code>expression</code>进行相应变化得到结果元素</li>
-<li>将结果元素立即添加到<code>result</code>中<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>testSquares = [x * x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> (<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>)]<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(testSquares)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>]<br></code></pre></td></tr></table></figure>
-<h2 id="if条件-可选"><a href="#if条件-可选" class="headerlink" title="if条件(可选):"></a><code>if</code>条件(可选):</h2><code>result = [ &lt;expression&gt; for &lt;element&gt; in &lt;iterable&gt; if &lt;condition&gt; ]</code></li>
-<li>每个元素在进行<code>expression</code>前。</li>
-<li>所有结果将在新列表中立即返回。</li>
-<li>Python 中的生成器表达式是懒惰地计算的，但是列表推导会立即施加到整个迭代器，它消耗与迭代器长度成比例的内存。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>testSquares = [x * x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> (<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>) <span class="hljs-keyword">if</span> x % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>]<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(testSquares)<br>[<span class="hljs-number">4</span>, <span class="hljs-number">16</span>]<br></code></pre></td></tr></table></figure>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">*</span> 根据列表<span class="hljs-code">``(1,2,3,4,5)`</span>` 创建一个平方数列表,<br><span class="hljs-bullet">*</span> 只选择其中的偶数进行创建<br></code></pre></td></tr></table></figure>
-<h2 id="else"><a href="#else" class="headerlink" title="else:"></a><code>else</code>:</h2><code>if...else</code> 判断是在 <code>for</code> 循环之前使用，而非以后：</li>
-<li><code>if...else</code>在<code>for</code>后 报错<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>testStr = [x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;abcd&#x27;</span> <span class="hljs-keyword">if</span> x <span class="hljs-keyword">is</span> <span class="hljs-string">&#x27;a&#x27;</span> <span class="hljs-keyword">else</span> <span class="hljs-string">&#x27;b&#x27;</span>]<br>  File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="hljs-number">1</span><br>    testStr = [x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;abcd&#x27;</span> <span class="hljs-keyword">if</span> x <span class="hljs-keyword">is</span> <span class="hljs-string">&#x27;a&#x27;</span> <span class="hljs-keyword">else</span> <span class="hljs-string">&#x27;b&#x27;</span>]<br>                                                ^<br>SyntaxError: invalid syntax<br></code></pre></td></tr></table></figure></li>
-<li><code>if...else</code> 在 <code>for</code> 前</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>testStr = [x <span class="hljs-keyword">if</span> x <span class="hljs-keyword">is</span> <span class="hljs-string">&#x27;a&#x27;</span> <span class="hljs-keyword">else</span> <span class="hljs-string">&#x27;b&#x27;</span> <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;abcd&#x27;</span>]<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(testStr)<br>[<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>]<br></code></pre></td></tr></table></figure>
+              <p>我们每次提交<code>commit</code>都会生成对应的<code>commit id</code>方便我们进行回溯 ，同样我们也可以手动为每个版本标定标签</p>
+<span id="more"></span>
+<h2 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h2><p>使用命令<code>git tag &lt;name&gt;</code></p>
+<h4 id="进入需要标记版本的分支"><a href="#进入需要标记版本的分支" class="headerlink" title="进入需要标记版本的分支"></a>进入需要标记版本的分支</h4><p>此处我们假定对<code>master</code>进行版本标记,进入<code>master</code>分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs git">26676@DESKTOP-JCSGJPO MINGW64 /a/git/gitlearn (master)<br>$ git checkout master<br>Switched to branch &#x27;master&#x27;<br></code></pre></td></tr></table></figure>
 
+<p>使用命令进行版本标记</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs git">26676@DESKTOP-JCSGJPO MINGW64 /a/git/gitlearn (master)<br>$ git tag v1.0<br></code></pre></td></tr></table></figure>
 
+<p>查看当前分支<code>master</code>的版本信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs git">26676@DESKTOP-JCSGJPO MINGW64 /a/git/gitlearn (master)<br>$ git tag<br>v1.0<br></code></pre></td></tr></table></figure>
+
+<h2 id="查看标签"><a href="#查看标签" class="headerlink" title="查看标签"></a>查看标签</h2><h4 id="git-tag"><a href="#git-tag" class="headerlink" title="git tag"></a><code>git tag</code></h4><p>使用<code>git tag</code>查看当前分支标签记录 :</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git tag<br>v1.0<br>v2.0<br></code></pre></td></tr></table></figure>
+
+<p>但是此记录不是按照添加时间记录, 而是按照字母排序</p>
+<h4 id="git-show-lt-tagname-gt"><a href="#git-show-lt-tagname-gt" class="headerlink" title="git show &lt;tagname&gt;"></a><code>git show &lt;tagname&gt;</code></h4><p>使用<code>git show &lt;tagname&gt;</code>查看各标签详细信息 :</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git show v1.0<br>commit 199f71f3a9a825671b44a0790b619c531902a271 (tag: v1.0)<br>Author: MarkLilyC &lt;2667602812@qq.com&gt;<br>Date:   Mon Jul 12 14:30:56 2021 +0800<br><br>    AA<br><br>diff --git a/test.txt b/test.txt<br>index 1b63dd4..136aecc 100644<br>--- a/test.txt<br>+++ b/test.txt<br>@@ -1,3 +1,5 @@<br> public line...<br> --------------<br> add in A<br>+--------------<br>+add in B<br></code></pre></td></tr></table></figure>
+
+<h2 id="追加标签"><a href="#追加标签" class="headerlink" title="追加标签"></a>追加标签</h2><p>每次<code>git tag &lt;name&gt;</code>都是默认添加在最新的<code>commit</code>的版本</p>
+<p>当我们某次<code>commit</code>后忘记添加标签,可以向该版本追加标签</p>
+<h4 id="我们先随意进行几次提交"><a href="#我们先随意进行几次提交" class="headerlink" title="我们先随意进行几次提交"></a>我们先随意进行几次提交</h4><h4 id="查看日志记录"><a href="#查看日志记录" class="headerlink" title="查看日志记录"></a>查看日志记录</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git log --pretty=oneline --abbrev-commit<br>8244163 (HEAD -&gt; master, tag: v2.0) commit to test recall from commit<br>abfb3b5 commit this testfile to comiit hist<br>3699296 aa<br>1dd8abb aa<br>543a126 aa<br>7abf4b6 add a new line by vim<br>00e7919 add a test.txt to repo<br>40442a5 AA<br>85f2fbb ADD T2.TXT<br>bd8bfc5 add a line id = 3<br>d5fe445 add a line id = 2<br>fb84050 add a line id = 1<br>2e7ebbb add t.txt to the repo<br>440e71c remove a file<br>1e71bf1 rename<br>8377709 rename<br>8b0aa8b aa<br>199f71f (tag: v1.0) AA<br>0bbb931 aa<br></code></pre></td></tr></table></figure>
+
+<h4 id="追加标签-1"><a href="#追加标签-1" class="headerlink" title="追加标签"></a>追加标签</h4><p>使用<code>git tag &lt;name&gt; commit_id</code> 对指定<code>commit</code>进行标签 :</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs git">26676@DESKTOP-JCSGJPO MINGW64 /a/Git/gitlearn (master)<br>$ git tag v1.5 1dd8abb<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git tag<br>v1.0<br>v1.5<br>v2.0<br></code></pre></td></tr></table></figure>
+<p>可见新标签已被添加</p>
+<h2 id="删除标签"><a href="#删除标签" class="headerlink" title="删除标签"></a>删除标签</h2><p>使用<code>git tag -d &lt;name&gt;</code>删除指定标签 :</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs git">26676@DESKTOP-JCSGJPO MINGW64 /a/Git/gitlearn (master)<br>$ git tag -d v1.5<br>Deleted tag &#x27;v1.5&#x27; (was 1dd8abb)<br><br>26676@DESKTOP-JCSGJPO MINGW64 /a/Git/gitlearn (master)<br>$ git tag<br>v1.0<br>v2.0<br></code></pre></td></tr></table></figure>
+<p>可见<code>v1.5</code>被成功删除</p>
 
             </div>
             <hr>
@@ -257,9 +267,7 @@ result = [ &amp;lt;expression&amp;gt; for &amp;lt;element&amp;gt; in &amp;lt;ite
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/Python/">Python</a>
-                    
-                      <a class="hover-with-bg" href="/categories/Python/advance/">advance</a>
+                      <a class="hover-with-bg" href="/categories/Git/">Git</a>
                     
                   </div>
                 
@@ -267,7 +275,7 @@ result = [ &amp;lt;expression&amp;gt; for &amp;lt;element&amp;gt; in &amp;lt;ite
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Python/">Python</a>
+                      <a class="hover-with-bg" href="/tags/Git/">Git</a>
                     
                   </div>
                 
@@ -284,18 +292,12 @@ result = [ &amp;lt;expression&amp;gt; for &amp;lt;element&amp;gt; in &amp;lt;ite
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/07/07/Python/advance/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">python--多线程</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/07/07/Python/advance/%E6%95%B0%E6%8D%AE%E6%8B%B7%E8%B4%9D/">
-                        <span class="hidden-mobile">python--拷贝</span>
+                      <a href="/2021/07/13/git/git-03-%E5%88%86%E5%8C%BA%E5%8F%8A%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/">
+                        <span class="hidden-mobile">git--初始化本地仓库</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
