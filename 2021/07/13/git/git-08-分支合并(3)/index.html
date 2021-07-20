@@ -14,11 +14,11 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="当开发分支功能稳定后 ，我们希望将其中新代码添加到主分支 ，此时需要我们进行分支的合并 ">
+  <meta name="description" content="">
   <meta name="author" content="CJBLUE">
   <meta name="keywords" content="">
   
-  <title>git-09-分支合并 - MarkLily</title>
+  <title>git-08-分支合并 - MarkLily</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -158,12 +158,12 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/fluidPics/rollingstones9.jpg') no-repeat center center;
+         style="background: url('/img/fluidPics/uma3.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="git-09-分支合并">
+            <span class="h2" id="subtitle" title="git-08-分支合并">
               
             </span>
 
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.7k 字
+      1.7k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      51
+      26
        分钟
     </span>
   
@@ -225,131 +225,12 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">git-09-分支合并</h1>
+            <h1 style="display: none">git-08-分支合并</h1>
             
             <div class="markdown-body">
-              <p>当开发分支功能稳定后 ，我们希望将其中新代码添加到主分支 ，此时需要我们进行分支的合并 </p>
-<span id="more"></span>
-
-<h1 id="git-merge-分支合并"><a href="#git-merge-分支合并" class="headerlink" title="git merge-分支合并"></a><code><font color='dodgerblue'>git merge</font></code>-分支合并</h1><h2 id="分支图"><a href="#分支图" class="headerlink" title="分支图"></a>分支图</h2><p>我们将描述各个分支间关系及分支更新状态的图称为分支图, 如 ：<br><img src="./img/git1.png" srcset="/img/loading.gif" lazyload alt="git1"></p>
-<h4 id="节点-B1-B3"><a href="#节点-B1-B3" class="headerlink" title="节点-B1-B3"></a>节点-<code>B1-B3</code></h4><p>矩形框代表当前仓库的节点 :</p>
-<ul>
-<li>当前节点作为上次<code>commit</code>的快照(<code>shapshot</code>), 会自动成为下个节点的父节点</li>
-<li>我们此时只需简单将其理解为当前分支的一个版本指针</li>
-</ul>
-<p>即此时我们分支<code>master v1.1</code>是出于节点<code>B3</code>, 上一次的<code>commit</code>信息即其形成的<code>master v1.1</code>的各项信息都存储在节点<code>B3</code></p>
-<h4 id="如何看懂节点图"><a href="#如何看懂节点图" class="headerlink" title="如何看懂节点图"></a>如何看懂节点图</h4><p>上图中的版本更新前进关系是<font color='red'>从左至右</font></p>
-<p>而节点的指向关系是<font color='blue'>从右至左</font></p>
-<ul>
-<li>这是因为每次生成的节点总是指向其父节点, 方便我们回溯</li>
-</ul>
-<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>为方便演示, 我们删掉测试分支, 并在<code>master</code>内将<code>test.txt</code>修改为 :</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">public place<br></code></pre></td></tr></table></figure>
-<p>并提交修改 :</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git add . &amp;&amp; git commit -m &quot;basic prop&quot;<br>[master dc8846c] basic prop<br> 1 file changed, 8 deletions(-)<br></code></pre></td></tr></table></figure>
-
-
-<h4 id="新建测试分支tb"><a href="#新建测试分支tb" class="headerlink" title="新建测试分支tb"></a>新建测试分支<code>tb</code></h4><p>检查此分支内<code>test.txt</code>文件内容 :</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">public place<br></code></pre></td></tr></table></figure>
-
-
-<h2 id="fast-forward快进合并"><a href="#fast-forward快进合并" class="headerlink" title="fast-forward快进合并"></a><code>fast-forward</code>快进合并</h2><h3 id="出现原因"><a href="#出现原因" class="headerlink" title="出现原因"></a>出现原因</h3><h4 id="创建新分支时节点图"><a href="#创建新分支时节点图" class="headerlink" title="创建新分支时节点图"></a>创建新分支时节点图</h4><p><img src="./img/git2.png" srcset="/img/loading.gif" lazyload alt="节点2"><br>此时<code>master</code>与<code>tb</code>都处于节点<code>B3</code>, 两分支文件内容一致</p>
-<h4 id="在新分支进行修改"><a href="#在新分支进行修改" class="headerlink" title="在新分支进行修改"></a>在新分支进行修改</h4><p>我们在<code>tb</code>分支内对<code>test.txt</code>文件进行以下修改 :</p>
-<p><code>1.</code> 添加进行日志检查的内容及<code>commit message</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs git">public place<br>------------<br>add a line to test logging<br></code></pre></td></tr></table></figure>
-<p>提交修改 :</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git add . &amp;&amp; git commit -m &quot;test logging&quot;<br>[tb a4ce0d8] test logging<br> 1 file changed, 2 insertions(+)<br></code></pre></td></tr></table></figure>
-
-<p><code>2.</code> 添加进行日志检查的内容及<code>commit message</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs git">public place<br>------------<br>add a line to test logging<br>------------<br>add a line to test merging<br></code></pre></td></tr></table></figure>
-<p>提交修改 :</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git add . &amp;&amp; git commit -m &quot;test merging&quot;<br>[tb 0808891] test merging<br> 1 file changed, 2 insertions(+)<br></code></pre></td></tr></table></figure>
-
-<h4 id="tb的日志"><a href="#tb的日志" class="headerlink" title="tb的日志"></a><code>tb</code>的日志</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git log --graph --pretty=oneline --abbrev-commit<br>* dfb30b7 (HEAD -&gt; tb) test merging<br>* 4dbd6a8 test logging<br>* dc8846c (master) basic prop<br></code></pre></td></tr></table></figure>
-<ul>
-<li>此时我们多使用一个<code>--graph</code>以助于显示出分支合并信息</li>
-<li>最新两条日志为我们在<code>tb</code>提交修改的日志</li>
-<li>最后一条日志则是我们在<code>master</code>内进行准备工作时提交的日志</li>
-</ul>
-<h4 id="tb分支commit后的分支图"><a href="#tb分支commit后的分支图" class="headerlink" title="tb分支commit后的分支图"></a><code>tb</code>分支<code>commit</code>后的分支图</h4><p><img src="./img/git3.png" srcset="/img/loading.gif" lazyload alt="git3"></p>
-<ul>
-<li><code>tb</code>当前节点向前到达<code>C1</code></li>
-<li>而<code>master</code>由于未作任何改变, 则仍处于<code>B3</code></li>
-</ul>
-<p>此时也意味着二者内部的文件等信息已然不同</p>
-<h3 id="分支的合并"><a href="#分支的合并" class="headerlink" title="分支的合并"></a>分支的合并</h3><h4 id="为什么要合并"><a href="#为什么要合并" class="headerlink" title="为什么要合并"></a>为什么要合并</h4><p>假设此时我们对于<code>tb</code>开发的新功能满意, 则需要将<code>master</code>相关内容与<code>tb</code>同步, 也就是将二者进行分支合并, 最终使得<code>master</code>也到达<code>C1</code>的节点位置</p>
-<h4 id="分析我们的目标"><a href="#分析我们的目标" class="headerlink" title="分析我们的目标 :"></a>分析我们的目标 :</h4><ul>
-<li>我们要使<code>master</code>的代码和<code>tb</code>相同</li>
-<li>此时<code>master</code>代码未改变</li>
-<li><code>tb</code>代码是在<code>master</code>基础上增加行</li>
-<li>此时的合并, 我们可以简单理解为把<code>tb</code>的内容赋值给<code>master</code></li>
-</ul>
-<p>因此, 此时我们只需要简单将<code>master</code>指向<code>tb</code>即可</p>
-<p>体现在节点上, 则是<code>master</code>向前滑动到了<code>C1</code></p>
-<h4 id="1-切换到master分支"><a href="#1-切换到master分支" class="headerlink" title="1. 切换到master分支"></a><code>1.</code> 切换到<code>master</code>分支</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git checkout master<br>Switched to branch &#x27;master&#x27;<br></code></pre></td></tr></table></figure>
-<p>查看当前<code>master</code>分支<code>log</code>信息 :</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git log --graph --pretty=oneline --abbrev-commit<br>* dc8846c (HEAD -&gt; master) basic prop<br></code></pre></td></tr></table></figure>
-<p>此时的<code>master</code>日志显示我们<code>basic prop</code>, 因为<code>tb</code>内的修改所处的节点超过了此时<code>master</code>节点, 所以<code>master</code>内的日志无法获取最新的<code>commit</code></p>
-<p>我们只需留意最新的<code>log</code>信息</p>
-<h4 id="2-进行合并"><a href="#2-进行合并" class="headerlink" title="2. 进行合并"></a><code>2.</code> 进行合并</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git merge tb<br>Updating dc8846c..dfb30b7<br>Fast-forward<br> test.txt | 4 ++++<br> 1 file changed, 4 insertions(+)<br></code></pre></td></tr></table></figure>
-
-<p>在主分支使用<code>git merge &lt;name&gt;</code> 将<code>tb</code>分支合并入主分支</p>
-<p>从<code>git</code>提示中<code>Fast-forward</code>可见此次合并是快速合并:</p>
-<h4 id="3-查看master内的文件"><a href="#3-查看master内的文件" class="headerlink" title="3. 查看master内的文件"></a><code>3.</code> 查看<code>master</code>内的文件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs git">public place<br>------------<br>add a line to test logging<br>------------<br>add a line to test merging<br></code></pre></td></tr></table></figure>
-<p>文件已经被快进到<code>tb</code>分支做出的修改版本</p>
-<h4 id="此时的节点图"><a href="#此时的节点图" class="headerlink" title="此时的节点图"></a>此时的节点图</h4><p><img src="./img/git4.png" srcset="/img/loading.gif" lazyload alt="git4"><br>两分支处于同一节点</p>
-<h4 id="查看当前master分支log"><a href="#查看当前master分支log" class="headerlink" title="查看当前master分支log"></a>查看当前<code>master</code>分支<code>log</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git log<br>$ git log --pretty=oneline --abbrev-commit<br>0808891 (HEAD -&gt; master, tb) test merging<br>a4ce0d8 test logging<br>dc8846c basic prop<br></code></pre></td></tr></table></figure>
-
-<p>此时<code>master</code>分支同样处于<code>C1</code>处, 那么<code>C1</code>的节点信息两分支共享, 即完成了<code>master</code>的更新(分支的合并)</p>
-<p>但我们注意到, 此时<code>master</code>内的文件被修改了, 但是却并没有创建新的<code>commit</code>, 而是共享了<code>C1</code>处其他分支的<code>commit</code></p>
-<p>此时我们可以理解为 : <code>master</code>被指向了<code>tb</code>, 此时二者不分你我, <code>tb</code>做的工作(<code>commit</code>)看起来也就是<code>master</code>做的工作</p>
-<h5 id="可见fast-forward方式并不会在合并后并不会不在主分支上创建一个新的commit-id"><a href="#可见fast-forward方式并不会在合并后并不会不在主分支上创建一个新的commit-id" class="headerlink" title="可见fast-forward方式并不会在合并后并不会不在主分支上创建一个新的commit id"></a>可见<code>fast-forward</code>方式并不会在合并后并不会不在主分支上创建一个新的<code>commit id</code></h5><h4 id="fast-forward的缺点"><a href="#fast-forward的缺点" class="headerlink" title="fast-forward的缺点"></a><code>fast-forward</code>的缺点</h4><p>如上所述, <code>fast-forward</code>后主分支不会创建新的<code>commit id</code>, 而是与分支共享分支所提交的<code>commit</code>及其<code>id</code></p>
-<p>这样所有分支的<code>commit</code>在一条线上, 我们无法区分到底是在哪个分支上做了哪些工作</p>
-<hr>
-<h2 id="no-ff-禁用fast-forward–recursive策略"><a href="#no-ff-禁用fast-forward–recursive策略" class="headerlink" title="--no-ff-禁用fast-forward–recursive策略"></a><code>--no-ff</code>-禁用<code>fast-forward</code>–<code>recursive</code>策略</h2><p>我们希望将分支合并后, 开发分支<code>tb</code>的所有<code>commit</code>记录既能复制到<code>master</code>分支, 同时也保留一条分支<code>tb</code>自己的<code>commit</code>时间线, 以便我们区分各项工作是由谁进行的</p>
-<p>此情况下, 各时刻分支图与以上情况相同, 因此不再描述</p>
-<p>我们使用<code>--no-ff</code>禁用<code>fast-forward</code></p>
-<h4 id="经历上次合并后的分支图"><a href="#经历上次合并后的分支图" class="headerlink" title="经历上次合并后的分支图"></a>经历上次合并后的分支图</h4><p><img src="./img/git4.png" srcset="/img/loading.gif" lazyload alt="git4"></p>
-<h4 id="tb分支上进行多次修改"><a href="#tb分支上进行多次修改" class="headerlink" title="tb分支上进行多次修改"></a><code>tb</code>分支上进行多次修改</h4><p>我们对<code>tb</code>分支内文件进行多次修改并提交 :<br><code>1.</code> 一次修改</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs git">public place<br>------------<br>add a line to test logging<br>------------<br>add a line to test merging<br>------------<br>add a line to test --no-ff 1<br></code></pre></td></tr></table></figure>
-<p>提交 :</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git add . &amp;&amp; git commit -m &quot;add line to test --no-ff 1&quot;<br>[tb e156967] add line to test --no-ff 1<br> 1 file changed, 2 insertions(+)<br></code></pre></td></tr></table></figure>
-
-<p><code>2.</code> 二次修改</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs git">public place<br>------------<br>add a line to test logging<br>------------<br>add a line to test merging<br>------------<br>add a line to test --no-ff 1<br>------------<br>add a line to test --no-ff 2<br></code></pre></td></tr></table></figure>
-<p>提交 :</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git add . &amp;&amp; git commit -m &quot;add line to test --no-ff 2&quot;<br>[tb 1bc5def] add line to test --no-ff 2<br> 1 file changed, 3 insertions(+), 1 deletion(-)<br></code></pre></td></tr></table></figure>
-
-<h4 id="此时的节点图-1"><a href="#此时的节点图-1" class="headerlink" title="此时的节点图"></a>此时的节点图</h4><p><img src="./img/5.png" srcset="/img/loading.gif" lazyload alt="git4"><br>如果我们进行<code>fast-forward</code>合并的话, 节点图这样绘制时最好的, 因为我们会将<code>master</code>在<code>C</code>节点线上直接向前滑动到<code>C3</code></p>
-<p>但是我们接下来不会直接在<code>C</code>节点线上向前<code>master</code>, 所以最好这样绘制此时的节点图 :<br><img src="./img/6.png" srcset="/img/loading.gif" lazyload alt="git4"></p>
-<p>很快你将看见这样绘制的好处</p>
-<h4 id="查看tb日志"><a href="#查看tb日志" class="headerlink" title="查看tb日志"></a>查看<code>tb</code>日志</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git log --graph --pretty=oneline --abbrev-commit<br>* 1bc5def (HEAD -&gt; tb) add line to test --no-ff 2<br>* e156967 add line to test --no-ff 1<br>* dfb30b7 (master) test merging<br>* 4dbd6a8 test logging<br>* dc8846c basic prop<br></code></pre></td></tr></table></figure>
-
-<h4 id="使用-no-ff进行合并"><a href="#使用-no-ff进行合并" class="headerlink" title="使用--no-ff进行合并"></a>使用<code>--no-ff</code>进行合并</h4><p>基本语法 :</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">git merge --no-ff &lt;name&gt;<br></code></pre></td></tr></table></figure>
-<ul>
-<li><code>no</code>前面是<code>--</code>, <code>ff</code>前是<code>-</code></li>
-</ul>
-<p>我们回到<code>master</code>进行合并 :</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git merge --no-ff tb<br></code></pre></td></tr></table></figure>
-<p>此时由于我们会为<code>master</code>在合并进行一次新的<code>commit</code>, 而非简单的共享<code>tb</code>的<code>commit</code>, 因此<code>git</code>会打开<code>vim</code>让我们填写<code>commit message</code> :</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs git">Merge branch &#x27;tb&#x27;<br># Please enter a commit message to explain why this merge is necessary,<br># especially if it merges an updated upstream into a topic branch.<br>#<br># Lines starting with &#x27;#&#x27; will be ignored, and an empty message aborts<br># the commit.<br></code></pre></td></tr></table></figure>
-<p>我们在第一行详细描述此次<code>commit</code> :</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">Merge branch &#x27;tb&#x27; with --no-ff<br></code></pre></td></tr></table></figure>
-
-<p>随后便完成了此次合并 :</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git merge --no-ff tb<br>Merge made by the &#x27;recursive&#x27; strategy.<br> test.txt | 4 ++++<br> 1 file changed, 4 insertions(+)<br></code></pre></td></tr></table></figure>
-<p>可见此次使用的是<code>recursive</code>策略, 而非简单的<code>fast-forward</code></p>
-<h4 id="此时的节点图-2"><a href="#此时的节点图-2" class="headerlink" title="此时的节点图"></a>此时的节点图</h4><p>为方便理解<code>log</code>信息, 我们先来观察此时的节点图 :<br><img src="./img/9.png" srcset="/img/loading.gif" lazyload alt="git"></p>
-<p><code>--no-ff</code>会将<code>tb</code>分支的每次<code>commit</code>在<code>master</code>进行<code>&quot;复制&quot;</code>, 这样在主分支上保留完整<code>commit</code>记录的同时, <code>tb</code>分支自己记录也会被保留</p>
-<p>但需要注意的是, 分支<code>tb</code>不会向前移动到与<code>master</code>相同节点</p>
-<ul>
-<li>若要使二者节点一致, 可在<code>tb</code>内<code>git merge master</code></li>
-</ul>
-<h4 id="检查master的log"><a href="#检查master的log" class="headerlink" title="检查master的log"></a>检查<code>master</code>的log</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git log --graph --pretty=oneline --abbrev-commit<br>*   c2aa7be (HEAD -&gt; master) Merge branch &#x27;tb&#x27; with --no-ff<br>|\<br>| * 1bc5def (tb) add line to test --no-ff 2<br>| * e156967 add line to test --no-ff 1<br>|/<br>* dfb30b7 test merging<br>* 4dbd6a8 test logging<br>* dc8846c basic prop<br></code></pre></td></tr></table></figure>
-<p>可见, 使用<code>graph</code>模式, <code>log</code>会显示合并的信息</p>
-<h2 id="冲突"><a href="#冲突" class="headerlink" title="冲突"></a>冲突</h2><p>当我们在合并前, <code>master</code>内也进行了修改呢</p>
-<h3 id="准备工作-1"><a href="#准备工作-1" class="headerlink" title="准备工作"></a>准备工作</h3><h4 id="版本回退-撤销合并"><a href="#版本回退-撤销合并" class="headerlink" title="版本回退(撤销合并)"></a>版本回退(撤销合并)</h4><p>我们使用<code>git reset</code>来将<code>master</code>回退到合并前 :</p>
+              <p>在以上两种合并方式中 ，两分支无冲突 ，此节我们详细介绍冲突以及冲突形成</p>
+<h1 id="conflict-冲突"><a href="#conflict-冲突" class="headerlink" title="conflict-冲突"></a><code><font color='dodgerblue'>conflict</font></code>-冲突</h1><h2 id="冲突"><a href="#冲突" class="headerlink" title="冲突"></a>冲突</h2><p>当我们在合并前, <code>master</code>内也进行了修改呢</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><h4 id="版本回退-撤销合并"><a href="#版本回退-撤销合并" class="headerlink" title="版本回退(撤销合并)"></a>版本回退(撤销合并)</h4><p>我们使用<code>git reset</code>来将<code>master</code>回退到合并前 :</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git reset --hard HEAD^<br>HEAD is now at dfb30b7 test merging<br></code></pre></td></tr></table></figure>
 <ul>
 <li>此处<code>HEAD^</code>中<code>^</code>的个数应视合并后, 我们对<code>master</code>是否做出其他修改与提交</li>
@@ -448,7 +329,7 @@
 <li>当我们要利用这两个文本来生成一个新文本时, 直到<code>tb</code>的最后一行的<code>add</code>结束, 整个过程顺利</li>
 <li>此时, 我们 </li>
 </ul>
-<h2 id="Recursive递归合并–to-be-contined"><a href="#Recursive递归合并–to-be-contined" class="headerlink" title="Recursive递归合并–to be contined"></a><code>Recursive</code>递归合并–to be contined</h2>
+
             </div>
             <hr>
             <div>
@@ -482,9 +363,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/07/13/git/git-07-%E5%88%86%E6%94%AF/">
+                      <a href="/2021/07/13/git/git-08-%E5%88%86%E6%94%AF%E5%90%88%E5%B9%B6(2)/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">git-07-分支基础</span>
+                        <span class="hidden-mobile">git-08-分支合并</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

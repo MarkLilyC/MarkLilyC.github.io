@@ -1,0 +1,515 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="当开发分支功能稳定后 ，我们希望将其中新代码添加到主分支 ，此时需要我们进行分支的合并 ">
+  <meta name="author" content="CJBLUE">
+  <meta name="keywords" content="">
+  
+  <title>git-08-分支合并 - MarkLily</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>MarkLily</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/fluidPics/uma2.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="git-08-分支合并">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-13 12:53" pubdate>
+        2021年7月13日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      14
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">git-08-分支合并</h1>
+            
+            <div class="markdown-body">
+              <p>当开发分支功能稳定后 ，我们希望将其中新代码添加到主分支 ，此时需要我们进行分支的合并 </p>
+<span id="more"></span>
+
+<h1 id="git-merge-分支合并"><a href="#git-merge-分支合并" class="headerlink" title="git merge-分支合并"></a><code><font color='dodgerblue'>git merge</font></code>-分支合并</h1><h2 id="分支图"><a href="#分支图" class="headerlink" title="分支图"></a>分支图</h2><p>我们将描述各个分支间关系及分支更新状态的图称为分支图, 如 ：<br><img src="./img/git1.png" srcset="/img/loading.gif" lazyload alt="git1"></p>
+<h4 id="节点-B1-B3"><a href="#节点-B1-B3" class="headerlink" title="节点-B1-B3"></a>节点-<code>B1-B3</code></h4><p>矩形框代表当前仓库的节点 :</p>
+<ul>
+<li>当前节点作为上次<code>commit</code>的快照(<code>shapshot</code>), 会自动成为下个节点的父节点</li>
+<li>我们此时只需简单将其理解为当前分支的一个版本指针</li>
+</ul>
+<p>即此时我们分支<code>master v1.1</code>是出于节点<code>B3</code>, 上一次的<code>commit</code>信息即其形成的<code>master v1.1</code>的各项信息都存储在节点<code>B3</code></p>
+<h4 id="如何看懂节点图"><a href="#如何看懂节点图" class="headerlink" title="如何看懂节点图"></a>如何看懂节点图</h4><p>上图中的版本更新前进关系是<font color='red'>从左至右</font></p>
+<p>而节点的指向关系是<font color='blue'>从右至左</font></p>
+<ul>
+<li>这是因为每次生成的节点总是指向其父节点, 方便我们回溯</li>
+</ul>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>为方便演示, 我们删掉测试分支, 并在<code>master</code>内将<code>test.txt</code>修改为 :</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">public place<br></code></pre></td></tr></table></figure>
+<p>并提交修改 :</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git add . &amp;&amp; git commit -m &quot;basic prop&quot;<br>[master dc8846c] basic prop<br> 1 file changed, 8 deletions(-)<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="新建测试分支tb"><a href="#新建测试分支tb" class="headerlink" title="新建测试分支tb"></a>新建测试分支<code>tb</code></h4><p>检查此分支内<code>test.txt</code>文件内容 :</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">public place<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="fast-forward快进合并"><a href="#fast-forward快进合并" class="headerlink" title="fast-forward快进合并"></a><code>fast-forward</code>快进合并</h2><h3 id="出现原因"><a href="#出现原因" class="headerlink" title="出现原因"></a>出现原因</h3><h4 id="创建新分支时节点图"><a href="#创建新分支时节点图" class="headerlink" title="创建新分支时节点图"></a>创建新分支时节点图</h4><p><img src="./img/git2.png" srcset="/img/loading.gif" lazyload alt="节点2"><br>此时<code>master</code>与<code>tb</code>都处于节点<code>B3</code>, 两分支文件内容一致</p>
+<h4 id="在新分支进行修改"><a href="#在新分支进行修改" class="headerlink" title="在新分支进行修改"></a>在新分支进行修改</h4><p>我们在<code>tb</code>分支内对<code>test.txt</code>文件进行以下修改 :</p>
+<p><code>1.</code> 添加进行日志检查的内容及<code>commit message</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs git">public place<br>------------<br>add a line to test logging<br></code></pre></td></tr></table></figure>
+<p>提交修改 :</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git add . &amp;&amp; git commit -m &quot;test logging&quot;<br>[tb a4ce0d8] test logging<br> 1 file changed, 2 insertions(+)<br></code></pre></td></tr></table></figure>
+
+<p><code>2.</code> 添加进行日志检查的内容及<code>commit message</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs git">public place<br>------------<br>add a line to test logging<br>------------<br>add a line to test merging<br></code></pre></td></tr></table></figure>
+<p>提交修改 :</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git add . &amp;&amp; git commit -m &quot;test merging&quot;<br>[tb 0808891] test merging<br> 1 file changed, 2 insertions(+)<br></code></pre></td></tr></table></figure>
+
+<h4 id="tb的日志"><a href="#tb的日志" class="headerlink" title="tb的日志"></a><code>tb</code>的日志</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git log --graph --pretty=oneline --abbrev-commit<br>* dfb30b7 (HEAD -&gt; tb) test merging<br>* 4dbd6a8 test logging<br>* dc8846c (master) basic prop<br></code></pre></td></tr></table></figure>
+<ul>
+<li>此时我们多使用一个<code>--graph</code>以助于显示出分支合并信息</li>
+<li>最新两条日志为我们在<code>tb</code>提交修改的日志</li>
+<li>最后一条日志则是我们在<code>master</code>内进行准备工作时提交的日志</li>
+</ul>
+<h4 id="tb分支commit后的分支图"><a href="#tb分支commit后的分支图" class="headerlink" title="tb分支commit后的分支图"></a><code>tb</code>分支<code>commit</code>后的分支图</h4><p><img src="./img/git3.png" srcset="/img/loading.gif" lazyload alt="git3"></p>
+<ul>
+<li><code>tb</code>当前节点向前到达<code>C1</code></li>
+<li>而<code>master</code>由于未作任何改变, 则仍处于<code>B3</code></li>
+</ul>
+<p>此时也意味着二者内部的文件等信息已然不同</p>
+<h3 id="分支的合并"><a href="#分支的合并" class="headerlink" title="分支的合并"></a>分支的合并</h3><h4 id="为什么要合并"><a href="#为什么要合并" class="headerlink" title="为什么要合并"></a>为什么要合并</h4><p>假设此时我们对于<code>tb</code>开发的新功能满意, 则需要将<code>master</code>相关内容与<code>tb</code>同步, 也就是将二者进行分支合并, 最终使得<code>master</code>也到达<code>C1</code>的节点位置</p>
+<h4 id="分析我们的目标"><a href="#分析我们的目标" class="headerlink" title="分析我们的目标 :"></a>分析我们的目标 :</h4><ul>
+<li>我们要使<code>master</code>的代码和<code>tb</code>相同</li>
+<li>此时<code>master</code>代码未改变</li>
+<li><code>tb</code>代码是在<code>master</code>基础上增加行</li>
+<li>此时的合并, 我们可以简单理解为把<code>tb</code>的内容赋值给<code>master</code></li>
+</ul>
+<p>因此, 此时我们只需要简单将<code>master</code>指向<code>tb</code>即可</p>
+<p>体现在节点上, 则是<code>master</code>向前滑动到了<code>C1</code></p>
+<h4 id="1-切换到master分支"><a href="#1-切换到master分支" class="headerlink" title="1. 切换到master分支"></a><code>1.</code> 切换到<code>master</code>分支</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git checkout master<br>Switched to branch &#x27;master&#x27;<br></code></pre></td></tr></table></figure>
+<p>查看当前<code>master</code>分支<code>log</code>信息 :</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git log --graph --pretty=oneline --abbrev-commit<br>* dc8846c (HEAD -&gt; master) basic prop<br></code></pre></td></tr></table></figure>
+<p>此时的<code>master</code>日志显示我们<code>basic prop</code>, 因为<code>tb</code>内的修改所处的节点超过了此时<code>master</code>节点, 所以<code>master</code>内的日志无法获取最新的<code>commit</code></p>
+<p>我们只需留意最新的<code>log</code>信息</p>
+<h4 id="2-进行合并"><a href="#2-进行合并" class="headerlink" title="2. 进行合并"></a><code>2.</code> 进行合并</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git merge tb<br>Updating dc8846c..dfb30b7<br>Fast-forward<br> test.txt | 4 ++++<br> 1 file changed, 4 insertions(+)<br></code></pre></td></tr></table></figure>
+
+<p>在主分支使用<code>git merge &lt;name&gt;</code> 将<code>tb</code>分支合并入主分支</p>
+<p>从<code>git</code>提示中<code>Fast-forward</code>可见此次合并是快速合并:</p>
+<h4 id="3-查看master内的文件"><a href="#3-查看master内的文件" class="headerlink" title="3. 查看master内的文件"></a><code>3.</code> 查看<code>master</code>内的文件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs git">public place<br>------------<br>add a line to test logging<br>------------<br>add a line to test merging<br></code></pre></td></tr></table></figure>
+<p>文件已经被快进到<code>tb</code>分支做出的修改版本</p>
+<h4 id="此时的节点图"><a href="#此时的节点图" class="headerlink" title="此时的节点图"></a>此时的节点图</h4><p><img src="./img/git4.png" srcset="/img/loading.gif" lazyload alt="git4"><br>两分支处于同一节点</p>
+<h4 id="查看当前master分支log"><a href="#查看当前master分支log" class="headerlink" title="查看当前master分支log"></a>查看当前<code>master</code>分支<code>log</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git log<br>$ git log --pretty=oneline --abbrev-commit<br>0808891 (HEAD -&gt; master, tb) test merging<br>a4ce0d8 test logging<br>dc8846c basic prop<br></code></pre></td></tr></table></figure>
+
+<p>此时<code>master</code>分支同样处于<code>C1</code>处, 那么<code>C1</code>的节点信息两分支共享, 即完成了<code>master</code>的更新(分支的合并)</p>
+<p>但我们注意到, 此时<code>master</code>内的文件被修改了, 但是却并没有创建新的<code>commit</code>, 而是共享了<code>C1</code>处其他分支的<code>commit</code></p>
+<p>此时我们可以理解为 : <code>master</code>被指向了<code>tb</code>, 此时二者不分你我, <code>tb</code>做的工作(<code>commit</code>)看起来也就是<code>master</code>做的工作</p>
+<h5 id="可见fast-forward方式并不会在合并后并不会不在主分支上创建一个新的commit-id"><a href="#可见fast-forward方式并不会在合并后并不会不在主分支上创建一个新的commit-id" class="headerlink" title="可见fast-forward方式并不会在合并后并不会不在主分支上创建一个新的commit id"></a>可见<code>fast-forward</code>方式并不会在合并后并不会不在主分支上创建一个新的<code>commit id</code></h5><h4 id="fast-forward的缺点"><a href="#fast-forward的缺点" class="headerlink" title="fast-forward的缺点"></a><code>fast-forward</code>的缺点</h4><p>如上所述, <code>fast-forward</code>后主分支不会创建新的<code>commit id</code>, 而是与分支共享分支所提交的<code>commit</code>及其<code>id</code></p>
+<p>这样所有分支的<code>commit</code>在一条线上, 我们无法区分到底是在哪个分支上做了哪些工作</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Git/">Git</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Git/">Git</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/07/13/git/git-07-%E5%88%86%E6%94%AF/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">git-07-分支基础</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/07/13/git/git-08-%E5%88%86%E6%94%AF%E5%90%88%E5%B9%B6(2)/">
+                        <span class="hidden-mobile">git-08-分支合并</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
