@@ -14,7 +14,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
+  <meta name="description" content="在以上两种合并方式中 ，两分支无冲突 ，此节我们粗略介绍冲突">
   <meta name="author" content="CJBLUE">
   <meta name="keywords" content="">
   
@@ -229,6 +229,7 @@
             
             <div class="markdown-body">
               <p>在以上两种合并方式中 ，两分支无冲突 ，此节我们粗略介绍冲突</p>
+<span id="more"></span>
 <h1 id="conflict-冲突"><a href="#conflict-冲突" class="headerlink" title="conflict-冲突"></a><code><font color='dodgerblue'>conflict</font></code>-冲突</h1><h2 id="冲突"><a href="#冲突" class="headerlink" title="冲突"></a>冲突</h2><p>当我们在合并前, <code>master</code>内也进行了修改呢</p>
 <h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><h4 id="版本回退-撤销合并"><a href="#版本回退-撤销合并" class="headerlink" title="版本回退(撤销合并)"></a>版本回退(撤销合并)</h4><p>我们使用<code>git reset</code>来将<code>master</code>回退到合并前 :</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git reset --hard HEAD^<br>HEAD is now at dfb30b7 test merging<br></code></pre></td></tr></table></figure>
