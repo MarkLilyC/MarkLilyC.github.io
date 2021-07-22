@@ -173,7 +173,7 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-07-13 12:53" pubdate>
+      <time datetime="2021-07-13 14:53" pubdate>
         2021年7月13日 下午
       </time>
     </span>
@@ -228,7 +228,7 @@
             <h1 style="display: none">git-08-分支合并</h1>
             
             <div class="markdown-body">
-              <p>在以上两种合并方式中 ，两分支无冲突 ，此节我们详细介绍冲突以及冲突形成</p>
+              <p>在以上两种合并方式中 ，两分支无冲突 ，此节我们粗略介绍冲突</p>
 <h1 id="conflict-冲突"><a href="#conflict-冲突" class="headerlink" title="conflict-冲突"></a><code><font color='dodgerblue'>conflict</font></code>-冲突</h1><h2 id="冲突"><a href="#冲突" class="headerlink" title="冲突"></a>冲突</h2><p>当我们在合并前, <code>master</code>内也进行了修改呢</p>
 <h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><h4 id="版本回退-撤销合并"><a href="#版本回退-撤销合并" class="headerlink" title="版本回退(撤销合并)"></a>版本回退(撤销合并)</h4><p>我们使用<code>git reset</code>来将<code>master</code>回退到合并前 :</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs git">$ git reset --hard HEAD^<br>HEAD is now at dfb30b7 test merging<br></code></pre></td></tr></table></figure>
@@ -363,18 +363,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/07/13/git/git-08-%E5%88%86%E6%94%AF%E5%90%88%E5%B9%B6(2)/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">git-08-分支合并</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/07/13/git/git-06-%E6%92%A4%E9%94%80%E4%BF%AE%E6%94%B9/">
-                        <span class="hidden-mobile">git-06-撤销修改</span>
+                      <a href="/2021/07/13/git/git-08-%E5%88%86%E6%94%AF%E5%90%88%E5%B9%B6(2)/">
+                        <span class="hidden-mobile">git-08-分支合并</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
