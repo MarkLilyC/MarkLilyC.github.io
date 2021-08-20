@@ -14,11 +14,11 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="在以上两种合并方式中 ，两分支无冲突 ，此节我们粗略介绍冲突">
+  <meta name="description" content="在以上两种合并方式中 ，两分支无冲突 ， ">
   <meta name="author" content="CJBLUE">
   <meta name="keywords" content="">
   
-  <title>git-08-分支合并 - MarkLily</title>
+  <title>git-09-冲突 - MarkLily</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="git-08-分支合并">
+            <span class="h2" id="subtitle" title="git-09-冲突">
               
             </span>
 
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.7k 字
+      2k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      26
+      29
        分钟
     </span>
   
@@ -225,10 +225,10 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">git-08-分支合并</h1>
+            <h1 style="display: none">git-09-冲突</h1>
             
             <div class="markdown-body">
-              <p>在以上两种合并方式中 ，两分支无冲突 ，此节我们粗略介绍冲突</p>
+              <p>在以上两种合并方式中 ，两分支无冲突 ， </p>
 <span id="more"></span>
 <h1 id="conflict-冲突"><a href="#conflict-冲突" class="headerlink" title="conflict-冲突"></a><code><font color='dodgerblue'>conflict</font></code>-冲突</h1><h2 id="冲突"><a href="#冲突" class="headerlink" title="冲突"></a>冲突</h2><p>当我们在合并前, <code>master</code>内也进行了修改呢</p>
 <h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><h4 id="版本回退-撤销合并"><a href="#版本回退-撤销合并" class="headerlink" title="版本回退(撤销合并)"></a>版本回退(撤销合并)</h4><p>我们使用<code>git reset</code>来将<code>master</code>回退到合并前 :</p>
@@ -327,9 +327,21 @@
 </ul>
 <p>但我们尝试用文件写入的方式来分析合并过程 :</p>
 <ul>
-<li>当我们要利用这两个文本来生成一个新文本时, 直到<code>tb</code>的最后一行的<code>add</code>结束, 整个过程顺利</li>
-<li>此时, 我们 </li>
+<li>当我们要利用这两个文本来生成一个新文本时, 直到<code>tb</code>的最后一行的<code>add</code>结束, 整个过程顺利，<code>tb</code>中的<code>add</code>行原本部分被我们标识为以删除部分</li>
+<li>此时, 我们发现<code>master</code>中剩余部分还有写入内容,并且<code>add</code>行后原本内容也在其中</li>
+<li>因此会发生冲突</li>
 </ul>
+<p>解决冲突 ：</p>
+<p>此时<code>master</code>内<code>test.txt</code>文件内容为 ：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs bash">private place <span class="hljs-keyword">in</span> master<br>------------<br>add a line to <span class="hljs-built_in">test</span> logging<br>------------<br>add a line to <span class="hljs-built_in">test</span> merging<br>------------<br>add a line to <span class="hljs-built_in">test</span> --no-ff 1<br>------------<br>&lt;&lt;&lt;&lt;&lt;&lt;&lt; <span class="hljs-string">HEAD</span><br><span class="hljs-string">add a line to test --no-ff 2 add tail in tb</span><br><span class="hljs-string">------------</span><br><span class="hljs-string">add a line in master to test invisible overlap</span><br><span class="hljs-string">=======</span><br><span class="hljs-string">add</span><br><span class="hljs-string">&gt;&gt;&gt;&gt;&gt;&gt;&gt; tb</span><br></code></pre></td></tr></table></figure>
+
+<p>我们将文本内容修改为 ：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">private place <span class="hljs-keyword">in</span> master<br>------------<br>add a line to <span class="hljs-built_in">test</span> logging<br>------------<br>add a line to <span class="hljs-built_in">test</span> merging<br>------------<br>add a line to <span class="hljs-built_in">test</span> --no-ff 1<br>------------<br>add a line to <span class="hljs-built_in">test</span> --no-ff 2 add tail <span class="hljs-keyword">in</span> tb<br>------------<br>add a line <span class="hljs-keyword">in</span> master to <span class="hljs-built_in">test</span> invisible overlap<br></code></pre></td></tr></table></figure>
+
+<p>提交修改后再次合并</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">26676@DESKTOP-KEJKGL7 MINGW64 /a/Git/gitlearn (master|MERGING)<br>$ git add . &amp;&amp; git commit -m <span class="hljs-string">&quot;solve the conflicts&quot;</span><br>[master 97e2307] solve the conflicts<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/Git/gitlearn (master)<br>$ git merge tb<br>Already up to date.<br></code></pre></td></tr></table></figure>
+
+<p>合并成功</p>
 
             </div>
             <hr>
@@ -369,7 +381,7 @@
                     
                     
                       <a href="/2021/07/13/git/git-08-%E5%88%86%E6%94%AF%E5%90%88%E5%B9%B6(2)/">
-                        <span class="hidden-mobile">git-08-分支合并</span>
+                        <span class="hidden-mobile">git-08-分支合并2</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
