@@ -14,11 +14,11 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
+  <meta name="description" content="将git本地仓库与github远程仓库建立连接 ">
   <meta name="author" content="CJBLUE">
   <meta name="keywords" content="">
   
-  <title>git-09-test - MarkLily</title>
+  <title>git-10-git与github远程仓库 - MarkLily</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -158,12 +158,12 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/fluidPics/uma3.jpg') no-repeat center center;
+         style="background: url('/img/fluidPics/radiohead.JPG') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="git-09-test">
+            <span class="h2" id="subtitle" title="git-10-git与github远程仓库">
               
             </span>
 
@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-07-14 14:53" pubdate>
-        2021年7月14日 下午
+      <time datetime="2021-08-27 10:53" pubdate>
+        2021年8月27日 上午
       </time>
     </span>
   
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1 字
+      777 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      12
        分钟
     </span>
   
@@ -225,10 +225,50 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">git-09-test</h1>
+            <h1 style="display: none">git-10-git与github远程仓库</h1>
             
             <div class="markdown-body">
-              <p><code><font color='dodgerblue'>test</font></code></p>
+              <p>将git本地仓库与github远程仓库建立连接 </p>
+<span id="more"></span>
+<h1 id="github-远程仓库"><a href="#github-远程仓库" class="headerlink" title="github-远程仓库"></a><code><font color='dodgerblue'>github</font></code>-远程仓库</h1><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h4 id="1-创建一个github仓库"><a href="#1-创建一个github仓库" class="headerlink" title="1. 创建一个github仓库"></a><code>1.</code> 创建一个github仓库</h4><p><img src="./img/git5.png" srcset="/img/loading.gif" lazyload alt="节点2"></p>
+<ul>
+<li>填写用户名</li>
+<li>添加一个 <code>readme.md</code></li>
+</ul>
+<h4 id="2-添加ssh-key"><a href="#2-添加ssh-key" class="headerlink" title="2. 添加ssh key"></a><code>2.</code> 添加<code>ssh key</code></h4><p>具体操作见</p>
+<h2 id="建立连接"><a href="#建立连接" class="headerlink" title="建立连接"></a>建立连接</h2><h3 id="本地创建仓库"><a href="#本地创建仓库" class="headerlink" title="本地创建仓库"></a>本地创建仓库</h3><h4 id="1-修改默认分支名"><a href="#1-修改默认分支名" class="headerlink" title="1. 修改默认分支名"></a><code>1.</code> 修改默认分支名</h4><p>在 <code>bash</code>内输入 ：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">26676@DESKTOP-KEJKGL7 MINGW64 /a<br>$ git config --global init.defaultBranch main<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-创建本地仓库"><a href="#2-创建本地仓库" class="headerlink" title="2. 创建本地仓库"></a><code>2.</code> 创建本地仓库</h4><p>在 <code>bash</code>内 ：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">26676@DESKTOP-KEJKGL7 MINGW64 /a<br>$ mkdir gitl<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a<br>$ <span class="hljs-built_in">cd</span> gitl<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/gitl<br>$ git init<br>Initialized empty Git repository <span class="hljs-keyword">in</span> A:/gitl/.git/<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/gitl (main)<br><br></code></pre></td></tr></table></figure>
+<ul>
+<li>第一步<code>mkdir</code>创建文件夹</li>
+<li>第二步<code>init</code>创建仓库</li>
+<li>由于我们已经修改了初始分支名, 此时所处分支为 <code>main</code></li>
+</ul>
+<h3 id="建立连接-1"><a href="#建立连接-1" class="headerlink" title="建立连接"></a>建立连接</h3><h4 id="1-复制ssh地址"><a href="#1-复制ssh地址" class="headerlink" title="1. 复制ssh地址"></a><code>1.</code> 复制<code>ssh</code>地址</h4><p>在<code>github</code>新建仓库页面复制仓库<code>ssh</code>地址<br><img src="./img/git6.png" srcset="/img/loading.gif" lazyload alt="ssh连接"></p>
+<h4 id="2-建立连接"><a href="#2-建立连接" class="headerlink" title="2. 建立连接"></a><code>2.</code> 建立连接</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">26676@DESKTOP-KEJKGL7 MINGW64 /a/gitl (main)<br>$ git remote add origin git@github.com:MarkLilyC/gitl.git<br></code></pre></td></tr></table></figure>
+
+<h4 id="3-第一次push"><a href="#3-第一次push" class="headerlink" title="3. 第一次push"></a><code>3.</code> 第一次<code>push</code></h4><p>此时本地仓库为空文件 ，尝试进行第一次<code>push</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">26676@DESKTOP-KEJKGL7 MINGW64 /a/gitl (main)<br>$ git push -u origin main<br>error: src refspec main does not match any<br>error: failed to push some refs to <span class="hljs-string">&#x27;github.com:MarkLilyC/gitl.git&#x27;</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>提示报错 ，这是因为本地为空文件夹 ，空文件夹不能提交</p>
+</blockquote>
+<h5 id="解决办法1-pull仓库中的readme-md"><a href="#解决办法1-pull仓库中的readme-md" class="headerlink" title="解决办法1-pull仓库中的readme.md"></a>解决办法1-<code>pull</code>仓库中的<code>readme.md</code></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git pull origin main<br>remote: Enumerating objects: 9, <span class="hljs-keyword">done</span>.<br>remote: Counting objects: 100% (9/9), <span class="hljs-keyword">done</span>.<br>remote: Compressing objects: 100% (5/5), <span class="hljs-keyword">done</span>.<br>remote: Total 9 (delta 0), reused 6 (delta 0), pack-reused 0<br>Unpacking objects: 100% (9/9), 1.18 KiB | 2.00 KiB/s, <span class="hljs-keyword">done</span>.<br>From github.com:MarkLilyC/gitl<br> * branch            main       -&gt; FETCH_HEAD<br> * [new branch]      main       -&gt; origin/main<br></code></pre></td></tr></table></figure>
+
+<p>此时本地文件夹中出现了<code>readme.md</code> ，再次<code>push</code> ：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">26676@DESKTOP-KEJKGL7 MINGW64 /a/gitl (main)<br>$ git push -u origin main<br>Everything up-to-date<br>Branch <span class="hljs-string">&#x27;main&#x27;</span> <span class="hljs-built_in">set</span> up to track remote branch <span class="hljs-string">&#x27;main&#x27;</span> from <span class="hljs-string">&#x27;origin&#x27;</span>.<br></code></pre></td></tr></table></figure>
+<h5 id="解决办法2-在本地创建空文件"><a href="#解决办法2-在本地创建空文件" class="headerlink" title="解决办法2-在本地创建空文件"></a>解决办法2-在本地创建空文件</h5><p>在已经实现方法一的本地仓库内无法再实现方法二 </p>
+<p>因此删除已经创建的仓库 ，创建一个新的本地仓库与远程仓库建立连接</p>
+<p>在本地创建一个空的测试文件<code>demo.txt</code> ：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">26676@DESKTOP-KEJKGL7 MINGW64 /a/gitl (main)<br>$ touch demo.txt<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/gitl (main)<br>$ git add . &amp;&amp; git commit -m <span class="hljs-string">&quot;touch a empty file&quot;</span><br>[main (root-commit) b75675c] touch a empty file<br> 1 file changed, 0 insertions(+), 0 deletions(-)<br> create mode 100644 demo.txt<br></code></pre></td></tr></table></figure>
+
+<p>进行<code>push</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">26676@DESKTOP-KEJKGL7 MINGW64 /a/gitl (main)<br>$ git push -u origin main<br>To github.com:MarkLilyC/gitl.git<br> ! [rejected]        main -&gt; main (fetch first)<br>error: failed to push some refs to <span class="hljs-string">&#x27;github.com:MarkLilyC/gitl.git&#x27;</span><br>hint: Updates were rejected because the remote contains work that you <span class="hljs-keyword">do</span><br>hint: not have locally. This is usually caused by another repository pushing<br>hint: to the same ref. You may want to first integrate the remote changes<br>hint: (e.g., <span class="hljs-string">&#x27;git pull ...&#x27;</span>) before pushing again.<br>hint: See the <span class="hljs-string">&#x27;Note about fast-forwards&#x27;</span> <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;git push --help&#x27;</span> <span class="hljs-keyword">for</span> details.<br></code></pre></td></tr></table></figure>
+<p>此时仍然报错 ，因为本地和远程文件差异 ，可以采用强制推送 ：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">26676@DESKTOP-KEJKGL7 MINGW64 /a/gitl (main)<br>$ git push -u origin main -f<br>Enumerating objects: 3, <span class="hljs-keyword">done</span>.<br>Counting objects: 100% (3/3), <span class="hljs-keyword">done</span>.<br>Writing objects: 100% (3/3), 216 bytes | 216.00 KiB/s, <span class="hljs-keyword">done</span>.<br>Total 3 (delta 0), reused 0 (delta 0), pack-reused 0<br>To github.com:MarkLilyC/gitl.git<br> + ae7587d...b75675c main -&gt; main (forced update)<br>Branch <span class="hljs-string">&#x27;main&#x27;</span> <span class="hljs-built_in">set</span> up to track remote branch <span class="hljs-string">&#x27;main&#x27;</span> from <span class="hljs-string">&#x27;origin&#x27;</span>.<br></code></pre></td></tr></table></figure>
+
+<p>但强制推送会使得远程仓库统一到本地仓库的版本 ，如远程仓库中的<code>readme.md</code>文件丢失</p>
 
             </div>
             <hr>
@@ -267,7 +307,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/07/13/git/git-08-%E5%88%86%E6%94%AF%E5%90%88%E5%B9%B6(3)/">
+                      <a href="/2021/07/13/git/git-09-%E5%88%86%E6%94%AF%E5%90%88%E5%B9%B6(3)/">
                         <span class="hidden-mobile">git-09-冲突</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
