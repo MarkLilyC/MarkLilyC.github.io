@@ -14,13 +14,11 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="map函数
-python内置函数
-会根据给定函数,对指定序列做出映射">
+  <meta name="description" content="">
   <meta name="author" content="CJBLUE">
   <meta name="keywords" content="">
   
-  <title>python--map函数 - MarkLily</title>
+  <title>python--列表操作 - MarkLily</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -160,12 +158,12 @@ python内置函数
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/fluidPics/club.JPG') no-repeat center center;
+         style="background: url('/img/fluidPics/woodstock2.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="python--map函数">
+            <span class="h2" id="subtitle" title="python--列表操作">
               
             </span>
 
@@ -187,7 +185,7 @@ python内置函数
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      297 字
+      408 字
     </span>
   
 
@@ -197,7 +195,7 @@ python内置函数
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      5
        分钟
     </span>
   
@@ -227,25 +225,15 @@ python内置函数
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">python--map函数</h1>
+            <h1 style="display: none">python--列表操作</h1>
             
             <div class="markdown-body">
-              <h1 id="map函数"><a href="#map函数" class="headerlink" title="map函数"></a>map函数</h1><ul>
-<li>python内置函数</li>
-<li>会根据给定函数,对指定序列做出映射<span id="more"></span>
-<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><h3 id="map-function-iterable"><a href="#map-function-iterable" class="headerlink" title="map(function, iterable...)"></a><code>map(function, iterable...)</code></h3></li>
-<li><code>iterable</code> 作为映射中原数据的来源</li>
-<li><code>function</code> 用于对<code>iterable</code>中的元素进行转换  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">&gt;&gt; <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">squ</span>(<span class="hljs-params">x</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> x * x<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>mapResult = <span class="hljs-built_in">map</span>(squ, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])<br></code></pre></td></tr></table></figure></li>
-<li><code>python 2.</code> 返回列表</li>
-<li><code>python 3.</code> 返回迭代器  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(mapResult.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">map</span>&#x27;&gt;</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">for</span> <span class="hljs-title">i</span> <span class="hljs-title">in</span> <span class="hljs-title">mapResult</span>:</span><br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(i)<br>...<br><span class="hljs-number">1</span><br><span class="hljs-number">4</span><br><span class="hljs-number">9</span><br><span class="hljs-number">16</span><br><span class="hljs-number">25</span><br></code></pre></td></tr></table></figure></li>
-<li>可通过<code>list(map())</code>的显示转换来消除版本之间的差异  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">squ</span>(<span class="hljs-params">x</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> x * x<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>list1 = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(squ, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]))<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(list1)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>]<br></code></pre></td></tr></table></figure>
-<h3 id="lambda"><a href="#lambda" class="headerlink" title="lambda"></a><code>lambda</code></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-keyword">lambda</span> x : x * x, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])))<br>[<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>]<br></code></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><h3 id="map完成数据类型转换"><a href="#map完成数据类型转换" class="headerlink" title="map完成数据类型转换"></a><code>map</code>完成数据类型转换</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">str</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])))<br>[<span class="hljs-string">&#x27;1&#x27;</span>, <span class="hljs-string">&#x27;2&#x27;</span>, <span class="hljs-string">&#x27;3&#x27;</span>, <span class="hljs-string">&#x27;4&#x27;</span>, <span class="hljs-string">&#x27;5&#x27;</span>]<br></code></pre></td></tr></table></figure>
-<h3 id="map元组转列表"><a href="#map元组转列表" class="headerlink" title="map元组转列表"></a><code>map</code>元组转列表</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>list1 = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>,(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)))<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(list1)<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
-<ul>
-<li>原理是:元组作为迭代器可作为<code>map()</code>函数参数传入,当元组内部元素数据类型与<code>function</code>转出数据类型一致时,再将<code>map</code>返回迭代器转为列表</li>
-</ul>
+              <h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h2 id="判断列表中是否存在另一个元素-列表"><a href="#判断列表中是否存在另一个元素-列表" class="headerlink" title="判断列表中是否存在另一个元素/列表"></a>判断列表中是否存在另一个元素/列表</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs python"><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">contain</span>(<span class="hljs-params">ori:<span class="hljs-built_in">list</span>|<span class="hljs-built_in">tuple</span>, tar</span>) -&gt; <span class="hljs-built_in">bool</span>:</span><br>    <span class="hljs-string">&#x27;&#x27;&#x27;判断一个给定的可迭代对象中是否存在另一个对象</span><br><span class="hljs-string"></span><br><span class="hljs-string">    Args:</span><br><span class="hljs-string">        ori (list | tuple): 原始可迭代对象</span><br><span class="hljs-string">        tar (_type_): 目标对象</span><br><span class="hljs-string"></span><br><span class="hljs-string">    Returns:</span><br><span class="hljs-string">        bool: 是否存在</span><br><span class="hljs-string">    &#x27;&#x27;&#x27;</span><br>    <span class="hljs-comment"># 如果传入的是可迭代对象并且不是字符串</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">hasattr</span>(tar, <span class="hljs-string">&#x27;__iter__&#x27;</span>) <span class="hljs-keyword">and</span> <span class="hljs-built_in">isinstance</span>(tar, <span class="hljs-built_in">str</span>) <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">True</span>:<br>        <span class="hljs-comment"># 如果传入对象中还有元素</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(tar) &gt; <span class="hljs-number">0</span>:<br>            <span class="hljs-comment"># 则取出最后一个对象传入本函数进行判断</span><br>            <span class="hljs-keyword">if</span> contain(ori=ori, tar=tar[-<span class="hljs-number">1</span>]):<br>            <span class="hljs-comment"># 如果上一步返回true 则将传入对象去掉最后一个元素后继续传入本函数</span><br>                tar.pop()<br>                tmp = contain(ori=ori, tar=tar)<br>                <span class="hljs-keyword">return</span> tmp<br>            <span class="hljs-keyword">else</span>: <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>  <span class="hljs-comment"># 如果上一步返回false 则直接本函数返回false</span><br>        <span class="hljs-keyword">else</span>:   <span class="hljs-comment"># 如果已经完成迭代 则返回true</span><br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>    <span class="hljs-comment"># 如果传入的是单一对象</span><br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> ori:<br>            <span class="hljs-keyword">if</span> tar == i:<span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>            <span class="hljs-keyword">else</span>: <span class="hljs-keyword">pass</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="从列表中去除另一个元素-列表"><a href="#从列表中去除另一个元素-列表" class="headerlink" title="从列表中去除另一个元素/列表"></a>从列表中去除另一个元素/列表</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">remove_items</span>(<span class="hljs-params">ori:<span class="hljs-built_in">list</span>, tar</span>) -&gt; <span class="hljs-built_in">list</span>:</span><br>    <span class="hljs-string">&#x27;&#x27;&#x27;从一个列表中删除另一个列表或元素</span><br><span class="hljs-string"></span><br><span class="hljs-string">    Args:</span><br><span class="hljs-string">        ori (list): 原始列表</span><br><span class="hljs-string">        tar (_type_): 待删除的列表或者元素</span><br><span class="hljs-string"></span><br><span class="hljs-string">    Returns:</span><br><span class="hljs-string">        list: 删除给定元素/列表的原列表</span><br><span class="hljs-string">    &#x27;&#x27;&#x27;</span><br>    <span class="hljs-comment"># 如果传入的待去除对象为none 则直接返回原列表</span><br>    <span class="hljs-keyword">if</span> tar <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>: <span class="hljs-keyword">return</span> ori<br>    <span class="hljs-comment"># 如果传入的不是none 则先判断其是否为非str的可迭代对象</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">hasattr</span>(tar, <span class="hljs-string">&quot;__iter__&quot;</span>) <span class="hljs-keyword">and</span> <span class="hljs-built_in">isinstance</span>(tar, <span class="hljs-built_in">str</span>) <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">True</span>:<br>       <span class="hljs-keyword">return</span> [x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> ori <span class="hljs-keyword">if</span> x <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> tar]<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">return</span> [x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> ori <span class="hljs-keyword">if</span> x != tar]<br></code></pre></td></tr></table></figure>
+
 
             </div>
             <hr>
@@ -257,7 +245,7 @@ python内置函数
                     
                       <a class="hover-with-bg" href="/categories/Python/">Python</a>
                     
-                      <a class="hover-with-bg" href="/categories/Python/advance/">advance</a>
+                      <a class="hover-with-bg" href="/categories/Python/tool/">tool</a>
                     
                   </div>
                 
@@ -282,9 +270,9 @@ python内置函数
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/07/07/Python/tool/%E5%88%97%E8%A1%A8%E6%93%8D%E4%BD%9C/">
+                      <a href="/2021/07/07/Python/tool/%E6%96%87%E4%BB%B6%E5%A4%B9/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">python--列表操作</span>
+                        <span class="hidden-mobile">python--文件夹</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -292,8 +280,8 @@ python内置函数
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/07/07/Python/advance/python%E8%A3%85%E9%A5%B0%E5%99%A8/">
-                        <span class="hidden-mobile">python--装饰器</span>
+                      <a href="/2021/07/07/Python/advance/map%E5%87%BD%E6%95%B0/">
+                        <span class="hidden-mobile">python--map函数</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
