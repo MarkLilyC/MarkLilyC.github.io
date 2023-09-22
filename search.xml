@@ -1,104 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Numpy100--Numpy100</title>
-    <url>/2021/07/07/numpy/numpy100/</url>
-    <content><![CDATA[<h1 id="github上的开源项目"><a href="#github上的开源项目" class="headerlink" title="github上的开源项目"></a>github上的开源项目</h1><h2 id="2021-7-4-17：06"><a href="#2021-7-4-17：06" class="headerlink" title="2021.7.4 17：06"></a>2021.7.4 17：06</h2><span id="more"></span>
-<h3 id="创建一个长度为10的空向量"><a href="#创建一个长度为10的空向量" class="headerlink" title="创建一个长度为10的空向量"></a>创建一个长度为10的空向量</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.zeros(<span class="hljs-number">10</span>)<br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
-<h3 id="找到数组的内存大小"><a href="#找到数组的内存大小" class="headerlink" title="找到数组的内存大小"></a>找到数组的内存大小</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.zeros(<span class="hljs-number">10</span>)<br><span class="hljs-built_in">print</span>(z.size * z.itermsize)<br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>z.size获取到内部的元素个数<br>z.itemsize获取到各个元素的大小</p>
-</blockquote>
-<h3 id="从命令行对得到相关函数的说明文档"><a href="#从命令行对得到相关函数的说明文档" class="headerlink" title="从命令行对得到相关函数的说明文档"></a>从命令行对得到相关函数的说明文档</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs pythoh">print(np.info(np.add))<br></code></pre></td></tr></table></figure>
-
-<h3 id="创建一个长度为10-且除了第五个元素为1的空向量"><a href="#创建一个长度为10-且除了第五个元素为1的空向量" class="headerlink" title="创建一个长度为10,且除了第五个元素为1的空向量"></a>创建一个长度为10,且除了第五个元素为1的空向量</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.zeros(<span class="hljs-number">10</span>)<br>z[<span class="hljs-number">4</span>] = <span class="hljs-number">1</span><br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
-
-<h3 id="创建值域10-49的向量"><a href="#创建值域10-49的向量" class="headerlink" title="创建值域10-49的向量"></a>创建值域10-49的向量</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.arange(<span class="hljs-number">10</span>, <span class="hljs-number">50</span>)<br></code></pre></td></tr></table></figure>
-
-<h3 id="反转一个向量"><a href="#反转一个向量" class="headerlink" title="反转一个向量"></a>反转一个向量</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.arange(<span class="hljs-number">0</span>, <span class="hljs-number">5</span>)<br><span class="hljs-built_in">print</span>(z)<br>z = z[::-<span class="hljs-number">1</span>]<br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
-<p><code>b = [0 1 2 3 4]</code><br><code>a = b[x : y]</code>: 两索引各自计算,正值从左侧开始,负值从右侧开始</p>
-<ul>
-<li>左侧索引元素在右侧索引元素左侧,则返回非空</li>
-<li>某侧无索引则代表,从另一侧索引顺方向计数完</li>
-<li>a为两侧索引之内交集元素返回的array</li>
-<li>若两侧索引之内无元素,则a为空array<blockquote>
-<p>a = b[4:2] : a = []<br>a = b[-3:4] : a = []<br>a = b[4:-2] : a = []</p>
-</blockquote>
-</li>
-</ul>
-<ol>
-<li><code>x&gt;0</code> <code>y&gt;0</code></li>
-</ol>
-<ul>
-<li>a = b[x:y]: a = x-y内元素返回array</li>
-<li>a = b[ :y]: a = 0-y内元素返回</li>
-<li>a = b[x: ]: a = x-len(b)内元素返回</li>
-<li>x &lt; y : a = []</li>
-</ul>
-<ol start="2">
-<li><code>x&lt;0</code> or <code>y&lt;0</code></li>
-</ol>
-<ul>
-<li>a = b[-4:-1]: a = b中-4号元素到-1号元素返回</li>
-<li>a = b[-4:1]: a = []</li>
-<li>a = b[-4:]: a = -4 - 0索引之间元素返回</li>
-<li>a = b[:-4]: a = []</li>
-<li>a = b[3:-4]: a = []</li>
-</ul>
-<ol start="3">
-<li><code>a = b[::a]</code></li>
-</ol>
-<ul>
-<li>在b中没隔a取一个元素返回a</li>
-<li>取值方向由a正负决定</li>
-</ul>
-<h3 id="创建一个3-3-值域-0-8的矩阵"><a href="#创建一个3-3-值域-0-8的矩阵" class="headerlink" title="创建一个3 * 3,值域:0-8的矩阵"></a>创建一个3 * 3,值域:0-8的矩阵</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.arange(<span class="hljs-number">0</span>,<span class="hljs-number">9</span>).reshape(<span class="hljs-number">3</span>,<span class="hljs-number">3</span>)<br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
-<h3 id="找到数组中的0元素索引"><a href="#找到数组中的0元素索引" class="headerlink" title="找到数组中的0元素索引"></a>找到数组中的0元素索引</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">0</span>])<br><span class="hljs-built_in">print</span>(z.nonzero())<br></code></pre></td></tr></table></figure>
-<h3 id="创建一个3-3的单位矩阵"><a href="#创建一个3-3的单位矩阵" class="headerlink" title="创建一个3 * 3的单位矩阵"></a>创建一个<code>3 * 3</code>的单位矩阵</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.eye(<span class="hljs-number">3</span>)<br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
-
-<h3 id="创建一个3-3的随机数据"><a href="#创建一个3-3的随机数据" class="headerlink" title="创建一个3 * 3的随机数据"></a>创建一个<code>3 * 3</code>的随机数据</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> numpy <span class="hljs-keyword">import</span> random<br>z = np.random.random((<span class="hljs-number">3</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>))<br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
-
-<h3 id="创建一个10-10的随机数组-并获取最小与最大值"><a href="#创建一个10-10的随机数组-并获取最小与最大值" class="headerlink" title="创建一个10 * 10的随机数组,并获取最小与最大值"></a>创建一个<code>10 * 10</code>的随机数组,并获取最小与最大值</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> numpy <span class="hljs-keyword">import</span> random<br>z = np.random.random((<span class="hljs-number">10</span>, <span class="hljs-number">10</span>))<br><span class="hljs-built_in">print</span>(z.<span class="hljs-built_in">min</span>(), z.<span class="hljs-built_in">max</span>())<br></code></pre></td></tr></table></figure>
-
-<h3 id="创建一个长度为30的随机向量-并获取其平均值"><a href="#创建一个长度为30的随机向量-并获取其平均值" class="headerlink" title="创建一个长度为30的随机向量,并获取其平均值"></a>创建一个长度为<code>30</code>的随机向量,并获取其平均值</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> numpy <span class="hljs-keyword">import</span> random<br>z = np.random.random((<span class="hljs-number">30</span>))<br>zMean = z.mean()<br><span class="hljs-built_in">print</span>(zMean)<br></code></pre></td></tr></table></figure>
-
-<h3 id="创建一个二维数组-其边界值为1-其余值为0"><a href="#创建一个二维数组-其边界值为1-其余值为0" class="headerlink" title="创建一个二维数组,其边界值为1,其余值为0"></a>创建一个二维数组,其边界值为1,其余值为0</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.ones((<span class="hljs-number">6</span>, <span class="hljs-number">6</span>))<br>z[<span class="hljs-number">1</span>:-<span class="hljs-number">1</span>, <span class="hljs-number">1</span>:-<span class="hljs-number">1</span>] = <span class="hljs-number">0</span><br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
-<ul>
-<li>其原理是:用array[a:b,c:d] = x进行对二维数组赋值的方式</li>
-<li>array[1:-1,1:-1] = x其原理类似a = b[1:-1]从行索引为从第一行到-1行(及倒是第二行),这样根据每个array的大小去调整参数</li>
-</ul>
-<h3 id="对于一个存在的数组-如何用0填充其边界"><a href="#对于一个存在的数组-如何用0填充其边界" class="headerlink" title="对于一个存在的数组,如何用0填充其边界"></a>对于一个存在的数组,如何用0填充其边界</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.ones((<span class="hljs-number">6</span>, <span class="hljs-number">6</span>))<br>z = np.pad(z, pad_width=<span class="hljs-number">1</span>, mode=<span class="hljs-string">&#x27;constant&#x27;</span>, constant_values=<span class="hljs-number">0</span>)<br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
-
-<h3 id="下列各式的运行结果"><a href="#下列各式的运行结果" class="headerlink" title="下列各式的运行结果"></a>下列各式的运行结果</h3><ol>
-<li><code>0 * np.nan</code> –&gt; <code>nan</code></li>
-<li><code>np.nan==np.nan</code> –&gt; <code>False</code></li>
-<li><code>np.inf &gt; np.nan</code> –&gt; <code>False</code></li>
-<li><code>np.nan - np.nan</code> –&gt; <code>nan</code></li>
-<li><code>0.3 == 3 * 0.1</code> –&gt; <code>False</code></li>
-</ol>
-<ul>
-<li>nan 不是数字,是不存在</li>
-<li>inf infinite</li>
-</ul>
-<h3 id="创建一个5-5的矩阵-并设置1-2-3-4落在其对角线的下方"><a href="#创建一个5-5的矩阵-并设置1-2-3-4落在其对角线的下方" class="headerlink" title="创建一个5 * 5的矩阵,并设置1 2 3 4落在其对角线的下方"></a>创建一个<code>5 * 5</code>的矩阵,并设置<code>1 2 3 4</code>落在其对角线的下方</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">Z = np.diag(<span class="hljs-number">1</span>+np.arange(<span class="hljs-number">4</span>), k = -<span class="hljs-number">1</span>)<br><span class="hljs-built_in">print</span>(Z)<br></code></pre></td></tr></table></figure>
-<ul>
-<li><code>np.diag(array_like, k)</code></li>
-</ul>
-<ol>
-<li>返回此array第k位置对角线的矩阵</li>
-<li>当只传入矩阵,则返回此矩阵的对角线元素</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>Numpy</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Numpy</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Numpy--NumpyNotes</title>
     <url>/2021/07/07/numpy/NumpyNotes/</url>
     <content><![CDATA[<h1 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h1><h2 id="1-ndarray"><a href="#1-ndarray" class="headerlink" title="1.ndarray"></a>1.ndarray</h2><p>Numpy的数组类是<code>ndarray</code>，但其不同于<code>array</code>（只是一个以为数组）</p>
@@ -203,6 +105,268 @@ turns out<figure class="highlight python"><table><tr><td class="code"><pre><code
       <tags>
         <tag>Python</tag>
         <tag>Numpy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Numpy100--Numpy100</title>
+    <url>/2021/07/07/numpy/numpy100/</url>
+    <content><![CDATA[<h1 id="github上的开源项目"><a href="#github上的开源项目" class="headerlink" title="github上的开源项目"></a>github上的开源项目</h1><h2 id="2021-7-4-17：06"><a href="#2021-7-4-17：06" class="headerlink" title="2021.7.4 17：06"></a>2021.7.4 17：06</h2><span id="more"></span>
+<h3 id="创建一个长度为10的空向量"><a href="#创建一个长度为10的空向量" class="headerlink" title="创建一个长度为10的空向量"></a>创建一个长度为10的空向量</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.zeros(<span class="hljs-number">10</span>)<br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
+<h3 id="找到数组的内存大小"><a href="#找到数组的内存大小" class="headerlink" title="找到数组的内存大小"></a>找到数组的内存大小</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.zeros(<span class="hljs-number">10</span>)<br><span class="hljs-built_in">print</span>(z.size * z.itermsize)<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>z.size获取到内部的元素个数<br>z.itemsize获取到各个元素的大小</p>
+</blockquote>
+<h3 id="从命令行对得到相关函数的说明文档"><a href="#从命令行对得到相关函数的说明文档" class="headerlink" title="从命令行对得到相关函数的说明文档"></a>从命令行对得到相关函数的说明文档</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs pythoh">print(np.info(np.add))<br></code></pre></td></tr></table></figure>
+
+<h3 id="创建一个长度为10-且除了第五个元素为1的空向量"><a href="#创建一个长度为10-且除了第五个元素为1的空向量" class="headerlink" title="创建一个长度为10,且除了第五个元素为1的空向量"></a>创建一个长度为10,且除了第五个元素为1的空向量</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.zeros(<span class="hljs-number">10</span>)<br>z[<span class="hljs-number">4</span>] = <span class="hljs-number">1</span><br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
+
+<h3 id="创建值域10-49的向量"><a href="#创建值域10-49的向量" class="headerlink" title="创建值域10-49的向量"></a>创建值域10-49的向量</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.arange(<span class="hljs-number">10</span>, <span class="hljs-number">50</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="反转一个向量"><a href="#反转一个向量" class="headerlink" title="反转一个向量"></a>反转一个向量</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.arange(<span class="hljs-number">0</span>, <span class="hljs-number">5</span>)<br><span class="hljs-built_in">print</span>(z)<br>z = z[::-<span class="hljs-number">1</span>]<br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
+<p><code>b = [0 1 2 3 4]</code><br><code>a = b[x : y]</code>: 两索引各自计算,正值从左侧开始,负值从右侧开始</p>
+<ul>
+<li>左侧索引元素在右侧索引元素左侧,则返回非空</li>
+<li>某侧无索引则代表,从另一侧索引顺方向计数完</li>
+<li>a为两侧索引之内交集元素返回的array</li>
+<li>若两侧索引之内无元素,则a为空array<blockquote>
+<p>a = b[4:2] : a = []<br>a = b[-3:4] : a = []<br>a = b[4:-2] : a = []</p>
+</blockquote>
+</li>
+</ul>
+<ol>
+<li><code>x&gt;0</code> <code>y&gt;0</code></li>
+</ol>
+<ul>
+<li>a = b[x:y]: a = x-y内元素返回array</li>
+<li>a = b[ :y]: a = 0-y内元素返回</li>
+<li>a = b[x: ]: a = x-len(b)内元素返回</li>
+<li>x &lt; y : a = []</li>
+</ul>
+<ol start="2">
+<li><code>x&lt;0</code> or <code>y&lt;0</code></li>
+</ol>
+<ul>
+<li>a = b[-4:-1]: a = b中-4号元素到-1号元素返回</li>
+<li>a = b[-4:1]: a = []</li>
+<li>a = b[-4:]: a = -4 - 0索引之间元素返回</li>
+<li>a = b[:-4]: a = []</li>
+<li>a = b[3:-4]: a = []</li>
+</ul>
+<ol start="3">
+<li><code>a = b[::a]</code></li>
+</ol>
+<ul>
+<li>在b中没隔a取一个元素返回a</li>
+<li>取值方向由a正负决定</li>
+</ul>
+<h3 id="创建一个3-3-值域-0-8的矩阵"><a href="#创建一个3-3-值域-0-8的矩阵" class="headerlink" title="创建一个3 * 3,值域:0-8的矩阵"></a>创建一个3 * 3,值域:0-8的矩阵</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.arange(<span class="hljs-number">0</span>,<span class="hljs-number">9</span>).reshape(<span class="hljs-number">3</span>,<span class="hljs-number">3</span>)<br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
+<h3 id="找到数组中的0元素索引"><a href="#找到数组中的0元素索引" class="headerlink" title="找到数组中的0元素索引"></a>找到数组中的0元素索引</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">0</span>])<br><span class="hljs-built_in">print</span>(z.nonzero())<br></code></pre></td></tr></table></figure>
+<h3 id="创建一个3-3的单位矩阵"><a href="#创建一个3-3的单位矩阵" class="headerlink" title="创建一个3 * 3的单位矩阵"></a>创建一个<code>3 * 3</code>的单位矩阵</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.eye(<span class="hljs-number">3</span>)<br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
+
+<h3 id="创建一个3-3的随机数据"><a href="#创建一个3-3的随机数据" class="headerlink" title="创建一个3 * 3的随机数据"></a>创建一个<code>3 * 3</code>的随机数据</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> numpy <span class="hljs-keyword">import</span> random<br>z = np.random.random((<span class="hljs-number">3</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>))<br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
+
+<h3 id="创建一个10-10的随机数组-并获取最小与最大值"><a href="#创建一个10-10的随机数组-并获取最小与最大值" class="headerlink" title="创建一个10 * 10的随机数组,并获取最小与最大值"></a>创建一个<code>10 * 10</code>的随机数组,并获取最小与最大值</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> numpy <span class="hljs-keyword">import</span> random<br>z = np.random.random((<span class="hljs-number">10</span>, <span class="hljs-number">10</span>))<br><span class="hljs-built_in">print</span>(z.<span class="hljs-built_in">min</span>(), z.<span class="hljs-built_in">max</span>())<br></code></pre></td></tr></table></figure>
+
+<h3 id="创建一个长度为30的随机向量-并获取其平均值"><a href="#创建一个长度为30的随机向量-并获取其平均值" class="headerlink" title="创建一个长度为30的随机向量,并获取其平均值"></a>创建一个长度为<code>30</code>的随机向量,并获取其平均值</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> numpy <span class="hljs-keyword">import</span> random<br>z = np.random.random((<span class="hljs-number">30</span>))<br>zMean = z.mean()<br><span class="hljs-built_in">print</span>(zMean)<br></code></pre></td></tr></table></figure>
+
+<h3 id="创建一个二维数组-其边界值为1-其余值为0"><a href="#创建一个二维数组-其边界值为1-其余值为0" class="headerlink" title="创建一个二维数组,其边界值为1,其余值为0"></a>创建一个二维数组,其边界值为1,其余值为0</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.ones((<span class="hljs-number">6</span>, <span class="hljs-number">6</span>))<br>z[<span class="hljs-number">1</span>:-<span class="hljs-number">1</span>, <span class="hljs-number">1</span>:-<span class="hljs-number">1</span>] = <span class="hljs-number">0</span><br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
+<ul>
+<li>其原理是:用array[a:b,c:d] = x进行对二维数组赋值的方式</li>
+<li>array[1:-1,1:-1] = x其原理类似a = b[1:-1]从行索引为从第一行到-1行(及倒是第二行),这样根据每个array的大小去调整参数</li>
+</ul>
+<h3 id="对于一个存在的数组-如何用0填充其边界"><a href="#对于一个存在的数组-如何用0填充其边界" class="headerlink" title="对于一个存在的数组,如何用0填充其边界"></a>对于一个存在的数组,如何用0填充其边界</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.ones((<span class="hljs-number">6</span>, <span class="hljs-number">6</span>))<br>z = np.pad(z, pad_width=<span class="hljs-number">1</span>, mode=<span class="hljs-string">&#x27;constant&#x27;</span>, constant_values=<span class="hljs-number">0</span>)<br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
+
+<h3 id="下列各式的运行结果"><a href="#下列各式的运行结果" class="headerlink" title="下列各式的运行结果"></a>下列各式的运行结果</h3><ol>
+<li><code>0 * np.nan</code> –&gt; <code>nan</code></li>
+<li><code>np.nan==np.nan</code> –&gt; <code>False</code></li>
+<li><code>np.inf &gt; np.nan</code> –&gt; <code>False</code></li>
+<li><code>np.nan - np.nan</code> –&gt; <code>nan</code></li>
+<li><code>0.3 == 3 * 0.1</code> –&gt; <code>False</code></li>
+</ol>
+<ul>
+<li>nan 不是数字,是不存在</li>
+<li>inf infinite</li>
+</ul>
+<h3 id="创建一个5-5的矩阵-并设置1-2-3-4落在其对角线的下方"><a href="#创建一个5-5的矩阵-并设置1-2-3-4落在其对角线的下方" class="headerlink" title="创建一个5 * 5的矩阵,并设置1 2 3 4落在其对角线的下方"></a>创建一个<code>5 * 5</code>的矩阵,并设置<code>1 2 3 4</code>落在其对角线的下方</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">Z = np.diag(<span class="hljs-number">1</span>+np.arange(<span class="hljs-number">4</span>), k = -<span class="hljs-number">1</span>)<br><span class="hljs-built_in">print</span>(Z)<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>np.diag(array_like, k)</code></li>
+</ul>
+<ol>
+<li>返回此array第k位置对角线的矩阵</li>
+<li>当只传入矩阵,则返回此矩阵的对角线元素</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>Numpy</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Numpy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MarkLily Blog Test</title>
+    <url>/2021/07/07/test/numpy100/</url>
+    <content><![CDATA[<h1 id="github上的开源项目"><a href="#github上的开源项目" class="headerlink" title="github上的开源项目"></a>github上的开源项目</h1><h2 id="2021-7-4-17：06"><a href="#2021-7-4-17：06" class="headerlink" title="2021.7.4 17：06"></a>2021.7.4 17：06</h2><span id="more"></span>
+<h3 id="创建一个长度为10的空向量"><a href="#创建一个长度为10的空向量" class="headerlink" title="创建一个长度为10的空向量"></a>创建一个长度为10的空向量</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.zeros(<span class="hljs-number">10</span>)<br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
+<h3 id="找到数组的内存大小"><a href="#找到数组的内存大小" class="headerlink" title="找到数组的内存大小"></a>找到数组的内存大小</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.zeros(<span class="hljs-number">10</span>)<br><span class="hljs-built_in">print</span>(z.size * z.itermsize)<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>z.size获取到内部的元素个数<br>z.itemsize获取到各个元素的大小</p>
+</blockquote>
+<h3 id="从命令行对得到相关函数的说明文档"><a href="#从命令行对得到相关函数的说明文档" class="headerlink" title="从命令行对得到相关函数的说明文档"></a>从命令行对得到相关函数的说明文档</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs pythoh">print(np.info(np.add))<br></code></pre></td></tr></table></figure>
+
+<h3 id="创建一个长度为10-且除了第五个元素为1的空向量"><a href="#创建一个长度为10-且除了第五个元素为1的空向量" class="headerlink" title="创建一个长度为10,且除了第五个元素为1的空向量"></a>创建一个长度为10,且除了第五个元素为1的空向量</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.zeros(<span class="hljs-number">10</span>)<br>z[<span class="hljs-number">4</span>] = <span class="hljs-number">1</span><br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
+
+<h3 id="创建值域10-49的向量"><a href="#创建值域10-49的向量" class="headerlink" title="创建值域10-49的向量"></a>创建值域10-49的向量</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.arange(<span class="hljs-number">10</span>, <span class="hljs-number">50</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="反转一个向量"><a href="#反转一个向量" class="headerlink" title="反转一个向量"></a>反转一个向量</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.arange(<span class="hljs-number">0</span>, <span class="hljs-number">5</span>)<br><span class="hljs-built_in">print</span>(z)<br>z = z[::-<span class="hljs-number">1</span>]<br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
+<p><code>b = [0 1 2 3 4]</code><br><code>a = b[x : y]</code>: 两索引各自计算,正值从左侧开始,负值从右侧开始</p>
+<ul>
+<li>左侧索引元素在右侧索引元素左侧,则返回非空</li>
+<li>某侧无索引则代表,从另一侧索引顺方向计数完</li>
+<li>a为两侧索引之内交集元素返回的array</li>
+<li>若两侧索引之内无元素,则a为空array<blockquote>
+<p>a = b[4:2] : a = []<br>a = b[-3:4] : a = []<br>a = b[4:-2] : a = []</p>
+</blockquote>
+</li>
+</ul>
+<ol>
+<li><code>x&gt;0</code> <code>y&gt;0</code></li>
+</ol>
+<ul>
+<li>a = b[x:y]: a = x-y内元素返回array</li>
+<li>a = b[ :y]: a = 0-y内元素返回</li>
+<li>a = b[x: ]: a = x-len(b)内元素返回</li>
+<li>x &lt; y : a = []</li>
+</ul>
+<ol start="2">
+<li><code>x&lt;0</code> or <code>y&lt;0</code></li>
+</ol>
+<ul>
+<li>a = b[-4:-1]: a = b中-4号元素到-1号元素返回</li>
+<li>a = b[-4:1]: a = []</li>
+<li>a = b[-4:]: a = -4 - 0索引之间元素返回</li>
+<li>a = b[:-4]: a = []</li>
+<li>a = b[3:-4]: a = []</li>
+</ul>
+<ol start="3">
+<li><code>a = b[::a]</code></li>
+</ol>
+<ul>
+<li>在b中没隔a取一个元素返回a</li>
+<li>取值方向由a正负决定</li>
+</ul>
+<h3 id="创建一个3-3-值域-0-8的矩阵"><a href="#创建一个3-3-值域-0-8的矩阵" class="headerlink" title="创建一个3 * 3,值域:0-8的矩阵"></a>创建一个3 * 3,值域:0-8的矩阵</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.arange(<span class="hljs-number">0</span>,<span class="hljs-number">9</span>).reshape(<span class="hljs-number">3</span>,<span class="hljs-number">3</span>)<br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
+<h3 id="找到数组中的0元素索引"><a href="#找到数组中的0元素索引" class="headerlink" title="找到数组中的0元素索引"></a>找到数组中的0元素索引</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">0</span>])<br><span class="hljs-built_in">print</span>(z.nonzero())<br></code></pre></td></tr></table></figure>
+<h3 id="创建一个3-3的单位矩阵"><a href="#创建一个3-3的单位矩阵" class="headerlink" title="创建一个3 * 3的单位矩阵"></a>创建一个<code>3 * 3</code>的单位矩阵</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.eye(<span class="hljs-number">3</span>)<br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
+
+<h3 id="创建一个3-3的随机数据"><a href="#创建一个3-3的随机数据" class="headerlink" title="创建一个3 * 3的随机数据"></a>创建一个<code>3 * 3</code>的随机数据</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> numpy <span class="hljs-keyword">import</span> random<br>z = np.random.random((<span class="hljs-number">3</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>))<br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
+
+<h3 id="创建一个10-10的随机数组-并获取最小与最大值"><a href="#创建一个10-10的随机数组-并获取最小与最大值" class="headerlink" title="创建一个10 * 10的随机数组,并获取最小与最大值"></a>创建一个<code>10 * 10</code>的随机数组,并获取最小与最大值</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> numpy <span class="hljs-keyword">import</span> random<br>z = np.random.random((<span class="hljs-number">10</span>, <span class="hljs-number">10</span>))<br><span class="hljs-built_in">print</span>(z.<span class="hljs-built_in">min</span>(), z.<span class="hljs-built_in">max</span>())<br></code></pre></td></tr></table></figure>
+
+<h3 id="创建一个长度为30的随机向量-并获取其平均值"><a href="#创建一个长度为30的随机向量-并获取其平均值" class="headerlink" title="创建一个长度为30的随机向量,并获取其平均值"></a>创建一个长度为<code>30</code>的随机向量,并获取其平均值</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> numpy <span class="hljs-keyword">import</span> random<br>z = np.random.random((<span class="hljs-number">30</span>))<br>zMean = z.mean()<br><span class="hljs-built_in">print</span>(zMean)<br></code></pre></td></tr></table></figure>
+
+<h3 id="创建一个二维数组-其边界值为1-其余值为0"><a href="#创建一个二维数组-其边界值为1-其余值为0" class="headerlink" title="创建一个二维数组,其边界值为1,其余值为0"></a>创建一个二维数组,其边界值为1,其余值为0</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.ones((<span class="hljs-number">6</span>, <span class="hljs-number">6</span>))<br>z[<span class="hljs-number">1</span>:-<span class="hljs-number">1</span>, <span class="hljs-number">1</span>:-<span class="hljs-number">1</span>] = <span class="hljs-number">0</span><br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
+<ul>
+<li>其原理是:用array[a:b,c:d] = x进行对二维数组赋值的方式</li>
+<li>array[1:-1,1:-1] = x其原理类似a = b[1:-1]从行索引为从第一行到-1行(及倒是第二行),这样根据每个array的大小去调整参数</li>
+</ul>
+<h3 id="对于一个存在的数组-如何用0填充其边界"><a href="#对于一个存在的数组-如何用0填充其边界" class="headerlink" title="对于一个存在的数组,如何用0填充其边界"></a>对于一个存在的数组,如何用0填充其边界</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.ones((<span class="hljs-number">6</span>, <span class="hljs-number">6</span>))<br>z = np.pad(z, pad_width=<span class="hljs-number">1</span>, mode=<span class="hljs-string">&#x27;constant&#x27;</span>, constant_values=<span class="hljs-number">0</span>)<br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
+
+<h3 id="下列各式的运行结果"><a href="#下列各式的运行结果" class="headerlink" title="下列各式的运行结果"></a>下列各式的运行结果</h3><ol>
+<li><code>0 * np.nan</code> –&gt; <code>nan</code></li>
+<li><code>np.nan==np.nan</code> –&gt; <code>False</code></li>
+<li><code>np.inf &gt; np.nan</code> –&gt; <code>False</code></li>
+<li><code>np.nan - np.nan</code> –&gt; <code>nan</code></li>
+<li><code>0.3 == 3 * 0.1</code> –&gt; <code>False</code></li>
+</ol>
+<ul>
+<li>nan 不是数字,是不存在</li>
+<li>inf infinite</li>
+</ul>
+<h3 id="创建一个5-5的矩阵-并设置1-2-3-4落在其对角线的下方"><a href="#创建一个5-5的矩阵-并设置1-2-3-4落在其对角线的下方" class="headerlink" title="创建一个5 * 5的矩阵,并设置1 2 3 4落在其对角线的下方"></a>创建一个<code>5 * 5</code>的矩阵,并设置<code>1 2 3 4</code>落在其对角线的下方</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">Z = np.diag(<span class="hljs-number">1</span>+np.arange(<span class="hljs-number">4</span>), k = -<span class="hljs-number">1</span>)<br><span class="hljs-built_in">print</span>(Z)<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>np.diag(array_like, k)</code></li>
+</ul>
+<ol>
+<li>返回此array第k位置对角线的矩阵</li>
+<li>当只传入矩阵,则返回此矩阵的对角线元素</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Test</category>
+      </categories>
+      <tags>
+        <tag>test</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git-02-初始化本地仓库</title>
+    <url>/2021/07/12/git/git-02-%E5%88%9D%E5%A7%8B%E5%8C%96%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/</url>
+    <content><![CDATA[<p>创建一个本地文件夹用以初始化本地仓库， 进行本地数据的管理</p>
+<span id="more"></span>
+
+<p>在<code>c</code>盘创建一个<code>Git</code>文件夹,但此文件夹不是必要的<br>在<code>Git</code>文件夹内创建一个用于学习git的文件夹<code>gitlearn</code> </p>
+<hr>
+<h1 id="git-init-初始化仓库"><a href="#git-init-初始化仓库" class="headerlink" title="git init - 初始化仓库"></a><code><font color='dodgerblue'>git init - 初始化仓库</font></code></h1><p>使用命令<code>git init</code>初始化仓库</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git init<br></code></pre></td></tr></table></figure>
+<p>随后便可以看见初始化成功的确认信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git init<br>Initialized empty Git repository in A:/Git/gitlearn/.git/<br></code></pre></td></tr></table></figure>
+<h5 id="创建好第一个仓库后-我们简单进行一些本地的数据管理演示"><a href="#创建好第一个仓库后-我们简单进行一些本地的数据管理演示" class="headerlink" title="创建好第一个仓库后, 我们简单进行一些本地的数据管理演示"></a>创建好第一个仓库后, 我们简单进行一些本地的数据管理演示</h5><hr>
+<h1 id="git-status-工作区状态"><a href="#git-status-工作区状态" class="headerlink" title="git status - 工作区状态"></a><code><font color='dodgerblue'>git status - 工作区状态</font></code></h1><h2 id="status-工作区状态"><a href="#status-工作区状态" class="headerlink" title="status - 工作区状态"></a><code>status - 工作区状态</code></h2><p>我们在本地对文件进行修改后, <code>git</code>会检测到这些修改, 并提供相应的后续处理建议</p>
+<p>以上操作记录即操作建议, 构成了工作区状态–<code>status</code></p>
+<h2 id="git-status-查看状态"><a href="#git-status-查看状态" class="headerlink" title="git status - 查看状态"></a><code>git status - 查看状态</code></h2><p>使用 <code><font color='dodgerblue'>git status</font></code> 查看当前仓库信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br><br>No commits yet<br><br>nothing to commit (create/copy files and use &quot;git add&quot; to track)<br></code></pre></td></tr></table></figure>
+
+<p>可见此时仓库是空的,当前<code>branch</code>为<code>master</code>, 没有任何<code>commit</code></p>
+<h2 id="status-更新"><a href="#status-更新" class="headerlink" title="status - 更新"></a><code>status - 更新</code></h2><h3 id="新建文件"><a href="#新建文件" class="headerlink" title="新建文件"></a><code>新建文件</code></h3><p>我们尝试向仓库添加一个文本文件<code>text.txt</code> ：</p>
+<ul>
+<li>使用 <code>touch filename</code>创建一个文件</li>
+<li>使用 <code>ls</code>查看当前路径下的所有文件<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-JCSGJPO MINGW64 /a/Git/gitlearn (master)<br>$ touch test.txt<br><br>26676@DESKTOP-JCSGJPO MINGW64 /a/Git/gitlearn (master)<br>$ ls<br>test.txt  <br></code></pre></td></tr></table></figure></li>
+</ul>
+<p class="note note-info">此处, 我们也可在文件夹内"新建文件夹"</p>
+
+<h3 id="查看新状态"><a href="#查看新状态" class="headerlink" title="查看新状态"></a><code>查看新状态</code></h3><p>我们再次使用<code>git status</code>查看信息,可得 ：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br><br>No commits yet<br><br>Untracked files:<br>  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)<br>        text1.txt<br><br>nothing added to commit but untracked files present (use &quot;git add&quot; to track)<br><br></code></pre></td></tr></table></figure>
+<ul>
+<li>显示我们新建了一个<code>text1.txt</code>文件,但是该文件未在<code>git</code>的追踪目录内</li>
+<li>如果我们不添加和提交此文件,<code>git</code>便不会跟踪此文件</li>
+</ul>
+<hr>
+<h1 id="git-add-提交暂存区"><a href="#git-add-提交暂存区" class="headerlink" title="git add - 提交暂存区"></a><code><font color='dodgerblue'>git add - 提交暂存区</font></code></h1><p>对于我们新建的文件<code>test.txt</code>, 我们想让<code>git</code>追踪其版本更迭, 此时我们应如上面<code>git</code>建议所 ：使用<code>git add</code>命令将其提交到暂存区</p>
+<h4 id="git-add-提交暂存区-1"><a href="#git-add-提交暂存区-1" class="headerlink" title="git add - 提交暂存区"></a><code>git add - 提交暂存区</code></h4><p>使用<code>git add &lt;name&gt;</code>命令将该文件添加到<code>staging</code>区域(即暂存区) ， 可得 ：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git add text1.txt<br>warning: LF will be replaced by CRLF in text1.txt.<br>The file will have its original line endings in your working directory<br></code></pre></td></tr></table></figure>
+<p>报错提示:<code>The file will have its original line endings in your working directory</code></p>
+<ul>
+<li>是因为<code>git</code>默认将文本中的回车换行统一为<code>CRLF</code>,不影响文本的实际使用</li>
+</ul>
+<h4 id="git-status-查看状态-1"><a href="#git-status-查看状态-1" class="headerlink" title="git status - 查看状态"></a><code>git status - 查看状态</code></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br><br>No commits yet<br><br>Changes to be committed:<br>  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)<br>        new file:   text1.txt<br></code></pre></td></tr></table></figure>
+<p>此时的提示信息更新为 ：<code>git rm --cached &lt;file&gt;...</code> ，提示我们使用<code>rm</code>来将文件从暂存区撤回<br><a href="#1">git status - 工作区状态</a></p>
+<hr>
+<h1 id="git-commit-提交版本库"><a href="#git-commit-提交版本库" class="headerlink" title="git commit - 提交版本库"></a><code><font color='dodgerblue'>git commit - 提交版本库</font></code></h1><p>使用<code>git commit -m &quot;info&quot;</code>将暂存区的文件提交到仓库中 ：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git commit -m &quot;the first commit. add text1.txt to the repository&quot;<br>[master (root-commit) 21dced3] the first commit. add text1.txt to the repository<br> 1 file changed, 1 insertion(+)<br> create mode 100644 text1.txt<br></code></pre></td></tr></table></figure>
+<p><code>-m</code>后的信息为此次<code>commit</code>的信息</p>
+<p>此时再次检查工作区的状态,可以看见干净的工作树</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br>nothing to commit, working tree clean<br></code></pre></td></tr></table></figure>
+
+
+
+
+<hr>
+<h1 id="git-log-日志信息"><a href="#git-log-日志信息" class="headerlink" title="git log - 日志信息"></a><code><font color='dodgerblue'>git log - 日志信息</font></code></h1><p>使用<code>git log</code>获得历史提交记录 ：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git log<br>commit 21dced3ee6053a17e148ef75cd2d35863155f4a9 (HEAD -&gt; master)<br>Author: MarkLilyC &lt;2667602812@qq.com&gt;<br>Date:   Sun Jul 11 16:50:18 2021 +0800<br><br>    the first commit. add text1.txt to the repository<br></code></pre></td></tr></table></figure>
+<p>可见我们设置的提交信息被打印了出来</p>
+<h3 id="简化日志信息"><a href="#简化日志信息" class="headerlink" title="简化日志信息"></a>简化日志信息</h3><p>使用命令<code>git log  --pretty=onelin --abbrev-commit</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git log --pretty=oneline --abbrev-commit<br>8244163 (HEAD -&gt; master, tag: v2.0) commit to test recall from commit<br>abfb3b5 commit this testfile to comiit hist<br>3699296 aa<br>1dd8abb aa<br>543a126 aa<br>7abf4b6 add a new line by vim<br>00e7919 add a test.txt to repo<br>40442a5 AA<br>85f2fbb ADD T2.TXT<br>bd8bfc5 add a line id = 3<br>d5fe445 add a line id = 2<br>fb84050 add a line id = 1<br>2e7ebbb add t.txt to the repo<br>440e71c remove a file<br>1e71bf1 rename<br>8377709 rename<br>8b0aa8b aa<br>199f71f (tag: v1.0) AA<br>0bbb931 aa<br>d219e28 aa<br>08926e9 aa<br>a638d98 aa<br>9ee99cc aa<br><br></code></pre></td></tr></table></figure>
+
+<p>按下<code>q</code>退出</p>
+<h4 id="以上便是使用git-init进行初始化的步骤-以及一些简单的命令操作"><a href="#以上便是使用git-init进行初始化的步骤-以及一些简单的命令操作" class="headerlink" title="以上便是使用git init进行初始化的步骤, 以及一些简单的命令操作"></a>以上便是使用<code>git init</code>进行初始化的步骤, 以及一些简单的命令操作</h4>]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -346,66 +510,103 @@ turns out<figure class="highlight python"><table><tr><td class="code"><pre><code
       </tags>
   </entry>
   <entry>
-    <title>git-02-初始化本地仓库</title>
-    <url>/2021/07/12/git/git-02-%E5%88%9D%E5%A7%8B%E5%8C%96%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/</url>
-    <content><![CDATA[<p>创建一个本地文件夹用以初始化本地仓库， 进行本地数据的管理</p>
+    <title>git-05-文件操作</title>
+    <url>/2021/07/13/git/git-05-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<p>一些关于文件的基础操作</p>
 <span id="more"></span>
+<h1 id="新建"><a href="#新建" class="headerlink" title="新建"></a>新建</h1><h3 id="新建文件夹"><a href="#新建文件夹" class="headerlink" title="新建文件夹"></a>新建文件夹</h3><p>使用命令<code>mkdir &lt;name&gt;</code>创建一个新的文件夹</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ mkdir testfolder<br></code></pre></td></tr></table></figure>
+<p>查看当前文件夹下是否新建了<code>testfolder</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ ls<br>testfolder/<br></code></pre></td></tr></table></figure>
+<p>可见新文件夹创建成功</p>
+<h3 id="新建文件"><a href="#新建文件" class="headerlink" title="新建文件"></a>新建文件</h3><h4 id="使用命令-touch-lt-name-gt-创建一个新文件"><a href="#使用命令-touch-lt-name-gt-创建一个新文件" class="headerlink" title="使用命令 touch &lt;name&gt; 创建一个新文件"></a>使用命令 <code><font color='dodgerblue'>touch &lt;name&gt;</font></code> 创建一个新文件</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ touch test.txt<br></code></pre></td></tr></table></figure>
+<p>查看文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ ls<br>test.txt  testfolder/<br></code></pre></td></tr></table></figure>
+<p>可见文件已创建成功</p>
+<h4 id="工作区状态"><a href="#工作区状态" class="headerlink" title="工作区状态"></a>工作区状态</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br>Untracked files:<br>  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)<br>        test.txt<br><br>nothing added to commit but untracked files present (use &quot;git add&quot; to track)<br></code></pre></td></tr></table></figure>
+<p>可见<code>git</code>已经检测我们新建了文件,但并不会识别文件夹<br>并且<code>git</code>提示我们使用<code>add</code>命令将文件添加到暂存区</p>
+<h4 id="将文件添加到版本库"><a href="#将文件添加到版本库" class="headerlink" title="将文件添加到版本库"></a>将文件添加到版本库</h4><p>先使用<code>add</code>将文件添加到暂存区</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">git add test.txt<br></code></pre></td></tr></table></figure>
+<p>在使用<code>commit</code>将文件提交到版本库</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">git commit -m &quot;info&quot;<br></code></pre></td></tr></table></figure>
+<p>当然你也可以使用<code>&amp;&amp;</code>将多个<code>git</code>命令链接起来</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git add test.txt &amp;&amp; git commit -m &quot;add a test.txt to repo&quot;<br>[master 00e7919] add a test.txt to repo<br> 1 file changed, 0 insertions(+), 0 deletions(-)<br> create mode 100644 test.txt<br></code></pre></td></tr></table></figure>
 
-<p>在<code>c</code>盘创建一个<code>Git</code>文件夹,但此文件夹不是必要的<br>在<code>Git</code>文件夹内创建一个用于学习git的文件夹<code>gitlearn</code> </p>
-<hr>
-<h1 id="git-init-初始化仓库"><a href="#git-init-初始化仓库" class="headerlink" title="git init - 初始化仓库"></a><code><font color='dodgerblue'>git init - 初始化仓库</font></code></h1><p>使用命令<code>git init</code>初始化仓库</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git init<br></code></pre></td></tr></table></figure>
-<p>随后便可以看见初始化成功的确认信息</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git init<br>Initialized empty Git repository in A:/Git/gitlearn/.git/<br></code></pre></td></tr></table></figure>
-<h5 id="创建好第一个仓库后-我们简单进行一些本地的数据管理演示"><a href="#创建好第一个仓库后-我们简单进行一些本地的数据管理演示" class="headerlink" title="创建好第一个仓库后, 我们简单进行一些本地的数据管理演示"></a>创建好第一个仓库后, 我们简单进行一些本地的数据管理演示</h5><hr>
-<h1 id="git-status-工作区状态"><a href="#git-status-工作区状态" class="headerlink" title="git status - 工作区状态"></a><code><font color='dodgerblue'>git status - 工作区状态</font></code></h1><h2 id="status-工作区状态"><a href="#status-工作区状态" class="headerlink" title="status - 工作区状态"></a><code>status - 工作区状态</code></h2><p>我们在本地对文件进行修改后, <code>git</code>会检测到这些修改, 并提供相应的后续处理建议</p>
-<p>以上操作记录即操作建议, 构成了工作区状态–<code>status</code></p>
-<h2 id="git-status-查看状态"><a href="#git-status-查看状态" class="headerlink" title="git status - 查看状态"></a><code>git status - 查看状态</code></h2><p>使用 <code><font color='dodgerblue'>git status</font></code> 查看当前仓库信息</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br><br>No commits yet<br><br>nothing to commit (create/copy files and use &quot;git add&quot; to track)<br></code></pre></td></tr></table></figure>
+<p>至此,我们新建的文件便被添加到了版本库</p>
+<h3 id="使用-vim-对文件进行简单编辑"><a href="#使用-vim-对文件进行简单编辑" class="headerlink" title="使用 vim 对文件进行简单编辑"></a>使用 <code><font color='dodgerblue'>vim</font></code> 对文件进行简单编辑</h3><h4 id="进入vim编辑器"><a href="#进入vim编辑器" class="headerlink" title="进入vim编辑器"></a>进入<code>vim</code>编辑器</h4><p>使用<code>vim name</code>,利用<code>vim</code>编辑器打开<code>name</code>文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ vim test.txt<br></code></pre></td></tr></table></figure>
+<p>回车后,我们便进入了<code>vim</code>编辑器,如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git"><br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>test.txt [unix] (17:00 12/07/2021)                                     0,0-1 All<br>&quot;test.txt&quot; 0L, 0B<br></code></pre></td></tr></table></figure>
+<ul>
+<li>倒数第一行显示当前文件名 `line``数 以及文件大小</li>
+<li>倒数第二行显示文件相关信息<h4 id="利用vim进行编辑"><a href="#利用vim进行编辑" class="headerlink" title="利用vim进行编辑"></a>利用<code>vim</code>进行编辑</h4>我们按下<code>insert</code>键进入<code>insert</code>模式,即文本编辑模式,此时最后一行变为<code>-- INSERT -- </code>,表明我们正在进行文本编辑</li>
+<li>我们键入<code>this is a test line</code>,完成对文本的编辑</li>
+</ul>
+<h4 id="vim的退出"><a href="#vim的退出" class="headerlink" title="vim的退出"></a><code>vim</code>的退出</h4><ul>
+<li>首先按下(或按住)<code>esc</code>,此时最后一行变为空</li>
+<li>再输入<code>:</code>(<code>shift + ;</code>和我们平时输入<code>:</code>一样), 此时最后一行出现了<code>:</code></li>
+<li>再输入<code>wq</code>, 此时最后一行变为<code>:wq</code></li>
+<li>最后回车,便完成了对文件的保存退出</li>
+</ul>
+<h4 id="检查文本的编辑结果"><a href="#检查文本的编辑结果" class="headerlink" title="检查文本的编辑结果"></a>检查文本的编辑结果</h4><p>再次使用<code>vim name</code>进入<code>vim</code>编辑器</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ vim test.txt<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">this is a test line<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>test.txt [unix] (17:12 12/07/2021)                                      1,19 All<br>&quot;test.txt&quot; [unix] 1L, 20B<br></code></pre></td></tr></table></figure>
+<p>可见最后一行的文本信息发生了变化,文本也被保存在了文件内</p>
+<h4 id="提交修改"><a href="#提交修改" class="headerlink" title="提交修改"></a>提交修改</h4><p>对文件编辑后,记得提交我们满意文件版本</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git add . &amp;&amp; git commit -m &quot;add a new line by vim&quot;<br>warning: LF will be replaced by CRLF in test.txt.<br>The file will have its original line endings in your working directory<br>[master 7abf4b6] add a new line by vim<br> 1 file changed, 1 insertion(+)<br></code></pre></td></tr></table></figure>
 
-<p>可见此时仓库是空的,当前<code>branch</code>为<code>master</code>, 没有任何<code>commit</code></p>
-<h2 id="status-更新"><a href="#status-更新" class="headerlink" title="status - 更新"></a><code>status - 更新</code></h2><h3 id="新建文件"><a href="#新建文件" class="headerlink" title="新建文件"></a><code>新建文件</code></h3><p>我们尝试向仓库添加一个文本文件<code>text.txt</code> ：</p>
-<ul>
-<li>使用 <code>touch filename</code>创建一个文件</li>
-<li>使用 <code>ls</code>查看当前路径下的所有文件<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-JCSGJPO MINGW64 /a/Git/gitlearn (master)<br>$ touch test.txt<br><br>26676@DESKTOP-JCSGJPO MINGW64 /a/Git/gitlearn (master)<br>$ ls<br>test.txt  <br></code></pre></td></tr></table></figure></li>
-</ul>
-<p class="note note-info">此处, 我们也可在文件夹内"新建文件夹"</p>
 
-<h3 id="查看新状态"><a href="#查看新状态" class="headerlink" title="查看新状态"></a><code>查看新状态</code></h3><p>我们再次使用<code>git status</code>查看信息,可得 ：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br><br>No commits yet<br><br>Untracked files:<br>  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)<br>        text1.txt<br><br>nothing added to commit but untracked files present (use &quot;git add&quot; to track)<br><br></code></pre></td></tr></table></figure>
-<ul>
-<li>显示我们新建了一个<code>text1.txt</code>文件,但是该文件未在<code>git</code>的追踪目录内</li>
-<li>如果我们不添加和提交此文件,<code>git</code>便不会跟踪此文件</li>
-</ul>
-<hr>
-<h1 id="git-add-提交暂存区"><a href="#git-add-提交暂存区" class="headerlink" title="git add - 提交暂存区"></a><code><font color='dodgerblue'>git add - 提交暂存区</font></code></h1><p>对于我们新建的文件<code>test.txt</code>, 我们想让<code>git</code>追踪其版本更迭, 此时我们应如上面<code>git</code>建议所 ：使用<code>git add</code>命令将其提交到暂存区</p>
-<h4 id="git-add-提交暂存区-1"><a href="#git-add-提交暂存区-1" class="headerlink" title="git add - 提交暂存区"></a><code>git add - 提交暂存区</code></h4><p>使用<code>git add &lt;name&gt;</code>命令将该文件添加到<code>staging</code>区域(即暂存区) ， 可得 ：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git add text1.txt<br>warning: LF will be replaced by CRLF in text1.txt.<br>The file will have its original line endings in your working directory<br></code></pre></td></tr></table></figure>
-<p>报错提示:<code>The file will have its original line endings in your working directory</code></p>
-<ul>
-<li>是因为<code>git</code>默认将文本中的回车换行统一为<code>CRLF</code>,不影响文本的实际使用</li>
-</ul>
-<h4 id="git-status-查看状态-1"><a href="#git-status-查看状态-1" class="headerlink" title="git status - 查看状态"></a><code>git status - 查看状态</code></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br><br>No commits yet<br><br>Changes to be committed:<br>  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)<br>        new file:   text1.txt<br></code></pre></td></tr></table></figure>
-<p>此时的提示信息更新为 ：<code>git rm --cached &lt;file&gt;...</code> ，提示我们使用<code>rm</code>来将文件从暂存区撤回<br><a href="#1">git status - 工作区状态</a></p>
-<hr>
-<h1 id="git-commit-提交版本库"><a href="#git-commit-提交版本库" class="headerlink" title="git commit - 提交版本库"></a><code><font color='dodgerblue'>git commit - 提交版本库</font></code></h1><p>使用<code>git commit -m &quot;info&quot;</code>将暂存区的文件提交到仓库中 ：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git commit -m &quot;the first commit. add text1.txt to the repository&quot;<br>[master (root-commit) 21dced3] the first commit. add text1.txt to the repository<br> 1 file changed, 1 insertion(+)<br> create mode 100644 text1.txt<br></code></pre></td></tr></table></figure>
-<p><code>-m</code>后的信息为此次<code>commit</code>的信息</p>
-<p>此时再次检查工作区的状态,可以看见干净的工作树</p>
+<h1 id="git-删除文件"><a href="#git-删除文件" class="headerlink" title="git 删除文件"></a><code><font color='dodgerblue'>git</font></code> 删除文件</h1><h4 id="git-rm"><a href="#git-rm" class="headerlink" title="git rm"></a><code>git rm</code></h4><p>最简单的将文件从追踪中删除并最终从仓库中删除的方法是<code>git rm</code></p>
+<!-- more -->
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git rm t2.txt<br>rm &#x27;t2.txt&#x27;<br></code></pre></td></tr></table></figure>
+<p>运行本命令后,<code>t2.txt</code>文件将会被从本地文件夹删除,并且删除的操作信息也会被添加到暂存区</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br>Changes to be committed:<br>  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)<br>        deleted:    t2.txt<br></code></pre></td></tr></table></figure>
+
+<p>此时,工作区和版本库中的文件便不一致,如果确定要将此文件删除,则进行<code>commit</code>操作,将此次修改提交</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git add . &amp;&amp; git commit -m&quot;remove a file&quot;<br>[master 440e71c] remove a file<br> 1 file changed, 2 deletions(-)<br> delete mode 100644 test.tst<br></code></pre></td></tr></table></figure>
+
+<p>此时工作区状态重回<code>clean</code></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br>nothing to commit, working tree clean<br></code></pre></td></tr></table></figure>
+<p>此时版本库中的文件也已经被删除</p>
+<h1 id="git-撤销删除"><a href="#git-撤销删除" class="headerlink" title="git 撤销删除"></a><code><font color='dodgerblue'>git</font></code> 撤销删除</h1><p>演示之前让我们先创建一个演示文件<code>t.txt</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git"># 创建文件<br>26676@DESKTOP-JCSGJPO MINGW64 /a/git/gitlearn (master)<br>$ touch t.txt<br># 查看当前目录下的文件<br>26676@DESKTOP-JCSGJPO MINGW64 /a/git/gitlearn (master)<br>$ ls<br>t.txt<br># 将该文件添加到暂存区<br>26676@DESKTOP-JCSGJPO MINGW64 /a/git/gitlearn (master)<br>$ git add t.txt<br># 将该修改提交到repo<br>26676@DESKTOP-JCSGJPO MINGW64 /a/git/gitlearn (master)<br>$ git commit -m &quot;add t.txt to the repo&quot;<br>[master 2e7ebbb] add t.txt to the repo<br> 1 file changed, 0 insertions(+), 0 deletions(-)<br> create mode 100644 t.txt<br></code></pre></td></tr></table></figure>
+<p>并在其内部做出一下修改:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">add a line 1<br></code></pre></td></tr></table></figure>
+<p><code>commit</code>并标注<code>commit -m</code>为 : <code>add a line id = 1</code></p>
+<p>类似添加<code>add a line 2</code> 以及 <code>add a line 3</code>, 每次提交都应标注<code>-m</code></p>
+<p>查看当前文件的修改日志</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git log t.txt<br>commit bd8bfc562d20853126dc73b5bd3adad88dd67ca7 (HEAD -&gt; master)<br>Author: MarkLilyC &lt;2667602812@qq.com&gt;<br>Date:   Mon Jul 12 16:33:12 2021 +0800<br><br>    add a line id = 3<br><br>commit d5fe44542872c4cebe7a21ff0927d65cbdfe7427<br>Author: MarkLilyC &lt;2667602812@qq.com&gt;<br>Date:   Mon Jul 12 16:32:56 2021 +0800<br><br>    add a line id = 2<br><br>commit fb840504b7cfd1096de4e2a1bd858b2cbfd63407<br>Author: MarkLilyC &lt;2667602812@qq.com&gt;<br>Date:   Mon Jul 12 16:30:56 2021 +0800<br><br>    add a line id = 1<br></code></pre></td></tr></table></figure>
+<p>可以见到我们所标注的<code>commit</code>信息</p>
+<h3 id="将该文件从本地删除"><a href="#将该文件从本地删除" class="headerlink" title="将该文件从本地删除"></a>将该文件从本地删除</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">git rm t.txt<br></code></pre></td></tr></table></figure>
+<p>查看本地文件夹内是否存在文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-JCSGJPO MINGW64 /a/git/gitlearn (master)<br>$ ls<br><br></code></pre></td></tr></table></figure>
+<p>可见本地已经删除了文件</p>
+<p>工作区状态</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br>Changes to be committed:<br>  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)<br>        deleted:    t.txt<br></code></pre></td></tr></table></figure>
+<p>此时我们尚未将删除操作<code>commit</code>到版本库<br>因从<code>git</code>提示可以看出,此次<code>rm</code>被自动提交到了暂存区,我们可以使用<code>restore --staged</code>将此次删除从暂存区撤销</p>
+<h4 id="在commit删除前-撤销删除"><a href="#在commit删除前-撤销删除" class="headerlink" title="在commit删除前,撤销删除"></a>在<code>commit</code>删除前,撤销删除</h4><p>如上文所言,我们尝试使用<code>restore --staged</code>从暂存区撤销删除</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git"><br>## ``git``重命名文件<br>#### 当直接在工作区(文件夹内)重命名文件时,``git``会执行两个操作;<br>* 1. 将源文件从工作区删除  <br>* 2. 将新文件添加到工作区<br>```git<br>$ git status<br>On branch master<br>Changes to be committed:<br>  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)<br>        deleted:    t2.txt<br><br>Changes not staged for commit:<br>  (use &quot;git add/rm &lt;file&gt;...&quot; to update what will be committed)<br>  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)<br>        deleted:    text1.txt<br><br>Untracked files:<br>  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)<br>        text1_rename.txt<br></code></pre></td></tr></table></figure>
+<p>这样做的缺点是会破坏掉文件的历史版本记录,此后你便无法查看此文件在重命名前的历史记录</p>
+<h4 id="git-mv命令则可以解决这个历史记录断链的问题"><a href="#git-mv命令则可以解决这个历史记录断链的问题" class="headerlink" title="git mv命令则可以解决这个历史记录断链的问题"></a><code>git mv</code>命令则可以解决这个历史记录断链的问题</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git mv text1.txt test1_rename.txt<br></code></pre></td></tr></table></figure>
+<p><code>mv</code>命令相当于<code>move</code>,此处重命名文件也就是<code>text1.txt</code>被移动重命名为<code>text1_rename.txt</code></p>
+<p>此时检查工作区状态,<code>mv</code>命令会被解析为<code>rename</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br>Changes to be committed:<br>  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)<br>        renamed:    test1_rename.txt -&gt; text1_rename.txt<br></code></pre></td></tr></table></figure>
 
+<h1 id="git-移动文件"><a href="#git-移动文件" class="headerlink" title="git 移动文件"></a><code><font color='dodgerblue'>git</font></code> 移动文件</h1><p>同样使用<code>mv</code>命令,当在移动后文件名前加上移动后的文件夹路径,即可完成对文件的移动</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git mv test.txt move/test1.txt<br></code></pre></td></tr></table></figure>
+<p>查看工作区状态”</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br>Changes to be committed:<br>  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)<br>        renamed:    test.txt -&gt; move/test1.txt<br></code></pre></td></tr></table></figure>
+<p>可以看见移动文件操作同样属于<code>rename</code>操作</p>
+<blockquote>
+<p>移动前请记得创建目标文件夹</p>
+</blockquote>
+<p>查看目标文件夹:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/git/gitlearn (master)<br>$ ls<br>move/<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/git/gitlearn (master)<br>$ cd move<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/git/gitlearn/move (master)<br>$ ls<br>test1.txt<br></code></pre></td></tr></table></figure>
 
+<h1 id="git-log-查看日志"><a href="#git-log-查看日志" class="headerlink" title="git log 查看日志"></a><code><font color='dodgerblue'>git log</font></code> 查看日志</h1><p>使用<code>git log -- &lt;name&gt;</code>查看指定文件的修改日志</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git log -- test.txt<br>commit 83777091dcd8754184c0cfa69e1f4d2e112813ad<br>Author: MarkLilyC &lt;2667602812@qq.com&gt;<br>Date:   Mon Jul 12 16:08:25 2021 +0800<br><br>    rename<br><br>commit 8b0aa8b25a3d1d9d5528731f32e12437037c7454<br>Author: MarkLilyC &lt;2667602812@qq.com&gt;<br>Date:   Mon Jul 12 16:06:00 2021 +0800<br><br>    aa<br></code></pre></td></tr></table></figure>
 
-
-<hr>
-<h1 id="git-log-日志信息"><a href="#git-log-日志信息" class="headerlink" title="git log - 日志信息"></a><code><font color='dodgerblue'>git log - 日志信息</font></code></h1><p>使用<code>git log</code>获得历史提交记录 ：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git log<br>commit 21dced3ee6053a17e148ef75cd2d35863155f4a9 (HEAD -&gt; master)<br>Author: MarkLilyC &lt;2667602812@qq.com&gt;<br>Date:   Sun Jul 11 16:50:18 2021 +0800<br><br>    the first commit. add text1.txt to the repository<br></code></pre></td></tr></table></figure>
-<p>可见我们设置的提交信息被打印了出来</p>
-<h3 id="简化日志信息"><a href="#简化日志信息" class="headerlink" title="简化日志信息"></a>简化日志信息</h3><p>使用命令<code>git log  --pretty=onelin --abbrev-commit</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git log --pretty=oneline --abbrev-commit<br>8244163 (HEAD -&gt; master, tag: v2.0) commit to test recall from commit<br>abfb3b5 commit this testfile to comiit hist<br>3699296 aa<br>1dd8abb aa<br>543a126 aa<br>7abf4b6 add a new line by vim<br>00e7919 add a test.txt to repo<br>40442a5 AA<br>85f2fbb ADD T2.TXT<br>bd8bfc5 add a line id = 3<br>d5fe445 add a line id = 2<br>fb84050 add a line id = 1<br>2e7ebbb add t.txt to the repo<br>440e71c remove a file<br>1e71bf1 rename<br>8377709 rename<br>8b0aa8b aa<br>199f71f (tag: v1.0) AA<br>0bbb931 aa<br>d219e28 aa<br>08926e9 aa<br>a638d98 aa<br>9ee99cc aa<br><br></code></pre></td></tr></table></figure>
-
-<p>按下<code>q</code>退出</p>
-<h4 id="以上便是使用git-init进行初始化的步骤-以及一些简单的命令操作"><a href="#以上便是使用git-init进行初始化的步骤-以及一些简单的命令操作" class="headerlink" title="以上便是使用git init进行初始化的步骤, 以及一些简单的命令操作"></a>以上便是使用<code>git init</code>进行初始化的步骤, 以及一些简单的命令操作</h4>]]></content>
+<h4 id="使用-pretty-oneline-abbrev-commit简化日志信息"><a href="#使用-pretty-oneline-abbrev-commit简化日志信息" class="headerlink" title="使用--pretty=oneline --abbrev-commit简化日志信息``"></a>使用<code>--pretty=oneline --abbrev-commit</code>简化日志信息``</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git log --pretty=oneline --abbrev-commit -- test.txt<br>8377709 rename<br>8b0aa8b aa<br>199f71f (tag: v1.0, dev) AA<br>9ee99cc aa<br>544892d AA<br>372904b aa<br>b4ff36e aa<br>518f7b2 cj<br></code></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Git</category>
       </categories>
@@ -554,199 +755,6 @@ turns out<figure class="highlight python"><table><tr><td class="code"><pre><code
       </tags>
   </entry>
   <entry>
-    <title>git-08-分支合并1</title>
-    <url>/2021/07/13/git/git-08-%E5%88%86%E6%94%AF%E5%90%88%E5%B9%B6(1)/</url>
-    <content><![CDATA[<p>当开发分支功能稳定后 ，我们希望将其中新代码添加到主分支 ，此时需要我们进行分支的合并 </p>
-<span id="more"></span>
-
-<h1 id="git-merge-分支合并"><a href="#git-merge-分支合并" class="headerlink" title="git merge-分支合并"></a><code><font color='dodgerblue'>git merge</font></code>-分支合并</h1><h2 id="分支图"><a href="#分支图" class="headerlink" title="分支图"></a>分支图</h2><p>我们将描述各个分支间关系及分支更新状态的图称为分支图, 如 ：<br><img src="./img/git1.png" alt="git1"></p>
-<h4 id="节点-B1-B3"><a href="#节点-B1-B3" class="headerlink" title="节点-B1-B3"></a>节点-<code>B1-B3</code></h4><p>矩形框代表当前仓库的节点 :</p>
-<ul>
-<li>当前节点作为上次<code>commit</code>的快照(<code>shapshot</code>), 会自动成为下个节点的父节点</li>
-<li>我们此时只需简单将其理解为当前分支的一个版本指针</li>
-</ul>
-<p>即此时我们分支<code>master v1.1</code>是出于节点<code>B3</code>, 上一次的<code>commit</code>信息即其形成的<code>master v1.1</code>的各项信息都存储在节点<code>B3</code></p>
-<h4 id="如何看懂节点图"><a href="#如何看懂节点图" class="headerlink" title="如何看懂节点图"></a>如何看懂节点图</h4><p>上图中的版本更新前进关系是<font color='red'>从左至右</font></p>
-<p>而节点的指向关系是<font color='blue'>从右至左</font></p>
-<ul>
-<li>这是因为每次生成的节点总是指向其父节点, 方便我们回溯</li>
-</ul>
-<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>为方便演示, 我们删掉测试分支, 并在<code>master</code>内将<code>test.txt</code>修改为 :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">public place<br></code></pre></td></tr></table></figure>
-<p>并提交修改 :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git add . &amp;&amp; git commit -m &quot;basic prop&quot;<br>[master dc8846c] basic prop<br> 1 file changed, 8 deletions(-)<br></code></pre></td></tr></table></figure>
-
-
-<h4 id="新建测试分支tb"><a href="#新建测试分支tb" class="headerlink" title="新建测试分支tb"></a>新建测试分支<code>tb</code></h4><p>检查此分支内<code>test.txt</code>文件内容 :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">public place<br></code></pre></td></tr></table></figure>
-
-
-<h2 id="fast-forward快进合并"><a href="#fast-forward快进合并" class="headerlink" title="fast-forward快进合并"></a><code>fast-forward</code>快进合并</h2><h3 id="出现原因"><a href="#出现原因" class="headerlink" title="出现原因"></a>出现原因</h3><h4 id="创建新分支时节点图"><a href="#创建新分支时节点图" class="headerlink" title="创建新分支时节点图"></a>创建新分支时节点图</h4><p><img src="./img/git2.png" alt="节点2"><br>此时<code>master</code>与<code>tb</code>都处于节点<code>B3</code>, 两分支文件内容一致</p>
-<h4 id="在新分支进行修改"><a href="#在新分支进行修改" class="headerlink" title="在新分支进行修改"></a>在新分支进行修改</h4><p>我们在<code>tb</code>分支内对<code>test.txt</code>文件进行以下修改 :</p>
-<p><code>1.</code> 添加进行日志检查的内容及<code>commit message</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">public place<br>------------<br>add a line to test logging<br></code></pre></td></tr></table></figure>
-<p>提交修改 :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git add . &amp;&amp; git commit -m &quot;test logging&quot;<br>[tb a4ce0d8] test logging<br> 1 file changed, 2 insertions(+)<br></code></pre></td></tr></table></figure>
-
-<p><code>2.</code> 添加进行日志检查的内容及<code>commit message</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">public place<br>------------<br>add a line to test logging<br>------------<br>add a line to test merging<br></code></pre></td></tr></table></figure>
-<p>提交修改 :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git add . &amp;&amp; git commit -m &quot;test merging&quot;<br>[tb 0808891] test merging<br> 1 file changed, 2 insertions(+)<br></code></pre></td></tr></table></figure>
-
-<h4 id="tb的日志"><a href="#tb的日志" class="headerlink" title="tb的日志"></a><code>tb</code>的日志</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git log --graph --pretty=oneline --abbrev-commit<br>* dfb30b7 (HEAD -&gt; tb) test merging<br>* 4dbd6a8 test logging<br>* dc8846c (master) basic prop<br></code></pre></td></tr></table></figure>
-<ul>
-<li>此时我们多使用一个<code>--graph</code>以助于显示出分支合并信息</li>
-<li>最新两条日志为我们在<code>tb</code>提交修改的日志</li>
-<li>最后一条日志则是我们在<code>master</code>内进行准备工作时提交的日志</li>
-</ul>
-<h4 id="tb分支commit后的分支图"><a href="#tb分支commit后的分支图" class="headerlink" title="tb分支commit后的分支图"></a><code>tb</code>分支<code>commit</code>后的分支图</h4><p><img src="./img/git3.png" alt="git3"></p>
-<ul>
-<li><code>tb</code>当前节点向前到达<code>C1</code></li>
-<li>而<code>master</code>由于未作任何改变, 则仍处于<code>B3</code></li>
-</ul>
-<p>此时也意味着二者内部的文件等信息已然不同</p>
-<h3 id="分支的合并"><a href="#分支的合并" class="headerlink" title="分支的合并"></a>分支的合并</h3><h4 id="为什么要合并"><a href="#为什么要合并" class="headerlink" title="为什么要合并"></a>为什么要合并</h4><p>假设此时我们对于<code>tb</code>开发的新功能满意, 则需要将<code>master</code>相关内容与<code>tb</code>同步, 也就是将二者进行分支合并, 最终使得<code>master</code>也到达<code>C1</code>的节点位置</p>
-<h4 id="分析我们的目标"><a href="#分析我们的目标" class="headerlink" title="分析我们的目标 :"></a>分析我们的目标 :</h4><ul>
-<li>我们要使<code>master</code>的代码和<code>tb</code>相同</li>
-<li>此时<code>master</code>代码未改变</li>
-<li><code>tb</code>代码是在<code>master</code>基础上增加行</li>
-<li>此时的合并, 我们可以简单理解为把<code>tb</code>的内容赋值给<code>master</code></li>
-</ul>
-<p>因此, 此时我们只需要简单将<code>master</code>指向<code>tb</code>即可</p>
-<p>体现在节点上, 则是<code>master</code>向前滑动到了<code>C1</code></p>
-<h4 id="1-切换到master分支"><a href="#1-切换到master分支" class="headerlink" title="1. 切换到master分支"></a><code>1.</code> 切换到<code>master</code>分支</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git checkout master<br>Switched to branch &#x27;master&#x27;<br></code></pre></td></tr></table></figure>
-<p>查看当前<code>master</code>分支<code>log</code>信息 :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git log --graph --pretty=oneline --abbrev-commit<br>* dc8846c (HEAD -&gt; master) basic prop<br></code></pre></td></tr></table></figure>
-<p>此时的<code>master</code>日志显示我们<code>basic prop</code>, 因为<code>tb</code>内的修改所处的节点超过了此时<code>master</code>节点, 所以<code>master</code>内的日志无法获取最新的<code>commit</code></p>
-<p>我们只需留意最新的<code>log</code>信息</p>
-<h4 id="2-进行合并"><a href="#2-进行合并" class="headerlink" title="2. 进行合并"></a><code>2.</code> 进行合并</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git merge tb<br>Updating dc8846c..dfb30b7<br>Fast-forward<br> test.txt | 4 ++++<br> 1 file changed, 4 insertions(+)<br></code></pre></td></tr></table></figure>
-
-<p>在主分支使用<code>git merge &lt;name&gt;</code> 将<code>tb</code>分支合并入主分支</p>
-<p>从<code>git</code>提示中<code>Fast-forward</code>可见此次合并是快速合并:</p>
-<h4 id="3-查看master内的文件"><a href="#3-查看master内的文件" class="headerlink" title="3. 查看master内的文件"></a><code>3.</code> 查看<code>master</code>内的文件</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">public place<br>------------<br>add a line to test logging<br>------------<br>add a line to test merging<br></code></pre></td></tr></table></figure>
-<p>文件已经被快进到<code>tb</code>分支做出的修改版本</p>
-<h4 id="此时的节点图"><a href="#此时的节点图" class="headerlink" title="此时的节点图"></a>此时的节点图</h4><p><img src="./img/git4.png" alt="git4"><br>两分支处于同一节点</p>
-<h4 id="查看当前master分支log"><a href="#查看当前master分支log" class="headerlink" title="查看当前master分支log"></a>查看当前<code>master</code>分支<code>log</code></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git log<br>$ git log --pretty=oneline --abbrev-commit<br>0808891 (HEAD -&gt; master, tb) test merging<br>a4ce0d8 test logging<br>dc8846c basic prop<br></code></pre></td></tr></table></figure>
-
-<p>此时<code>master</code>分支同样处于<code>C1</code>处, 那么<code>C1</code>的节点信息两分支共享, 即完成了<code>master</code>的更新(分支的合并)</p>
-<p>但我们注意到, 此时<code>master</code>内的文件被修改了, 但是却并没有创建新的<code>commit</code>, 而是共享了<code>C1</code>处其他分支的<code>commit</code></p>
-<p>此时我们可以理解为 : <code>master</code>被指向了<code>tb</code>, 此时二者不分你我, <code>tb</code>做的工作(<code>commit</code>)看起来也就是<code>master</code>做的工作</p>
-<h5 id="可见fast-forward方式并不会在合并后并不会不在主分支上创建一个新的commit-id"><a href="#可见fast-forward方式并不会在合并后并不会不在主分支上创建一个新的commit-id" class="headerlink" title="可见fast-forward方式并不会在合并后并不会不在主分支上创建一个新的commit id"></a>可见<code>fast-forward</code>方式并不会在合并后并不会不在主分支上创建一个新的<code>commit id</code></h5><h4 id="fast-forward的缺点"><a href="#fast-forward的缺点" class="headerlink" title="fast-forward的缺点"></a><code>fast-forward</code>的缺点</h4><p>如上所述, <code>fast-forward</code>后主分支不会创建新的<code>commit id</code>, 而是与分支共享分支所提交的<code>commit</code>及其<code>id</code></p>
-<p>这样所有分支的<code>commit</code>在一条线上, 我们无法区分到底是在哪个分支上做了哪些工作</p>
-]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git-05-文件操作</title>
-    <url>/2021/07/13/git/git-05-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</url>
-    <content><![CDATA[<p>一些关于文件的基础操作</p>
-<span id="more"></span>
-<h1 id="新建"><a href="#新建" class="headerlink" title="新建"></a>新建</h1><h3 id="新建文件夹"><a href="#新建文件夹" class="headerlink" title="新建文件夹"></a>新建文件夹</h3><p>使用命令<code>mkdir &lt;name&gt;</code>创建一个新的文件夹</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ mkdir testfolder<br></code></pre></td></tr></table></figure>
-<p>查看当前文件夹下是否新建了<code>testfolder</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ ls<br>testfolder/<br></code></pre></td></tr></table></figure>
-<p>可见新文件夹创建成功</p>
-<h3 id="新建文件"><a href="#新建文件" class="headerlink" title="新建文件"></a>新建文件</h3><h4 id="使用命令-touch-lt-name-gt-创建一个新文件"><a href="#使用命令-touch-lt-name-gt-创建一个新文件" class="headerlink" title="使用命令 touch &lt;name&gt; 创建一个新文件"></a>使用命令 <code><font color='dodgerblue'>touch &lt;name&gt;</font></code> 创建一个新文件</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ touch test.txt<br></code></pre></td></tr></table></figure>
-<p>查看文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ ls<br>test.txt  testfolder/<br></code></pre></td></tr></table></figure>
-<p>可见文件已创建成功</p>
-<h4 id="工作区状态"><a href="#工作区状态" class="headerlink" title="工作区状态"></a>工作区状态</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br>Untracked files:<br>  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)<br>        test.txt<br><br>nothing added to commit but untracked files present (use &quot;git add&quot; to track)<br></code></pre></td></tr></table></figure>
-<p>可见<code>git</code>已经检测我们新建了文件,但并不会识别文件夹<br>并且<code>git</code>提示我们使用<code>add</code>命令将文件添加到暂存区</p>
-<h4 id="将文件添加到版本库"><a href="#将文件添加到版本库" class="headerlink" title="将文件添加到版本库"></a>将文件添加到版本库</h4><p>先使用<code>add</code>将文件添加到暂存区</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">git add test.txt<br></code></pre></td></tr></table></figure>
-<p>在使用<code>commit</code>将文件提交到版本库</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">git commit -m &quot;info&quot;<br></code></pre></td></tr></table></figure>
-<p>当然你也可以使用<code>&amp;&amp;</code>将多个<code>git</code>命令链接起来</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git add test.txt &amp;&amp; git commit -m &quot;add a test.txt to repo&quot;<br>[master 00e7919] add a test.txt to repo<br> 1 file changed, 0 insertions(+), 0 deletions(-)<br> create mode 100644 test.txt<br></code></pre></td></tr></table></figure>
-
-<p>至此,我们新建的文件便被添加到了版本库</p>
-<h3 id="使用-vim-对文件进行简单编辑"><a href="#使用-vim-对文件进行简单编辑" class="headerlink" title="使用 vim 对文件进行简单编辑"></a>使用 <code><font color='dodgerblue'>vim</font></code> 对文件进行简单编辑</h3><h4 id="进入vim编辑器"><a href="#进入vim编辑器" class="headerlink" title="进入vim编辑器"></a>进入<code>vim</code>编辑器</h4><p>使用<code>vim name</code>,利用<code>vim</code>编辑器打开<code>name</code>文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ vim test.txt<br></code></pre></td></tr></table></figure>
-<p>回车后,我们便进入了<code>vim</code>编辑器,如下</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git"><br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>test.txt [unix] (17:00 12/07/2021)                                     0,0-1 All<br>&quot;test.txt&quot; 0L, 0B<br></code></pre></td></tr></table></figure>
-<ul>
-<li>倒数第一行显示当前文件名 `line``数 以及文件大小</li>
-<li>倒数第二行显示文件相关信息<h4 id="利用vim进行编辑"><a href="#利用vim进行编辑" class="headerlink" title="利用vim进行编辑"></a>利用<code>vim</code>进行编辑</h4>我们按下<code>insert</code>键进入<code>insert</code>模式,即文本编辑模式,此时最后一行变为<code>-- INSERT -- </code>,表明我们正在进行文本编辑</li>
-<li>我们键入<code>this is a test line</code>,完成对文本的编辑</li>
-</ul>
-<h4 id="vim的退出"><a href="#vim的退出" class="headerlink" title="vim的退出"></a><code>vim</code>的退出</h4><ul>
-<li>首先按下(或按住)<code>esc</code>,此时最后一行变为空</li>
-<li>再输入<code>:</code>(<code>shift + ;</code>和我们平时输入<code>:</code>一样), 此时最后一行出现了<code>:</code></li>
-<li>再输入<code>wq</code>, 此时最后一行变为<code>:wq</code></li>
-<li>最后回车,便完成了对文件的保存退出</li>
-</ul>
-<h4 id="检查文本的编辑结果"><a href="#检查文本的编辑结果" class="headerlink" title="检查文本的编辑结果"></a>检查文本的编辑结果</h4><p>再次使用<code>vim name</code>进入<code>vim</code>编辑器</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ vim test.txt<br></code></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">this is a test line<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>test.txt [unix] (17:12 12/07/2021)                                      1,19 All<br>&quot;test.txt&quot; [unix] 1L, 20B<br></code></pre></td></tr></table></figure>
-<p>可见最后一行的文本信息发生了变化,文本也被保存在了文件内</p>
-<h4 id="提交修改"><a href="#提交修改" class="headerlink" title="提交修改"></a>提交修改</h4><p>对文件编辑后,记得提交我们满意文件版本</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git add . &amp;&amp; git commit -m &quot;add a new line by vim&quot;<br>warning: LF will be replaced by CRLF in test.txt.<br>The file will have its original line endings in your working directory<br>[master 7abf4b6] add a new line by vim<br> 1 file changed, 1 insertion(+)<br></code></pre></td></tr></table></figure>
-
-
-<h1 id="git-删除文件"><a href="#git-删除文件" class="headerlink" title="git 删除文件"></a><code><font color='dodgerblue'>git</font></code> 删除文件</h1><h4 id="git-rm"><a href="#git-rm" class="headerlink" title="git rm"></a><code>git rm</code></h4><p>最简单的将文件从追踪中删除并最终从仓库中删除的方法是<code>git rm</code></p>
-<!-- more -->
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git rm t2.txt<br>rm &#x27;t2.txt&#x27;<br></code></pre></td></tr></table></figure>
-<p>运行本命令后,<code>t2.txt</code>文件将会被从本地文件夹删除,并且删除的操作信息也会被添加到暂存区</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br>Changes to be committed:<br>  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)<br>        deleted:    t2.txt<br></code></pre></td></tr></table></figure>
-
-<p>此时,工作区和版本库中的文件便不一致,如果确定要将此文件删除,则进行<code>commit</code>操作,将此次修改提交</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git add . &amp;&amp; git commit -m&quot;remove a file&quot;<br>[master 440e71c] remove a file<br> 1 file changed, 2 deletions(-)<br> delete mode 100644 test.tst<br></code></pre></td></tr></table></figure>
-
-<p>此时工作区状态重回<code>clean</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br>nothing to commit, working tree clean<br></code></pre></td></tr></table></figure>
-<p>此时版本库中的文件也已经被删除</p>
-<h1 id="git-撤销删除"><a href="#git-撤销删除" class="headerlink" title="git 撤销删除"></a><code><font color='dodgerblue'>git</font></code> 撤销删除</h1><p>演示之前让我们先创建一个演示文件<code>t.txt</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git"># 创建文件<br>26676@DESKTOP-JCSGJPO MINGW64 /a/git/gitlearn (master)<br>$ touch t.txt<br># 查看当前目录下的文件<br>26676@DESKTOP-JCSGJPO MINGW64 /a/git/gitlearn (master)<br>$ ls<br>t.txt<br># 将该文件添加到暂存区<br>26676@DESKTOP-JCSGJPO MINGW64 /a/git/gitlearn (master)<br>$ git add t.txt<br># 将该修改提交到repo<br>26676@DESKTOP-JCSGJPO MINGW64 /a/git/gitlearn (master)<br>$ git commit -m &quot;add t.txt to the repo&quot;<br>[master 2e7ebbb] add t.txt to the repo<br> 1 file changed, 0 insertions(+), 0 deletions(-)<br> create mode 100644 t.txt<br></code></pre></td></tr></table></figure>
-<p>并在其内部做出一下修改:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">add a line 1<br></code></pre></td></tr></table></figure>
-<p><code>commit</code>并标注<code>commit -m</code>为 : <code>add a line id = 1</code></p>
-<p>类似添加<code>add a line 2</code> 以及 <code>add a line 3</code>, 每次提交都应标注<code>-m</code></p>
-<p>查看当前文件的修改日志</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git log t.txt<br>commit bd8bfc562d20853126dc73b5bd3adad88dd67ca7 (HEAD -&gt; master)<br>Author: MarkLilyC &lt;2667602812@qq.com&gt;<br>Date:   Mon Jul 12 16:33:12 2021 +0800<br><br>    add a line id = 3<br><br>commit d5fe44542872c4cebe7a21ff0927d65cbdfe7427<br>Author: MarkLilyC &lt;2667602812@qq.com&gt;<br>Date:   Mon Jul 12 16:32:56 2021 +0800<br><br>    add a line id = 2<br><br>commit fb840504b7cfd1096de4e2a1bd858b2cbfd63407<br>Author: MarkLilyC &lt;2667602812@qq.com&gt;<br>Date:   Mon Jul 12 16:30:56 2021 +0800<br><br>    add a line id = 1<br></code></pre></td></tr></table></figure>
-<p>可以见到我们所标注的<code>commit</code>信息</p>
-<h3 id="将该文件从本地删除"><a href="#将该文件从本地删除" class="headerlink" title="将该文件从本地删除"></a>将该文件从本地删除</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">git rm t.txt<br></code></pre></td></tr></table></figure>
-<p>查看本地文件夹内是否存在文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-JCSGJPO MINGW64 /a/git/gitlearn (master)<br>$ ls<br><br></code></pre></td></tr></table></figure>
-<p>可见本地已经删除了文件</p>
-<p>工作区状态</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br>Changes to be committed:<br>  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)<br>        deleted:    t.txt<br></code></pre></td></tr></table></figure>
-<p>此时我们尚未将删除操作<code>commit</code>到版本库<br>因从<code>git</code>提示可以看出,此次<code>rm</code>被自动提交到了暂存区,我们可以使用<code>restore --staged</code>将此次删除从暂存区撤销</p>
-<h4 id="在commit删除前-撤销删除"><a href="#在commit删除前-撤销删除" class="headerlink" title="在commit删除前,撤销删除"></a>在<code>commit</code>删除前,撤销删除</h4><p>如上文所言,我们尝试使用<code>restore --staged</code>从暂存区撤销删除</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git"><br>## ``git``重命名文件<br>#### 当直接在工作区(文件夹内)重命名文件时,``git``会执行两个操作;<br>* 1. 将源文件从工作区删除  <br>* 2. 将新文件添加到工作区<br>```git<br>$ git status<br>On branch master<br>Changes to be committed:<br>  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)<br>        deleted:    t2.txt<br><br>Changes not staged for commit:<br>  (use &quot;git add/rm &lt;file&gt;...&quot; to update what will be committed)<br>  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)<br>        deleted:    text1.txt<br><br>Untracked files:<br>  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)<br>        text1_rename.txt<br></code></pre></td></tr></table></figure>
-<p>这样做的缺点是会破坏掉文件的历史版本记录,此后你便无法查看此文件在重命名前的历史记录</p>
-<h4 id="git-mv命令则可以解决这个历史记录断链的问题"><a href="#git-mv命令则可以解决这个历史记录断链的问题" class="headerlink" title="git mv命令则可以解决这个历史记录断链的问题"></a><code>git mv</code>命令则可以解决这个历史记录断链的问题</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git mv text1.txt test1_rename.txt<br></code></pre></td></tr></table></figure>
-<p><code>mv</code>命令相当于<code>move</code>,此处重命名文件也就是<code>text1.txt</code>被移动重命名为<code>text1_rename.txt</code></p>
-<p>此时检查工作区状态,<code>mv</code>命令会被解析为<code>rename</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br>Changes to be committed:<br>  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)<br>        renamed:    test1_rename.txt -&gt; text1_rename.txt<br></code></pre></td></tr></table></figure>
-
-<h1 id="git-移动文件"><a href="#git-移动文件" class="headerlink" title="git 移动文件"></a><code><font color='dodgerblue'>git</font></code> 移动文件</h1><p>同样使用<code>mv</code>命令,当在移动后文件名前加上移动后的文件夹路径,即可完成对文件的移动</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git mv test.txt move/test1.txt<br></code></pre></td></tr></table></figure>
-<p>查看工作区状态”</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git status<br>On branch master<br>Changes to be committed:<br>  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)<br>        renamed:    test.txt -&gt; move/test1.txt<br></code></pre></td></tr></table></figure>
-<p>可以看见移动文件操作同样属于<code>rename</code>操作</p>
-<blockquote>
-<p>移动前请记得创建目标文件夹</p>
-</blockquote>
-<p>查看目标文件夹:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">26676@DESKTOP-KEJKGL7 MINGW64 /a/git/gitlearn (master)<br>$ ls<br>move/<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/git/gitlearn (master)<br>$ cd move<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/git/gitlearn/move (master)<br>$ ls<br>test1.txt<br></code></pre></td></tr></table></figure>
-
-<h1 id="git-log-查看日志"><a href="#git-log-查看日志" class="headerlink" title="git log 查看日志"></a><code><font color='dodgerblue'>git log</font></code> 查看日志</h1><p>使用<code>git log -- &lt;name&gt;</code>查看指定文件的修改日志</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git log -- test.txt<br>commit 83777091dcd8754184c0cfa69e1f4d2e112813ad<br>Author: MarkLilyC &lt;2667602812@qq.com&gt;<br>Date:   Mon Jul 12 16:08:25 2021 +0800<br><br>    rename<br><br>commit 8b0aa8b25a3d1d9d5528731f32e12437037c7454<br>Author: MarkLilyC &lt;2667602812@qq.com&gt;<br>Date:   Mon Jul 12 16:06:00 2021 +0800<br><br>    aa<br></code></pre></td></tr></table></figure>
-
-<h4 id="使用-pretty-oneline-abbrev-commit简化日志信息"><a href="#使用-pretty-oneline-abbrev-commit简化日志信息" class="headerlink" title="使用--pretty=oneline --abbrev-commit简化日志信息``"></a>使用<code>--pretty=oneline --abbrev-commit</code>简化日志信息``</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git log --pretty=oneline --abbrev-commit -- test.txt<br>8377709 rename<br>8b0aa8b aa<br>199f71f (tag: v1.0, dev) AA<br>9ee99cc aa<br>544892d AA<br>372904b aa<br>b4ff36e aa<br>518f7b2 cj<br></code></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>git-06-撤销修改</title>
     <url>/2021/07/13/git/git-06-%E6%92%A4%E9%94%80%E4%BF%AE%E6%94%B9/</url>
     <content><![CDATA[<p>撤销修改可大致分为：从工作区撤销 从暂存区撤销以及版本库回退</p>
@@ -876,62 +884,6 @@ turns out<figure class="highlight python"><table><tr><td class="code"><pre><code
       </tags>
   </entry>
   <entry>
-    <title>git-08-分支合并2</title>
-    <url>/2021/07/13/git/git-08-%E5%88%86%E6%94%AF%E5%90%88%E5%B9%B6(2)/</url>
-    <content><![CDATA[<p>鉴于<code>fast-forward</code>策略存在弊端 ，我们禁用<code>ff</code>进行分支合并</p>
-<span id="more"></span>
-
-<h1 id="no-ff-禁用ff"><a href="#no-ff-禁用ff" class="headerlink" title="--no-ff-禁用ff"></a><code>--no-ff</code>-禁用<code>ff</code></h1><p>我们希望将分支合并后, 开发分支<code>tb</code>的所有<code>commit</code>记录既能复制到<code>master</code>分支, 同时也保留一条分支<code>tb</code>自己的<code>commit</code>时间线, 以便我们区分各项工作是由谁进行的</p>
-<p>此时我们需要使用<code>--no-ff</code>禁用<code>fast-forward</code></p>
-<h4 id="经历上次合并后的分支图"><a href="#经历上次合并后的分支图" class="headerlink" title="经历上次合并后的分支图"></a>经历上次合并后的分支图</h4><p><img src="./img/git4.png" alt="git4"></p>
-<h4 id="tb分支上进行多次修改"><a href="#tb分支上进行多次修改" class="headerlink" title="tb分支上进行多次修改"></a><code>tb</code>分支上进行多次修改</h4><p>我们对<code>tb</code>分支内文件进行多次修改并提交 :<br><code>1.</code> 一次修改</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">public place<br>------------<br>add a line to test logging<br>------------<br>add a line to test merging<br>------------<br>add a line to test --no-ff 1<br></code></pre></td></tr></table></figure>
-<p>提交 :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git add . &amp;&amp; git commit -m &quot;add line to test --no-ff 1&quot;<br>[tb e156967] add line to test --no-ff 1<br> 1 file changed, 2 insertions(+)<br></code></pre></td></tr></table></figure>
-
-<p><code>2.</code> 二次修改</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">public place<br>------------<br>add a line to test logging<br>------------<br>add a line to test merging<br>------------<br>add a line to test --no-ff 1<br>------------<br>add a line to test --no-ff 2<br></code></pre></td></tr></table></figure>
-<p>提交 :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git add . &amp;&amp; git commit -m &quot;add line to test --no-ff 2&quot;<br>[tb 1bc5def] add line to test --no-ff 2<br> 1 file changed, 3 insertions(+), 1 deletion(-)<br></code></pre></td></tr></table></figure>
-
-<h4 id="此时的节点图"><a href="#此时的节点图" class="headerlink" title="此时的节点图"></a>此时的节点图</h4><p><img src="./img/5.png" alt="git4"><br>如果我们进行<code>fast-forward</code>合并的话, 节点图这样绘制是最好的, 因为我们会将<code>master</code>在<code>C</code>节点线上直接平行向前滑动到<code>C3</code></p>
-<p>但是我们接下来不会直接在<code>C</code>节点线上向前<code>master</code>, 所以最好这样绘制此时的节点图 :<br><img src="./img/6.png" alt="git4"></p>
-<p>很快你将看见这样绘制的好处</p>
-<h4 id="查看tb日志"><a href="#查看tb日志" class="headerlink" title="查看tb日志"></a>查看<code>tb</code>日志</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git log --graph --pretty=oneline --abbrev-commit<br>* 1bc5def (HEAD -&gt; tb) add line to test --no-ff 2<br>* e156967 add line to test --no-ff 1<br>* dfb30b7 (master) test merging<br>* 4dbd6a8 test logging<br>* dc8846c basic prop<br></code></pre></td></tr></table></figure>
-
-<h4 id="使用-no-ff进行合并"><a href="#使用-no-ff进行合并" class="headerlink" title="使用--no-ff进行合并"></a>使用<code>--no-ff</code>进行合并</h4><p>基本语法 :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">git merge --no-ff &lt;name&gt;<br></code></pre></td></tr></table></figure>
-<ul>
-<li><code>no</code>前面是<code>--</code>, <code>ff</code>前是<code>-</code></li>
-</ul>
-<p>我们回到<code>master</code>进行合并 :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git merge --no-ff tb<br></code></pre></td></tr></table></figure>
-<p>此时由于我们会为<code>master</code>在合并进行一次新的<code>commit</code>, 而非简单的共享<code>tb</code>的<code>commit</code>, 因此<code>git</code>会打开<code>vim</code>让我们填写<code>commit message</code> :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">Merge branch &#x27;tb&#x27;<br># Please enter a commit message to explain why this merge is necessary,<br># especially if it merges an updated upstream into a topic branch.<br>#<br># Lines starting with &#x27;#&#x27; will be ignored, and an empty message aborts<br># the commit.<br></code></pre></td></tr></table></figure>
-<p>我们在第一行详细描述此次<code>commit</code> :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">Merge branch &#x27;tb&#x27; with --no-ff<br></code></pre></td></tr></table></figure>
-
-<p>随后便完成了此次合并 :</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git merge --no-ff tb<br>Merge made by the &#x27;recursive&#x27; strategy.<br> test.txt | 4 ++++<br> 1 file changed, 4 insertions(+)<br></code></pre></td></tr></table></figure>
-<p>可见此次使用的是<code>recursive</code>策略, 而非简单的<code>fast-forward</code></p>
-<h4 id="此时的节点图-1"><a href="#此时的节点图-1" class="headerlink" title="此时的节点图"></a>此时的节点图</h4><p>为方便理解<code>log</code>信息, 我们先来观察此时的节点图 :<br><img src="./img/9.png" alt="git"></p>
-<p><code>--no-ff</code>会将<code>tb</code>分支的每次<code>commit</code>在<code>master</code>进行<code>&quot;复制&quot;</code>, 这样在主分支上保留完整<code>commit</code>记录的同时, <code>tb</code>分支自己记录也会被保留</p>
-<p>但需要注意的是, 分支<code>tb</code>不会向前移动到与<code>master</code>相同节点</p>
-<ul>
-<li>若要使二者节点一致, 可在<code>tb</code>内<code>git merge master</code></li>
-</ul>
-<h4 id="检查master的log"><a href="#检查master的log" class="headerlink" title="检查master的log"></a>检查<code>master</code>的log</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git log --graph --pretty=oneline --abbrev-commit<br>*   c2aa7be (HEAD -&gt; master) Merge branch &#x27;tb&#x27; with --no-ff<br>|\<br>| * 1bc5def (tb) add line to test --no-ff 2<br>| * e156967 add line to test --no-ff 1<br>|/<br>* dfb30b7 test merging<br>* 4dbd6a8 test logging<br>* dc8846c basic prop<br></code></pre></td></tr></table></figure>
-<p>可见, 使用<code>graph</code>模式, <code>log</code>会显示合并的信息</p>
-<p>并绘制类节点图</p>
-]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>git-07-分支基础</title>
     <url>/2021/07/13/git/git-07-%E5%88%86%E6%94%AF/</url>
     <content><![CDATA[<p><code><font color='OrangeRed'>git</font></code>中对分支的操作是进行代码管理的重要功能</p>
@@ -1027,6 +979,202 @@ turns out<figure class="highlight python"><table><tr><td class="code"><pre><code
 <p>可见<code>testbranch</code>分支已被删除</p>
 <h1 id="创建新分支同时切换到该分支"><a href="#创建新分支同时切换到该分支" class="headerlink" title="创建新分支同时切换到该分支"></a>创建新分支同时切换到该分支</h1><p>在创建新分支的同时切换到该分支;</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git checkout -b new_t_b<br>Switched to a new branch &#x27;new_t_b&#x27;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git-08-分支合并1</title>
+    <url>/2021/07/13/git/git-08-%E5%88%86%E6%94%AF%E5%90%88%E5%B9%B6(1)/</url>
+    <content><![CDATA[<p>当开发分支功能稳定后 ，我们希望将其中新代码添加到主分支 ，此时需要我们进行分支的合并 </p>
+<span id="more"></span>
+
+<h1 id="git-merge-分支合并"><a href="#git-merge-分支合并" class="headerlink" title="git merge-分支合并"></a><code><font color='dodgerblue'>git merge</font></code>-分支合并</h1><h2 id="分支图"><a href="#分支图" class="headerlink" title="分支图"></a>分支图</h2><p>我们将描述各个分支间关系及分支更新状态的图称为分支图, 如 ：<br><img src="./img/git1.png" alt="git1"></p>
+<h4 id="节点-B1-B3"><a href="#节点-B1-B3" class="headerlink" title="节点-B1-B3"></a>节点-<code>B1-B3</code></h4><p>矩形框代表当前仓库的节点 :</p>
+<ul>
+<li>当前节点作为上次<code>commit</code>的快照(<code>shapshot</code>), 会自动成为下个节点的父节点</li>
+<li>我们此时只需简单将其理解为当前分支的一个版本指针</li>
+</ul>
+<p>即此时我们分支<code>master v1.1</code>是出于节点<code>B3</code>, 上一次的<code>commit</code>信息即其形成的<code>master v1.1</code>的各项信息都存储在节点<code>B3</code></p>
+<h4 id="如何看懂节点图"><a href="#如何看懂节点图" class="headerlink" title="如何看懂节点图"></a>如何看懂节点图</h4><p>上图中的版本更新前进关系是<font color='red'>从左至右</font></p>
+<p>而节点的指向关系是<font color='blue'>从右至左</font></p>
+<ul>
+<li>这是因为每次生成的节点总是指向其父节点, 方便我们回溯</li>
+</ul>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>为方便演示, 我们删掉测试分支, 并在<code>master</code>内将<code>test.txt</code>修改为 :</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">public place<br></code></pre></td></tr></table></figure>
+<p>并提交修改 :</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git add . &amp;&amp; git commit -m &quot;basic prop&quot;<br>[master dc8846c] basic prop<br> 1 file changed, 8 deletions(-)<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="新建测试分支tb"><a href="#新建测试分支tb" class="headerlink" title="新建测试分支tb"></a>新建测试分支<code>tb</code></h4><p>检查此分支内<code>test.txt</code>文件内容 :</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">public place<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="fast-forward快进合并"><a href="#fast-forward快进合并" class="headerlink" title="fast-forward快进合并"></a><code>fast-forward</code>快进合并</h2><h3 id="出现原因"><a href="#出现原因" class="headerlink" title="出现原因"></a>出现原因</h3><h4 id="创建新分支时节点图"><a href="#创建新分支时节点图" class="headerlink" title="创建新分支时节点图"></a>创建新分支时节点图</h4><p><img src="./img/git2.png" alt="节点2"><br>此时<code>master</code>与<code>tb</code>都处于节点<code>B3</code>, 两分支文件内容一致</p>
+<h4 id="在新分支进行修改"><a href="#在新分支进行修改" class="headerlink" title="在新分支进行修改"></a>在新分支进行修改</h4><p>我们在<code>tb</code>分支内对<code>test.txt</code>文件进行以下修改 :</p>
+<p><code>1.</code> 添加进行日志检查的内容及<code>commit message</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">public place<br>------------<br>add a line to test logging<br></code></pre></td></tr></table></figure>
+<p>提交修改 :</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git add . &amp;&amp; git commit -m &quot;test logging&quot;<br>[tb a4ce0d8] test logging<br> 1 file changed, 2 insertions(+)<br></code></pre></td></tr></table></figure>
+
+<p><code>2.</code> 添加进行日志检查的内容及<code>commit message</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">public place<br>------------<br>add a line to test logging<br>------------<br>add a line to test merging<br></code></pre></td></tr></table></figure>
+<p>提交修改 :</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git add . &amp;&amp; git commit -m &quot;test merging&quot;<br>[tb 0808891] test merging<br> 1 file changed, 2 insertions(+)<br></code></pre></td></tr></table></figure>
+
+<h4 id="tb的日志"><a href="#tb的日志" class="headerlink" title="tb的日志"></a><code>tb</code>的日志</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git log --graph --pretty=oneline --abbrev-commit<br>* dfb30b7 (HEAD -&gt; tb) test merging<br>* 4dbd6a8 test logging<br>* dc8846c (master) basic prop<br></code></pre></td></tr></table></figure>
+<ul>
+<li>此时我们多使用一个<code>--graph</code>以助于显示出分支合并信息</li>
+<li>最新两条日志为我们在<code>tb</code>提交修改的日志</li>
+<li>最后一条日志则是我们在<code>master</code>内进行准备工作时提交的日志</li>
+</ul>
+<h4 id="tb分支commit后的分支图"><a href="#tb分支commit后的分支图" class="headerlink" title="tb分支commit后的分支图"></a><code>tb</code>分支<code>commit</code>后的分支图</h4><p><img src="./img/git3.png" alt="git3"></p>
+<ul>
+<li><code>tb</code>当前节点向前到达<code>C1</code></li>
+<li>而<code>master</code>由于未作任何改变, 则仍处于<code>B3</code></li>
+</ul>
+<p>此时也意味着二者内部的文件等信息已然不同</p>
+<h3 id="分支的合并"><a href="#分支的合并" class="headerlink" title="分支的合并"></a>分支的合并</h3><h4 id="为什么要合并"><a href="#为什么要合并" class="headerlink" title="为什么要合并"></a>为什么要合并</h4><p>假设此时我们对于<code>tb</code>开发的新功能满意, 则需要将<code>master</code>相关内容与<code>tb</code>同步, 也就是将二者进行分支合并, 最终使得<code>master</code>也到达<code>C1</code>的节点位置</p>
+<h4 id="分析我们的目标"><a href="#分析我们的目标" class="headerlink" title="分析我们的目标 :"></a>分析我们的目标 :</h4><ul>
+<li>我们要使<code>master</code>的代码和<code>tb</code>相同</li>
+<li>此时<code>master</code>代码未改变</li>
+<li><code>tb</code>代码是在<code>master</code>基础上增加行</li>
+<li>此时的合并, 我们可以简单理解为把<code>tb</code>的内容赋值给<code>master</code></li>
+</ul>
+<p>因此, 此时我们只需要简单将<code>master</code>指向<code>tb</code>即可</p>
+<p>体现在节点上, 则是<code>master</code>向前滑动到了<code>C1</code></p>
+<h4 id="1-切换到master分支"><a href="#1-切换到master分支" class="headerlink" title="1. 切换到master分支"></a><code>1.</code> 切换到<code>master</code>分支</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git checkout master<br>Switched to branch &#x27;master&#x27;<br></code></pre></td></tr></table></figure>
+<p>查看当前<code>master</code>分支<code>log</code>信息 :</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git log --graph --pretty=oneline --abbrev-commit<br>* dc8846c (HEAD -&gt; master) basic prop<br></code></pre></td></tr></table></figure>
+<p>此时的<code>master</code>日志显示我们<code>basic prop</code>, 因为<code>tb</code>内的修改所处的节点超过了此时<code>master</code>节点, 所以<code>master</code>内的日志无法获取最新的<code>commit</code></p>
+<p>我们只需留意最新的<code>log</code>信息</p>
+<h4 id="2-进行合并"><a href="#2-进行合并" class="headerlink" title="2. 进行合并"></a><code>2.</code> 进行合并</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git merge tb<br>Updating dc8846c..dfb30b7<br>Fast-forward<br> test.txt | 4 ++++<br> 1 file changed, 4 insertions(+)<br></code></pre></td></tr></table></figure>
+
+<p>在主分支使用<code>git merge &lt;name&gt;</code> 将<code>tb</code>分支合并入主分支</p>
+<p>从<code>git</code>提示中<code>Fast-forward</code>可见此次合并是快速合并:</p>
+<h4 id="3-查看master内的文件"><a href="#3-查看master内的文件" class="headerlink" title="3. 查看master内的文件"></a><code>3.</code> 查看<code>master</code>内的文件</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">public place<br>------------<br>add a line to test logging<br>------------<br>add a line to test merging<br></code></pre></td></tr></table></figure>
+<p>文件已经被快进到<code>tb</code>分支做出的修改版本</p>
+<h4 id="此时的节点图"><a href="#此时的节点图" class="headerlink" title="此时的节点图"></a>此时的节点图</h4><p><img src="./img/git4.png" alt="git4"><br>两分支处于同一节点</p>
+<h4 id="查看当前master分支log"><a href="#查看当前master分支log" class="headerlink" title="查看当前master分支log"></a>查看当前<code>master</code>分支<code>log</code></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git log<br>$ git log --pretty=oneline --abbrev-commit<br>0808891 (HEAD -&gt; master, tb) test merging<br>a4ce0d8 test logging<br>dc8846c basic prop<br></code></pre></td></tr></table></figure>
+
+<p>此时<code>master</code>分支同样处于<code>C1</code>处, 那么<code>C1</code>的节点信息两分支共享, 即完成了<code>master</code>的更新(分支的合并)</p>
+<p>但我们注意到, 此时<code>master</code>内的文件被修改了, 但是却并没有创建新的<code>commit</code>, 而是共享了<code>C1</code>处其他分支的<code>commit</code></p>
+<p>此时我们可以理解为 : <code>master</code>被指向了<code>tb</code>, 此时二者不分你我, <code>tb</code>做的工作(<code>commit</code>)看起来也就是<code>master</code>做的工作</p>
+<h5 id="可见fast-forward方式并不会在合并后并不会不在主分支上创建一个新的commit-id"><a href="#可见fast-forward方式并不会在合并后并不会不在主分支上创建一个新的commit-id" class="headerlink" title="可见fast-forward方式并不会在合并后并不会不在主分支上创建一个新的commit id"></a>可见<code>fast-forward</code>方式并不会在合并后并不会不在主分支上创建一个新的<code>commit id</code></h5><h4 id="fast-forward的缺点"><a href="#fast-forward的缺点" class="headerlink" title="fast-forward的缺点"></a><code>fast-forward</code>的缺点</h4><p>如上所述, <code>fast-forward</code>后主分支不会创建新的<code>commit id</code>, 而是与分支共享分支所提交的<code>commit</code>及其<code>id</code></p>
+<p>这样所有分支的<code>commit</code>在一条线上, 我们无法区分到底是在哪个分支上做了哪些工作</p>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git-08-分支合并2</title>
+    <url>/2021/07/13/git/git-08-%E5%88%86%E6%94%AF%E5%90%88%E5%B9%B6(2)/</url>
+    <content><![CDATA[<p>鉴于<code>fast-forward</code>策略存在弊端 ，我们禁用<code>ff</code>进行分支合并</p>
+<span id="more"></span>
+
+<h1 id="no-ff-禁用ff"><a href="#no-ff-禁用ff" class="headerlink" title="--no-ff-禁用ff"></a><code>--no-ff</code>-禁用<code>ff</code></h1><p>我们希望将分支合并后, 开发分支<code>tb</code>的所有<code>commit</code>记录既能复制到<code>master</code>分支, 同时也保留一条分支<code>tb</code>自己的<code>commit</code>时间线, 以便我们区分各项工作是由谁进行的</p>
+<p>此时我们需要使用<code>--no-ff</code>禁用<code>fast-forward</code></p>
+<h4 id="经历上次合并后的分支图"><a href="#经历上次合并后的分支图" class="headerlink" title="经历上次合并后的分支图"></a>经历上次合并后的分支图</h4><p><img src="./img/git4.png" alt="git4"></p>
+<h4 id="tb分支上进行多次修改"><a href="#tb分支上进行多次修改" class="headerlink" title="tb分支上进行多次修改"></a><code>tb</code>分支上进行多次修改</h4><p>我们对<code>tb</code>分支内文件进行多次修改并提交 :<br><code>1.</code> 一次修改</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">public place<br>------------<br>add a line to test logging<br>------------<br>add a line to test merging<br>------------<br>add a line to test --no-ff 1<br></code></pre></td></tr></table></figure>
+<p>提交 :</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git add . &amp;&amp; git commit -m &quot;add line to test --no-ff 1&quot;<br>[tb e156967] add line to test --no-ff 1<br> 1 file changed, 2 insertions(+)<br></code></pre></td></tr></table></figure>
+
+<p><code>2.</code> 二次修改</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">public place<br>------------<br>add a line to test logging<br>------------<br>add a line to test merging<br>------------<br>add a line to test --no-ff 1<br>------------<br>add a line to test --no-ff 2<br></code></pre></td></tr></table></figure>
+<p>提交 :</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git add . &amp;&amp; git commit -m &quot;add line to test --no-ff 2&quot;<br>[tb 1bc5def] add line to test --no-ff 2<br> 1 file changed, 3 insertions(+), 1 deletion(-)<br></code></pre></td></tr></table></figure>
+
+<h4 id="此时的节点图"><a href="#此时的节点图" class="headerlink" title="此时的节点图"></a>此时的节点图</h4><p><img src="./img/5.png" alt="git4"><br>如果我们进行<code>fast-forward</code>合并的话, 节点图这样绘制是最好的, 因为我们会将<code>master</code>在<code>C</code>节点线上直接平行向前滑动到<code>C3</code></p>
+<p>但是我们接下来不会直接在<code>C</code>节点线上向前<code>master</code>, 所以最好这样绘制此时的节点图 :<br><img src="./img/6.png" alt="git4"></p>
+<p>很快你将看见这样绘制的好处</p>
+<h4 id="查看tb日志"><a href="#查看tb日志" class="headerlink" title="查看tb日志"></a>查看<code>tb</code>日志</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git log --graph --pretty=oneline --abbrev-commit<br>* 1bc5def (HEAD -&gt; tb) add line to test --no-ff 2<br>* e156967 add line to test --no-ff 1<br>* dfb30b7 (master) test merging<br>* 4dbd6a8 test logging<br>* dc8846c basic prop<br></code></pre></td></tr></table></figure>
+
+<h4 id="使用-no-ff进行合并"><a href="#使用-no-ff进行合并" class="headerlink" title="使用--no-ff进行合并"></a>使用<code>--no-ff</code>进行合并</h4><p>基本语法 :</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">git merge --no-ff &lt;name&gt;<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>no</code>前面是<code>--</code>, <code>ff</code>前是<code>-</code></li>
+</ul>
+<p>我们回到<code>master</code>进行合并 :</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git merge --no-ff tb<br></code></pre></td></tr></table></figure>
+<p>此时由于我们会为<code>master</code>在合并进行一次新的<code>commit</code>, 而非简单的共享<code>tb</code>的<code>commit</code>, 因此<code>git</code>会打开<code>vim</code>让我们填写<code>commit message</code> :</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">Merge branch &#x27;tb&#x27;<br># Please enter a commit message to explain why this merge is necessary,<br># especially if it merges an updated upstream into a topic branch.<br>#<br># Lines starting with &#x27;#&#x27; will be ignored, and an empty message aborts<br># the commit.<br></code></pre></td></tr></table></figure>
+<p>我们在第一行详细描述此次<code>commit</code> :</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">Merge branch &#x27;tb&#x27; with --no-ff<br></code></pre></td></tr></table></figure>
+
+<p>随后便完成了此次合并 :</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git merge --no-ff tb<br>Merge made by the &#x27;recursive&#x27; strategy.<br> test.txt | 4 ++++<br> 1 file changed, 4 insertions(+)<br></code></pre></td></tr></table></figure>
+<p>可见此次使用的是<code>recursive</code>策略, 而非简单的<code>fast-forward</code></p>
+<h4 id="此时的节点图-1"><a href="#此时的节点图-1" class="headerlink" title="此时的节点图"></a>此时的节点图</h4><p>为方便理解<code>log</code>信息, 我们先来观察此时的节点图 :<br><img src="./img/9.png" alt="git"></p>
+<p><code>--no-ff</code>会将<code>tb</code>分支的每次<code>commit</code>在<code>master</code>进行<code>&quot;复制&quot;</code>, 这样在主分支上保留完整<code>commit</code>记录的同时, <code>tb</code>分支自己记录也会被保留</p>
+<p>但需要注意的是, 分支<code>tb</code>不会向前移动到与<code>master</code>相同节点</p>
+<ul>
+<li>若要使二者节点一致, 可在<code>tb</code>内<code>git merge master</code></li>
+</ul>
+<h4 id="检查master的log"><a href="#检查master的log" class="headerlink" title="检查master的log"></a>检查<code>master</code>的log</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">$ git log --graph --pretty=oneline --abbrev-commit<br>*   c2aa7be (HEAD -&gt; master) Merge branch &#x27;tb&#x27; with --no-ff<br>|\<br>| * 1bc5def (tb) add line to test --no-ff 2<br>| * e156967 add line to test --no-ff 1<br>|/<br>* dfb30b7 test merging<br>* 4dbd6a8 test logging<br>* dc8846c basic prop<br></code></pre></td></tr></table></figure>
+<p>可见, 使用<code>graph</code>模式, <code>log</code>会显示合并的信息</p>
+<p>并绘制类节点图</p>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git-10-git与github远程仓库</title>
+    <url>/2021/08/27/git/git-10-git%E4%B8%8Egithub/</url>
+    <content><![CDATA[<p>将git本地仓库与github远程仓库建立连接 </p>
+<span id="more"></span>
+<h1 id="github-远程仓库"><a href="#github-远程仓库" class="headerlink" title="github-远程仓库"></a><code><font color='dodgerblue'>github</font></code>-远程仓库</h1><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h4 id="1-创建一个github仓库"><a href="#1-创建一个github仓库" class="headerlink" title="1. 创建一个github仓库"></a><code>1.</code> 创建一个github仓库</h4><p><img src="./img/git5.png" alt="节点2"></p>
+<ul>
+<li>填写用户名</li>
+<li>添加一个 <code>readme.md</code></li>
+</ul>
+<h4 id="2-添加ssh-key"><a href="#2-添加ssh-key" class="headerlink" title="2. 添加ssh key"></a><code>2.</code> 添加<code>ssh key</code></h4><p>具体操作见</p>
+<h2 id="建立连接"><a href="#建立连接" class="headerlink" title="建立连接"></a>建立连接</h2><h3 id="本地创建仓库"><a href="#本地创建仓库" class="headerlink" title="本地创建仓库"></a>本地创建仓库</h3><h4 id="1-修改默认分支名"><a href="#1-修改默认分支名" class="headerlink" title="1. 修改默认分支名"></a><code>1.</code> 修改默认分支名</h4><p>在 <code>bash</code>内输入 ：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">26676@DESKTOP-KEJKGL7 MINGW64 /a<br>$ git config --global init.defaultBranch main<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-创建本地仓库"><a href="#2-创建本地仓库" class="headerlink" title="2. 创建本地仓库"></a><code>2.</code> 创建本地仓库</h4><p>在 <code>bash</code>内 ：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">26676@DESKTOP-KEJKGL7 MINGW64 /a<br>$ mkdir gitl<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a<br>$ <span class="hljs-built_in">cd</span> gitl<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/gitl<br>$ git init<br>Initialized empty Git repository <span class="hljs-keyword">in</span> A:/gitl/.git/<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/gitl (main)<br><br></code></pre></td></tr></table></figure>
+<ul>
+<li>第一步<code>mkdir</code>创建文件夹</li>
+<li>第二步<code>init</code>创建仓库</li>
+<li>由于我们已经修改了初始分支名, 此时所处分支为 <code>main</code></li>
+</ul>
+<h3 id="建立连接-1"><a href="#建立连接-1" class="headerlink" title="建立连接"></a>建立连接</h3><h4 id="1-复制ssh地址"><a href="#1-复制ssh地址" class="headerlink" title="1. 复制ssh地址"></a><code>1.</code> 复制<code>ssh</code>地址</h4><p>在<code>github</code>新建仓库页面复制仓库<code>ssh</code>地址<br><img src="./img/git6.png" alt="ssh连接"></p>
+<h4 id="2-建立连接"><a href="#2-建立连接" class="headerlink" title="2. 建立连接"></a><code>2.</code> 建立连接</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">26676@DESKTOP-KEJKGL7 MINGW64 /a/gitl (main)<br>$ git remote add origin git@github.com:MarkLilyC/gitl.git<br></code></pre></td></tr></table></figure>
+
+<h4 id="3-第一次push"><a href="#3-第一次push" class="headerlink" title="3. 第一次push"></a><code>3.</code> 第一次<code>push</code></h4><p>此时本地仓库为空文件 ，尝试进行第一次<code>push</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">26676@DESKTOP-KEJKGL7 MINGW64 /a/gitl (main)<br>$ git push -u origin main<br>error: src refspec main does not match any<br>error: failed to push some refs to <span class="hljs-string">&#x27;github.com:MarkLilyC/gitl.git&#x27;</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>提示报错 ，这是因为本地为空文件夹 ，空文件夹不能提交</p>
+</blockquote>
+<h5 id="解决办法1-pull仓库中的readme-md"><a href="#解决办法1-pull仓库中的readme-md" class="headerlink" title="解决办法1-pull仓库中的readme.md"></a>解决办法1-<code>pull</code>仓库中的<code>readme.md</code></h5><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ git pull origin main<br>remote: Enumerating objects: 9, <span class="hljs-keyword">done</span>.<br>remote: Counting objects: 100% (9/9), <span class="hljs-keyword">done</span>.<br>remote: Compressing objects: 100% (5/5), <span class="hljs-keyword">done</span>.<br>remote: Total 9 (delta 0), reused 6 (delta 0), pack-reused 0<br>Unpacking objects: 100% (9/9), 1.18 KiB | 2.00 KiB/s, <span class="hljs-keyword">done</span>.<br>From github.com:MarkLilyC/gitl<br> * branch            main       -&gt; FETCH_HEAD<br> * [new branch]      main       -&gt; origin/main<br></code></pre></td></tr></table></figure>
+
+<p>此时本地文件夹中出现了<code>readme.md</code> ，再次<code>push</code> ：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">26676@DESKTOP-KEJKGL7 MINGW64 /a/gitl (main)<br>$ git push -u origin main<br>Everything up-to-date<br>Branch <span class="hljs-string">&#x27;main&#x27;</span> <span class="hljs-built_in">set</span> up to track remote branch <span class="hljs-string">&#x27;main&#x27;</span> from <span class="hljs-string">&#x27;origin&#x27;</span>.<br></code></pre></td></tr></table></figure>
+<h5 id="解决办法2-在本地创建空文件"><a href="#解决办法2-在本地创建空文件" class="headerlink" title="解决办法2-在本地创建空文件"></a>解决办法2-在本地创建空文件</h5><p>在已经实现方法一的本地仓库内无法再实现方法二 </p>
+<p>因此删除已经创建的仓库 ，创建一个新的本地仓库与远程仓库建立连接</p>
+<p>在本地创建一个空的测试文件<code>demo.txt</code> ：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">26676@DESKTOP-KEJKGL7 MINGW64 /a/gitl (main)<br>$ touch demo.txt<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/gitl (main)<br>$ git add . &amp;&amp; git commit -m <span class="hljs-string">&quot;touch a empty file&quot;</span><br>[main (root-commit) b75675c] touch a empty file<br> 1 file changed, 0 insertions(+), 0 deletions(-)<br> create mode 100644 demo.txt<br></code></pre></td></tr></table></figure>
+
+<p>进行<code>push</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">26676@DESKTOP-KEJKGL7 MINGW64 /a/gitl (main)<br>$ git push -u origin main<br>To github.com:MarkLilyC/gitl.git<br> ! [rejected]        main -&gt; main (fetch first)<br>error: failed to push some refs to <span class="hljs-string">&#x27;github.com:MarkLilyC/gitl.git&#x27;</span><br>hint: Updates were rejected because the remote contains work that you <span class="hljs-keyword">do</span><br>hint: not have locally. This is usually caused by another repository pushing<br>hint: to the same ref. You may want to first integrate the remote changes<br>hint: (e.g., <span class="hljs-string">&#x27;git pull ...&#x27;</span>) before pushing again.<br>hint: See the <span class="hljs-string">&#x27;Note about fast-forwards&#x27;</span> <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;git push --help&#x27;</span> <span class="hljs-keyword">for</span> details.<br></code></pre></td></tr></table></figure>
+<p>此时仍然报错 ，因为本地和远程文件差异 ，可以采用强制推送 ：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">26676@DESKTOP-KEJKGL7 MINGW64 /a/gitl (main)<br>$ git push -u origin main -f<br>Enumerating objects: 3, <span class="hljs-keyword">done</span>.<br>Counting objects: 100% (3/3), <span class="hljs-keyword">done</span>.<br>Writing objects: 100% (3/3), 216 bytes | 216.00 KiB/s, <span class="hljs-keyword">done</span>.<br>Total 3 (delta 0), reused 0 (delta 0), pack-reused 0<br>To github.com:MarkLilyC/gitl.git<br> + ae7587d...b75675c main -&gt; main (forced update)<br>Branch <span class="hljs-string">&#x27;main&#x27;</span> <span class="hljs-built_in">set</span> up to track remote branch <span class="hljs-string">&#x27;main&#x27;</span> from <span class="hljs-string">&#x27;origin&#x27;</span>.<br></code></pre></td></tr></table></figure>
+
+<p>但强制推送会使得远程仓库统一到本地仓库的版本 ，如远程仓库中的<code>readme.md</code>文件丢失</p>
 ]]></content>
       <categories>
         <category>Git</category>
@@ -1161,172 +1309,6 @@ turns out<figure class="highlight python"><table><tr><td class="code"><pre><code
       </tags>
   </entry>
   <entry>
-    <title>git-10-git与github远程仓库</title>
-    <url>/2021/08/27/git/git-10-git%E4%B8%8Egithub/</url>
-    <content><![CDATA[<p>将git本地仓库与github远程仓库建立连接 </p>
-<span id="more"></span>
-<h1 id="github-远程仓库"><a href="#github-远程仓库" class="headerlink" title="github-远程仓库"></a><code><font color='dodgerblue'>github</font></code>-远程仓库</h1><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h4 id="1-创建一个github仓库"><a href="#1-创建一个github仓库" class="headerlink" title="1. 创建一个github仓库"></a><code>1.</code> 创建一个github仓库</h4><p><img src="./img/git5.png" alt="节点2"></p>
-<ul>
-<li>填写用户名</li>
-<li>添加一个 <code>readme.md</code></li>
-</ul>
-<h4 id="2-添加ssh-key"><a href="#2-添加ssh-key" class="headerlink" title="2. 添加ssh key"></a><code>2.</code> 添加<code>ssh key</code></h4><p>具体操作见</p>
-<h2 id="建立连接"><a href="#建立连接" class="headerlink" title="建立连接"></a>建立连接</h2><h3 id="本地创建仓库"><a href="#本地创建仓库" class="headerlink" title="本地创建仓库"></a>本地创建仓库</h3><h4 id="1-修改默认分支名"><a href="#1-修改默认分支名" class="headerlink" title="1. 修改默认分支名"></a><code>1.</code> 修改默认分支名</h4><p>在 <code>bash</code>内输入 ：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">26676@DESKTOP-KEJKGL7 MINGW64 /a<br>$ git config --global init.defaultBranch main<br></code></pre></td></tr></table></figure>
-
-<h4 id="2-创建本地仓库"><a href="#2-创建本地仓库" class="headerlink" title="2. 创建本地仓库"></a><code>2.</code> 创建本地仓库</h4><p>在 <code>bash</code>内 ：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">26676@DESKTOP-KEJKGL7 MINGW64 /a<br>$ mkdir gitl<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a<br>$ <span class="hljs-built_in">cd</span> gitl<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/gitl<br>$ git init<br>Initialized empty Git repository <span class="hljs-keyword">in</span> A:/gitl/.git/<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/gitl (main)<br><br></code></pre></td></tr></table></figure>
-<ul>
-<li>第一步<code>mkdir</code>创建文件夹</li>
-<li>第二步<code>init</code>创建仓库</li>
-<li>由于我们已经修改了初始分支名, 此时所处分支为 <code>main</code></li>
-</ul>
-<h3 id="建立连接-1"><a href="#建立连接-1" class="headerlink" title="建立连接"></a>建立连接</h3><h4 id="1-复制ssh地址"><a href="#1-复制ssh地址" class="headerlink" title="1. 复制ssh地址"></a><code>1.</code> 复制<code>ssh</code>地址</h4><p>在<code>github</code>新建仓库页面复制仓库<code>ssh</code>地址<br><img src="./img/git6.png" alt="ssh连接"></p>
-<h4 id="2-建立连接"><a href="#2-建立连接" class="headerlink" title="2. 建立连接"></a><code>2.</code> 建立连接</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">26676@DESKTOP-KEJKGL7 MINGW64 /a/gitl (main)<br>$ git remote add origin git@github.com:MarkLilyC/gitl.git<br></code></pre></td></tr></table></figure>
-
-<h4 id="3-第一次push"><a href="#3-第一次push" class="headerlink" title="3. 第一次push"></a><code>3.</code> 第一次<code>push</code></h4><p>此时本地仓库为空文件 ，尝试进行第一次<code>push</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">26676@DESKTOP-KEJKGL7 MINGW64 /a/gitl (main)<br>$ git push -u origin main<br>error: src refspec main does not match any<br>error: failed to push some refs to <span class="hljs-string">&#x27;github.com:MarkLilyC/gitl.git&#x27;</span><br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>提示报错 ，这是因为本地为空文件夹 ，空文件夹不能提交</p>
-</blockquote>
-<h5 id="解决办法1-pull仓库中的readme-md"><a href="#解决办法1-pull仓库中的readme-md" class="headerlink" title="解决办法1-pull仓库中的readme.md"></a>解决办法1-<code>pull</code>仓库中的<code>readme.md</code></h5><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ git pull origin main<br>remote: Enumerating objects: 9, <span class="hljs-keyword">done</span>.<br>remote: Counting objects: 100% (9/9), <span class="hljs-keyword">done</span>.<br>remote: Compressing objects: 100% (5/5), <span class="hljs-keyword">done</span>.<br>remote: Total 9 (delta 0), reused 6 (delta 0), pack-reused 0<br>Unpacking objects: 100% (9/9), 1.18 KiB | 2.00 KiB/s, <span class="hljs-keyword">done</span>.<br>From github.com:MarkLilyC/gitl<br> * branch            main       -&gt; FETCH_HEAD<br> * [new branch]      main       -&gt; origin/main<br></code></pre></td></tr></table></figure>
-
-<p>此时本地文件夹中出现了<code>readme.md</code> ，再次<code>push</code> ：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">26676@DESKTOP-KEJKGL7 MINGW64 /a/gitl (main)<br>$ git push -u origin main<br>Everything up-to-date<br>Branch <span class="hljs-string">&#x27;main&#x27;</span> <span class="hljs-built_in">set</span> up to track remote branch <span class="hljs-string">&#x27;main&#x27;</span> from <span class="hljs-string">&#x27;origin&#x27;</span>.<br></code></pre></td></tr></table></figure>
-<h5 id="解决办法2-在本地创建空文件"><a href="#解决办法2-在本地创建空文件" class="headerlink" title="解决办法2-在本地创建空文件"></a>解决办法2-在本地创建空文件</h5><p>在已经实现方法一的本地仓库内无法再实现方法二 </p>
-<p>因此删除已经创建的仓库 ，创建一个新的本地仓库与远程仓库建立连接</p>
-<p>在本地创建一个空的测试文件<code>demo.txt</code> ：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">26676@DESKTOP-KEJKGL7 MINGW64 /a/gitl (main)<br>$ touch demo.txt<br><br>26676@DESKTOP-KEJKGL7 MINGW64 /a/gitl (main)<br>$ git add . &amp;&amp; git commit -m <span class="hljs-string">&quot;touch a empty file&quot;</span><br>[main (root-commit) b75675c] touch a empty file<br> 1 file changed, 0 insertions(+), 0 deletions(-)<br> create mode 100644 demo.txt<br></code></pre></td></tr></table></figure>
-
-<p>进行<code>push</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">26676@DESKTOP-KEJKGL7 MINGW64 /a/gitl (main)<br>$ git push -u origin main<br>To github.com:MarkLilyC/gitl.git<br> ! [rejected]        main -&gt; main (fetch first)<br>error: failed to push some refs to <span class="hljs-string">&#x27;github.com:MarkLilyC/gitl.git&#x27;</span><br>hint: Updates were rejected because the remote contains work that you <span class="hljs-keyword">do</span><br>hint: not have locally. This is usually caused by another repository pushing<br>hint: to the same ref. You may want to first integrate the remote changes<br>hint: (e.g., <span class="hljs-string">&#x27;git pull ...&#x27;</span>) before pushing again.<br>hint: See the <span class="hljs-string">&#x27;Note about fast-forwards&#x27;</span> <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;git push --help&#x27;</span> <span class="hljs-keyword">for</span> details.<br></code></pre></td></tr></table></figure>
-<p>此时仍然报错 ，因为本地和远程文件差异 ，可以采用强制推送 ：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">26676@DESKTOP-KEJKGL7 MINGW64 /a/gitl (main)<br>$ git push -u origin main -f<br>Enumerating objects: 3, <span class="hljs-keyword">done</span>.<br>Counting objects: 100% (3/3), <span class="hljs-keyword">done</span>.<br>Writing objects: 100% (3/3), 216 bytes | 216.00 KiB/s, <span class="hljs-keyword">done</span>.<br>Total 3 (delta 0), reused 0 (delta 0), pack-reused 0<br>To github.com:MarkLilyC/gitl.git<br> + ae7587d...b75675c main -&gt; main (forced update)<br>Branch <span class="hljs-string">&#x27;main&#x27;</span> <span class="hljs-built_in">set</span> up to track remote branch <span class="hljs-string">&#x27;main&#x27;</span> from <span class="hljs-string">&#x27;origin&#x27;</span>.<br></code></pre></td></tr></table></figure>
-
-<p>但强制推送会使得远程仓库统一到本地仓库的版本 ，如远程仓库中的<code>readme.md</code>文件丢失</p>
-]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MarkLily Blog Test</title>
-    <url>/2021/07/07/test/numpy100/</url>
-    <content><![CDATA[<h1 id="github上的开源项目"><a href="#github上的开源项目" class="headerlink" title="github上的开源项目"></a>github上的开源项目</h1><h2 id="2021-7-4-17：06"><a href="#2021-7-4-17：06" class="headerlink" title="2021.7.4 17：06"></a>2021.7.4 17：06</h2><span id="more"></span>
-<h3 id="创建一个长度为10的空向量"><a href="#创建一个长度为10的空向量" class="headerlink" title="创建一个长度为10的空向量"></a>创建一个长度为10的空向量</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.zeros(<span class="hljs-number">10</span>)<br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
-<h3 id="找到数组的内存大小"><a href="#找到数组的内存大小" class="headerlink" title="找到数组的内存大小"></a>找到数组的内存大小</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.zeros(<span class="hljs-number">10</span>)<br><span class="hljs-built_in">print</span>(z.size * z.itermsize)<br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>z.size获取到内部的元素个数<br>z.itemsize获取到各个元素的大小</p>
-</blockquote>
-<h3 id="从命令行对得到相关函数的说明文档"><a href="#从命令行对得到相关函数的说明文档" class="headerlink" title="从命令行对得到相关函数的说明文档"></a>从命令行对得到相关函数的说明文档</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs pythoh">print(np.info(np.add))<br></code></pre></td></tr></table></figure>
-
-<h3 id="创建一个长度为10-且除了第五个元素为1的空向量"><a href="#创建一个长度为10-且除了第五个元素为1的空向量" class="headerlink" title="创建一个长度为10,且除了第五个元素为1的空向量"></a>创建一个长度为10,且除了第五个元素为1的空向量</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.zeros(<span class="hljs-number">10</span>)<br>z[<span class="hljs-number">4</span>] = <span class="hljs-number">1</span><br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
-
-<h3 id="创建值域10-49的向量"><a href="#创建值域10-49的向量" class="headerlink" title="创建值域10-49的向量"></a>创建值域10-49的向量</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.arange(<span class="hljs-number">10</span>, <span class="hljs-number">50</span>)<br></code></pre></td></tr></table></figure>
-
-<h3 id="反转一个向量"><a href="#反转一个向量" class="headerlink" title="反转一个向量"></a>反转一个向量</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.arange(<span class="hljs-number">0</span>, <span class="hljs-number">5</span>)<br><span class="hljs-built_in">print</span>(z)<br>z = z[::-<span class="hljs-number">1</span>]<br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
-<p><code>b = [0 1 2 3 4]</code><br><code>a = b[x : y]</code>: 两索引各自计算,正值从左侧开始,负值从右侧开始</p>
-<ul>
-<li>左侧索引元素在右侧索引元素左侧,则返回非空</li>
-<li>某侧无索引则代表,从另一侧索引顺方向计数完</li>
-<li>a为两侧索引之内交集元素返回的array</li>
-<li>若两侧索引之内无元素,则a为空array<blockquote>
-<p>a = b[4:2] : a = []<br>a = b[-3:4] : a = []<br>a = b[4:-2] : a = []</p>
-</blockquote>
-</li>
-</ul>
-<ol>
-<li><code>x&gt;0</code> <code>y&gt;0</code></li>
-</ol>
-<ul>
-<li>a = b[x:y]: a = x-y内元素返回array</li>
-<li>a = b[ :y]: a = 0-y内元素返回</li>
-<li>a = b[x: ]: a = x-len(b)内元素返回</li>
-<li>x &lt; y : a = []</li>
-</ul>
-<ol start="2">
-<li><code>x&lt;0</code> or <code>y&lt;0</code></li>
-</ol>
-<ul>
-<li>a = b[-4:-1]: a = b中-4号元素到-1号元素返回</li>
-<li>a = b[-4:1]: a = []</li>
-<li>a = b[-4:]: a = -4 - 0索引之间元素返回</li>
-<li>a = b[:-4]: a = []</li>
-<li>a = b[3:-4]: a = []</li>
-</ul>
-<ol start="3">
-<li><code>a = b[::a]</code></li>
-</ol>
-<ul>
-<li>在b中没隔a取一个元素返回a</li>
-<li>取值方向由a正负决定</li>
-</ul>
-<h3 id="创建一个3-3-值域-0-8的矩阵"><a href="#创建一个3-3-值域-0-8的矩阵" class="headerlink" title="创建一个3 * 3,值域:0-8的矩阵"></a>创建一个3 * 3,值域:0-8的矩阵</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.arange(<span class="hljs-number">0</span>,<span class="hljs-number">9</span>).reshape(<span class="hljs-number">3</span>,<span class="hljs-number">3</span>)<br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
-<h3 id="找到数组中的0元素索引"><a href="#找到数组中的0元素索引" class="headerlink" title="找到数组中的0元素索引"></a>找到数组中的0元素索引</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">0</span>])<br><span class="hljs-built_in">print</span>(z.nonzero())<br></code></pre></td></tr></table></figure>
-<h3 id="创建一个3-3的单位矩阵"><a href="#创建一个3-3的单位矩阵" class="headerlink" title="创建一个3 * 3的单位矩阵"></a>创建一个<code>3 * 3</code>的单位矩阵</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.eye(<span class="hljs-number">3</span>)<br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
-
-<h3 id="创建一个3-3的随机数据"><a href="#创建一个3-3的随机数据" class="headerlink" title="创建一个3 * 3的随机数据"></a>创建一个<code>3 * 3</code>的随机数据</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> numpy <span class="hljs-keyword">import</span> random<br>z = np.random.random((<span class="hljs-number">3</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>))<br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
-
-<h3 id="创建一个10-10的随机数组-并获取最小与最大值"><a href="#创建一个10-10的随机数组-并获取最小与最大值" class="headerlink" title="创建一个10 * 10的随机数组,并获取最小与最大值"></a>创建一个<code>10 * 10</code>的随机数组,并获取最小与最大值</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> numpy <span class="hljs-keyword">import</span> random<br>z = np.random.random((<span class="hljs-number">10</span>, <span class="hljs-number">10</span>))<br><span class="hljs-built_in">print</span>(z.<span class="hljs-built_in">min</span>(), z.<span class="hljs-built_in">max</span>())<br></code></pre></td></tr></table></figure>
-
-<h3 id="创建一个长度为30的随机向量-并获取其平均值"><a href="#创建一个长度为30的随机向量-并获取其平均值" class="headerlink" title="创建一个长度为30的随机向量,并获取其平均值"></a>创建一个长度为<code>30</code>的随机向量,并获取其平均值</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> numpy <span class="hljs-keyword">import</span> random<br>z = np.random.random((<span class="hljs-number">30</span>))<br>zMean = z.mean()<br><span class="hljs-built_in">print</span>(zMean)<br></code></pre></td></tr></table></figure>
-
-<h3 id="创建一个二维数组-其边界值为1-其余值为0"><a href="#创建一个二维数组-其边界值为1-其余值为0" class="headerlink" title="创建一个二维数组,其边界值为1,其余值为0"></a>创建一个二维数组,其边界值为1,其余值为0</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.ones((<span class="hljs-number">6</span>, <span class="hljs-number">6</span>))<br>z[<span class="hljs-number">1</span>:-<span class="hljs-number">1</span>, <span class="hljs-number">1</span>:-<span class="hljs-number">1</span>] = <span class="hljs-number">0</span><br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
-<ul>
-<li>其原理是:用array[a:b,c:d] = x进行对二维数组赋值的方式</li>
-<li>array[1:-1,1:-1] = x其原理类似a = b[1:-1]从行索引为从第一行到-1行(及倒是第二行),这样根据每个array的大小去调整参数</li>
-</ul>
-<h3 id="对于一个存在的数组-如何用0填充其边界"><a href="#对于一个存在的数组-如何用0填充其边界" class="headerlink" title="对于一个存在的数组,如何用0填充其边界"></a>对于一个存在的数组,如何用0填充其边界</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">z = np.ones((<span class="hljs-number">6</span>, <span class="hljs-number">6</span>))<br>z = np.pad(z, pad_width=<span class="hljs-number">1</span>, mode=<span class="hljs-string">&#x27;constant&#x27;</span>, constant_values=<span class="hljs-number">0</span>)<br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
-
-<h3 id="下列各式的运行结果"><a href="#下列各式的运行结果" class="headerlink" title="下列各式的运行结果"></a>下列各式的运行结果</h3><ol>
-<li><code>0 * np.nan</code> –&gt; <code>nan</code></li>
-<li><code>np.nan==np.nan</code> –&gt; <code>False</code></li>
-<li><code>np.inf &gt; np.nan</code> –&gt; <code>False</code></li>
-<li><code>np.nan - np.nan</code> –&gt; <code>nan</code></li>
-<li><code>0.3 == 3 * 0.1</code> –&gt; <code>False</code></li>
-</ol>
-<ul>
-<li>nan 不是数字,是不存在</li>
-<li>inf infinite</li>
-</ul>
-<h3 id="创建一个5-5的矩阵-并设置1-2-3-4落在其对角线的下方"><a href="#创建一个5-5的矩阵-并设置1-2-3-4落在其对角线的下方" class="headerlink" title="创建一个5 * 5的矩阵,并设置1 2 3 4落在其对角线的下方"></a>创建一个<code>5 * 5</code>的矩阵,并设置<code>1 2 3 4</code>落在其对角线的下方</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">Z = np.diag(<span class="hljs-number">1</span>+np.arange(<span class="hljs-number">4</span>), k = -<span class="hljs-number">1</span>)<br><span class="hljs-built_in">print</span>(Z)<br></code></pre></td></tr></table></figure>
-<ul>
-<li><code>np.diag(array_like, k)</code></li>
-</ul>
-<ol>
-<li>返回此array第k位置对角线的矩阵</li>
-<li>当只传入矩阵,则返回此矩阵的对角线元素</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Test</category>
-      </categories>
-      <tags>
-        <tag>test</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python--列表操作</title>
-    <url>/2021/07/07/Python/tool/%E5%88%97%E8%A1%A8%E6%93%8D%E4%BD%9C/</url>
-    <content><![CDATA[<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h2 id="判断列表中是否存在另一个元素-列表"><a href="#判断列表中是否存在另一个元素-列表" class="headerlink" title="判断列表中是否存在另一个元素/列表"></a>判断列表中是否存在另一个元素/列表</h2><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">contain</span>(<span class="hljs-params">ori:<span class="hljs-built_in">list</span>|<span class="hljs-built_in">tuple</span>, tar</span>) -&gt; <span class="hljs-built_in">bool</span>:</span><br>    <span class="hljs-string">&#x27;&#x27;&#x27;判断一个给定的可迭代对象中是否存在另一个对象</span><br><span class="hljs-string"></span><br><span class="hljs-string">    Args:</span><br><span class="hljs-string">        ori (list | tuple): 原始可迭代对象</span><br><span class="hljs-string">        tar (_type_): 目标对象</span><br><span class="hljs-string"></span><br><span class="hljs-string">    Returns:</span><br><span class="hljs-string">        bool: 是否存在</span><br><span class="hljs-string">    &#x27;&#x27;&#x27;</span><br>    <span class="hljs-comment"># 如果传入的是可迭代对象并且不是字符串</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">hasattr</span>(tar, <span class="hljs-string">&#x27;__iter__&#x27;</span>) <span class="hljs-keyword">and</span> <span class="hljs-built_in">isinstance</span>(tar, <span class="hljs-built_in">str</span>) <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">True</span>:<br>        <span class="hljs-comment"># 如果传入对象中还有元素</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(tar) &gt; <span class="hljs-number">0</span>:<br>            <span class="hljs-comment"># 则取出最后一个对象传入本函数进行判断</span><br>            <span class="hljs-keyword">if</span> contain(ori=ori, tar=tar[-<span class="hljs-number">1</span>]):<br>            <span class="hljs-comment"># 如果上一步返回true 则将传入对象去掉最后一个元素后继续传入本函数</span><br>                tar.pop()<br>                tmp = contain(ori=ori, tar=tar)<br>                <span class="hljs-keyword">return</span> tmp<br>            <span class="hljs-keyword">else</span>: <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>  <span class="hljs-comment"># 如果上一步返回false 则直接本函数返回false</span><br>        <span class="hljs-keyword">else</span>:   <span class="hljs-comment"># 如果已经完成迭代 则返回true</span><br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>    <span class="hljs-comment"># 如果传入的是单一对象</span><br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> ori:<br>            <span class="hljs-keyword">if</span> tar == i:<span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>            <span class="hljs-keyword">else</span>: <span class="hljs-keyword">pass</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br><br></code></pre></td></tr></table></figure>
-
-
-
-<h2 id="从列表中去除另一个元素-列表"><a href="#从列表中去除另一个元素-列表" class="headerlink" title="从列表中去除另一个元素/列表"></a>从列表中去除另一个元素/列表</h2><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">remove_items</span>(<span class="hljs-params">ori:<span class="hljs-built_in">list</span>, tar</span>) -&gt; <span class="hljs-built_in">list</span>:</span><br>    <span class="hljs-string">&#x27;&#x27;&#x27;从一个列表中删除另一个列表或元素</span><br><span class="hljs-string"></span><br><span class="hljs-string">    Args:</span><br><span class="hljs-string">        ori (list): 原始列表</span><br><span class="hljs-string">        tar (_type_): 待删除的列表或者元素</span><br><span class="hljs-string"></span><br><span class="hljs-string">    Returns:</span><br><span class="hljs-string">        list: 删除给定元素/列表的原列表</span><br><span class="hljs-string">    &#x27;&#x27;&#x27;</span><br>    <span class="hljs-comment"># 如果传入的待去除对象为none 则直接返回原列表</span><br>    <span class="hljs-keyword">if</span> tar <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>: <span class="hljs-keyword">return</span> ori<br>    <span class="hljs-comment"># 如果传入的不是none 则先判断其是否为非str的可迭代对象</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">hasattr</span>(tar, <span class="hljs-string">&quot;__iter__&quot;</span>) <span class="hljs-keyword">and</span> <span class="hljs-built_in">isinstance</span>(tar, <span class="hljs-built_in">str</span>) <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">True</span>:<br>       <span class="hljs-keyword">return</span> [x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> ori <span class="hljs-keyword">if</span> x <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> tar]<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">return</span> [x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> ori <span class="hljs-keyword">if</span> x != tar]<br></code></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>tool</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>python--map函数</title>
     <url>/2021/07/07/Python/advance/map%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<h1 id="map函数"><a href="#map函数" class="headerlink" title="map函数"></a>map函数</h1><ul>
@@ -1375,56 +1357,6 @@ turns out<figure class="highlight python"><table><tr><td class="code"><pre><code
 <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>testStr = [x <span class="hljs-keyword">if</span> x <span class="hljs-keyword">is</span> <span class="hljs-string">&#x27;a&#x27;</span> <span class="hljs-keyword">else</span> <span class="hljs-string">&#x27;b&#x27;</span> <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;abcd&#x27;</span>]<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(testStr)<br>[<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>]<br></code></pre></td></tr></table></figure>
 
 
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>advance</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python--装饰器</title>
-    <url>/2021/07/07/Python/advance/python%E8%A3%85%E9%A5%B0%E5%99%A8/</url>
-    <content><![CDATA[<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><p>Python装饰器能够动态地改变函数 方法 类的功能,而不用子类重写或修改函数源代码的方式   </p>
-<span id="more"></span>
-<h2 id="装饰器函数"><a href="#装饰器函数" class="headerlink" title="装饰器函数"></a>装饰器函数</h2><h3 id="装饰器函数基础"><a href="#装饰器函数基础" class="headerlink" title="装饰器函数基础"></a>装饰器函数基础</h3><p><code>装饰器</code> 增强了其他函数的功能</p>
-<ul>
-<li>任何将函数作为传入参数并返回一个增强函数的函数都可以视为一个装饰器函数<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 定义装饰器函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">decoratorFunc</span>(<span class="hljs-params">f</span>):</span><br>    <span class="hljs-keyword">return</span> f<br><span class="hljs-comment"># 语法糖 进行函数装饰</span><br><span class="hljs-meta">@decoratorFunc</span><br><span class="hljs-comment"># 定义待装饰函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">toBeEnforce</span>():</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;this function has been enforced&#x27;</span>)<br><span class="hljs-comment"># 调用增强后的函数</span><br>toBeEnforce()<br></code></pre></td></tr></table></figure>
-<h3 id="装饰器函数语法糖"><a href="#装饰器函数语法糖" class="headerlink" title="装饰器函数语法糖"></a>装饰器函数语法糖</h3></li>
-<li><code>@decoratorFunction</code>作为语法糖:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@decoratorFunc</span><br></code></pre></td></tr></table></figure>
-等效于:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">my_function = super_secret_function(my_function)<br></code></pre></td></tr></table></figure>
-以上代码等效于<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 定义装饰器函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">decoratorFunc</span>(<span class="hljs-params">f</span>):</span><br>    <span class="hljs-keyword">return</span> f<br><span class="hljs-comment"># 定义待装饰函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">toBeEnforce</span>():</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;this function has been enforced&#x27;</span>)<br><span class="hljs-comment"># 进行装饰</span><br>toBeEnforce = decoratorFunc(toBeEnforce)<br><span class="hljs-comment"># 调用装饰后的函数</span><br>toBeEnforce()<br></code></pre></td></tr></table></figure></li>
-<li>当然,此案例没有函数装饰作用<h3 id="装饰器函数理解"><a href="#装饰器函数理解" class="headerlink" title="装饰器函数理解"></a>装饰器函数理解</h3></li>
-<li>假设我们现有一个函数用于计算函数的<code>sin cos</code>值的函数:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">calSinCos</span>(<span class="hljs-params">alpha</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> [math.sin(alpha), math.cos(alpha)]<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>calSinCos(<span class="hljs-number">0.5</span>)<br>[<span class="hljs-number">0.479425538604203</span>, <span class="hljs-number">0.8775825618903728</span>]<br></code></pre></td></tr></table></figure></li>
-<li>现需要这个函数输出这个角度半角的<code>sin cos</code>的值<ul>
-<li>solution1: ``calSinCos(aplha/2)  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>calSinCos(<span class="hljs-number">0.5</span>/<span class="hljs-number">2</span>)<br>[<span class="hljs-number">0.24740395925452294</span>, <span class="hljs-number">0.9689124217106447</span>]<br></code></pre></td></tr></table></figure></li>
-<li>solution2: 使用装饰器,使这个函数同时返回我们需要的两个值:  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">decoratorCal</span>(<span class="hljs-params">f</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">inner_function</span>(<span class="hljs-params">*args, **kwargs</span>):</span><br><span class="hljs-meta">... </span>            temp_list_sin = []<br><span class="hljs-meta">... </span>            temp_list_cos = []<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> args:<br><span class="hljs-meta">... </span>                    temp_list_sin.append(math.sin(i))<br><span class="hljs-meta">... </span>                    temp_list_cos.append(math.cos(i))<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">return</span> f(*args, **kwargs), temp_list_sin, temp_list_cos<br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> inner_function<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>@decoratorCal<br><span class="hljs-meta">... </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">cal</span>(<span class="hljs-params">a</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> [math.sin(a), math.cos(a)]<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(cal(<span class="hljs-number">0.3</span>))<br>([<span class="hljs-number">0.29552020666133955</span>, <span class="hljs-number">0.955336489125606</span>], [<span class="hljs-number">0.29552020666133955</span>], [<span class="hljs-number">0.955336489125606</span>])  <br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>装饰器函数工作流程:<ul>
-<li>调用待增强函数<code>cal(0.3)</code>时,同时调用装饰器函数<code>decoratorCal</code></li>
-<li><code>decoratorCal</code>内部定义了我们真正寄希望完成预期功能的函数<code>inner_function</code></li>
-<li><code>return inner_function</code>时便开始执行<code>inner_function</code>内代码,首先是完成基于原<code>cal(0.3)</code>的新加功能,最后<code>return f(*args, **kwargs)</code><ul>
-<li>当然也可以<code>return</code> 其他想要的数据</li>
-<li>不一定要返回原函数</li>
-</ul>
-</li>
-<li><code>return f(*args, **kwargs)</code>便开始执行<code>cal(0.3)</code>原函数的功能</li>
-<li>最后得到所有的返回值</li>
-</ul>
-</li>
-<li>从流程上看,<code>cal</code>原函数作为参数,真正运行的是<code>inner_function</code>,<code>inner_function</code>运行后返回<code>cal</code>,<code>cal</code>再运行本身的功能</li>
-<li>之所以<code>decoratorCal</code>必须返回一个函数<code>inner_function</code>,是为了借<code>return</code>来执行<code>inner_function</code>内部我们新加功能的代码</li>
-</ul>
-<hr>
-<ul>
-<li>装饰器更像是一种语法逻辑的产物</li>
-</ul>
-<hr>
-<h2 id="装饰器类"><a href="#装饰器类" class="headerlink" title="装饰器类"></a>装饰器类</h2><p>将装饰器封装为类,</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 定义装饰器类</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Decorator</span>(<span class="hljs-params"><span class="hljs-built_in">object</span></span>):</span><br>    <span class="hljs-comment"># 初始化,将待装饰方法赋值给装饰器类,作为其属性(对象方法)</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, func</span>):</span><br>        self.func = func<br>    <br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__call__</span>(<span class="hljs-params">self, *args, **kwargs</span>):</span><br>        <span class="hljs-comment"># 调用此方法</span><br>        res = self.func(*args, **kwargs)<br>        <br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">testfunc</span>():</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Inside the function.&#x27;</span>)<br><br>testfunc = Decorator(testfunc)<br><br>testfunc()<br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Python</category>
@@ -1549,27 +1481,82 @@ turns out<figure class="highlight python"><table><tr><td class="code"><pre><code
       </tags>
   </entry>
   <entry>
-    <title>python--函数</title>
-    <url>/2021/07/10/Python/basic/%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="函数-1"><a href="#函数-1" class="headerlink" title="函数"></a>函数</h2><p>–</p>
-<h2 id="函数参数"><a href="#函数参数" class="headerlink" title="函数参数"></a>函数参数</h2><hr>
-<h3 id="参数类型"><a href="#参数类型" class="headerlink" title="参数类型"></a>参数类型</h3><span id="more"></span>
-<h4 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h4><ul>
-<li>定义函数时设置默认值,则调用函数时不需要指定参数值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func</span>(<span class="hljs-params">a = <span class="hljs-number">1</span>, b = <span class="hljs-number">4</span></span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> a * b<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func())<br><span class="hljs-number">4</span><br></code></pre></td></tr></table></figure></li>
-<li>定义函数时设置默认值,调用函数指定他值,则他值覆盖默认值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func</span>(<span class="hljs-params">a = <span class="hljs-number">1</span>, b = <span class="hljs-number">4</span></span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> a * b<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func())<br><span class="hljs-number">4</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func(<span class="hljs-number">2</span>, <span class="hljs-number">5</span>))<br><span class="hljs-number">10</span><br></code></pre></td></tr></table></figure>
-<h4 id="关键字参数-参数关键字"><a href="#关键字参数-参数关键字" class="headerlink" title="关键字参数(参数关键字)"></a>关键字参数(参数关键字)</h4></li>
-<li>调用函数传入参数时,若不指定各传入值对应参数名,则传入值会按照默认顺序(函数定义式中的参数顺序)进行参数赋值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func2</span>(<span class="hljs-params">a, b, c, d</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span>(a * <span class="hljs-number">1000</span> + b * <span class="hljs-number">100</span> + c * <span class="hljs-number">10</span> + d)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>))<br><span class="hljs-number">1234</span><br></code></pre></td></tr></table></figure></li>
-<li>调用函数传入参数时,指定参数关键字则不用在意参数传入顺序<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func2</span>(<span class="hljs-params">a, b, c, d</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span>(a * <span class="hljs-number">1000</span> + b * <span class="hljs-number">100</span> + c * <span class="hljs-number">10</span> + d)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>))<br><span class="hljs-number">1234</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(d=<span class="hljs-number">4</span>, a=<span class="hljs-number">1</span>, c=<span class="hljs-number">3</span>, b=<span class="hljs-number">2</span>))<br><span class="hljs-number">1234</span><br></code></pre></td></tr></table></figure>
-<h4 id="任意参数"><a href="#任意参数" class="headerlink" title="任意参数"></a>任意参数</h4><code>1.</code> 在任意参数前添加<code>*</code>标定此参数为任意参数</li>
-<li>它将非关键字的参数作为元组传入函数内部<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func2</span>(<span class="hljs-params">a, b, c, d</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span>(a * <span class="hljs-number">1000</span> + b * <span class="hljs-number">100</span> + c * <span class="hljs-number">10</span> + d)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>))<br><span class="hljs-number">1234</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(d=<span class="hljs-number">4</span>, a=<span class="hljs-number">1</span>, c=<span class="hljs-number">3</span>, b=<span class="hljs-number">2</span>))<br><span class="hljs-number">1234</span><br></code></pre></td></tr></table></figure>
-<code>2.</code> <code>**kwargs</code> 用以传递任意关键字参数<code>(kew = ars)</code></li>
-<li>将带传入参数及其关键字以<code>&#39;&#39;键值对&#39;&#39;</code>形式传入</li>
-<li>传入参数及其关键字被转换为<code>dict</code>传入函数内部,通过关键字定位参数值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func4</span>(<span class="hljs-params">**kwargs</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(kwargs.__class__)<br><span class="hljs-meta">... </span>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> kwargs:<br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;this is &#x27;</span> + <span class="hljs-built_in">str</span>(i) + <span class="hljs-string">&#x27; and its arg = &#x27;</span> +<span class="hljs-built_in">str</span>(kwargs[i]))<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>func4(name = <span class="hljs-string">&#x27;markilily&#x27;</span>,age = <span class="hljs-number">120</span>)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">dict</span>&#x27;&gt;</span><br><span class="hljs-class"><span class="hljs-title">this</span> <span class="hljs-title">is</span> <span class="hljs-title">name</span> <span class="hljs-title">and</span> <span class="hljs-title">its</span> <span class="hljs-title">arg</span> = <span class="hljs-title">markilily</span></span><br><span class="hljs-class"><span class="hljs-title">this</span> <span class="hljs-title">is</span> <span class="hljs-title">age</span> <span class="hljs-title">and</span> <span class="hljs-title">its</span> <span class="hljs-title">arg</span> = 120</span><br></code></pre></td></tr></table></figure></li>
+    <title>python--装饰器</title>
+    <url>/2021/07/07/Python/advance/python%E8%A3%85%E9%A5%B0%E5%99%A8/</url>
+    <content><![CDATA[<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><p>Python装饰器能够动态地改变函数 方法 类的功能,而不用子类重写或修改函数源代码的方式   </p>
+<span id="more"></span>
+<h2 id="装饰器函数"><a href="#装饰器函数" class="headerlink" title="装饰器函数"></a>装饰器函数</h2><h3 id="装饰器函数基础"><a href="#装饰器函数基础" class="headerlink" title="装饰器函数基础"></a>装饰器函数基础</h3><p><code>装饰器</code> 增强了其他函数的功能</p>
+<ul>
+<li>任何将函数作为传入参数并返回一个增强函数的函数都可以视为一个装饰器函数<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 定义装饰器函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">decoratorFunc</span>(<span class="hljs-params">f</span>):</span><br>    <span class="hljs-keyword">return</span> f<br><span class="hljs-comment"># 语法糖 进行函数装饰</span><br><span class="hljs-meta">@decoratorFunc</span><br><span class="hljs-comment"># 定义待装饰函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">toBeEnforce</span>():</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;this function has been enforced&#x27;</span>)<br><span class="hljs-comment"># 调用增强后的函数</span><br>toBeEnforce()<br></code></pre></td></tr></table></figure>
+<h3 id="装饰器函数语法糖"><a href="#装饰器函数语法糖" class="headerlink" title="装饰器函数语法糖"></a>装饰器函数语法糖</h3></li>
+<li><code>@decoratorFunction</code>作为语法糖:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@decoratorFunc</span><br></code></pre></td></tr></table></figure>
+等效于:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">my_function = super_secret_function(my_function)<br></code></pre></td></tr></table></figure>
+以上代码等效于<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 定义装饰器函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">decoratorFunc</span>(<span class="hljs-params">f</span>):</span><br>    <span class="hljs-keyword">return</span> f<br><span class="hljs-comment"># 定义待装饰函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">toBeEnforce</span>():</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;this function has been enforced&#x27;</span>)<br><span class="hljs-comment"># 进行装饰</span><br>toBeEnforce = decoratorFunc(toBeEnforce)<br><span class="hljs-comment"># 调用装饰后的函数</span><br>toBeEnforce()<br></code></pre></td></tr></table></figure></li>
+<li>当然,此案例没有函数装饰作用<h3 id="装饰器函数理解"><a href="#装饰器函数理解" class="headerlink" title="装饰器函数理解"></a>装饰器函数理解</h3></li>
+<li>假设我们现有一个函数用于计算函数的<code>sin cos</code>值的函数:<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">calSinCos</span>(<span class="hljs-params">alpha</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> [math.sin(alpha), math.cos(alpha)]<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>calSinCos(<span class="hljs-number">0.5</span>)<br>[<span class="hljs-number">0.479425538604203</span>, <span class="hljs-number">0.8775825618903728</span>]<br></code></pre></td></tr></table></figure></li>
+<li>现需要这个函数输出这个角度半角的<code>sin cos</code>的值<ul>
+<li>solution1: ``calSinCos(aplha/2)  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>calSinCos(<span class="hljs-number">0.5</span>/<span class="hljs-number">2</span>)<br>[<span class="hljs-number">0.24740395925452294</span>, <span class="hljs-number">0.9689124217106447</span>]<br></code></pre></td></tr></table></figure></li>
+<li>solution2: 使用装饰器,使这个函数同时返回我们需要的两个值:  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">decoratorCal</span>(<span class="hljs-params">f</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">inner_function</span>(<span class="hljs-params">*args, **kwargs</span>):</span><br><span class="hljs-meta">... </span>            temp_list_sin = []<br><span class="hljs-meta">... </span>            temp_list_cos = []<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> args:<br><span class="hljs-meta">... </span>                    temp_list_sin.append(math.sin(i))<br><span class="hljs-meta">... </span>                    temp_list_cos.append(math.cos(i))<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">return</span> f(*args, **kwargs), temp_list_sin, temp_list_cos<br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> inner_function<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>@decoratorCal<br><span class="hljs-meta">... </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">cal</span>(<span class="hljs-params">a</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> [math.sin(a), math.cos(a)]<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(cal(<span class="hljs-number">0.3</span>))<br>([<span class="hljs-number">0.29552020666133955</span>, <span class="hljs-number">0.955336489125606</span>], [<span class="hljs-number">0.29552020666133955</span>], [<span class="hljs-number">0.955336489125606</span>])  <br></code></pre></td></tr></table></figure></li>
 </ul>
+</li>
+<li>装饰器函数工作流程:<ul>
+<li>调用待增强函数<code>cal(0.3)</code>时,同时调用装饰器函数<code>decoratorCal</code></li>
+<li><code>decoratorCal</code>内部定义了我们真正寄希望完成预期功能的函数<code>inner_function</code></li>
+<li><code>return inner_function</code>时便开始执行<code>inner_function</code>内代码,首先是完成基于原<code>cal(0.3)</code>的新加功能,最后<code>return f(*args, **kwargs)</code><ul>
+<li>当然也可以<code>return</code> 其他想要的数据</li>
+<li>不一定要返回原函数</li>
+</ul>
+</li>
+<li><code>return f(*args, **kwargs)</code>便开始执行<code>cal(0.3)</code>原函数的功能</li>
+<li>最后得到所有的返回值</li>
+</ul>
+</li>
+<li>从流程上看,<code>cal</code>原函数作为参数,真正运行的是<code>inner_function</code>,<code>inner_function</code>运行后返回<code>cal</code>,<code>cal</code>再运行本身的功能</li>
+<li>之所以<code>decoratorCal</code>必须返回一个函数<code>inner_function</code>,是为了借<code>return</code>来执行<code>inner_function</code>内部我们新加功能的代码</li>
+</ul>
+<hr>
+<ul>
+<li>装饰器更像是一种语法逻辑的产物</li>
+</ul>
+<hr>
+<h2 id="装饰器类"><a href="#装饰器类" class="headerlink" title="装饰器类"></a>装饰器类</h2><p>将装饰器封装为类,</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 定义装饰器类</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Decorator</span>(<span class="hljs-params"><span class="hljs-built_in">object</span></span>):</span><br>    <span class="hljs-comment"># 初始化,将待装饰方法赋值给装饰器类,作为其属性(对象方法)</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, func</span>):</span><br>        self.func = func<br>    <br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__call__</span>(<span class="hljs-params">self, *args, **kwargs</span>):</span><br>        <span class="hljs-comment"># 调用此方法</span><br>        res = self.func(*args, **kwargs)<br>        <br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">testfunc</span>():</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Inside the function.&#x27;</span>)<br><br>testfunc = Decorator(testfunc)<br><br>testfunc()<br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Python</category>
-        <category>basic</category>
+        <category>advance</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python--列表操作</title>
+    <url>/2021/07/07/Python/tool/%E5%88%97%E8%A1%A8%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h2 id="判断列表中是否存在另一个元素-列表"><a href="#判断列表中是否存在另一个元素-列表" class="headerlink" title="判断列表中是否存在另一个元素/列表"></a>判断列表中是否存在另一个元素/列表</h2><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">contain</span>(<span class="hljs-params">ori:<span class="hljs-built_in">list</span>|<span class="hljs-built_in">tuple</span>, tar</span>) -&gt; <span class="hljs-built_in">bool</span>:</span><br>    <span class="hljs-string">&#x27;&#x27;&#x27;判断一个给定的可迭代对象中是否存在另一个对象</span><br><span class="hljs-string"></span><br><span class="hljs-string">    Args:</span><br><span class="hljs-string">        ori (list | tuple): 原始可迭代对象</span><br><span class="hljs-string">        tar (_type_): 目标对象</span><br><span class="hljs-string"></span><br><span class="hljs-string">    Returns:</span><br><span class="hljs-string">        bool: 是否存在</span><br><span class="hljs-string">    &#x27;&#x27;&#x27;</span><br>    <span class="hljs-comment"># 如果传入的是可迭代对象并且不是字符串</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">hasattr</span>(tar, <span class="hljs-string">&#x27;__iter__&#x27;</span>) <span class="hljs-keyword">and</span> <span class="hljs-built_in">isinstance</span>(tar, <span class="hljs-built_in">str</span>) <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">True</span>:<br>        <span class="hljs-comment"># 如果传入对象中还有元素</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(tar) &gt; <span class="hljs-number">0</span>:<br>            <span class="hljs-comment"># 则取出最后一个对象传入本函数进行判断</span><br>            <span class="hljs-keyword">if</span> contain(ori=ori, tar=tar[-<span class="hljs-number">1</span>]):<br>            <span class="hljs-comment"># 如果上一步返回true 则将传入对象去掉最后一个元素后继续传入本函数</span><br>                tar.pop()<br>                tmp = contain(ori=ori, tar=tar)<br>                <span class="hljs-keyword">return</span> tmp<br>            <span class="hljs-keyword">else</span>: <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>  <span class="hljs-comment"># 如果上一步返回false 则直接本函数返回false</span><br>        <span class="hljs-keyword">else</span>:   <span class="hljs-comment"># 如果已经完成迭代 则返回true</span><br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>    <span class="hljs-comment"># 如果传入的是单一对象</span><br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> ori:<br>            <span class="hljs-keyword">if</span> tar == i:<span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>            <span class="hljs-keyword">else</span>: <span class="hljs-keyword">pass</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="从列表中去除另一个元素-列表"><a href="#从列表中去除另一个元素-列表" class="headerlink" title="从列表中去除另一个元素/列表"></a>从列表中去除另一个元素/列表</h2><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">remove_items</span>(<span class="hljs-params">ori:<span class="hljs-built_in">list</span>, tar</span>) -&gt; <span class="hljs-built_in">list</span>:</span><br>    <span class="hljs-string">&#x27;&#x27;&#x27;从一个列表中删除另一个列表或元素</span><br><span class="hljs-string"></span><br><span class="hljs-string">    Args:</span><br><span class="hljs-string">        ori (list): 原始列表</span><br><span class="hljs-string">        tar (_type_): 待删除的列表或者元素</span><br><span class="hljs-string"></span><br><span class="hljs-string">    Returns:</span><br><span class="hljs-string">        list: 删除给定元素/列表的原列表</span><br><span class="hljs-string">    &#x27;&#x27;&#x27;</span><br>    <span class="hljs-comment"># 如果传入的待去除对象为none 则直接返回原列表</span><br>    <span class="hljs-keyword">if</span> tar <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>: <span class="hljs-keyword">return</span> ori<br>    <span class="hljs-comment"># 如果传入的不是none 则先判断其是否为非str的可迭代对象</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">hasattr</span>(tar, <span class="hljs-string">&quot;__iter__&quot;</span>) <span class="hljs-keyword">and</span> <span class="hljs-built_in">isinstance</span>(tar, <span class="hljs-built_in">str</span>) <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">True</span>:<br>       <span class="hljs-keyword">return</span> [x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> ori <span class="hljs-keyword">if</span> x <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> tar]<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">return</span> [x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> ori <span class="hljs-keyword">if</span> x != tar]<br></code></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>tool</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python--文件夹</title>
+    <url>/2021/07/07/Python/tool/%E6%96%87%E4%BB%B6%E5%A4%B9/</url>
+    <content><![CDATA[<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h2 id="获取一级子文件夹"><a href="#获取一级子文件夹" class="headerlink" title="获取一级子文件夹"></a>获取一级子文件夹</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs pyton"><br>import os<br>def remove_items(ori:list, tar) -&gt; list:<br>    &#x27;&#x27;&#x27;从一个列表中删除另一个列表或元素<br><br>    Args:<br>        ori (list): 原始列表<br>        tar (_type_): 待删除的列表或者元素<br><br>    Returns:<br>        list: 删除给定元素/列表的原列表<br>    &#x27;&#x27;&#x27;<br>    # 如果传入的待去除对象为none 则直接返回原列表<br>    if tar is None: return ori<br>    # 如果传入的不是none 则先判断其是否为非str的可迭代对象<br>    if hasattr(tar, &quot;__iter__&quot;) and isinstance(tar, str) is not True:<br>       return [x for x in ori if x not in tar]<br>    else:<br>        return [x for x in ori if x != tar]<br>    <br>def get_subfolders(path_:str, ignore = None):<br>    &#x27;&#x27;&#x27;读取给定文件夹路径内的一级子文件名<br><br>    Args:<br>        path_ (str): 文件夹路径<br><br>    Returns:<br>        list: 子文件夹名<br>    &#x27;&#x27;&#x27;<br>    assert os.path.exists(path_), f&quot;&#123;path_&#125; Not Exist.&quot;<br>    #   定义一个列表，用来存储结果<br>    list_ = []<br>    #   获取该目录下的所有文件或文件夹目录<br>    files = os.listdir(path_)<br>    for file in files:<br>        #   得到该文件下所有目录的路径<br>        tmp_path = os.path.join(path_, file)<br>        #   如果该路径为文件夹<br>        if os.path.isdir(tmp_path):<br>            list_.append(os.path.split(tmp_path)[1])<br>    if ignore is None:<br>        return list_, (os.path.join(path_, x) for x in list_)<br>    else:<br>        remove_items(list_, ignore)<br>        return list_, (os.path.join(path_, x) for x in list_)<br></code></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>tool</category>
       </categories>
       <tags>
         <tag>Python</tag>
@@ -1800,39 +1787,24 @@ turns out<figure class="highlight python"><table><tr><td class="code"><pre><code
       </tags>
   </entry>
   <entry>
-    <title>python--元组</title>
-    <url>/2021/07/07/Python/basic/%E5%85%83%E7%BB%84/</url>
-    <content><![CDATA[<h1 id="列表与元组"><a href="#列表与元组" class="headerlink" title="列表与元组"></a>列表与元组</h1><ul>
-<li>当元素类型不一时使用元组,当类型一样则使用列表 <sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="参考资料1
-">[1]</span></a></sup></li>
-<li>元组遍历更快</li>
-<li>使用元组元素(不可变)可作为字典的键值,而列表不可</li>
-<li>元组保证了数据的安全</li>
+    <title>python--函数</title>
+    <url>/2021/07/10/Python/basic/%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="函数-1"><a href="#函数-1" class="headerlink" title="函数"></a>函数</h2><p>–</p>
+<h2 id="函数参数"><a href="#函数参数" class="headerlink" title="函数参数"></a>函数参数</h2><hr>
+<h3 id="参数类型"><a href="#参数类型" class="headerlink" title="参数类型"></a>参数类型</h3><span id="more"></span>
+<h4 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h4><ul>
+<li>定义函数时设置默认值,则调用函数时不需要指定参数值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func</span>(<span class="hljs-params">a = <span class="hljs-number">1</span>, b = <span class="hljs-number">4</span></span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> a * b<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func())<br><span class="hljs-number">4</span><br></code></pre></td></tr></table></figure></li>
+<li>定义函数时设置默认值,调用函数指定他值,则他值覆盖默认值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func</span>(<span class="hljs-params">a = <span class="hljs-number">1</span>, b = <span class="hljs-number">4</span></span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> a * b<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func())<br><span class="hljs-number">4</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func(<span class="hljs-number">2</span>, <span class="hljs-number">5</span>))<br><span class="hljs-number">10</span><br></code></pre></td></tr></table></figure>
+<h4 id="关键字参数-参数关键字"><a href="#关键字参数-参数关键字" class="headerlink" title="关键字参数(参数关键字)"></a>关键字参数(参数关键字)</h4></li>
+<li>调用函数传入参数时,若不指定各传入值对应参数名,则传入值会按照默认顺序(函数定义式中的参数顺序)进行参数赋值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func2</span>(<span class="hljs-params">a, b, c, d</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span>(a * <span class="hljs-number">1000</span> + b * <span class="hljs-number">100</span> + c * <span class="hljs-number">10</span> + d)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>))<br><span class="hljs-number">1234</span><br></code></pre></td></tr></table></figure></li>
+<li>调用函数传入参数时,指定参数关键字则不用在意参数传入顺序<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func2</span>(<span class="hljs-params">a, b, c, d</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span>(a * <span class="hljs-number">1000</span> + b * <span class="hljs-number">100</span> + c * <span class="hljs-number">10</span> + d)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>))<br><span class="hljs-number">1234</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(d=<span class="hljs-number">4</span>, a=<span class="hljs-number">1</span>, c=<span class="hljs-number">3</span>, b=<span class="hljs-number">2</span>))<br><span class="hljs-number">1234</span><br></code></pre></td></tr></table></figure>
+<h4 id="任意参数"><a href="#任意参数" class="headerlink" title="任意参数"></a>任意参数</h4><code>1.</code> 在任意参数前添加<code>*</code>标定此参数为任意参数</li>
+<li>它将非关键字的参数作为元组传入函数内部<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func2</span>(<span class="hljs-params">a, b, c, d</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span>(a * <span class="hljs-number">1000</span> + b * <span class="hljs-number">100</span> + c * <span class="hljs-number">10</span> + d)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>))<br><span class="hljs-number">1234</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(func2(d=<span class="hljs-number">4</span>, a=<span class="hljs-number">1</span>, c=<span class="hljs-number">3</span>, b=<span class="hljs-number">2</span>))<br><span class="hljs-number">1234</span><br></code></pre></td></tr></table></figure>
+<code>2.</code> <code>**kwargs</code> 用以传递任意关键字参数<code>(kew = ars)</code></li>
+<li>将带传入参数及其关键字以<code>&#39;&#39;键值对&#39;&#39;</code>形式传入</li>
+<li>传入参数及其关键字被转换为<code>dict</code>传入函数内部,通过关键字定位参数值<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func4</span>(<span class="hljs-params">**kwargs</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(kwargs.__class__)<br><span class="hljs-meta">... </span>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> kwargs:<br><span class="hljs-meta">... </span>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;this is &#x27;</span> + <span class="hljs-built_in">str</span>(i) + <span class="hljs-string">&#x27; and its arg = &#x27;</span> +<span class="hljs-built_in">str</span>(kwargs[i]))<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>func4(name = <span class="hljs-string">&#x27;markilily&#x27;</span>,age = <span class="hljs-number">120</span>)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">dict</span>&#x27;&gt;</span><br><span class="hljs-class"><span class="hljs-title">this</span> <span class="hljs-title">is</span> <span class="hljs-title">name</span> <span class="hljs-title">and</span> <span class="hljs-title">its</span> <span class="hljs-title">arg</span> = <span class="hljs-title">markilily</span></span><br><span class="hljs-class"><span class="hljs-title">this</span> <span class="hljs-title">is</span> <span class="hljs-title">age</span> <span class="hljs-title">and</span> <span class="hljs-title">its</span> <span class="hljs-title">arg</span> = 120</span><br></code></pre></td></tr></table></figure></li>
 </ul>
-<span id="more"></span>
-<h2 id="1-列表"><a href="#1-列表" class="headerlink" title="1 列表"></a>1 列表</h2><p>略</p>
-<h2 id="2-元组-tuple"><a href="#2-元组-tuple" class="headerlink" title="2 元组-tuple"></a>2 元组-<code>tuple</code></h2><p>元组类似于列表,但区别在于元组中的元素是不可变的</p>
-<h3 id="2-1-创建一个元组"><a href="#2-1-创建一个元组" class="headerlink" title="2.1 创建一个元组"></a>2.1 创建一个元组</h3><p><code>1.</code> 使用<code>()</code>创建一个元组,使用<code>,</code>间隔元素<br><code>2.</code> 类似于列表,元组中的元素可以是任何数据类型</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuple1 = (<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(tuple1, tuple1.__class__)<br>(<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]) &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">tuple</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>因为元组不能改变,所以创建伊始就应该指定正确的元素</p>
-</blockquote>
-<p><code>3.</code> 创建元组时只指明一个元素<code>(dtype A)</code>,则该元组(你意图创建的)会被视为<code>A</code>的对象</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># case1</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>a = (<span class="hljs-string">&#x27;aa&#x27;</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">str</span>&#x27;&gt;</span><br><span class="hljs-class"># <span class="hljs-title">case2</span></span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">b</span> = (<span class="hljs-params">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]</span>)</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">print</span>(<span class="hljs-params">b.__class__</span>)</span><br><span class="hljs-class">&lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">list</span>&#x27;&gt;</span><br><span class="hljs-class"># <span class="hljs-title">case3</span></span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">c</span> = (<span class="hljs-params"><span class="hljs-number">1</span></span>)</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">print</span>(<span class="hljs-params">c.__class__</span>)</span><br><span class="hljs-class">&lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">int</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
-<p><code>case1-3</code>中意图创建元组<code>a b c</code>,但创建时指指定了一个内部元素<code>param(dtype A)</code>,因此该元组被视为<code>A</code>类的一个对象</p>
-<h3 id="2-2-访问元组元素"><a href="#2-2-访问元组元素" class="headerlink" title="2.2 访问元组元素"></a>2.2 访问元组元素</h3><h4 id="2-2-1-索引-index"><a href="#2-2-1-索引-index" class="headerlink" title="2.2.1 索引-index"></a>2.2.1 索引-index</h4><p><code>[index:int]</code>使用索引操作符来访问元组中的元素<br><code>1.</code> 正索引 : <code>0-len(tuple)-1</code></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuple1 = (<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(tuple1[<span class="hljs-number">2</span>])<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
-<p><code>2.</code> 负索引</p>
-<h4 id="2-2-2-切片"><a href="#2-2-2-切片" class="headerlink" title="2.2.2 切片"></a>2.2.2 切片</h4><p><code>:</code>使用切片操作符</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuple1 = (<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(tuple1[<span class="hljs-number">1</span>:])<br>(<span class="hljs-number">1</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])<br></code></pre></td></tr></table></figure>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p><code>1.</code> <code>enumerate()</code>: 将元组内所有对象及其索引枚举,以元组的形式返回</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">enumerate</span>(tuple1).__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">enumerate</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
-<p><code>2.</code> <code>tuple()</code>: 将序列（元组，字符串，字典）转换为元组</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>list1 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-string">&#x27;aa&#x27;</span>,(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)]<br><span class="hljs-meta">&gt;&gt;&gt; </span>tp1 = <span class="hljs-built_in">tuple</span>(list1)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(list1.__class__, tp1.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">list</span>&#x27;&gt; &lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">tuple</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
-<p><code>3.</code> <code>sorted</code>: 返回一个排序元组</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuplle1 = (<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">0</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">sorted</span>(tuplle1))<br>[<span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>参考资料1
-<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
+]]></content>
       <categories>
         <category>Python</category>
         <category>basic</category>
@@ -2032,6 +2004,26 @@ python内置此方法的输出为元素长度:<figure class="highlight python"><
       </tags>
   </entry>
   <entry>
+    <title>python--递归</title>
+    <url>/2021/07/07/Python/basic/%E9%80%92%E5%BD%92/</url>
+    <content><![CDATA[<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><span id="more"></span>
+<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>计算阶乘</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">cal</span>(<span class="hljs-params">n</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">if</span> n == <span class="hljs-number">1</span>:<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">else</span>:<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">return</span> n * cal(n - <span class="hljs-number">1</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(cal(<span class="hljs-number">4</span>))<br><span class="hljs-number">24</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(cal(<span class="hljs-number">6</span>))<br><span class="hljs-number">720</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>递归函数内部会调用函数本身</li>
+<li>某次调用递归函数时,内部调用本身时会指定参数</li>
+<li>在递归函数中,应有一个结束参数信号,在每次递归中,参数不断靠近该信号<h2 id="递归次数限制"><a href="#递归次数限制" class="headerlink" title="递归次数限制"></a>递归次数限制</h2><code>python</code>递归次数限制为<code>3000</code>次,超出此次数则会触发<code>RecursionError</code><h2 id="移除递归次数限制"><a href="#移除递归次数限制" class="headerlink" title="移除递归次数限制"></a>移除递归次数限制</h2><code>sys.setrecursionlimit(5000)</code> 设置次数限制为我们所需要的次数</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>basic</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python--集合</title>
     <url>/2021/07/07/Python/basic/%E9%9B%86%E5%90%88/</url>
     <content><![CDATA[<h1 id="集合-set"><a href="#集合-set" class="headerlink" title="集合-set"></a>集合-set</h1><p>集合的基本性质:<br><code>1.</code> 集合包含了不重复且无序的元素<br><code>2.</code> 集合是可变数据类型  </p>
@@ -2081,34 +2073,42 @@ python内置此方法的输出为元素长度:<figure class="highlight python"><
       </tags>
   </entry>
   <entry>
-    <title>python--递归</title>
-    <url>/2021/07/07/Python/basic/%E9%80%92%E5%BD%92/</url>
-    <content><![CDATA[<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><span id="more"></span>
-<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>计算阶乘</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">cal</span>(<span class="hljs-params">n</span>):</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">if</span> n == <span class="hljs-number">1</span>:<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br><span class="hljs-meta">... </span>    <span class="hljs-keyword">else</span>:<br><span class="hljs-meta">... </span>            <span class="hljs-keyword">return</span> n * cal(n - <span class="hljs-number">1</span>)<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(cal(<span class="hljs-number">4</span>))<br><span class="hljs-number">24</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(cal(<span class="hljs-number">6</span>))<br><span class="hljs-number">720</span><br></code></pre></td></tr></table></figure>
-<ul>
-<li>递归函数内部会调用函数本身</li>
-<li>某次调用递归函数时,内部调用本身时会指定参数</li>
-<li>在递归函数中,应有一个结束参数信号,在每次递归中,参数不断靠近该信号<h2 id="递归次数限制"><a href="#递归次数限制" class="headerlink" title="递归次数限制"></a>递归次数限制</h2><code>python</code>递归次数限制为<code>3000</code>次,超出此次数则会触发<code>RecursionError</code><h2 id="移除递归次数限制"><a href="#移除递归次数限制" class="headerlink" title="移除递归次数限制"></a>移除递归次数限制</h2><code>sys.setrecursionlimit(5000)</code> 设置次数限制为我们所需要的次数</li>
+    <title>python--元组</title>
+    <url>/2021/07/07/Python/basic/%E5%85%83%E7%BB%84/</url>
+    <content><![CDATA[<h1 id="列表与元组"><a href="#列表与元组" class="headerlink" title="列表与元组"></a>列表与元组</h1><ul>
+<li>当元素类型不一时使用元组,当类型一样则使用列表 <sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="参考资料1
+">[1]</span></a></sup></li>
+<li>元组遍历更快</li>
+<li>使用元组元素(不可变)可作为字典的键值,而列表不可</li>
+<li>元组保证了数据的安全</li>
 </ul>
-]]></content>
+<span id="more"></span>
+<h2 id="1-列表"><a href="#1-列表" class="headerlink" title="1 列表"></a>1 列表</h2><p>略</p>
+<h2 id="2-元组-tuple"><a href="#2-元组-tuple" class="headerlink" title="2 元组-tuple"></a>2 元组-<code>tuple</code></h2><p>元组类似于列表,但区别在于元组中的元素是不可变的</p>
+<h3 id="2-1-创建一个元组"><a href="#2-1-创建一个元组" class="headerlink" title="2.1 创建一个元组"></a>2.1 创建一个元组</h3><p><code>1.</code> 使用<code>()</code>创建一个元组,使用<code>,</code>间隔元素<br><code>2.</code> 类似于列表,元组中的元素可以是任何数据类型</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuple1 = (<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(tuple1, tuple1.__class__)<br>(<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]) &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">tuple</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>因为元组不能改变,所以创建伊始就应该指定正确的元素</p>
+</blockquote>
+<p><code>3.</code> 创建元组时只指明一个元素<code>(dtype A)</code>,则该元组(你意图创建的)会被视为<code>A</code>的对象</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># case1</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>a = (<span class="hljs-string">&#x27;aa&#x27;</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">str</span>&#x27;&gt;</span><br><span class="hljs-class"># <span class="hljs-title">case2</span></span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">b</span> = (<span class="hljs-params">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]</span>)</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">print</span>(<span class="hljs-params">b.__class__</span>)</span><br><span class="hljs-class">&lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">list</span>&#x27;&gt;</span><br><span class="hljs-class"># <span class="hljs-title">case3</span></span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">c</span> = (<span class="hljs-params"><span class="hljs-number">1</span></span>)</span><br><span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">print</span>(<span class="hljs-params">c.__class__</span>)</span><br><span class="hljs-class">&lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">int</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
+<p><code>case1-3</code>中意图创建元组<code>a b c</code>,但创建时指指定了一个内部元素<code>param(dtype A)</code>,因此该元组被视为<code>A</code>类的一个对象</p>
+<h3 id="2-2-访问元组元素"><a href="#2-2-访问元组元素" class="headerlink" title="2.2 访问元组元素"></a>2.2 访问元组元素</h3><h4 id="2-2-1-索引-index"><a href="#2-2-1-索引-index" class="headerlink" title="2.2.1 索引-index"></a>2.2.1 索引-index</h4><p><code>[index:int]</code>使用索引操作符来访问元组中的元素<br><code>1.</code> 正索引 : <code>0-len(tuple)-1</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuple1 = (<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(tuple1[<span class="hljs-number">2</span>])<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
+<p><code>2.</code> 负索引</p>
+<h4 id="2-2-2-切片"><a href="#2-2-2-切片" class="headerlink" title="2.2.2 切片"></a>2.2.2 切片</h4><p><code>:</code>使用切片操作符</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuple1 = (<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(tuple1[<span class="hljs-number">1</span>:])<br>(<span class="hljs-number">1</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])<br></code></pre></td></tr></table></figure>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p><code>1.</code> <code>enumerate()</code>: 将元组内所有对象及其索引枚举,以元组的形式返回</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">enumerate</span>(tuple1).__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">enumerate</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
+<p><code>2.</code> <code>tuple()</code>: 将序列（元组，字符串，字典）转换为元组</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>list1 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-string">&#x27;aa&#x27;</span>,(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)]<br><span class="hljs-meta">&gt;&gt;&gt; </span>tp1 = <span class="hljs-built_in">tuple</span>(list1)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(list1.__class__, tp1.__class__)<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">list</span>&#x27;&gt; &lt;<span class="hljs-title">class</span> &#x27;<span class="hljs-title">tuple</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
+<p><code>3.</code> <code>sorted</code>: 返回一个排序元组</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tuplle1 = (<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">0</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-built_in">sorted</span>(tuplle1))<br>[<span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>参考资料1
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
       <categories>
         <category>Python</category>
         <category>basic</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python--文件夹</title>
-    <url>/2021/07/07/Python/tool/%E6%96%87%E4%BB%B6%E5%A4%B9/</url>
-    <content><![CDATA[<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h2 id="获取一级子文件夹"><a href="#获取一级子文件夹" class="headerlink" title="获取一级子文件夹"></a>获取一级子文件夹</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs pyton"><br>import os<br>def remove_items(ori:list, tar) -&gt; list:<br>    &#x27;&#x27;&#x27;从一个列表中删除另一个列表或元素<br><br>    Args:<br>        ori (list): 原始列表<br>        tar (_type_): 待删除的列表或者元素<br><br>    Returns:<br>        list: 删除给定元素/列表的原列表<br>    &#x27;&#x27;&#x27;<br>    # 如果传入的待去除对象为none 则直接返回原列表<br>    if tar is None: return ori<br>    # 如果传入的不是none 则先判断其是否为非str的可迭代对象<br>    if hasattr(tar, &quot;__iter__&quot;) and isinstance(tar, str) is not True:<br>       return [x for x in ori if x not in tar]<br>    else:<br>        return [x for x in ori if x != tar]<br>    <br>def get_subfolders(path_:str, ignore = None):<br>    &#x27;&#x27;&#x27;读取给定文件夹路径内的一级子文件名<br><br>    Args:<br>        path_ (str): 文件夹路径<br><br>    Returns:<br>        list: 子文件夹名<br>    &#x27;&#x27;&#x27;<br>    assert os.path.exists(path_), f&quot;&#123;path_&#125; Not Exist.&quot;<br>    #   定义一个列表，用来存储结果<br>    list_ = []<br>    #   获取该目录下的所有文件或文件夹目录<br>    files = os.listdir(path_)<br>    for file in files:<br>        #   得到该文件下所有目录的路径<br>        tmp_path = os.path.join(path_, file)<br>        #   如果该路径为文件夹<br>        if os.path.isdir(tmp_path):<br>            list_.append(os.path.split(tmp_path)[1])<br>    if ignore is None:<br>        return list_, (os.path.join(path_, x) for x in list_)<br>    else:<br>        remove_items(list_, ignore)<br>        return list_, (os.path.join(path_, x) for x in list_)<br></code></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>tool</category>
       </categories>
       <tags>
         <tag>Python</tag>
